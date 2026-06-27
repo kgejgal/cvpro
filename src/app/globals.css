@@ -1,26 +1,226 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #0d1c35;
+  --bg2: #122040;
+  --bg3: #162d50;
+  --hover: #1a3560;
+  --border: rgba(56,100,200,0.18);
+  --border-hi: rgba(68,119,255,0.55);
+  --accent: #4477FF;
+  --accent-hover: #3366ee;
+  --sec: #38BDF8;
+  --ok: #10B981;
+  --text: #E2EEFF;
+  --text-muted: #6B84AA;
+  --text-dim: #3A5070;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+::placeholder { color: var(--text-dim); }
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+/* CV preview styles */
+.cv-section-title {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-family: var(--font-poppins, sans-serif);
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--cv-accent-deep, #3f5d80);
+  margin-bottom: 14px;
+}
+.cv-section-title::before {
+  content: '';
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: var(--cv-accent, #5a7da6);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.cv-timeline { position: relative; margin-left: 5px; padding-top: 2px; }
+.cv-timeline::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 8px; bottom: 6px;
+  width: 2px;
+  background: var(--cv-tint-2, #e4edf6);
+}
+
+.cv-exp-item { position: relative; }
+.cv-exp-item::before {
+  content: '';
+  position: absolute;
+  left: -5px; top: 4px;
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2.5px solid var(--cv-accent, #5a7da6);
+  box-shadow: 0 0 0 4px #fff;
+}
+
+.cv-exp-list { list-style: none; margin: 0; padding: 0; }
+.cv-exp-list li {
+  position: relative;
+  font-size: 13px;
+  color: #5d626c;
+  padding-left: 16px;
+  margin-bottom: 6px;
+  line-height: 1.6;
+}
+.cv-exp-list li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 9px;
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--cv-accent, #5a7da6);
+  opacity: 0.7;
+}
+
+.cv-panel { background: var(--cv-tint, #eef3f9); }
+
+.cv2-bullet { list-style: none; margin: 0; padding: 0; }
+.cv2-bullet li {
+  position: relative;
+  padding-left: 14px;
+  margin-bottom: 5px;
+  font-size: 12.5px;
+  line-height: 1.65;
+}
+.cv2-bullet li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 8px;
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: var(--cv-accent, #2563eb);
+  opacity: 0.75;
+}
+
+/* Contenteditable */
+[contenteditable]:hover {
+  outline: 1px dashed #47f6;
+  border-radius: 4px;
+  cursor: text;
+}
+[contenteditable]:focus {
+  outline: 1px solid #4477ff80;
+  border-radius: 4px;
+  background: #4477ff08;
+}
+
+/* Print / PDF */
+@media print {
+  @page { size: A4 portrait; margin: 12mm 14mm; }
+  .no-print { display: none !important; }
+  body { background: #fff !important; margin: 0 !important; padding: 0 !important; }
+  .cv-print-outer { display: block !important; padding: 0 !important; overflow: visible !important; }
+  .cv-scale-wrapper { transform: none !important; margin-bottom: 0 !important; width: 100% !important; }
+  #cv-doc {
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    min-height: auto !important;
+    padding: 0 !important;
+    margin: 0 !important;
   }
+  #cv-doc, #cv-doc *, .cv-panel {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .cv-panel { background: var(--cv-tint, #eef3f9) !important; }
+  .cv-exp-item, .cv-section-title { page-break-inside: avoid; break-inside: avoid; }
+  [contenteditable] { outline: none !important; background: transparent !important; cursor: default !important; }
+
+  /* Free-plan watermark */
+  body.cv-free-print::after {
+    content: 'cvpro.pl';
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-35deg);
+    font-size: 72px;
+    font-weight: 900;
+    color: rgba(0, 0, 0, 0.07);
+    letter-spacing: 0.08em;
+    pointer-events: none;
+    z-index: 9999;
+    white-space: nowrap;
+    font-family: sans-serif;
+  }
+  body.cv-free-print #cv-doc::after {
+    content: 'Pobierz bez znaku wodnego na cvpro.pl';
+    position: absolute;
+    bottom: 18mm;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 9px;
+    color: rgba(0,0,0,0.35);
+    font-family: sans-serif;
+    letter-spacing: 0.04em;
+  }
+  body.cv-free-print #cv-doc { position: relative; }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Animations */
+@keyframes blob1 {
+  0%, 100% { transform: translate(0,0) scale(1); }
+  50% { transform: translate(-30px, 20px) scale(1.08); }
+}
+@keyframes blob2 {
+  0%, 100% { transform: translate(0,0) scale(1); }
+  50% { transform: translate(20px, -30px) scale(1.06); }
+}
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+@keyframes bounce {
+  0%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-8px); }
+}
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+/* Skill suggestion chips */
+.skill-suggestion {
+  padding: 8px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  background: #0c1a30b3;
+  border: 1px solid #3864c838;
+  font-size: 12.5px;
+  color: #7a94bb;
+  transition: all 0.15s;
+  user-select: none;
+  -webkit-user-select: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.skill-suggestion:hover, .skill-suggestion:active {
+  background: #4477ff1f;
+  border-color: #47f6;
+  color: #e2eeff;
 }
