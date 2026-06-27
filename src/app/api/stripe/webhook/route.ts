@@ -3,8 +3,6 @@ import { createClient as createSupabaseClient } from '@supabase/supabase-js'
 import { NextRequest, NextResponse } from 'next/server'
 import { Resend } from 'resend'
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!)
-
 const PLAN_LABELS: Record<string, string> = {
   basic: 'Podstawowy',
   pro: 'Pro',
@@ -12,6 +10,7 @@ const PLAN_LABELS: Record<string, string> = {
 }
 
 export async function POST(request: NextRequest) {
+  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!)
   const body = await request.text()
   const sig = request.headers.get('stripe-signature')!
 
