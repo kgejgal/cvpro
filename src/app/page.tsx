@@ -136,7 +136,7 @@ export default async function HomePage() {
           ].map(({ n, icon, title, desc }) => (
             <div key={n} style={{ padding: 28, background: D.card, borderRadius: 16, border: `1px solid ${D.border}` }}>
               <div style={{ fontSize: 34, marginBottom: 14 }}>{icon}</div>
-              <div style={{ fontSize: 11, fontWeight: 700, color: D.primary, marginBottom: 8, letterSpacing: '0.1em' }}>KROK {n}</div>
+              <div style={{ fontSize: 12, fontWeight: 700, color: '#8ab4ff', marginBottom: 8, letterSpacing: '0.1em' }}>KROK {n}</div>
               <h3 style={{ fontFamily: 'var(--font-onest), sans-serif', fontSize: 17, fontWeight: 700, margin: '0 0 10px' }}>{title}</h3>
               <p style={{ color: D.muted, fontSize: 13, lineHeight: 1.65, margin: 0 }}>{desc}</p>
             </div>
@@ -148,7 +148,7 @@ export default async function HomePage() {
       <section style={{ padding: '80px 5%', background: 'rgba(9,18,36,0.6)', borderTop: `1px solid ${D.border}`, borderBottom: `1px solid ${D.border}` }}>
         <div style={{ maxWidth: 960, margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 56, alignItems: 'center' }}>
           <div>
-            <div style={{ fontSize: 11, fontWeight: 700, color: D.primary, letterSpacing: '0.1em', marginBottom: 14 }}>✨ KLUCZOWA FUNKCJA</div>
+            <div style={{ fontSize: 12, fontWeight: 700, color: '#8ab4ff', letterSpacing: '0.1em', marginBottom: 14 }}>✨ KLUCZOWA FUNKCJA</div>
             <h2 style={{ fontFamily: 'var(--font-onest), sans-serif', fontSize: 32, fontWeight: 900, letterSpacing: '-0.04em', margin: '0 0 18px', lineHeight: 1.15 }}>
               Powiedz nam co jest<br />ważne dla Ciebie
             </h2>
@@ -171,7 +171,7 @@ export default async function HomePage() {
             </div>
             <div style={{ marginTop: 12, display: 'flex', gap: 8, flexWrap: 'wrap' }}>
               {['🔄 Zmiana branży', '🎓 Świeży absolwent', '🏠 Praca zdalna'].map(l => (
-                <div key={l} style={{ padding: '5px 11px', borderRadius: 16, fontSize: 11, background: D.primary, color: '#fff', fontWeight: 600 }}>{l}</div>
+                <div key={l} style={{ padding: '5px 11px', borderRadius: 16, fontSize: 13, background: '#2255ee', color: '#fff', fontWeight: 600 }}>{l}</div>
               ))}
             </div>
             <div style={{ marginTop: 14, padding: '10px 13px', background: 'rgba(16,185,129,0.08)', borderRadius: 8, fontSize: 12, color: '#34D399', lineHeight: 1.5, border: '1px solid rgba(16,185,129,0.2)' }}>
