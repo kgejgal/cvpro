@@ -77,7 +77,7 @@ export default async function HomePage() {
             background: 'linear-gradient(135deg, #E2EEFF 25%, #8899FF 70%, #C084FC)',
             WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
           }}>
-            Profesjonalne CV<br />w języku polskim
+            Profesjonalny kreator CV<br />po polsku
           </h1>
 
           <p style={{ fontSize: 17, color: D.muted, lineHeight: 1.75, maxWidth: 520, margin: '0 auto 36px' }}>

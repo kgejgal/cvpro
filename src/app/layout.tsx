@@ -5,8 +5,8 @@ import './globals.css'
 const onest = Onest({ subsets: ['latin'], variable: '--font-onest', display: 'swap', preload: true, adjustFontFallback: false })
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://cvpro.pl'
-const TITLE = 'CVPro.pl – Stwórz profesjonalne CV w minuty'
-const DESC = 'Generator CV zoptymalizowany pod ATS. 16 szablonów, eksport PDF, analiza ATS. Dostosowany do polskiego rynku pracy. Jednorazowa płatność – bez subskrypcji.'
+const TITLE = 'Kreator CV online po polsku — CVPro.pl'
+const DESC = 'Kreator CV zoptymalizowany pod ATS. 16 szablonów, eksport PDF, analiza ATS. Dostosowany do polskiego rynku pracy. Jednorazowa płatność – bez subskrypcji.'
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
