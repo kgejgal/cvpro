@@ -212,7 +212,7 @@ export default async function HomePage() {
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }}>
           {/* BEFORE */}
           <div style={{ background: '#1a0d0d', border: '1px solid #3a1515', borderRadius: 16, padding: 24, position: 'relative' }}>
-            <div style={{ position: 'absolute', top: 14, left: 14, background: '#e55', color: '#fff', fontSize: 10, fontWeight: 700, padding: '3px 10px', borderRadius: 8, letterSpacing: '0.06em' }}>PRZED</div>
+            <div style={{ position: 'absolute', top: 14, left: 14, background: '#cc2222', color: '#fff', fontSize: 12, fontWeight: 700, padding: '3px 10px', borderRadius: 8, letterSpacing: '0.06em' }}>PRZED</div>
             <div style={{ position: 'absolute', top: 14, right: 14, background: '#3a1515', color: '#e55', fontSize: 11, fontWeight: 700, padding: '3px 10px', borderRadius: 8 }}>ATS: 24%</div>
             <div style={{ marginTop: 36, fontFamily: 'Georgia, serif', color: '#c0a0a0', fontSize: 13, lineHeight: 1.8 }}>
               <div style={{ fontSize: 16, fontWeight: 700, marginBottom: 8, color: '#e0c0c0' }}>Jan Kowalski</div>
@@ -222,17 +222,17 @@ export default async function HomePage() {
               <div>- potem w ABC robiłem różne rzeczy</div>
               <div style={{ marginTop: 10, fontWeight: 700 }}>Umiejętności:</div>
               <div>- Excel, Word, PowerPoint, inne</div>
-              <div style={{ marginTop: 10, color: '#7a5050', fontSize: 11 }}>* Brak sekcji, brak formatowania, trudne do odczytania przez ATS</div>
+              <div style={{ marginTop: 10, color: '#e09090', fontSize: 12 }}>* Brak sekcji, brak formatowania, trudne do odczytania przez ATS</div>
             </div>
           </div>
           {/* AFTER */}
           <div style={{ background: D.card, border: `1px solid ${D.border}`, borderRadius: 16, padding: 24, position: 'relative', boxShadow: '0 8px 32px rgba(68,119,255,0.12)' }}>
-            <div style={{ position: 'absolute', top: 14, left: 14, background: '#3db36a', color: '#fff', fontSize: 10, fontWeight: 700, padding: '3px 10px', borderRadius: 8, letterSpacing: '0.06em' }}>PO</div>
+            <div style={{ position: 'absolute', top: 14, left: 14, background: '#1a7a40', color: '#fff', fontSize: 12, fontWeight: 700, padding: '3px 10px', borderRadius: 8, letterSpacing: '0.06em' }}>PO</div>
             <div style={{ position: 'absolute', top: 14, right: 14, background: '#0d2a1a', color: '#3db36a', fontSize: 11, fontWeight: 700, padding: '3px 10px', borderRadius: 8 }}>ATS: 91%</div>
             <div style={{ marginTop: 36 }}>
               <div style={{ borderLeft: `3px solid ${D.primary}`, paddingLeft: 12, marginBottom: 14 }}>
                 <div style={{ fontSize: 16, fontWeight: 800, color: D.text }}>Jan Kowalski</div>
-                <div style={{ fontSize: 12, color: D.primary, fontWeight: 600 }}>Senior Project Manager</div>
+                <div style={{ fontSize: 12, color: '#8ab4ff', fontWeight: 600 }}>Senior Project Manager</div>
                 <div style={{ fontSize: 11, color: D.muted, marginTop: 3 }}>jan.kowalski@email.com · +48 123 456 789 · Warszawa</div>
               </div>
               <div style={{ fontSize: 11, fontWeight: 700, color: D.muted, textTransform: 'uppercase', letterSpacing: '0.07em', marginBottom: 8 }}>Doświadczenie</div>
@@ -244,7 +244,7 @@ export default async function HomePage() {
               <div style={{ fontSize: 11, fontWeight: 700, color: D.muted, textTransform: 'uppercase', letterSpacing: '0.07em', marginBottom: 6 }}>Umiejętności</div>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: 5 }}>
                 {['Zarządzanie projektami', 'Scrum / Agile', 'MS Project', 'Excel', 'Negocjacje'].map(s => (
-                  <span key={s} style={{ fontSize: 10, padding: '3px 8px', borderRadius: 6, background: 'rgba(68,119,255,0.1)', color: D.primary, border: `1px solid ${D.border}` }}>{s}</span>
+                  <span key={s} style={{ fontSize: 12, padding: '3px 8px', borderRadius: 6, background: 'rgba(68,119,255,0.1)', color: '#8ab4ff', border: `1px solid ${D.border}` }}>{s}</span>
                 ))}
               </div>
             </div>
@@ -273,7 +273,7 @@ export default async function HomePage() {
       <section style={{ padding: '80px 5%', background: 'rgba(9,18,36,0.5)', borderBottom: `1px solid ${D.border}` }}>
         <div style={{ maxWidth: 860, margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: 48 }}>
-            <div style={{ fontSize: 11, fontWeight: 700, color: D.primary, letterSpacing: '0.1em', marginBottom: 12 }}>DLACZEGO MY?</div>
+            <div style={{ fontSize: 12, fontWeight: 700, color: '#8ab4ff', letterSpacing: '0.1em', marginBottom: 12 }}>DLACZEGO MY?</div>
             <h2 style={{ fontFamily: 'var(--font-onest), sans-serif', fontSize: 36, fontWeight: 900, letterSpacing: '-0.04em', margin: '0 0 14px' }}>CVPro.pl vs. konkurencja</h2>
             <p style={{ color: D.muted, fontSize: 15, margin: 0 }}>Inne kreatory CV mają pułapki. My nie.</p>
           </div>
@@ -330,7 +330,7 @@ export default async function HomePage() {
       {/* Testimonials */}
       <section style={{ padding: '80px 5%', maxWidth: 1020, margin: '0 auto' }}>
         <div style={{ textAlign: 'center', marginBottom: 48 }}>
-          <div style={{ fontSize: 11, fontWeight: 700, color: D.primary, letterSpacing: '0.1em', marginBottom: 12 }}>OPINIE UŻYTKOWNIKÓW</div>
+          <div style={{ fontSize: 12, fontWeight: 700, color: '#8ab4ff', letterSpacing: '0.1em', marginBottom: 12 }}>OPINIE UŻYTKOWNIKÓW</div>
           <h2 style={{ fontFamily: 'var(--font-onest), sans-serif', fontSize: 36, fontWeight: 900, letterSpacing: '-0.04em', margin: 0 }}>Co mówią nasi użytkownicy?</h2>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20 }}>
