@@ -87,6 +87,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${onest.variable} ${poppins.variable} ${dmSans.variable} ${lato.variable} ${playfair.variable}`}
     >
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
