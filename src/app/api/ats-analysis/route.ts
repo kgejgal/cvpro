@@ -7,16 +7,16 @@ const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
 
 const rateLimitMap = new Map<string, number>()
 const COOLDOWN_MS = 60_000
+const PLAN_ORDER: Record<string, number> = { free: 0, basic: 1, pro: 2, premium: 3 }
 
 export async function POST(req: NextRequest) {
   const supabase = await createClient()
-  const { data: { session } } = await supabase.auth.getSession()
-  if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+  const { data: { user } } = await supabase.auth.getUser()
+  if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
 
-  const userId = session.user.id
+  const userId = user.id
   const { data: profile } = await supabase.from('profiles').select('plan').eq('id', userId).single()
   const plan = profile?.plan ?? 'free'
-  const PLAN_ORDER: Record<string, number> = { free: 0, basic: 1, pro: 2, premium: 3 }
   if ((PLAN_ORDER[plan] ?? 0) < PLAN_ORDER['pro']) {
     return NextResponse.json({ error: 'Plan Pro wymagany' }, { status: 403 })
   }
@@ -27,7 +27,11 @@ export async function POST(req: NextRequest) {
   }
   rateLimitMap.set(userId, Date.now())
 
-  const { cv, jobAd }: { cv: CVData; jobAd?: string } = await req.json()
+  let body: unknown
+  try { body = await req.json() }
+  catch { return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 }) }
+
+  const { cv, jobAd } = body as { cv: CVData; jobAd?: string }
 
   const cvText = [
     `${cv.firstName} ${cv.lastName}`,

@@ -101,7 +101,22 @@ export default function CenikPage() {
             </div>
           ))}
         </div>
-        <p style={{ textAlign: 'center', color: '#4a6a99', marginTop: 48, fontSize: 13 }}>Akceptujemy: BLIK · Karta · Przelewy24 · Apple Pay</p>
+        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 24, marginTop: 40 }}>
+          {[
+            { icon: '🔒', label: 'Płatności przez Stripe', sub: 'Szyfrowanie SSL · PCI DSS' },
+            { icon: '↩️', label: '14-dniowy zwrot', sub: 'Jeśli plik nie pobrany' },
+            { icon: '♾️', label: 'Dostęp bezterminowy', sub: 'Raz zapłacone, zawsze Twoje' },
+          ].map(({ icon, label, sub }) => (
+            <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 10, background: 'rgba(68,119,255,0.06)', border: '1px solid rgba(68,119,255,0.15)', borderRadius: 10, padding: '10px 18px' }}>
+              <span style={{ fontSize: 20 }}>{icon}</span>
+              <div>
+                <div style={{ fontSize: 13, fontWeight: 700, color: D.text }}>{label}</div>
+                <div style={{ fontSize: 11, color: D.muted }}>{sub}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <p style={{ textAlign: 'center', color: '#4a6a99', marginTop: 24, fontSize: 13 }}>Akceptujemy: BLIK · Karta · Przelewy24 · Apple Pay</p>
       </div>
     </div>
   )

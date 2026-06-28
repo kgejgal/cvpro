@@ -6,11 +6,18 @@ const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
 
 const rateLimitMap = new Map<string, number>()
 const COOLDOWN_MS = 60_000
+const PLAN_ORDER: Record<string, number> = { free: 0, basic: 1, pro: 2, premium: 3 }
 
 export async function POST(req: NextRequest) {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+
+  const { data: profile } = await supabase.from('profiles').select('plan').eq('id', user.id).single()
+  const plan = profile?.plan ?? 'free'
+  if ((PLAN_ORDER[plan] ?? 0) < PLAN_ORDER['basic']) {
+    return NextResponse.json({ error: 'Wymagany plan Basic lub wyższy.' }, { status: 403 })
+  }
 
   const last = rateLimitMap.get(user.id)
   if (last && Date.now() - last < COOLDOWN_MS) {
@@ -18,7 +25,11 @@ export async function POST(req: NextRequest) {
   }
   rateLimitMap.set(user.id, Date.now())
 
-  const { position, company, description } = await req.json()
+  let body: unknown
+  try { body = await req.json() }
+  catch { return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 }) }
+
+  const { position, company, description } = body as { position?: string; company?: string; description?: string }
   if (!position) return NextResponse.json({ bullets: [] })
 
   const message = await anthropic.messages.create({
