@@ -68,19 +68,21 @@ export default function SignupPage() {
         <p style={{ color: D.muted, fontSize: 14, margin: '0 0 28px' }}>Zacznij tworzyć profesjonalne CV</p>
 
         {error && (
-          <div style={{ background: '#2d1212', border: '1px solid #5a1a1a', color: '#e55', fontSize: 13, padding: '10px 14px', borderRadius: 8, marginBottom: 18 }}>
+          <div role="alert" style={{ background: '#2d1212', border: '1px solid #5a1a1a', color: '#e55', fontSize: 13, padding: '10px 14px', borderRadius: 8, marginBottom: 18 }}>
             {error}
           </div>
         )}
 
         <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
           <div>
-            <label style={{ display: 'block', fontSize: 12, fontWeight: 600, color: D.muted, textTransform: 'uppercase', letterSpacing: 1, marginBottom: 7 }}>Email</label>
+            <label htmlFor="email" style={{ display: 'block', fontSize: 12, fontWeight: 600, color: D.muted, textTransform: 'uppercase', letterSpacing: 1, marginBottom: 7 }}>Email</label>
             <input
+              id="email"
               type="email"
               value={email}
               onChange={e => setEmail(e.target.value)}
               required
+              autoComplete="email"
               placeholder="jan@przykład.pl"
               style={inputStyle}
               onFocus={e => (e.target.style.borderColor = D.borderFocus)}
@@ -89,14 +91,16 @@ export default function SignupPage() {
           </div>
 
           <div>
-            <label style={{ display: 'block', fontSize: 12, fontWeight: 600, color: D.muted, textTransform: 'uppercase', letterSpacing: 1, marginBottom: 7 }}>Hasło</label>
+            <label htmlFor="password" style={{ display: 'block', fontSize: 12, fontWeight: 600, color: D.muted, textTransform: 'uppercase', letterSpacing: 1, marginBottom: 7 }}>Hasło</label>
             <div style={{ position: 'relative' }}>
               <input
+                id="password"
                 type={showPassword ? 'text' : 'password'}
                 value={password}
                 onChange={e => setPassword(e.target.value)}
                 required
                 minLength={6}
+                autoComplete="new-password"
                 placeholder="Min. 6 znaków"
                 style={{ ...inputStyle, paddingRight: 44 }}
                 onFocus={e => (e.target.style.borderColor = D.borderFocus)}
