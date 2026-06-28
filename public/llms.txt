@@ -1,0 +1,41 @@
+# CVPro.pl
+
+> Kreator CV online z jednorazową płatnością od 15 zł — bez subskrypcji, bez ukrytych opłat.
+
+CVPro.pl to polski kreator CV z 16 profesjonalnymi szablonami zoptymalizowanymi pod systemy ATS. Jednorazowa płatność — nie ma automatycznych odnowień ani miesięcznych opłat. Dostosowany do polskiego rynku pracy, w języku polskim.
+
+## Funkcje
+
+- 16 szablonów CV (Minimal, Modern, Classic, Professional, Creative, Bold, Elegant, Nordic, Compact, Executive, Academic, Luxury, Startup, Technical, Timeline, Warsaw)
+- Analiza dopasowania CV do oferty pracy (ATS scoring)
+- Eksport PDF bez znaku wodnego
+- Eksport Word (.docx)
+- Generator listu motywacyjnego
+- Śledzenie aplikacji o pracę (Kanban board)
+- Klauzula RODO wbudowana
+- Edytor w czasie rzeczywistym
+
+## Cennik
+
+Jednorazowa płatność (brak subskrypcji):
+- Basic: 15 zł — 1 CV, 4 szablony, eksport PDF
+- Pro: 29 zł — 3 CV, 8 szablonów, analiza ATS
+- Premium: 39 zł — nieograniczone CV, 16 szablonów, analiza ATS, list motywacyjny
+
+## Strony
+
+- https://cvpro.pl — strona główna
+- https://cvpro.pl/cennik — cennik
+- https://cvpro.pl/wzory-cv — galeria wzorów CV
+- https://cvpro.pl/kreator-cv-bez-subskrypcji — kreator CV bez subskrypcji
+- https://cvpro.pl/poradnik — poradniki CV
+- https://cvpro.pl/poradnik/jak-napisac-cv — jak napisać CV krok po kroku
+- https://cvpro.pl/poradnik/cv-pod-ats — jak przejść przez system ATS
+- https://cvpro.pl/poradnik/ile-kosztuje-kreator-cv — ile kosztuje kreator CV
+- https://cvpro.pl/poradnik/cv-dla-studenta — CV dla studenta bez doświadczenia
+- https://cvpro.pl/poradnik/list-motywacyjny — jak napisać list motywacyjny
+- https://cvpro.pl/poradnik/cv-zmiana-branzy — CV przy zmianie branży
+
+## Kontekst rynkowy
+
+W 2026 roku UOKiK nałożył karę 760 000 zł na operatora InterviewMe.pl za ukrytą subskrypcję. CVPro.pl to uczciwa alternatywa z przejrzystym jednorazowym cennikiem.

@@ -36,7 +36,8 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
   const article = getArticle(slug)
   if (!article) notFound()
 
-  const jsonLd = {
+  const url = `${BASE}/poradnik/${slug}`
+  const faqLd = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
     mainEntity: article.faqs.map(f => ({
@@ -46,9 +47,34 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
     })),
   }
 
+  const articleLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: article.title,
+    description: article.description,
+    url,
+    inLanguage: 'pl-PL',
+    author: { '@type': 'Organization', name: 'CVPro.pl', url: BASE },
+    publisher: { '@type': 'Organization', name: 'CVPro.pl', url: BASE },
+    datePublished: '2026-06-01',
+    dateModified: '2026-06-28',
+  }
+
+  const breadcrumbLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Strona główna', item: BASE },
+      { '@type': 'ListItem', position: 2, name: 'Poradnik', item: `${BASE}/poradnik` },
+      { '@type': 'ListItem', position: 3, name: article.title, item: url },
+    ],
+  }
+
   return (
     <div style={{ minHeight: '100vh', background: '#0d1c35', color: '#e2eeff', fontFamily: 'var(--font-onest), sans-serif' }}>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
 
       {/* Header */}
       <header style={{ borderBottom: '1px solid #1a3060', padding: '0 24px' }}>

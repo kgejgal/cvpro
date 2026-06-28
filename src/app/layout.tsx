@@ -1,12 +1,8 @@
 import type { Metadata } from 'next'
-import { Onest, Poppins, DM_Sans, Lato, Playfair_Display } from 'next/font/google'
+import { Onest } from 'next/font/google'
 import './globals.css'
 
 const onest = Onest({ subsets: ['latin'], variable: '--font-onest', display: 'swap', preload: true, adjustFontFallback: false })
-const poppins = Poppins({ subsets: ['latin'], weight: ['400','600','700'], variable: '--font-poppins', display: 'swap' })
-const dmSans = DM_Sans({ subsets: ['latin'], variable: '--font-dm-sans', display: 'swap' })
-const lato = Lato({ subsets: ['latin'], weight: ['400','700'], variable: '--font-lato', display: 'swap' })
-const playfair = Playfair_Display({ subsets: ['latin'], variable: '--font-playfair', display: 'swap' })
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://cvpro.pl'
 const TITLE = 'CVPro.pl – Stwórz profesjonalne CV w minuty'
@@ -84,7 +80,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="pl"
-      className={`${onest.variable} ${poppins.variable} ${dmSans.variable} ${lato.variable} ${playfair.variable}`}
+      className={onest.variable}
     >
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />

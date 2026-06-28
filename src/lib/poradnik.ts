@@ -185,6 +185,168 @@ export const ARTICLES: Article[] = [
       { href: '/kreator-cv-bez-subskrypcji', label: 'Stwórz CV z analizą ATS' },
     ],
   },
+  {
+    slug: 'cv-dla-studenta',
+    icon: '🎓',
+    title: 'CV dla studenta bez doświadczenia — jak napisać',
+    metaTitle: 'CV dla studenta bez doświadczenia — wzór i porady 2026',
+    description: 'Jak napisać CV gdy nie masz doświadczenia zawodowego? Dowiedz się, co wpisać w sekcję doświadczenia, jak pokazać projekty, wolontariat i umiejętności, żeby wypaść profesjonalnie.',
+    readingTime: '6 min',
+    sections: [
+      {
+        heading: 'Brak doświadczenia to nie problem — to inny punkt startowy',
+        body: [
+          'Każdy zaczyna od zera. Rekruterzy wiedzą, że student nie ma 10 lat stażu — szukają czegoś innego: potencjału, inicjatywy i dopasowania do stanowiska. Kluczem jest pokazanie tego, co masz, w jak najbardziej konkretny sposób.',
+          'CV studenta różni się od CV osoby z doświadczeniem głównie kolejnością sekcji: na pierwszym miejscu warto umieścić wykształcenie i projekty, a dopiero potem (skromniejsze) doświadczenie zawodowe.',
+        ],
+      },
+      {
+        heading: 'Co wpisać zamiast doświadczenia zawodowego',
+        body: [
+          'Nie masz etatu, ale prawie na pewno masz coś, co warto pokazać.',
+        ],
+        bullets: [
+          'Projekty uczelniane i własne — opis projektu, użyte technologie, efekt (np. "aplikacja webowa z 200 użytkownikami")',
+          'Praktyki i staże — nawet 2-tygodniowy staż to doświadczenie',
+          'Wolontariat — pokazuje zaangażowanie i inicjatywę',
+          'Praca dorywcza — obsługa klienta, sprzedaż, praca fizyczna uczą konkretnych umiejętności',
+          'Działalność w kołach naukowych, samorządzie, organizacjach studenckich',
+          'Freelance — projekty dla znajomych, grafiki, strony WWW, korepetycje',
+        ],
+      },
+      {
+        heading: 'Jak opisać projekty bez doświadczenia',
+        body: [
+          'Opis projektu powinien zawierać: co zrobiłeś, jakich narzędzi użyłeś i jaki był efekt. Przykład: "Zaprojektowałem i wdrożyłem sklep internetowy w Shopify dla lokalnej firmy — 150 zamówień w pierwszym miesiącu".',
+          'Jeśli projekt jest publiczny (GitHub, portfolio), dodaj link. To natychmiast podnosi wiarygodność.',
+        ],
+      },
+      {
+        heading: 'Struktura CV studenta',
+        body: [
+          'Dla osoby bez doświadczenia rekomendowana kolejność sekcji to: dane kontaktowe → podsumowanie (opcjonalne) → wykształcenie → projekty → doświadczenie (jeśli jest) → umiejętności → certyfikaty/kursy → klauzula RODO.',
+          'Wszystko na jednej stronie. CV studenta na 2 strony bez doświadczenia wygląda jak wypełniacz.',
+        ],
+      },
+    ],
+    faqs: [
+      { q: 'Co wpisać w CV gdy nie mam żadnego doświadczenia?', a: 'Wpisz projekty uczelniane, wolontariat, pracę dorywczą, kursy i certyfikaty. Każda aktywność, która pokazuje umiejętności lub inicjatywę, jest lepsza niż pusta sekcja.' },
+      { q: 'Czy CV studenta musi mieć 1 stronę?', a: 'Tak — dla osoby bez doświadczenia zawodowego jedna strona jest standardem. Dwie strony przy braku treści wyglądają sztucznie.' },
+      { q: 'Czy warto pisać podsumowanie zawodowe w CV studenta?', a: 'Tak, jeśli jest konkretne. Unikaj ogólników ("ambitny i chętny do nauki"). Napisz: kim jesteś (student X kierunku), co umiesz (języki, narzędzia) i czego szukasz.' },
+    ],
+    related: [
+      { href: '/poradnik/jak-napisac-cv', label: 'Jak napisać CV krok po kroku' },
+      { href: '/poradnik/cv-pod-ats', label: 'Jak przejść przez system ATS' },
+      { href: '/kreator-cv-bez-subskrypcji', label: 'Stwórz CV online — od 15 zł' },
+    ],
+  },
+  {
+    slug: 'list-motywacyjny',
+    icon: '✉️',
+    title: 'Jak napisać list motywacyjny w 2026',
+    metaTitle: 'Jak napisać list motywacyjny 2026 — wzór i przykład',
+    description: 'Praktyczny poradnik o pisaniu listu motywacyjnego: co pisać, czego unikać, jak dopasować go do oferty i czy w ogóle warto go wysyłać w 2026 roku.',
+    readingTime: '5 min',
+    sections: [
+      {
+        heading: 'Czy list motywacyjny jest jeszcze potrzebny?',
+        body: [
+          'Zależy od ogłoszenia. Jeśli firma go nie wymaga — nie wysyłaj (rekruterzy rzadko go czytają jeśli nie jest obowiązkowy). Jeśli ogłoszenie prosi o list, napisz go starannie — bo wtedy rzeczywiście jest czytany i może przesądzić o zaproszeniu na rozmowę.',
+          'Zasada: list motywacyjny nie zastępuje CV — uzupełnia je o kontekst, motywację i dopasowanie do konkretnej firmy.',
+        ],
+      },
+      {
+        heading: 'Struktura skutecznego listu motywacyjnego',
+        body: [
+          'Dobry list motywacyjny ma 3–4 akapity i mieści się na jednej stronie A4.',
+        ],
+        bullets: [
+          'Akapit 1 — dlaczego ta firma i to stanowisko (konkretnie, nie ogólnikowo)',
+          'Akapit 2 — co wnosisz: 2–3 osiągnięcia z CV rozwinięte o kontekst',
+          'Akapit 3 — jak pasujesz do kultury firmy lub specyfiki roli',
+          'Zamknięcie — prośba o kontakt, bez "liczę na pozytywne rozpatrzenie"',
+        ],
+      },
+      {
+        heading: 'Czego absolutnie unikać',
+        body: [
+          '"Jestem osobą ambitną, komunikatywną i chętną do nauki" — to mówi każdy. Zamiast cech charakteru, pokazuj dowody: "Zwiększyłem sprzedaż o 20%" mówi więcej niż "jestem skuteczny".',
+          'Nie przepisuj CV do listu. List to miejsce na kontekst i motywację, nie na powtórkę punktów z CV. Nie pisz też o sobie w superlatywach — niech fakty mówią same za siebie.',
+        ],
+      },
+      {
+        heading: 'Jak dopasować list do oferty',
+        body: [
+          'Przeczytaj ogłoszenie i wypisz 3 kluczowe wymagania. W liście odnieś się do każdego z nich konkretnym przykładem ze swojego doświadczenia. Ten mechanizm sprawia, że list wygląda napisany specjalnie dla tej firmy — bo jest.',
+          'Zmień przynajmniej pierwszy akapit dla każdej aplikacji. Resztę możesz adaptować z szablonu.',
+        ],
+      },
+    ],
+    faqs: [
+      { q: 'Jak długi powinien być list motywacyjny?', a: 'Maksymalnie jedna strona A4, 3–4 akapity. Rekruterzy poświęcają mu kilkanaście sekund — długi list to zły list.' },
+      { q: 'Czy list motywacyjny musi być po polsku?', a: 'Piszesz w języku, w którym jest ogłoszenie. Jeśli firma jest zagraniczna lub ogłoszenie po angielsku — po angielsku. W polskich firmach — po polsku.' },
+      { q: 'Czy CVPro.pl pomaga w napisaniu listu motywacyjnego?', a: 'Tak — plan Premium zawiera generator listu motywacyjnego, który tworzy spersonalizowany list na podstawie Twojego CV i wybranej oferty pracy.' },
+    ],
+    related: [
+      { href: '/poradnik/jak-napisac-cv', label: 'Jak napisać CV krok po kroku' },
+      { href: '/cennik', label: 'Plan Premium z generatorem listu' },
+      { href: '/kreator-cv-bez-subskrypcji', label: 'Stwórz CV online — od 15 zł' },
+    ],
+  },
+  {
+    slug: 'cv-zmiana-branzy',
+    icon: '🔄',
+    title: 'Zmiana branży — jak napisać CV',
+    metaTitle: 'CV przy zmianie branży — jak napisać i co podkreślić (2026)',
+    description: 'Zmieniasz branżę i nie wiesz jak napisać CV? Dowiedz się, jak pokazać transferowalne umiejętności, jak wytłumaczyć zmianę kierunku i jak przejść przez selekcję ATS bez doświadczenia w nowej branży.',
+    readingTime: '6 min',
+    sections: [
+      {
+        heading: 'Zmiana branży to nie cofnięcie — to przekierowanie',
+        body: [
+          'CV przy zmianie branży ma inne zadanie niż standardowe: musi pokazać, że Twoje dotychczasowe doświadczenie jest wartościowe, nawet jeśli pochodzi z innej branży. Kluczem są transferowalne umiejętności — kompetencje, które działają niezależnie od sektora.',
+          'Przykłady: zarządzanie projektami, komunikacja z klientem, analiza danych, sprzedaż, praca pod presją czasu, praca z ludźmi. Te umiejętności przenoszą się wszędzie.',
+        ],
+      },
+      {
+        heading: 'Jak zbudować CV przy zmianie branży',
+        body: [
+          'Zmień format na funkcjonalny lub mieszany: zamiast chronologicznej listy stanowisk, zacznij od sekcji "Kluczowe kompetencje" i dopiero potem pokaż historię zatrudnienia.',
+        ],
+        bullets: [
+          'Podsumowanie zawodowe — wyjaśnij zmianę pozytywnie: "Specjalista ds. sprzedaży przechodzący do marketingu B2B — 5 lat bezpośredniej pracy z klientami"',
+          'Kluczowe kompetencje — wylistuj umiejętności pasujące do nowej branży',
+          'Osiągnięcia — skup się na rezultatach (liczby, procenty) zamiast obowiązkach',
+          'Certyfikaty i kursy — pokaż, że aktywnie uczysz się nowej branży',
+          'Projekty — jeśli zrobiłeś coś w nowym kierunku (nawet hobbystycznie), wpisz to',
+        ],
+      },
+      {
+        heading: 'Jak wytłumaczyć zmianę branży',
+        body: [
+          'W podsumowaniu zawodowym napisz krótko dlaczego zmieniasz kierunek — bez przeprosin i bez nadmiernego tłumaczenia. "Po 6 latach w logistyce przechodzę do e-commerce, gdzie chcę połączyć doświadczenie operacyjne z nową dla mnie warstwą cyfrową" — to brzmi profesjonalnie.',
+          'Nie ukrywaj zmiany. Rekruterzy i tak to zobaczą — lepiej żebyś to wyjaśnił z inicjatywy.',
+        ],
+      },
+      {
+        heading: 'ATS przy zmianie branży',
+        body: [
+          'Systemy ATS filtrują CV pod kątem słów kluczowych z ogłoszenia. Jeśli zmieniasz branżę, Twoje CV może nie przejść selekcji automatycznej, bo brakuje mu branżowego słownictwa.',
+          'Rozwiązanie: czytaj ogłoszenia i używaj tych samych określeń, które pojawiają się w wymaganiach — nawet jeśli Twoje doświadczenie pochodzi z innego kontekstu. Jeśli w ogłoszeniu jest "zarządzanie budżetem" a Ty to robiłeś, użyj dokładnie tych słów.',
+        ],
+      },
+    ],
+    faqs: [
+      { q: 'Czy powinienem mieć osobne CV do każdej branży?', a: 'Tak — przy zmianie branży warto mieć kilka wersji CV, każda z innym podsumowaniem i inaczej wyeksponowanymi kompetencjami. CVPro.pl pozwala tworzyć wiele wersji CV w jednym koncie.' },
+      { q: 'Czy warto podać powód zmiany branży w CV?', a: 'W CV wystarczy krótkie podsumowanie. Szczegółowe wyjaśnienie zachowaj na rozmowę kwalifikacyjną.' },
+      { q: 'Jak szybko mogę zmienić wersję CV pod inną branżę?', a: 'W CVPro.pl możesz skopiować istniejące CV i dostosować je — zmienić podsumowanie, przesunąć sekcje, zaktualizować słowa kluczowe. W planie Pro i Premium masz 3 lub nieograniczone wersje CV.' },
+    ],
+    related: [
+      { href: '/poradnik/jak-napisac-cv', label: 'Jak napisać CV krok po kroku' },
+      { href: '/poradnik/cv-pod-ats', label: 'CV pod ATS — jak przejść selekcję' },
+      { href: '/kreator-cv-bez-subskrypcji', label: 'Stwórz CV online — od 15 zł' },
+    ],
+  },
 ]
 
 export function getArticle(slug: string): Article | undefined {
