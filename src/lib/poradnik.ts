@@ -347,6 +347,66 @@ export const ARTICLES: Article[] = [
       { href: '/kreator-cv-bez-subskrypcji', label: 'Stwórz CV online — od 15 zł' },
     ],
   },
+  {
+    slug: 'cvpro-vs-subskrypcje',
+    icon: '🔓',
+    title: 'Kreator CV bez subskrypcji — dlaczego płacisz raz',
+    metaTitle: 'Kreator CV bez subskrypcji — zapłać raz i pobierz PDF (2026)',
+    description: 'Większość kreatorów CV w Polsce ukrywa subskrypcję za niską ceną startową. Sprawdź, jak działa pułapka i dlaczego model jednorazowej płatności jest bezpieczniejszy dla Twojego portfela.',
+    readingTime: '5 min',
+    sections: [
+      {
+        heading: 'Jak działa pułapka subskrypcyjna w kreatorach CV',
+        body: [
+          'Wchodzisz na stronę kreatora CV. Cena wygląda atrakcyjnie — 5,95 zł za dostęp. Tworzysz CV, jesteś zadowolony, klikasz "pobierz". I wtedy okazuje się, że PDF jest zablokowany, dopóki nie podasz karty kredytowej. Po wpisaniu danych zaczyna się subskrypcja — automatycznie odnawiana co miesiąc kwotą 60–100 zł.',
+          'To nie jest przypadek. To model biznesowy zaprojektowany tak, żebyś nie zauważył, kiedy 5,95 zł stało się setkami złotych w skali roku. W 2026 roku UOKiK nałożył karę ponad 760 000 zł na operatora jednego z największych polskich kreatorów CV właśnie za tę praktykę — ukryte informowanie o cyklicznych opłatach.',
+        ],
+      },
+      {
+        heading: 'Trzy sygnały ostrzegawcze, które powinny Cię zatrzymać',
+        body: [
+          'Zanim wpiszesz dane karty w jakimkolwiek kreatorze CV, sprawdź trzy rzeczy.',
+        ],
+        bullets: [
+          'Cena za "dostęp" lub "okres próbny" zamiast jasnej ceny za produkt — to najczęstszy sygnał subskrypcji',
+          'Brak widocznej informacji o tym, ile będziesz płacić po okresie próbnym i jak często',
+          'Przycisk "anuluj subskrypcję" głęboko ukryty w ustawieniach konta — jeśli trudno go znaleźć, firma na to liczy',
+        ],
+      },
+      {
+        heading: 'Model jednorazowy — co oznacza w praktyce',
+        body: [
+          'W modelu jednorazowej płatności kupujesz dostęp raz — dokładnie wiesz ile płacisz, nie ma automatycznych odnowień, nie musisz pamiętać o anulowaniu. Po zakupie możesz tworzyć, edytować i pobierać CV bez żadnych dodatkowych opłat.',
+          'W CVPro.pl plany zaczynają się od 15 zł jednorazowo za podstawowy eksport PDF, a pełny pakiet z analizą ATS, listem motywacyjnym i nielimitowanymi wersjami CV kosztuje 39 zł — również raz. Dla osoby, która szuka pracy raz na kilka lat, to zdecydowanie tańsze i prostsze rozwiązanie niż subskrypcja.',
+        ],
+      },
+      {
+        heading: 'Porównanie: subskrypcja vs jednorazowa płatność',
+        body: [
+          'Przyjmijmy, że tworzysz CV raz na 2 lata. Przy subskrypcji 89 zł miesięcznie (jeśli zapomnisz anulować po miesiącu) możesz zapłacić ponad 1000 zł zanim zauważysz, że coś jest nie tak. Przy jednorazowej płatności 39 zł — płacisz dokładnie 39 zł i koniec.',
+          'Nawet jeśli pamiętasz o anulowaniu subskrypcji po kilku dniach, musisz o tym pamiętać. To dodatkowy stres i ryzyko w momencie, kiedy i tak masz dużo na głowie — bo szukasz pracy.',
+        ],
+      },
+      {
+        heading: 'Jak wybrać kreator CV, który nie ma ukrytych opłat',
+        body: [
+          'Przed zakupem sprawdź regulamin — szukaj słów "subskrypcja", "odnowienie", "cykliczna płatność". Jeśli regulamin jest długi i zawiły, to zazwyczaj nie jest przypadek.',
+          'Szukaj kreatorów, które wprost piszą "płatność jednorazowa" lub "bez subskrypcji" na stronie głównej — nie tylko w małym druczku na dole. Transparentność cenowa to dobry sygnał, że firma nie ma nic do ukrycia.',
+        ],
+      },
+    ],
+    faqs: [
+      { q: 'Czy CVPro.pl ma subskrypcję?', a: 'Nie. CVPro.pl działa w modelu jednorazowej płatności — płacisz raz (od 15 zł) i masz dostęp bez limitu czasowego. Nie ma automatycznych odnowień ani ukrytych opłat.' },
+      { q: 'Co się stanie z moim CV po zakupie?', a: 'Możesz edytować, pobierać i aktualizować CV bez ograniczeń. Twoje dane są zapisane na koncie tak długo, jak chcesz z nich korzystać.' },
+      { q: 'Jak odzyskać pieniądze za subskrypcję, której nie chciałem?', a: 'Skontaktuj się z bankiem lub dostawcą karty i poproś o chargeback — cofnięcie transakcji. Masz do tego prawo, jeśli nie byłeś wyraźnie poinformowany o warunkach subskrypcji. Możesz też zgłosić sprawę do UOKiK.' },
+      { q: 'Czy mogę wypróbować CVPro.pl przed zakupem?', a: 'Tak — możesz bezpłatnie stworzyć i edytować CV. Płatność jest wymagana dopiero przy pobieraniu finalnego PDF.' },
+    ],
+    related: [
+      { href: '/poradnik/ile-kosztuje-kreator-cv', label: 'Ile naprawdę kosztuje kreator CV?' },
+      { href: '/cennik', label: 'Zobacz cennik CVPro.pl' },
+      { href: '/poradnik/jak-napisac-cv', label: 'Jak napisać CV krok po kroku' },
+    ],
+  },
 ]
 
 export function getArticle(slug: string): Article | undefined {
