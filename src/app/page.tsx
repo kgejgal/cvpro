@@ -80,11 +80,11 @@ export default async function HomePage() {
             Profesjonalne CV<br />w języku polskim
           </h1>
 
-          <p style={{ fontSize: 17, color: D.muted, lineHeight: 1.75, maxWidth: 500, margin: '0 auto 42px' }}>
-            Opisz siebie własnymi słowami. Otrzymasz profesjonalne CV zoptymalizowane pod polskie standardy i systemy ATS.
+          <p style={{ fontSize: 17, color: D.muted, lineHeight: 1.75, maxWidth: 520, margin: '0 auto 36px' }}>
+            Opisz siebie własnymi słowami. Otrzymasz profesjonalne CV zoptymalizowane pod polskie standardy i systemy ATS. Płacisz raz — bez ukrytej subskrypcji.
           </p>
 
-          <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap', marginBottom: 56 }}>
+          <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap', marginBottom: 24 }}>
             {user ? (
               <Link href="/dashboard" style={{
                 background: `linear-gradient(135deg,${D.primary},#7055FF)`, color: '#fff',
@@ -111,8 +111,18 @@ export default async function HomePage() {
             </a>
           </div>
 
+          {/* Honest pricing strip */}
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 14, flexWrap: 'wrap', justifyContent: 'center', padding: '12px 22px', borderRadius: 14, background: 'rgba(16,185,129,0.06)', border: '1px solid rgba(16,185,129,0.22)', marginBottom: 52 }}>
+            <span style={{ fontSize: 13, color: '#e09090', textDecoration: 'line-through', opacity: 0.85 }}>
+              Inne kreatory: 5,95 zł → potem ~100 zł co miesiąc
+            </span>
+            <span style={{ fontSize: 14, color: '#34D399', fontWeight: 800 }}>
+              CVPro: 15 zł. Raz. Bez subskrypcji.
+            </span>
+          </div>
+
           <div style={{ display: 'flex', gap: 36, justifyContent: 'center', flexWrap: 'wrap' }}>
-            {[['🇵🇱', 'Polski rynek'], ['⚡', 'Gotowe szybko'], ['📄', 'PDF gotowy'], ['🔒', 'Zgodność RODO']].map(([e, l]) => (
+            {[['🇵🇱', 'Polski rynek'], ['💳', 'Bez subskrypcji'], ['🎯', 'Analiza ATS'], ['🔒', 'Zgodność RODO']].map(([e, l]) => (
               <div key={l} style={{ textAlign: 'center' }}>
                 <div style={{ fontSize: 24, marginBottom: 4 }}>{e}</div>
                 <div style={{ fontSize: 11, color: D.muted, fontWeight: 600, letterSpacing: '0.05em' }}>{l}</div>
@@ -451,6 +461,8 @@ export default async function HomePage() {
         </div>
         <div style={{ display: 'flex', gap: 20, justifyContent: 'center', fontSize: 12, color: D.dim, flexWrap: 'wrap', marginBottom: 14 }}>
           <Link href="/wzory-cv" style={{ color: 'inherit', textDecoration: 'none' }}>Wzory CV</Link>
+          <Link href="/poradnik" style={{ color: 'inherit', textDecoration: 'none' }}>Poradnik</Link>
+          <Link href="/kreator-cv-bez-subskrypcji" style={{ color: 'inherit', textDecoration: 'none' }}>Bez subskrypcji</Link>
           <Link href="/polityka-prywatnosci" style={{ color: 'inherit', textDecoration: 'none' }}>Polityka prywatności</Link>
           <Link href="/regulamin" style={{ color: 'inherit', textDecoration: 'none' }}>Regulamin</Link>
           <Link href="/polityka-prywatnosci" style={{ color: 'inherit', textDecoration: 'none' }}>RODO</Link>
