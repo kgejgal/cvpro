@@ -235,3 +235,17 @@ html, body {
   border-color: #47f6;
   color: #e2eeff;
 }
+
+/* Responsive grid helpers */
+.rg-3 { display: grid; grid-template-columns: repeat(3, 1fr); }
+.rg-2 { display: grid; grid-template-columns: 1fr 1fr; }
+.rg-cmp { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; }
+
+@media (max-width: 700px) {
+  .rg-3 { grid-template-columns: 1fr; }
+  .rg-2 { grid-template-columns: 1fr; }
+  .rg-cmp { display: none; }
+  .nav-center { display: none; }
+  .hide-mob { display: none !important; }
+  .pricing-feat { transform: none !important; }
+}

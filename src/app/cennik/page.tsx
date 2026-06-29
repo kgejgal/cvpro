@@ -47,10 +47,11 @@ export default function CenikPage() {
         </h1>
         <p style={{ textAlign: 'center', color: D.muted, marginBottom: 52, fontSize: 16 }}>Jednorazowa płatność · Bez subskrypcji · BLIK, karta, P24</p>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20, alignItems: 'start' }}>
+        <div className="rg-3" style={{ gap: 20, alignItems: 'start' }}>
           {PLANS.map(({ id, name, price, features, highlight }) => (
             <div
               key={id}
+              className={highlight ? 'pricing-feat' : undefined}
               style={{
                 background: highlight ? D.surf : D.card,
                 border: `1px solid ${highlight ? D.borderHi : D.border}`,

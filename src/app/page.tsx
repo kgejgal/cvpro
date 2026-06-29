@@ -138,7 +138,7 @@ export default async function HomePage() {
           <h2 style={{ fontFamily: 'var(--font-onest), sans-serif', fontSize: 38, fontWeight: 900, letterSpacing: '-0.04em', margin: '0 0 12px' }}>Jak to działa?</h2>
           <p style={{ color: D.muted, fontSize: 15, margin: 0 }}>Trzy proste kroki do profesjonalnego CV</p>
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20 }}>
+        <div className="rg-3" style={{ gap: 20 }}>
           {[
             { n: '01', icon: '📝', title: 'Podaj swoje dane', desc: 'Wypełnij formularz krok po kroku. Dodaj wskazówki i wybierz opcje opisujące Twoją sytuację.' },
             { n: '02', icon: '✍️', title: 'Tworzymy CV',    desc: 'Na podstawie Twoich danych powstaje profesjonalne CV po polsku, zoptymalizowane pod ATS.' },
@@ -156,7 +156,7 @@ export default async function HomePage() {
 
       {/* Key feature */}
       <section style={{ padding: '80px 5%', background: 'rgba(9,18,36,0.6)', borderTop: `1px solid ${D.border}`, borderBottom: `1px solid ${D.border}` }}>
-        <div style={{ maxWidth: 960, margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 56, alignItems: 'center' }}>
+        <div className="rg-2" style={{ maxWidth: 960, margin: '0 auto', gap: 56, alignItems: 'center' }}>
           <div>
             <div style={{ fontSize: 12, fontWeight: 700, color: '#8ab4ff', letterSpacing: '0.1em', marginBottom: 14 }}>✨ KLUCZOWA FUNKCJA</div>
             <h2 style={{ fontFamily: 'var(--font-onest), sans-serif', fontSize: 32, fontWeight: 900, letterSpacing: '-0.04em', margin: '0 0 18px', lineHeight: 1.15 }}>
@@ -197,7 +197,7 @@ export default async function HomePage() {
           <h2 style={{ fontFamily: 'var(--font-onest), sans-serif', fontSize: 38, fontWeight: 900, letterSpacing: '-0.04em', margin: '0 0 12px' }}>Dlaczego CVPro.pl?</h2>
           <p style={{ color: D.muted, fontSize: 15, margin: 0 }}>Wszystko, czego potrzebujesz do skutecznego CV</p>
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20 }}>
+        <div className="rg-3" style={{ gap: 20 }}>
           {[
             { icon: '🇵🇱', title: '100% po polsku',     desc: 'CV w naturalnym, profesjonalnym języku polskim, zgodnym ze standardami polskiego rynku pracy.' },
             { icon: '🎯', title: 'Zgodne z ATS',        desc: 'Szablony zoptymalizowane pod systemy rekrutacyjne ATS. W planach Pro i Premium — analiza z wskazówkami.' },
@@ -219,7 +219,7 @@ export default async function HomePage() {
             Widzisz różnicę?
           </h3>
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }}>
+        <div className="rg-2" style={{ gap: 20 }}>
           {/* BEFORE */}
           <div style={{ background: '#1a0d0d', border: '1px solid #3a1515', borderRadius: 16, padding: 24, position: 'relative' }}>
             <div style={{ position: 'absolute', top: 14, left: 14, background: '#cc2222', color: '#fff', fontSize: 12, fontWeight: 700, padding: '3px 10px', borderRadius: 8, letterSpacing: '0.06em' }}>PRZED</div>
@@ -288,9 +288,9 @@ export default async function HomePage() {
             <p style={{ color: D.muted, fontSize: 15, margin: 0 }}>Inne kreatory CV mają pułapki. My nie.</p>
           </div>
 
-          <div style={{ borderRadius: 16, overflow: 'hidden', border: `1px solid ${D.border}` }}>
+          <div className="hide-mob" style={{ borderRadius: 16, overflow: 'hidden', border: `1px solid ${D.border}` }}>
             {/* Header row */}
-            <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr', background: D.surf }}>
+            <div className="rg-cmp" style={{ background: D.surf }}>
               <div style={{ padding: '14px 20px', fontSize: 12, fontWeight: 700, color: D.muted, textTransform: 'uppercase', letterSpacing: '0.07em' }}>Funkcja</div>
               {[
                 { name: 'CVPro.pl', highlight: true },
@@ -318,7 +318,8 @@ export default async function HomePage() {
             ].map(({ feature, cvpro, im, cvm }, i) => (
               <div
                 key={feature}
-                style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr', background: i % 2 === 0 ? D.card : 'rgba(22,45,80,0.5)', borderTop: `1px solid ${D.border}` }}
+                className="rg-cmp"
+                style={{ background: i % 2 === 0 ? D.card : 'rgba(22,45,80,0.5)', borderTop: `1px solid ${D.border}` }}
               >
                 <div style={{ padding: '13px 20px', fontSize: 13, color: D.muted }}>{feature}</div>
                 <div style={{ padding: '13px 20px', textAlign: 'center', fontSize: 13, fontWeight: 700, color: cvpro.startsWith('✓') || cvpro === '✗ brak' ? '#3db36a' : D.text }}>{cvpro}</div>
@@ -343,7 +344,7 @@ export default async function HomePage() {
           <div style={{ fontSize: 12, fontWeight: 700, color: '#8ab4ff', letterSpacing: '0.1em', marginBottom: 12 }}>OPINIE UŻYTKOWNIKÓW</div>
           <h2 style={{ fontFamily: 'var(--font-onest), sans-serif', fontSize: 36, fontWeight: 900, letterSpacing: '-0.04em', margin: 0 }}>Co mówią nasi użytkownicy?</h2>
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20 }}>
+        <div className="rg-3" style={{ gap: 20 }}>
           {[
             {
               name: 'Karolina W.', role: 'Specjalista ds. HR, Kraków',
@@ -382,7 +383,7 @@ export default async function HomePage() {
             <h2 style={{ fontFamily: 'var(--font-onest), sans-serif', fontSize: 38, fontWeight: 900, letterSpacing: '-0.04em', margin: '0 0 12px' }}>Cennik</h2>
             <p style={{ color: D.muted, fontSize: 15, margin: 0 }}>Jednorazowa płatność. Bez subskrypcji. Bez niespodzianek.</p>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 18 }}>
+          <div className="rg-3" style={{ gap: 18 }}>
             {PLANS.map(({ name, price, features, popular, priceId, cta }) => (
               <div
                 key={name}

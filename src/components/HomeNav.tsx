@@ -66,7 +66,7 @@ export default function HomeNav({ user, plan }: Props) {
       </Link>
 
       {/* Center links — always centered via grid */}
-      <div style={{ display: 'flex', gap: 24, alignItems: 'center', fontSize: 13, color: D.muted }}>
+      <div className="nav-center" style={{ display: 'flex', gap: 24, alignItems: 'center', fontSize: 13, color: D.muted }}>
         <a href="#jak-to-dziala" style={{ color: 'inherit', textDecoration: 'none', transition: 'color 0.2s' }}
           onMouseEnter={e => (e.currentTarget.style.color = D.text)}
           onMouseLeave={e => (e.currentTarget.style.color = D.muted)}>
@@ -120,7 +120,7 @@ export default function HomeNav({ user, plan }: Props) {
         </div>
       ) : (
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexShrink: 0, justifySelf: 'end' }}>
-          <Link href="/auth/login" style={{ color: D.muted, textDecoration: 'none', fontSize: 13, transition: 'color 0.2s' }}
+          <Link href="/auth/login" className="hide-mob" style={{ color: D.muted, textDecoration: 'none', fontSize: 13, transition: 'color 0.2s' }}
             onMouseEnter={e => (e.currentTarget.style.color = D.text)}
             onMouseLeave={e => (e.currentTarget.style.color = D.muted)}>
             Zaloguj się
