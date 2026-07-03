@@ -5,7 +5,7 @@ import type { Metadata } from 'next'
 const BASE = process.env.NEXT_PUBLIC_SITE_URL || 'https://cvpro.pl'
 
 export const metadata: Metadata = {
-  title: 'Poradnik CV — jak napisać skuteczne CV | CVPro.pl',
+  title: 'Poradnik CV — jak napisać skuteczne CV',
   description: 'Praktyczne poradniki o pisaniu CV: jak napisać CV krok po kroku, jak przejść przez system ATS i ile naprawdę kosztuje kreator CV. Wiedza, która pomoże Ci znaleźć pracę.',
   alternates: { canonical: `${BASE}/poradnik` },
 }

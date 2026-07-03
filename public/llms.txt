@@ -9,7 +9,6 @@ CVPro.pl to polski kreator CV z 16 profesjonalnymi szablonami zoptymalizowanymi 
 - 16 szablonów CV (Minimal, Modern, Classic, Professional, Creative, Bold, Elegant, Nordic, Compact, Executive, Academic, Luxury, Startup, Technical, Timeline, Warsaw)
 - Analiza dopasowania CV do oferty pracy (ATS scoring)
 - Eksport PDF bez znaku wodnego
-- Eksport Word (.docx)
 - Generator listu motywacyjnego
 - Śledzenie aplikacji o pracę (Kanban board)
 - Klauzula RODO wbudowana

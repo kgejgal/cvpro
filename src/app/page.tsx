@@ -41,6 +41,16 @@ const CHIPS = [
   '⏸️ Luka w CV', '🏠 Praca zdalna', '📈 Awans wewnętrzny',
 ]
 
+const faqLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: FAQS.map(f => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+}
+
 export default async function HomePage() {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
@@ -52,6 +62,8 @@ export default async function HomePage() {
 
   return (
     <div style={{ minHeight: '100vh', background: D.bg, color: D.text, fontFamily: "'DM Sans', var(--font-onest), sans-serif", overflowX: 'hidden' }}>
+
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
 
       <HomeNav user={user ? { email: user.email ?? '' } : null} plan={plan} />
 

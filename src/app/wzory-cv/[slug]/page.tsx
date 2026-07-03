@@ -11,7 +11,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!wzor) return {}
   const url = `${BASE}/wzory-cv/${slug}`
   return {
-    title: `${wzor.titleGen} — CVPro.pl`,
+    title: `${wzor.titleGen} — wzór i przykład 2026`,
     description: wzor.intro,
     alternates: { canonical: url },
     openGraph: {
@@ -40,8 +40,49 @@ export default async function WzorSlugPage({ params }: { params: Promise<{ slug:
   const wzor = getWzor(slug)
   if (!wzor) notFound()
 
+  const url = `${BASE}/wzory-cv/${slug}`
+  const idx = WZORY.findIndex(w => w.slug === slug)
+  const relatedWzory = [1, 2, 3].map(o => WZORY[(idx + o) % WZORY.length])
+
+  const faqLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: wzor.faqs.map(f => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  }
+
+  const articleLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: wzor.titleGen,
+    description: wzor.intro,
+    url,
+    inLanguage: 'pl-PL',
+    author: { '@type': 'Organization', name: 'CVPro.pl', url: BASE },
+    publisher: { '@type': 'Organization', name: 'CVPro.pl', url: BASE },
+    datePublished: '2026-06-27',
+    dateModified: '2026-06-27',
+  }
+
+  const breadcrumbLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Strona główna', item: BASE },
+      { '@type': 'ListItem', position: 2, name: 'Wzory CV', item: `${BASE}/wzory-cv` },
+      { '@type': 'ListItem', position: 3, name: wzor.titleGen, item: url },
+    ],
+  }
+
   return (
     <div style={{ minHeight: '100vh', background: '#0d1c35', color: '#e2eeff', fontFamily: 'var(--font-onest), sans-serif' }}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
+
       {/* Header */}
       <header style={{ borderBottom: '1px solid #1a3060', padding: '0 24px' }}>
         <div style={{ maxWidth: 800, margin: '0 auto', height: 56, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
@@ -152,6 +193,23 @@ export default async function WzorSlugPage({ params }: { params: Promise<{ slug:
                 </div>
               </details>
             ))}
+          </div>
+        </section>
+
+        {/* Related wzory + poradnik */}
+        <section style={{ marginBottom: 48 }}>
+          <h2 style={{ fontSize: 16, fontWeight: 700, margin: '0 0 14px', color: '#7a94bb', textTransform: 'uppercase', letterSpacing: '0.06em' }}>Podobne wzory CV</h2>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+            {relatedWzory.map(r => (
+              <Link key={r.slug} href={`/wzory-cv/${r.slug}`} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: '#0f2040', border: '1px solid #1e3f75', borderRadius: 10, padding: '14px 18px', textDecoration: 'none', color: '#e2eeff', fontSize: 15, fontWeight: 600 }}>
+                <span>{r.icon}&nbsp;&nbsp;{r.titleGen}</span>
+                <span style={{ color: '#4477ff', flexShrink: 0, marginLeft: 12 }}>→</span>
+              </Link>
+            ))}
+            <Link href="/poradnik/jak-napisac-cv" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: '#0f2040', border: '1px solid #1e3f75', borderRadius: 10, padding: '14px 18px', textDecoration: 'none', color: '#e2eeff', fontSize: 15, fontWeight: 600 }}>
+              <span>📝&nbsp;&nbsp;Jak napisać CV krok po kroku</span>
+              <span style={{ color: '#4477ff', flexShrink: 0, marginLeft: 12 }}>→</span>
+            </Link>
           </div>
         </section>
 

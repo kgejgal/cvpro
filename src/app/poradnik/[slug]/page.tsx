@@ -56,8 +56,8 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
     inLanguage: 'pl-PL',
     author: { '@type': 'Organization', name: 'CVPro.pl', url: BASE },
     publisher: { '@type': 'Organization', name: 'CVPro.pl', url: BASE },
-    datePublished: '2026-06-01',
-    dateModified: '2026-06-28',
+    datePublished: article.datePublished,
+    dateModified: article.dateModified,
   }
 
   const breadcrumbLd = {
@@ -91,7 +91,12 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
         <article>
           <div style={{ fontSize: 44, marginBottom: 14 }}>{article.icon}</div>
           <h1 style={{ fontSize: 'clamp(28px, 5vw, 38px)', fontWeight: 900, margin: '0 0 12px', letterSpacing: '-0.03em', lineHeight: 1.2 }}>{article.title}</h1>
-          <div style={{ color: '#4a6a99', fontSize: 13, marginBottom: 28 }}>Czas czytania: {article.readingTime}</div>
+          <div style={{ color: '#4a6a99', fontSize: 13, marginBottom: 28 }}>
+            Czas czytania: {article.readingTime} · Zaktualizowano:{' '}
+            <time dateTime={article.dateModified}>
+              {new Date(article.dateModified).toLocaleDateString('pl-PL', { day: 'numeric', month: 'long', year: 'numeric' })}
+            </time>
+          </div>
           <p style={{ color: '#9ab4d8', fontSize: 17, lineHeight: 1.7, margin: '0 0 40px' }}>{article.description}</p>
 
           {/* Sections */}
@@ -147,7 +152,9 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
         {/* CTA */}
         <div style={{ background: '#4477ff12', border: '1px solid #4477ff30', borderRadius: 14, padding: '32px', textAlign: 'center' }}>
           <h2 style={{ fontSize: 20, fontWeight: 800, margin: '0 0 8px' }}>Stwórz profesjonalne CV w kilka minut</h2>
-          <p style={{ color: '#9ab4d8', fontSize: 14, margin: '0 0 24px' }}>16 szablonów, analiza ATS, jednorazowa płatność od 15 zł — bez subskrypcji.</p>
+          <p style={{ color: '#9ab4d8', fontSize: 14, margin: '0 0 24px' }}>
+            16 szablonów, analiza ATS, <Link href="/cennik" style={{ color: '#7aafff' }}>jednorazowa płatność od 15 zł</Link> — bez subskrypcji.
+          </p>
           <Link href="/auth/signup" style={{ background: '#4477ff', color: '#fff', textDecoration: 'none', fontWeight: 700, fontSize: 15, padding: '13px 32px', borderRadius: 10, display: 'inline-block' }}>
             Stwórz CV →
           </Link>

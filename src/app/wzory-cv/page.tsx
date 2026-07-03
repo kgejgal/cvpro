@@ -2,9 +2,12 @@ import Link from 'next/link'
 import { WZORY } from '@/lib/wzory-cv'
 import type { Metadata } from 'next'
 
+const BASE = process.env.NEXT_PUBLIC_SITE_URL || 'https://cvpro.pl'
+
 export const metadata: Metadata = {
-  title: 'Wzory CV dla różnych zawodów — CVPro.pl',
+  title: 'Wzory CV dla różnych zawodów — 33 przykłady',
   description: 'Wybierz swój zawód i pobierz gotowy wzór CV z przykładowym doświadczeniem, umiejętnościami i wskazówkami. Stwórz własne CV online w kilka minut.',
+  alternates: { canonical: `${BASE}/wzory-cv` },
 }
 
 export default function WzoryCVPage() {
@@ -23,8 +26,11 @@ export default function WzoryCVPage() {
         <h1 style={{ fontSize: 36, fontWeight: 800, margin: '0 0 16px', letterSpacing: -0.5 }}>
           Wzory CV dla różnych zawodów
         </h1>
-        <p style={{ color: '#7a94bb', fontSize: 16, lineHeight: 1.65, maxWidth: 560, margin: '0 0 48px' }}>
+        <p style={{ color: '#7a94bb', fontSize: 16, lineHeight: 1.65, maxWidth: 620, margin: '0 0 16px' }}>
           Wybierz swój zawód i zobacz gotowy wzór CV — z przykładowym doświadczeniem, umiejętnościami i wskazówkami, co wpisać, aby przejść rekrutację oraz systemy ATS. Następnie stwórz własne CV w kilka minut.
+        </p>
+        <p style={{ color: '#7a94bb', fontSize: 15, lineHeight: 1.65, maxWidth: 620, margin: '0 0 48px' }}>
+          Znajdziesz tu {WZORY.length} wzorów CV dla najpopularniejszych zawodów w Polsce — od programisty i księgowej, przez kierowcę i sprzedawcę, po nauczyciela i specjalistę HR. Każdy wzór zawiera kompletny przykład: podsumowanie zawodowe, opis doświadczenia z konkretnymi osiągnięciami oraz listę umiejętności, które rekruterzy i systemy ATS faktycznie wyszukują w danej branży. Wzory są aktualne na 2026 rok i zgodne ze standardami polskiego rynku pracy, w tym z klauzulą RODO.
         </p>
 
         <div style={{

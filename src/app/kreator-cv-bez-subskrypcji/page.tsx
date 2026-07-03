@@ -4,7 +4,7 @@ import type { Metadata } from 'next'
 const BASE = process.env.NEXT_PUBLIC_SITE_URL || 'https://cvpro.pl'
 const URL = `${BASE}/kreator-cv-bez-subskrypcji`
 
-const TITLE = 'Kreator CV bez subskrypcji — płacisz raz | CVPro.pl'
+const TITLE = 'Kreator CV bez subskrypcji — płacisz raz'
 const DESC = 'Kreator CV z jednorazową płatnością, bez ukrytej subskrypcji i bez automatycznych opłat. Stwórz profesjonalne CV po polsku, zoptymalizowane pod ATS. Płacisz raz — od 15 zł.'
 
 export const metadata: Metadata = {

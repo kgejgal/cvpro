@@ -5,6 +5,8 @@ export type Article = {
   metaTitle: string
   description: string
   readingTime: string
+  datePublished: string
+  dateModified: string
   sections: { heading: string; body: string[]; bullets?: string[] }[]
   faqs: { q: string; a: string }[]
   related: { href: string; label: string }[]
@@ -18,6 +20,8 @@ export const ARTICLES: Article[] = [
     metaTitle: 'Ile kosztuje kreator CV? Ceny i ukryte opłaty (2026)',
     description: 'Sprawdź, ile realnie kosztuje stworzenie CV online — od darmowych narzędzi, przez pułapki subskrypcyjne, po uczciwą jednorazową płatność. Praktyczne porównanie modeli cenowych.',
     readingTime: '5 min',
+    datePublished: '2026-06-28',
+    dateModified: '2026-06-28',
     sections: [
       {
         heading: 'Trzy modele cenowe kreatorów CV',
@@ -74,6 +78,8 @@ export const ARTICLES: Article[] = [
     metaTitle: 'Jak napisać CV w 2026 — praktyczny poradnik krok po kroku',
     description: 'Kompletny przewodnik, jak napisać skuteczne CV w 2026 roku: dane kontaktowe, podsumowanie zawodowe, doświadczenie z efektami, umiejętności, klauzula RODO i najczęstsze błędy.',
     readingTime: '7 min',
+    datePublished: '2026-06-28',
+    dateModified: '2026-06-28',
     sections: [
       {
         heading: 'Zacznij od struktury',
@@ -140,6 +146,8 @@ export const ARTICLES: Article[] = [
     metaTitle: 'CV pod ATS — jak przejść przez system rekrutacyjny (2026)',
     description: 'Dowiedz się, czym jest system ATS i jak przygotować CV, które przejdzie automatyczną selekcję: słowa kluczowe, formatowanie, nazwy sekcji i format pliku.',
     readingTime: '6 min',
+    datePublished: '2026-06-28',
+    dateModified: '2026-06-28',
     sections: [
       {
         heading: 'Czym jest ATS i dlaczego ma znaczenie',
@@ -192,6 +200,8 @@ export const ARTICLES: Article[] = [
     metaTitle: 'CV dla studenta bez doświadczenia — wzór i porady 2026',
     description: 'Jak napisać CV gdy nie masz doświadczenia zawodowego? Dowiedz się, co wpisać w sekcję doświadczenia, jak pokazać projekty, wolontariat i umiejętności, żeby wypaść profesjonalnie.',
     readingTime: '6 min',
+    datePublished: '2026-06-28',
+    dateModified: '2026-06-28',
     sections: [
       {
         heading: 'Brak doświadczenia to nie problem — to inny punkt startowy',
@@ -243,10 +253,12 @@ export const ARTICLES: Article[] = [
   {
     slug: 'list-motywacyjny',
     icon: '✉️',
-    title: 'Jak napisać list motywacyjny w 2026',
-    metaTitle: 'Jak napisać list motywacyjny 2026 — wzór i przykład',
-    description: 'Praktyczny poradnik o pisaniu listu motywacyjnego: co pisać, czego unikać, jak dopasować go do oferty i czy w ogóle warto go wysyłać w 2026 roku.',
-    readingTime: '5 min',
+    title: 'List motywacyjny — wzór 2026 i jak go napisać',
+    metaTitle: 'List motywacyjny — wzór 2026, przykład i jak go napisać',
+    description: 'Gotowy wzór listu motywacyjnego na 2026 rok do skopiowania i uzupełnienia, plus praktyczny poradnik: struktura, czego unikać i jak dopasować list do konkretnej oferty pracy.',
+    readingTime: '7 min',
+    datePublished: '2026-06-28',
+    dateModified: '2026-07-03',
     sections: [
       {
         heading: 'Czy list motywacyjny jest jeszcze potrzebny?',
@@ -281,10 +293,39 @@ export const ARTICLES: Article[] = [
           'Zmień przynajmniej pierwszy akapit dla każdej aplikacji. Resztę możesz adaptować z szablonu.',
         ],
       },
+      {
+        heading: 'Wzór listu motywacyjnego 2026 — do skopiowania',
+        body: [
+          'Poniższy wzór listu motywacyjnego możesz skopiować i uzupełnić własnymi danymi. Jest uniwersalny — sprawdzi się w większości branż. Fragmenty w nawiasach kwadratowych zastąp konkretami z ogłoszenia i swojego doświadczenia.',
+          'Warszawa, 3 lipca 2026 r.',
+          'Anna Kowalska · tel. 600 000 000 · anna.kowalska@email.com',
+          'Szanowna Pani / Szanowny Panie,',
+          'z zainteresowaniem przeczytałam ogłoszenie na stanowisko [nazwa stanowiska] w [nazwa firmy]. Od [X] lat pracuję w [branża/obszar], a Państwa firma od dawna jest dla mnie przykładem [konkretna rzecz, którą firma robi dobrze — produkt, projekt, wartości], dlatego chcę dołączyć właśnie do Waszego zespołu.',
+          'Na obecnym stanowisku w [nazwa firmy] odpowiadam za [kluczowy obszar]. W ubiegłym roku [konkretne osiągnięcie z liczbą — np. zwiększyłam sprzedaż o 20%, skróciłam czas realizacji zamówień o 3 dni, obsłużyłam ponad 40 klientów dziennie z 95% pozytywnych ocen]. Doświadczenie to odpowiada wymaganiom z Państwa ogłoszenia, w szczególności [wymaganie 1] i [wymaganie 2].',
+          'Poza kompetencjami zawodowymi wnoszę [cecha poparta przykładem — np. doświadczenie w pracy w zespole rozproszonym, samodzielność w prowadzeniu projektów od pomysłu do wdrożenia]. Chętnie opowiem podczas rozmowy, jak mogę wykorzystać te umiejętności w [nazwa firmy].',
+          'Zapraszam do kontaktu telefonicznego lub mailowego w dogodnym dla Państwa terminie.',
+          'Z poważaniem, Anna Kowalska',
+        ],
+      },
+      {
+        heading: 'Jak korzystać z tego wzoru',
+        body: [
+          'Wzór to szkielet, nie gotowiec. List skopiowany 1:1 rekruter rozpozna natychmiast — widzi dziesiątki takich samych tygodniowo. Wypełnij każdy nawias konkretem: nazwą firmy, liczbą, faktem z Twojego doświadczenia.',
+          'Najwięcej pracy włóż w akapit pierwszy (dlaczego ta firma) i drugi (Twoje osiągnięcia dopasowane do wymagań). To one decydują, czy rekruter doczyta list do końca.',
+        ],
+        bullets: [
+          'Zachowaj długość: 3–4 akapity, maksymalnie jedna strona A4',
+          'Użyj tej samej czcionki i nagłówka z danymi co w CV — spójny komplet wygląda profesjonalnie',
+          'Zapisz list jako PDF, chyba że ogłoszenie wymaga innego formatu',
+          'Nie powtarzaj klauzuli RODO — wystarczy, że jest w CV',
+        ],
+      },
     ],
     faqs: [
       { q: 'Jak długi powinien być list motywacyjny?', a: 'Maksymalnie jedna strona A4, 3–4 akapity. Rekruterzy poświęcają mu kilkanaście sekund — długi list to zły list.' },
       { q: 'Czy list motywacyjny musi być po polsku?', a: 'Piszesz w języku, w którym jest ogłoszenie. Jeśli firma jest zagraniczna lub ogłoszenie po angielsku — po angielsku. W polskich firmach — po polsku.' },
+      { q: 'Czy mogę użyć gotowego wzoru listu motywacyjnego?', a: 'Tak, ale tylko jako szkieletu. Wzór z tego artykułu skopiuj i uzupełnij konkretami: nazwą firmy, stanowiskiem i swoimi osiągnięciami z liczbami. List wysłany bez personalizacji działa na Twoją niekorzyść.' },
+      { q: 'Czym różni się list motywacyjny w 2026 od wcześniejszych lat?', a: 'Coraz więcej firm pomija list, ale tam, gdzie jest wymagany, liczy się konkret zamiast formułek. Rekruterzy rozpoznają też teksty generowane automatycznie bez personalizacji — wzór zawsze uzupełniaj własnymi faktami i liczbami.' },
       { q: 'Czy CVPro.pl pomaga w napisaniu listu motywacyjnego?', a: 'Tak — plan Premium zawiera generator listu motywacyjnego, który tworzy spersonalizowany list na podstawie Twojego CV i wybranej oferty pracy.' },
     ],
     related: [
@@ -300,6 +341,8 @@ export const ARTICLES: Article[] = [
     metaTitle: 'CV przy zmianie branży — jak napisać i co podkreślić (2026)',
     description: 'Zmieniasz branżę i nie wiesz jak napisać CV? Dowiedz się, jak pokazać transferowalne umiejętności, jak wytłumaczyć zmianę kierunku i jak przejść przez selekcję ATS bez doświadczenia w nowej branży.',
     readingTime: '6 min',
+    datePublished: '2026-06-28',
+    dateModified: '2026-06-28',
     sections: [
       {
         heading: 'Zmiana branży to nie cofnięcie — to przekierowanie',
@@ -354,6 +397,8 @@ export const ARTICLES: Article[] = [
     metaTitle: 'Kreator CV bez subskrypcji — zapłać raz i pobierz PDF (2026)',
     description: 'Większość kreatorów CV w Polsce ukrywa subskrypcję za niską ceną startową. Sprawdź, jak działa pułapka i dlaczego model jednorazowej płatności jest bezpieczniejszy dla Twojego portfela.',
     readingTime: '5 min',
+    datePublished: '2026-06-28',
+    dateModified: '2026-06-28',
     sections: [
       {
         heading: 'Jak działa pułapka subskrypcyjna w kreatorach CV',

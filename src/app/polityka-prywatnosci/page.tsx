@@ -4,7 +4,7 @@ import type { Metadata } from 'next'
 const BASE = process.env.NEXT_PUBLIC_SITE_URL || 'https://cvpro.pl'
 
 export const metadata: Metadata = {
-  title: 'Polityka prywatności — CVPro.pl',
+  title: 'Polityka prywatności',
   description: 'Polityka prywatności i ochrony danych osobowych serwisu CVPro.pl zgodna z RODO.',
   alternates: { canonical: `${BASE}/polityka-prywatnosci` },
 }
