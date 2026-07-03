@@ -149,7 +149,8 @@ html, body {
   .no-print { display: none !important; }
   body { background: #fff !important; margin: 0 !important; padding: 0 !important; }
   .cv-print-outer { display: block !important; padding: 0 !important; overflow: visible !important; }
-  .cv-scale-wrapper { transform: none !important; margin-bottom: 0 !important; width: 100% !important; }
+  .cv-scale-wrapper { transform: none !important; margin-bottom: 0 !important; width: 100% !important; height: auto !important; }
+  .cv-scale-inner { transform: none !important; }
   #cv-doc {
     box-shadow: none !important;
     border-radius: 0 !important;
@@ -240,6 +241,25 @@ html, body {
 .rg-3 { display: grid; grid-template-columns: repeat(3, 1fr); }
 .rg-2 { display: grid; grid-template-columns: 1fr 1fr; }
 .rg-cmp { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; }
+
+/* CV editor split — form | preview */
+.editor-grid { display: grid; grid-template-columns: 360px 1fr; overflow: hidden; }
+
+@media (max-width: 900px) {
+  .editor-root { height: auto !important; min-height: 100vh; }
+  .editor-grid {
+    display: flex;
+    flex-direction: column;
+    overflow: visible;
+  }
+  .editor-form-panel {
+    border-right: none !important;
+    border-bottom: 1px solid #1e3f75;
+    overflow-y: visible !important;
+    max-height: none;
+  }
+  .editor-preview-panel { overflow: visible !important; }
+}
 
 @media (max-width: 700px) {
   .rg-3 { grid-template-columns: 1fr; }

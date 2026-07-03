@@ -13,7 +13,7 @@ const PLANS = [
   {
     name: 'Podstawowy', price: '15', popular: false, priceId: 'basic',
     cta: 'Wybierz Podstawowy',
-    features: ['Eksport PDF bez znaku wodnego', '1 profesjonalne CV', '4 szablony', 'Klauzula RODO'],
+    features: ['Eksport PDF bez znaku wodnego', 'Eksport Word (DOCX)', '1 profesjonalne CV', '4 szablony', 'Klauzula RODO'],
   },
   {
     name: 'Pro', price: '29', popular: true, priceId: 'pro',

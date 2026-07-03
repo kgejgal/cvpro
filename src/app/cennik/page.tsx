@@ -13,15 +13,15 @@ const D = {
 const PLANS = [
   {
     id: 'basic', name: 'Podstawowy', price: '15', highlight: false,
-    features: ['1 wersja CV', '4 szablony', 'Export PDF', 'Bez znaku wodnego'],
+    features: ['1 wersja CV', '4 szablony', 'Eksport PDF i Word (DOCX)', 'Bez znaku wodnego'],
   },
   {
     id: 'pro', name: 'Pro', price: '29', highlight: true,
-    features: ['3 wersje CV', '8 szablonów', 'Export PDF', 'Analiza ATS', 'Priorytetowe wsparcie'],
+    features: ['3 wersje CV', '8 szablonów', 'Eksport PDF i Word (DOCX)', 'Analiza ATS', 'Priorytetowe wsparcie'],
   },
   {
     id: 'premium', name: 'Premium', price: '39', highlight: false,
-    features: ['Nieograniczone wersje CV', 'Wszystkie 16 szablonów', 'Export PDF', 'Analiza ATS', 'List motywacyjny', 'Priorytetowe wsparcie'],
+    features: ['Nieograniczone wersje CV', 'Wszystkie 16 szablonów', 'Eksport PDF i Word (DOCX)', 'Analiza ATS', 'List motywacyjny', 'Priorytetowe wsparcie'],
   },
 ]
 

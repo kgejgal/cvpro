@@ -35,7 +35,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'Invalid plan' }, { status: 400 })
   }
 
-  const session = await stripe.checkout.sessions.create({
+  const sessionParams: Stripe.Checkout.SessionCreateParams = {
     payment_method_types: ['card', 'blik', 'p24'],
     line_items: [{ price: priceId, quantity: 1 }],
     mode: 'payment',
@@ -44,7 +44,26 @@ export async function POST(request: NextRequest) {
     success_url: `${process.env.NEXT_PUBLIC_SITE_URL}/dashboard?success=1`,
     cancel_url: `${process.env.NEXT_PUBLIC_SITE_URL}/cennik`,
     locale: 'pl',
-  })
+    // Art. 38 pkt 13 ustawy o prawach konsumenta — consent to immediate delivery
+    // of digital content and acknowledgment of losing the 14-day withdrawal right
+    custom_text: {
+      submit: {
+        message: 'Kupując, wyrażasz zgodę na natychmiastowe dostarczenie treści cyfrowych i przyjmujesz do wiadomości utratę 14-dniowego prawa odstąpienia od umowy (art. 38 pkt 13 ustawy o prawach konsumenta). Regulamin: cvpro.pl/regulamin',
+      },
+    },
+  }
+
+  let session: Stripe.Checkout.Session
+  try {
+    session = await stripe.checkout.sessions.create({
+      ...sessionParams,
+      // Requires the Terms of Service URL configured in Stripe Dashboard → Public details
+      consent_collection: { terms_of_service: 'required' },
+    })
+  } catch {
+    // ToS URL not set in Stripe settings — ship the consent text alone
+    session = await stripe.checkout.sessions.create(sessionParams)
+  }
 
   return NextResponse.json({ url: session.url })
 }

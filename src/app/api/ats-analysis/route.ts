@@ -15,10 +15,15 @@ export async function POST(req: NextRequest) {
   if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
 
   const userId = user.id
-  const { data: profile } = await supabase.from('profiles').select('plan').eq('id', userId).single()
+  const { data: profile } = await supabase.from('profiles').select('plan, ats_free_used').eq('id', userId).single()
   const plan = profile?.plan ?? 'free'
+  // Users below Pro get exactly one free teaser analysis
+  let isTeaser = false
   if ((PLAN_ORDER[plan] ?? 0) < PLAN_ORDER['pro']) {
-    return NextResponse.json({ error: 'Plan Pro wymagany' }, { status: 403 })
+    if (profile?.ats_free_used) {
+      return NextResponse.json({ error: 'Darmowa analiza wykorzystana. Pełne analizy ATS dostępne w planie Pro.' }, { status: 403 })
+    }
+    isTeaser = true
   }
 
   const last = rateLimitMap.get(userId)
@@ -72,11 +77,17 @@ Zwróć TYLKO JSON w tym formacie (bez markdown, bez opisu):
   })
 
   const raw = message.content[0].type === 'text' ? message.content[0].text : '{}'
+
+  // Burn the free teaser only after a successful generation
+  if (isTeaser) {
+    await supabase.from('profiles').upsert({ id: userId, ats_free_used: true }, { onConflict: 'id' })
+  }
+
   try {
     const match = raw.match(/\{[\s\S]*\}/)
     const result = match ? JSON.parse(match[0]) : { score: 0, grade: 'C', summary: '', strengths: [], improvements: [], keywords: { found: [], missing: [] } }
-    return NextResponse.json(result)
+    return NextResponse.json({ ...result, teaser: isTeaser })
   } catch {
-    return NextResponse.json({ score: 0, grade: 'C', summary: 'Błąd analizy', strengths: [], improvements: [], keywords: { found: [], missing: [] } })
+    return NextResponse.json({ score: 0, grade: 'C', summary: 'Błąd analizy', strengths: [], improvements: [], keywords: { found: [], missing: [] }, teaser: isTeaser })
   }
 }

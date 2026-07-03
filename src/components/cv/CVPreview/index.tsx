@@ -3,6 +3,7 @@
 import { lazy, Suspense } from 'react'
 import type { CVData } from '@/lib/cv/types'
 import { COLOR_THEMES, ALL_TEMPLATES, planAllows } from '@/lib/cv/types'
+import ScaledCV from '@/components/cv/ScaledCV'
 
 const TEMPLATE_MAP: Record<string, React.LazyExoticComponent<React.ComponentType<{ data: CVData }>>> = {
   classic:      lazy(() => import('./templates/Classic')),
@@ -128,8 +129,8 @@ export default function CVPreview({ data, plan, onChange, onDownloadPDF }: Props
       </div>
 
       {/* CV preview */}
-      <div className="cv-print-outer" style={{ flex: 1, overflow: 'auto', background: '#122040', padding: '24px 24px 48px' }}>
-        <div className="cv-scale-wrapper" style={{ transform: 'scale(0.85)', transformOrigin: 'top center', display: 'flex', justifyContent: 'center' }}>
+      <div className="cv-print-outer" style={{ flex: 1, overflow: 'auto', background: '#122040', padding: '24px 12px 48px' }}>
+        <ScaledCV maxScale={0.85}>
           <div style={{ boxShadow: '0 8px 40px #0005', borderRadius: 4, position: 'relative' }}>
             <Suspense fallback={<div style={{ width: 794, minHeight: 1123, background: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#ccc', fontSize: 14 }}>Ładowanie szablonu…</div>}>
               <TemplateComponent data={data} />
@@ -143,7 +144,7 @@ export default function CVPreview({ data, plan, onChange, onDownloadPDF }: Props
               </div>
             )}
           </div>
-        </div>
+        </ScaledCV>
       </div>
     </div>
   )

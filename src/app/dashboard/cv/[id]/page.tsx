@@ -8,6 +8,7 @@ import type { CVData } from '@/lib/cv/types'
 import { EMPTY_CV, planAllows } from '@/lib/cv/types'
 import CVForm from '@/components/cv/CVForm'
 import CVPreview from '@/components/cv/CVPreview'
+import ScaledCV from '@/components/cv/ScaledCV'
 import NotificationBell from '@/components/NotificationBell'
 import OnboardingWizard from '@/components/OnboardingWizard'
 import { lazy, Suspense } from 'react'
@@ -35,6 +36,7 @@ type ATSResult = {
   score: number; grade: string; summary: string; strengths: string[]
   improvements: { priority: string; tip: string }[]
   keywords: { found: string[]; missing: string[] }
+  teaser?: boolean
 }
 
 export default function CVEditorPage() {
@@ -66,6 +68,9 @@ export default function CVEditorPage() {
   const [errorMsg, setErrorMsg] = useState<string | null>(null)
   const [isPublic, setIsPublic] = useState(false)
   const [shareCopied, setShareCopied] = useState(false)
+  const [pdfLoading, setPdfLoading] = useState(false)
+  const [docxLoading, setDocxLoading] = useState(false)
+  const [atsFreeUsed, setAtsFreeUsed] = useState(true)
 
   const saveTimer = useRef<ReturnType<typeof setTimeout>>(undefined)
 
@@ -74,8 +79,9 @@ export default function CVEditorPage() {
     supabase.auth.getUser().then(async ({ data: { user } }) => {
       if (!user) { router.push('/auth/login'); return }
       setUserId(user.id)
-      const { data: profile } = await supabase.from('profiles').select('plan').eq('id', user.id).single()
+      const { data: profile } = await supabase.from('profiles').select('plan, ats_free_used').eq('id', user.id).single()
       setPlan(profile?.plan || 'free')
+      setAtsFreeUsed(profile?.ats_free_used ?? false)
       if (id !== 'new') {
         const { data: cv } = await supabase.from('cvs').select('*').eq('id', id).eq('user_id', user.id).single()
         if (cv) {
@@ -88,19 +94,21 @@ export default function CVEditorPage() {
     })
   }, [id, router])
 
-  const save = useCallback(async (cvData: CVData, title: string) => {
+  const save = useCallback(async (cvData: CVData, title: string): Promise<string | null> => {
     setSaving(true)
     const supabase = createClient()
     const { data: { user } } = await supabase.auth.getUser()
-    if (!user) return
+    if (!user) return null
+    let savedId: string | null = cvId
     if (cvId) {
       await supabase.from('cvs').update({ data: cvData as never, title, template: cvData.template, color: cvData.colorTheme, updated_at: new Date().toISOString() }).eq('id', cvId)
     } else {
       const { data: newCv } = await supabase.from('cvs').insert({ user_id: user.id, data: cvData as never, title, template: cvData.template, color: cvData.colorTheme, is_public: false }).select().single()
-      if (newCv) { setCvId(newCv.id); window.history.replaceState(null, '', `/dashboard/cv/${newCv.id}`) }
+      if (newCv) { setCvId(newCv.id); savedId = newCv.id; window.history.replaceState(null, '', `/dashboard/cv/${newCv.id}`) }
     }
     setSaving(false)
     setSaved(true)
+    return savedId
   }, [cvId])
 
   function handleChange(patch: Partial<CVData>) {
@@ -111,7 +119,7 @@ export default function CVEditorPage() {
     saveTimer.current = setTimeout(() => save(next, titleInput), 1500)
   }
 
-  function handleDownloadPDF() {
+  function handlePrint() {
     if (plan === 'free') {
       document.body.classList.add('cv-free-print')
       window.print()
@@ -121,12 +129,71 @@ export default function CVEditorPage() {
     window.print()
   }
 
+  async function handleDownloadPDF() {
+    if (pdfLoading) return
+    setPdfLoading(true); setErrorMsg(null)
+    try {
+      // Flush any pending autosave so the PDF matches what's on screen
+      clearTimeout(saveTimer.current)
+      const currentId = await save(data, titleInput)
+      if (!currentId) { handlePrint(); return }
+      const res = await fetch('/api/cv/pdf', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ cvId: currentId }),
+      })
+      if (!res.ok) { handlePrint(); return }
+      const blob = await res.blob()
+      const url = URL.createObjectURL(blob)
+      const a = document.createElement('a')
+      a.href = url
+      a.download = `CV-${(data.lastName || 'cvpro').replace(/[^a-zA-Z0-9ąćęłńóśźżĄĆĘŁŃÓŚŹŻ-]/g, '')}.pdf`
+      a.click()
+      URL.revokeObjectURL(url)
+    } catch { handlePrint() }
+    finally { setPdfLoading(false) }
+  }
+
+  async function handleDownloadDocx() {
+    if (docxLoading) return
+    setDocxLoading(true); setErrorMsg(null)
+    try {
+      clearTimeout(saveTimer.current)
+      const currentId = await save(data, titleInput)
+      if (!currentId) { setErrorMsg('Zapisz CV przed pobraniem.'); return }
+      const res = await fetch('/api/cv/docx', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ cvId: currentId }),
+      })
+      if (!res.ok) {
+        const e = await res.json().catch(() => ({}))
+        setErrorMsg(e.error || 'Nie udało się wygenerować pliku Word.')
+        return
+      }
+      const blob = await res.blob()
+      const url = URL.createObjectURL(blob)
+      const a = document.createElement('a')
+      a.href = url
+      a.download = `CV-${(data.lastName || 'cvpro').replace(/[^a-zA-Z0-9ąćęłńóśźżĄĆĘŁŃÓŚŹŻ-]/g, '')}.docx`
+      a.click()
+      URL.revokeObjectURL(url)
+    } catch { setErrorMsg('Błąd połączenia.') }
+    finally { setDocxLoading(false) }
+  }
+
+  const atsAvailable = planAllows(plan, 'pro') || !atsFreeUsed
+
   async function runATS() {
-    if (!planAllows(plan, 'pro')) { router.push('/cennik'); return }
+    if (!atsAvailable) { router.push('/cennik'); return }
     setAtsLoading(true); setErrorMsg(null)
     try {
       const res = await fetch('/api/ats-analysis', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ cv: data, jobAd: data.jobAd }) })
-      if (res.ok) { setAtsResult(await res.json()) }
+      if (res.ok) {
+        const result = await res.json()
+        setAtsResult(result)
+        if (result.teaser) setAtsFreeUsed(true)
+      }
       else { const e = await res.json().catch(() => ({})); setErrorMsg(e.error || 'Błąd analizy ATS.') }
     } catch { setErrorMsg('Błąd połączenia.') }
     finally { setAtsLoading(false) }
@@ -193,8 +260,8 @@ export default function CVEditorPage() {
             </div>
             <div style={{ fontSize: 11, color: '#4a6a99', marginTop: 1 }}>Kliknij profil lub punkty, aby edytować</div>
           </div>
-          <button onClick={handleDownloadPDF} style={{ background: 'linear-gradient(135deg,#4477FF,#7C3AED)', color: '#fff', border: 'none', borderRadius: 8, padding: '7px 18px', fontSize: 13, fontWeight: 700, cursor: 'pointer', boxShadow: '0 2px 12px rgba(68,119,255,0.4)' }}>
-            ↓ PDF
+          <button onClick={handleDownloadPDF} disabled={pdfLoading} style={{ background: 'linear-gradient(135deg,#4477FF,#7C3AED)', color: '#fff', border: 'none', borderRadius: 8, padding: '7px 18px', fontSize: 13, fontWeight: 700, cursor: 'pointer', boxShadow: '0 2px 12px rgba(68,119,255,0.4)', opacity: pdfLoading ? 0.7 : 1 }}>
+            {pdfLoading ? '⏳ Generuję…' : '↓ PDF'}
           </button>
         </div>
 
@@ -210,15 +277,13 @@ export default function CVEditorPage() {
         <div ref={scrollRef} className="cv-print-outer" style={{ flex: 1, overflow: 'auto', background: '#0d1c35', padding: '32px 16px 140px' }}>
 
           {/* CV centered */}
-          <div className="cv-scale-wrapper" style={{ display: 'flex', justifyContent: 'center' }}>
-            <div style={{ transform: 'scale(0.9)', transformOrigin: 'top center', display: 'inline-block' }}>
-              <div style={{ boxShadow: '0 8px 48px rgba(0,0,0,0.6)', borderRadius: 3 }}>
-                <Suspense fallback={<div style={{ width: 794, minHeight: 1123, background: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#ccc', fontSize: 14 }}>Ładowanie…</div>}>
-                  <TemplateComponent data={data} />
-                </Suspense>
-              </div>
+          <ScaledCV maxScale={0.9}>
+            <div style={{ boxShadow: '0 8px 48px rgba(0,0,0,0.6)', borderRadius: 3 }}>
+              <Suspense fallback={<div style={{ width: 794, minHeight: 1123, background: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#ccc', fontSize: 14 }}>Ładowanie…</div>}>
+                <TemplateComponent data={data} />
+              </Suspense>
             </div>
-          </div>
+          </ScaledCV>
 
           {/* ATS panel — below CV */}
           {showATS && (
@@ -248,6 +313,13 @@ export default function CVEditorPage() {
               {atsLoading && (
                 <div style={{ padding: '32px', textAlign: 'center', color: '#4a6a99', fontSize: 13 }}>
                   Analizuję CV pod kątem systemów ATS...
+                </div>
+              )}
+
+              {atsResult?.teaser && !atsLoading && (
+                <div style={{ background: '#4477ff12', borderBottom: '1px solid #1e3f75', padding: '10px 20px', fontSize: 13, color: '#9ab4d8', display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
+                  ✨ To była Twoja darmowa analiza.{' '}
+                  <Link href="/cennik" style={{ color: '#7aafff', fontWeight: 600 }}>Pełne, nielimitowane analizy w planie Pro →</Link>
                 </div>
               )}
 
@@ -370,17 +442,42 @@ export default function CVEditorPage() {
         <div className="no-print" style={{ position: 'fixed', bottom: 0, left: 0, right: 0, background: '#0f1e38', borderTop: '1px solid #1e3f75', padding: '12px 20px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, flexWrap: 'wrap', zIndex: 50 }}>
           <button
             onClick={handleDownloadPDF}
-            style={{ background: 'linear-gradient(135deg,#4477FF,#7C3AED)', color: '#fff', border: 'none', borderRadius: 8, padding: '9px 20px', fontSize: 13, fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6, boxShadow: '0 2px 14px rgba(68,119,255,0.4)' }}
+            disabled={pdfLoading}
+            style={{ background: 'linear-gradient(135deg,#4477FF,#7C3AED)', color: '#fff', border: 'none', borderRadius: 8, padding: '9px 20px', fontSize: 13, fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6, boxShadow: '0 2px 14px rgba(68,119,255,0.4)', opacity: pdfLoading ? 0.7 : 1 }}
           >
-            🖨 Pobierz PDF
+            {pdfLoading ? '⏳ Generuję PDF…' : '⬇ Pobierz PDF'}
           </button>
 
-          {planAllows(plan, 'pro') ? (
+          {planAllows(plan, 'basic') ? (
+            <button
+              onClick={handleDownloadDocx}
+              disabled={docxLoading}
+              style={{ background: '#162d50', border: '1px solid #1e3f75', color: '#a0b8e8', borderRadius: 8, padding: '9px 18px', fontSize: 13, fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6, opacity: docxLoading ? 0.7 : 1 }}
+            >
+              {docxLoading ? '⏳ Generuję…' : '📄 Pobierz DOCX'}
+            </button>
+          ) : (
+            <button onClick={() => router.push('/cennik')} style={{ background: '#162d50', border: '1px solid #1e3f75', color: '#3a5070', borderRadius: 8, padding: '9px 18px', fontSize: 13, cursor: 'pointer' }}>
+              🔒 Pobierz DOCX
+            </button>
+          )}
+
+          <button
+            onClick={handlePrint}
+            style={{ background: '#162d50', border: '1px solid #1e3f75', color: '#a0b8e8', borderRadius: 8, padding: '9px 18px', fontSize: 13, fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6 }}
+          >
+            🖨 Drukuj
+          </button>
+
+          {atsAvailable ? (
             <button
               onClick={openATS}
               style={{ background: showATS ? '#4477ff22' : '#162d50', border: `1px solid ${showATS ? '#4477ff' : '#1e3f75'}`, color: showATS ? '#4477ff' : '#a0b8e8', borderRadius: 8, padding: '9px 18px', fontSize: 13, fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6 }}
             >
               📊 Analiza ATS {atsResult ? `· ${atsResult.score}%` : ''}
+              {!planAllows(plan, 'pro') && !atsResult && (
+                <span style={{ background: '#10B98122', color: '#3db36a', border: '1px solid #3db36a55', fontSize: 10, fontWeight: 800, padding: '2px 7px', borderRadius: 10, letterSpacing: '0.03em' }}>1× GRATIS</span>
+              )}
             </button>
           ) : (
             <button onClick={() => router.push('/cennik')} style={{ background: '#162d50', border: '1px solid #1e3f75', color: '#3a5070', borderRadius: 8, padding: '9px 18px', fontSize: 13, cursor: 'pointer' }}>
@@ -489,7 +586,7 @@ export default function CVEditorPage() {
 
   // ─── EDIT MODE ───────────────────────────────────────────────────────────────
   return (
-    <div style={{ height: '100vh', display: 'flex', flexDirection: 'column', background: '#0d1c35', color: '#e2eeff' }}>
+    <div className="editor-root" style={{ height: '100vh', display: 'flex', flexDirection: 'column', background: '#0d1c35', color: '#e2eeff' }}>
 
       {id === 'new' && (
         <OnboardingWizard plan={plan} onComplete={patch => setData(d => ({ ...d, ...patch }))} />
@@ -519,14 +616,14 @@ export default function CVEditorPage() {
       </div>
 
       {/* Main editor split */}
-      <div style={{ flex: 1, display: 'grid', gridTemplateColumns: '360px 1fr', overflow: 'hidden' }}>
+      <div className="editor-grid" style={{ flex: 1 }}>
         {/* Form panel */}
-        <div className="no-print" style={{ borderRight: '1px solid #1e3f75', overflowY: 'auto', background: '#162d50' }}>
+        <div className="no-print editor-form-panel" style={{ borderRight: '1px solid #1e3f75', overflowY: 'auto', background: '#162d50' }}>
           <CVForm data={data} onChange={handleChange} plan={plan} />
         </div>
 
         {/* Preview panel (has template picker + colors) */}
-        <div style={{ overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
+        <div className="editor-preview-panel" style={{ overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
           <CVPreview data={data} plan={plan} onChange={handleChange} onDownloadPDF={handleDownloadPDF} />
         </div>
       </div>
