@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Onest } from 'next/font/google'
+import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
 const onest = Onest({ subsets: ['latin'], variable: '--font-onest', display: 'swap', preload: true, adjustFontFallback: false })
@@ -87,6 +88,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body style={{ fontFamily: 'var(--font-onest), sans-serif' }}>
         {children}
+        <Analytics />
       </body>
     </html>
   )

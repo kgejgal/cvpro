@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import { track } from '@vercel/analytics'
 import { createClient } from '@/lib/supabase/client'
 
 const D = {
@@ -29,6 +30,7 @@ export default function CenikPage() {
   const router = useRouter()
 
   async function buyPlan(planId: string) {
+    track('checkout_started', { plan: planId })
     const supabase = createClient()
     const { data: { user } } = await supabase.auth.getUser()
     if (!user) { router.push('/auth/signup'); return }
