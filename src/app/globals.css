@@ -265,7 +265,7 @@ html, body {
   .rg-3 { grid-template-columns: 1fr; }
   .rg-2 { grid-template-columns: 1fr; }
   .rg-cmp { display: none; }
-  .nav-center { display: none; }
+  .nav-center { display: none !important; }
   .hide-mob { display: none !important; }
   .pricing-feat { transform: none !important; }
 }

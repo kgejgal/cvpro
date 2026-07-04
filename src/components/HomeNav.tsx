@@ -88,11 +88,11 @@ export default function HomeNav({ user, plan }: Props) {
       {user ? (
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexShrink: 0, justifySelf: 'end' }}>
           {/* Email */}
-          <span style={{ fontSize: 12, color: D.muted, maxWidth: 160, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+          <span className="hide-mob" style={{ fontSize: 12, color: D.muted, maxWidth: 160, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
             {user.email}
           </span>
           {/* Plan badge */}
-          <span style={{ fontSize: 11, fontWeight: 700, padding: '3px 10px', borderRadius: 20, background: badge.bg, color: badge.color, border: `1px solid ${badge.color}44`, letterSpacing: '0.04em' }}>
+          <span className="hide-mob" style={{ fontSize: 11, fontWeight: 700, padding: '3px 10px', borderRadius: 20, background: badge.bg, color: badge.color, border: `1px solid ${badge.color}44`, letterSpacing: '0.04em' }}>
             {badge.label}
           </span>
           {/* Moje CV */}
