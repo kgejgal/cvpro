@@ -5,7 +5,7 @@ import type { Metadata } from 'next'
 const BASE = process.env.NEXT_PUBLIC_SITE_URL || 'https://cvpro.pl'
 
 export const metadata: Metadata = {
-  title: 'Wzory CV dla różnych zawodów — 33 przykłady',
+  title: `Wzory CV dla różnych zawodów — ${WZORY.length} przykładów`,
   description: 'Wybierz swój zawód i pobierz gotowy wzór CV z przykładowym doświadczeniem, umiejętnościami i wskazówkami. Stwórz własne CV online w kilka minut.',
   alternates: { canonical: `${BASE}/wzory-cv` },
 }

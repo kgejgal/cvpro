@@ -1279,6 +1279,89 @@ export const WZORY: WzorCV[] = [
       { q: 'Czy student powinien pisać o ocenach w CV?', a: 'Tylko jeśli GPA jest dobre (4.0+ lub wyróżnienie). Dla pracodawców ważniejsze są projekty i staże niż oceny.' },
     ],
   },
+  {
+    slug: 'listonosz',
+    icon: '📬',
+    title: 'CV listonosza',
+    titleGen: 'CV listonosza',
+    intro: 'CV listonosza powinno pokazywać rzetelność, znajomość rejonu, kondycję fizyczną i doświadczenie w pracy z dokumentami oraz ludźmi. Poczta Polska i firmy kurierskie zwracają uwagę na niekaralność, prawo jazdy i dyspozycyjność.',
+    shouldContain: [
+      'Dane kontaktowe i miejscowość (rejon pracy ma znaczenie)',
+      'Doświadczenie w doręczaniu przesyłek lub pracy w terenie',
+      'Prawo jazdy kat. B (często wymagane)',
+      'Umiejętność obsługi terminali i aplikacji do doręczeń',
+      'Cechy: rzetelność, punktualność, dobra organizacja trasy',
+      'Informacja o niekaralności (często wymagana przy liście poleconym)',
+    ],
+    example: {
+      name: 'Marek Nowak',
+      position: 'Listonosz',
+      summary: 'Listonosz z 5-letnim doświadczeniem w doręczaniu korespondencji i przesyłek poleconych w rejonie miejskim. Znam procedury doręczeń, awizacji i obsługi terminala mobilnego. Rzetelny, punktualny, z prawem jazdy kat. B.',
+      experience: [{
+        position: 'Listonosz',
+        company: 'Poczta Polska S.A., Warszawa',
+        dates: '2021 – obecnie',
+        bullets: [
+          'Doręczam średnio 350 przesyłek dziennie, w tym listy polecone i za potwierdzeniem odbioru',
+          'Obsługuję terminal mobilny: potwierdzenia elektroniczne, pobrania, awizacje',
+          'Utrzymuję 99% terminowości doręczeń w przydzielonym rejonie (ok. 800 punktów adresowych)',
+          'Przyjmuję opłaty i rozliczam pobrania zgodnie z procedurami kasowymi',
+        ],
+      }],
+      skills: ['Obsługa terminala doręczeń', 'Znajomość procedur pocztowych', 'Prawo jazdy kat. B', 'Organizacja trasy', 'Obsługa klienta', 'Rozliczenia gotówkowe', 'Kondycja fizyczna'],
+    },
+    tips: [
+      'Podaj liczbę doręczanych przesyłek dziennie i wielkość rejonu — konkrety budują wiarygodność.',
+      'Wspomnij o obsłudze terminali mobilnych i przesyłek poleconych — to odróżnia doświadczonych kandydatów.',
+      'Prawo jazdy i własny środek transportu zawsze wpisuj — wiele rejonów tego wymaga.',
+      'Jeśli aplikujesz bez doświadczenia, podkreśl pracę w terenie, kondycję i znajomość okolicy.',
+    ],
+    faqs: [
+      { q: 'Co wpisać w CV listonosza bez doświadczenia?', a: 'Podkreśl pracę wymagającą samodzielności i kontaktu z ludźmi (kurier, roznoszenie ulotek, sprzedaż), kondycję fizyczną, znajomość rejonu i prawo jazdy. Poczta Polska prowadzi szkolenia dla nowych pracowników.' },
+      { q: 'Czy do pracy listonosza potrzebna jest niekaralność?', a: 'Tak — praca z przesyłkami poleconymi i pobraniami zwykle wymaga oświadczenia o niekaralności. Warto zaznaczyć gotowość do jego przedstawienia.' },
+    ],
+  },
+  {
+    slug: 'kurier',
+    icon: '📦',
+    title: 'CV kuriera',
+    titleGen: 'CV kuriera',
+    intro: 'CV kuriera powinno udowadniać terminowość, wydajność doręczeń i bezszkodową jazdę. Firmy kurierskie (DPD, InPost, DHL, GLS) patrzą na liczbę doręczanych paczek dziennie, znajomość skanerów i historię prawa jazdy.',
+    shouldContain: [
+      'Prawo jazdy kat. B i informacja o bezszkodowej jeździe',
+      'Doświadczenie: liczba doręczeń dziennie, obsługiwany rejon',
+      'Obsługa skanera/aplikacji kurierskiej',
+      'Dyspozycyjność (godziny, weekendy)',
+      'Cechy: terminowość, odporność na presję czasu, dobra orientacja w terenie',
+    ],
+    example: {
+      name: 'Kamil Wiśniewski',
+      position: 'Kurier',
+      summary: 'Kurier z 3-letnim doświadczeniem w doręczaniu paczek dla DPD i InPost. Doręczam 120–150 paczek dziennie z 98% skutecznością pierwszego doręczenia. Bezszkodowa jazda, własna działalność — możliwość współpracy B2B.',
+      experience: [{
+        position: 'Kurier (podwykonawca)',
+        company: 'DPD Polska, Kraków',
+        dates: '2022 – obecnie',
+        bullets: [
+          'Doręczam 120–150 paczek dziennie w rejonie miejskim z 98% skutecznością pierwszej próby',
+          'Obsługuję skaner kurierski: statusy, pobrania, zwroty, protokoły szkody',
+          'Planuję trasę doręczeń — średnio 90 przystanków dziennie bez opóźnień',
+          '3 lata bezszkodowej jazdy samochodem dostawczym do 3,5 t',
+        ],
+      }],
+      skills: ['Prawo jazdy kat. B', 'Obsługa skanera kurierskiego', 'Planowanie trasy', 'Obsługa klienta', 'Rozliczenia pobrań', 'Praca pod presją czasu', 'Znajomość topografii miasta'],
+    },
+    tips: [
+      'Liczby robią różnicę: paczki dziennie, skuteczność doręczeń, lata bezszkodowej jazdy.',
+      'Napisz, z jakimi firmami/systemami pracowałeś (DPD, InPost, DHL) — skraca wdrożenie.',
+      'Własna działalność gospodarcza to atut — wiele firm kurierskich współpracuje tylko B2B.',
+      'Zaznacz dyspozycyjność i gotowość do pracy w sezonie (listopad–grudzień to szczyt).',
+    ],
+    faqs: [
+      { q: 'Co wpisać w CV kuriera bez doświadczenia?', a: 'Prawo jazdy z okresem bezszkodowej jazdy, doświadczenie w prowadzeniu auta (także prywatnie), znajomość miasta, kondycję i dyspozycyjność. Firmy kurierskie często szkolą od zera — liczy się niezawodność.' },
+      { q: 'Czy kurier musi mieć własną firmę?', a: 'Nie zawsze, ale wiele firm kurierskich współpracuje w modelu B2B. Jeśli masz działalność lub gotowość do jej założenia, zaznacz to w CV — zwiększa liczbę ofert.' },
+    ],
+  },
 ]
 
 export function getWzor(slug: string): WzorCV | undefined {
