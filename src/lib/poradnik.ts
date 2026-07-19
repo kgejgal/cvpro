@@ -452,6 +452,87 @@ export const ARTICLES: Article[] = [
       { href: '/poradnik/jak-napisac-cv', label: 'Jak napisać CV krok po kroku' },
     ],
   },
+  {
+    slug: 'poprawa-cv',
+    icon: '🛠️',
+    title: 'Poprawa CV — 7 zmian, które zwiększają liczbę odpowiedzi',
+    metaTitle: 'Poprawa CV — jak poprawić CV, żeby dostawać odpowiedzi (2026)',
+    description: 'Wysyłasz CV i cisza? Sprawdź 7 konkretnych poprawek, które najczęściej odblokowują odpowiedzi od rekruterów: od podsumowania i liczb, przez słowa kluczowe pod ATS, po format pliku.',
+    readingTime: '6 min',
+    datePublished: '2026-07-20',
+    dateModified: '2026-07-20',
+    sections: [
+      {
+        heading: 'Najpierw diagnoza: dlaczego CV nie działa',
+        body: [
+          'Jeśli wysyłasz dziesiątki CV i nie dostajesz odpowiedzi, prawie na pewno problem leży w jednym z trzech miejsc: CV nie przechodzi przez system ATS (automatyczną selekcję), nie pokazuje efektów Twojej pracy albo nie jest dopasowane do konkretnego ogłoszenia.',
+          'Dobra wiadomość: to są rzeczy do naprawienia w jeden wieczór. Poniżej 7 poprawek uporządkowanych od najbardziej do najmniej wpływowej.',
+        ],
+      },
+      {
+        heading: '1. Zamień obowiązki na efekty (z liczbami)',
+        body: [
+          'To poprawka numer jeden. "Odpowiedzialny za obsługę klienta" nie mówi nic. "Obsługiwałem 40+ klientów dziennie, utrzymując 95% pozytywnych ocen" — mówi wszystko.',
+          'Przejrzyj każdy punkt w sekcji doświadczenia i zadaj sobie pytanie: co się zmieniło dzięki mojej pracy? Ile? O ile procent? W jakim czasie? Nawet szacunkowa liczba jest lepsza niż jej brak.',
+        ],
+      },
+      {
+        heading: '2. Dopasuj słowa kluczowe do ogłoszenia',
+        body: [
+          'Systemy ATS porównują treść CV ze słowami z ogłoszenia. Jeśli firma szuka "obsługi klienta", a Ty piszesz "kontakt z klientami" — dla algorytmu to nie to samo.',
+          'Przed każdą aplikacją wypisz 5–8 kluczowych wymagań z ogłoszenia i upewnij się, że te dokładne sformułowania (jeśli są prawdziwe) występują w Twoim CV.',
+        ],
+      },
+      {
+        heading: '3. Napisz konkretne podsumowanie zawodowe',
+        body: [
+          'Pierwsze 2–3 zdania CV decydują, czy rekruter czyta dalej. Usuń ogólniki ("ambitny, komunikatywny, chętny do nauki") i wstaw konkret: stanowisko, lata doświadczenia, najmocniejszy wynik.',
+          'Przykład: "Specjalistka ds. sprzedaży z 5-letnim doświadczeniem w B2B. W ostatnim roku zwiększyłam wartość portfela klientów o 30%."',
+        ],
+      },
+      {
+        heading: '4. Uprość formatowanie',
+        body: [
+          'Tabele, dwie kolumny, grafiki z tekstem i ozdobne czcionki wyglądają dobrze dla oka, ale ATS czyta je w złej kolejności albo wcale.',
+        ],
+        bullets: [
+          'Jedna kolumna tekstu (albo szablon zaprojektowany pod ATS)',
+          'Standardowe nagłówki: "Doświadczenie", "Umiejętności", "Wykształcenie"',
+          'Żadnych kluczowych informacji w grafikach ani nagłówku/stopce pliku',
+          'PDF generowany z tekstu — nigdy skan ani zdjęcie dokumentu',
+        ],
+      },
+      {
+        heading: '5. Skróć do jednej strony (prawie zawsze)',
+        body: [
+          'Rekruter poświęca CV kilkanaście sekund. Usuń doświadczenia starsze niż 10 lat (chyba że kluczowe), kursy bez związku ze stanowiskiem i długie listy hobby. Dwie strony są uzasadnione tylko przy bogatym, istotnym doświadczeniu.',
+        ],
+      },
+      {
+        heading: '6. Zaktualizuj klauzulę RODO i dane kontaktowe',
+        body: [
+          'Stara klauzula (sprzed 2018 roku) albo jej brak to formalny powód odrzucenia aplikacji. Sprawdź też adres e-mail — powinien być profesjonalny (imie.nazwisko@), a numer telefonu aktualny.',
+        ],
+      },
+      {
+        heading: '7. Zweryfikuj efekt przed wysłaniem',
+        body: [
+          'Po poprawkach zrób test: poproś kogoś o 10-sekundowe spojrzenie na CV i pytanie "kim jestem i co umiem?". Jeśli nie potrafi odpowiedzieć — wróć do punktu 3.',
+          'Możesz też sprawdzić CV automatycznie: analiza ATS w CVPro.pl porównuje Twoje CV z treścią ogłoszenia i wskazuje brakujące słowa kluczowe oraz problemy z formatowaniem. Pierwsza analiza jest darmowa.',
+        ],
+      },
+    ],
+    faqs: [
+      { q: 'Od czego zacząć poprawę CV?', a: 'Od sekcji doświadczenia: zamień opisy obowiązków na efekty z liczbami. To zmiana o największym wpływie na liczbę odpowiedzi od rekruterów.' },
+      { q: 'Czy muszę poprawiać CV pod każde ogłoszenie?', a: 'Tak — przynajmniej podsumowanie i słowa kluczowe. Dopasowane CV znacząco zwiększa szanse przejścia przez ATS i zainteresowanie rekrutera.' },
+      { q: 'Jak sprawdzić, czy moje CV przechodzi przez ATS?', a: 'Wklej treść ogłoszenia do analizy ATS w CVPro.pl — otrzymasz ocenę dopasowania, listę brakujących słów kluczowych i konkretne wskazówki. Pierwsza analiza jest bezpłatna.' },
+    ],
+    related: [
+      { href: '/poradnik/cv-pod-ats', label: 'CV pod ATS — jak przejść selekcję' },
+      { href: '/poradnik/jak-napisac-cv', label: 'Jak napisać CV krok po kroku' },
+      { href: '/kreator-cv-bez-subskrypcji', label: 'Stwórz CV online — od 15 zł' },
+    ],
+  },
 ]
 
 export function getArticle(slug: string): Article | undefined {
