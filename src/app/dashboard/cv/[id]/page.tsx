@@ -71,6 +71,7 @@ export default function CVEditorPage() {
   const [pdfLoading, setPdfLoading] = useState(false)
   const [docxLoading, setDocxLoading] = useState(false)
   const [atsFreeUsed, setAtsFreeUsed] = useState(true)
+  const [showWatermarkModal, setShowWatermarkModal] = useState(false)
 
   const saveTimer = useRef<ReturnType<typeof setTimeout>>(undefined)
 
@@ -129,8 +130,15 @@ export default function CVEditorPage() {
     window.print()
   }
 
-  async function handleDownloadPDF() {
+  function handleDownloadPDF() {
+    // Free plan: show the watermark/upgrade choice before generating
+    if (plan === 'free') { setShowWatermarkModal(true); return }
+    void generatePDF()
+  }
+
+  async function generatePDF() {
     if (pdfLoading) return
+    setShowWatermarkModal(false)
     setPdfLoading(true); setErrorMsg(null)
     try {
       // Flush any pending autosave so the PDF matches what's on screen
@@ -243,11 +251,34 @@ export default function CVEditorPage() {
     setShowCoverLetter(s => { if (!s) setTimeout(() => coverPanelRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50); return !s })
   }
 
+  // Watermark upsell modal (free plan, shown before PDF generation)
+  const watermarkModal = showWatermarkModal && (
+    <div className="no-print" onClick={() => setShowWatermarkModal(false)} style={{ position: 'fixed', inset: 0, background: 'rgba(5,10,22,0.75)', zIndex: 200, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 20 }}>
+      <div onClick={e => e.stopPropagation()} style={{ background: '#122040', border: '1px solid #1e3f75', borderRadius: 16, padding: '30px 28px', maxWidth: 420, width: '100%', boxShadow: '0 20px 80px rgba(0,0,0,0.6)' }}>
+        <div style={{ fontSize: 34, marginBottom: 12 }}>💧</div>
+        <div style={{ fontSize: 18, fontWeight: 800, color: '#e2eeff', marginBottom: 8 }}>Twój PDF będzie miał znak wodny</div>
+        <p style={{ fontSize: 14, color: '#9ab4d8', lineHeight: 1.6, margin: '0 0 20px' }}>
+          W planie darmowym na CV pojawi się napis „cvpro.pl". Plan Podstawowy usuwa go na zawsze — jednorazowo 15 zł, bez subskrypcji.
+        </p>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+          <button onClick={() => { setShowWatermarkModal(false); router.push('/cennik') }} style={{ background: 'linear-gradient(135deg,#4477FF,#7C3AED)', color: '#fff', border: 'none', borderRadius: 10, padding: '13px', fontSize: 14, fontWeight: 700, cursor: 'pointer', boxShadow: '0 4px 20px rgba(68,119,255,0.35)' }}>
+            Usuń znak wodny — 15 zł jednorazowo →
+          </button>
+          <button onClick={() => void generatePDF()} style={{ background: 'none', border: '1px solid #1e3f75', color: '#7a94bb', borderRadius: 10, padding: '11px', fontSize: 13, fontWeight: 600, cursor: 'pointer' }}>
+            Pobierz ze znakiem wodnym
+          </button>
+        </div>
+      </div>
+    </div>
+  )
+
   // ─── PREVIEW MODE ────────────────────────────────────────────────────────────
   if (mode === 'preview') {
     return (
       <>
       <div style={{ height: '100vh', display: 'flex', flexDirection: 'column', background: '#0d1c35', color: '#e2eeff' }}>
+
+        {watermarkModal}
 
         {/* Preview top bar */}
         <div className="no-print" style={{ background: '#122040', borderBottom: '1px solid #1e3f75', height: 52, display: 'flex', alignItems: 'center', padding: '0 20px', flexShrink: 0 }}>
@@ -299,7 +330,7 @@ export default function CVEditorPage() {
                     </div>
                     {/* Score bar */}
                     <div style={{ flex: 1, maxWidth: 180, height: 8, background: '#0d1c35', borderRadius: 4, overflow: 'hidden' }}>
-                      <div style={{ height: '100%', width: `${atsResult.score}%`, background: `linear-gradient(90deg, ${gradeColor(atsResult.grade)}, ${gradeColor(atsResult.grade)}99)`, borderRadius: 4, transition: 'width 0.8s ease' }} />
+                      <div style={{ height: '100%', width: '100%', transform: `scaleX(${atsResult.score / 100})`, transformOrigin: 'left', background: `linear-gradient(90deg, ${gradeColor(atsResult.grade)}, ${gradeColor(atsResult.grade)}99)`, borderRadius: 4, transition: 'transform 0.8s ease' }} />
                     </div>
                     <div style={{ fontSize: 13, fontWeight: 700, color: gradeColor(atsResult.grade) }}>{atsResult.score}/100</div>
                   </>
@@ -587,6 +618,7 @@ export default function CVEditorPage() {
   // ─── EDIT MODE ───────────────────────────────────────────────────────────────
   return (
     <div className="editor-root" style={{ height: '100vh', display: 'flex', flexDirection: 'column', background: '#0d1c35', color: '#e2eeff' }}>
+      {watermarkModal}
 
       {id === 'new' && (
         <OnboardingWizard plan={plan} onComplete={patch => setData(d => ({ ...d, ...patch }))} />
