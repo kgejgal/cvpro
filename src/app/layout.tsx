@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Onest } from 'next/font/google'
 import Script from 'next/script'
 import { Analytics } from '@vercel/analytics/next'
+import CookieConsent from '@/components/CookieConsent'
 import './globals.css'
 
 const onest = Onest({ subsets: ['latin'], variable: '--font-onest', display: 'swap', preload: true, adjustFontFallback: false })
@@ -98,10 +99,28 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
+            gtag('consent', 'default', {
+              ad_storage: 'denied',
+              ad_user_data: 'denied',
+              ad_personalization: 'denied',
+              analytics_storage: 'denied',
+              wait_for_update: 500
+            });
+            var cvproConsent = null;
+            try { cvproConsent = localStorage.getItem('cvpro-cookie-consent'); } catch (e) {}
+            if (cvproConsent === 'granted') {
+              gtag('consent', 'update', {
+                ad_storage: 'granted',
+                ad_user_data: 'granted',
+                ad_personalization: 'granted',
+                analytics_storage: 'granted'
+              });
+            }
             gtag('js', new Date());
             gtag('config', 'AW-18284177383');
           `}
         </Script>
+        <CookieConsent />
       </body>
     </html>
   )
