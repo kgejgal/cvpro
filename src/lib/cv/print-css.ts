@@ -105,7 +105,11 @@ html, body { margin: 0; padding: 0; background: #fff; }
 `
 
 // Diagonal watermark for the free plan — position:fixed repeats on every printed page.
+// Opacity is deliberately high enough that the free PDF reads as a draft and is not
+// something you would send to an employer; the paid plans remove it entirely.
 export const WATERMARK_HTML = `
-<div style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-35deg);font-size:72px;font-weight:900;color:rgba(0,0,0,0.07);letter-spacing:0.08em;pointer-events:none;z-index:9999;white-space:nowrap;font-family:sans-serif;">cvpro.pl</div>
-<div style="position:fixed;bottom:6mm;left:0;right:0;text-align:center;font-size:9px;color:rgba(0,0,0,0.35);font-family:sans-serif;letter-spacing:0.04em;">Pobierz bez znaku wodnego na cvpro.pl</div>
+<div style="position:fixed;top:22%;left:50%;transform:translate(-50%,-50%) rotate(-35deg);font-size:64px;font-weight:900;color:rgba(0,0,0,0.16);letter-spacing:0.08em;pointer-events:none;z-index:9999;white-space:nowrap;font-family:sans-serif;">cvpro.pl</div>
+<div style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-35deg);font-size:64px;font-weight:900;color:rgba(0,0,0,0.16);letter-spacing:0.08em;pointer-events:none;z-index:9999;white-space:nowrap;font-family:sans-serif;">WERSJA PRÓBNA</div>
+<div style="position:fixed;top:78%;left:50%;transform:translate(-50%,-50%) rotate(-35deg);font-size:64px;font-weight:900;color:rgba(0,0,0,0.16);letter-spacing:0.08em;pointer-events:none;z-index:9999;white-space:nowrap;font-family:sans-serif;">cvpro.pl</div>
+<div style="position:fixed;bottom:5mm;left:0;right:0;text-align:center;font-size:10px;font-weight:600;color:rgba(0,0,0,0.55);font-family:sans-serif;letter-spacing:0.04em;">Wersja próbna — usuń znak wodny za 15 zł na cvpro.pl</div>
 `

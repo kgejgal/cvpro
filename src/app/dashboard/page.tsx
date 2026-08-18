@@ -2,6 +2,7 @@ import { redirect } from 'next/navigation'
 import Link from 'next/link'
 import { createClient } from '@/lib/supabase/server'
 import NotificationBell from '@/components/NotificationBell'
+import ResumePurchaseBanner from '@/components/ResumePurchaseBanner'
 
 export default async function DashboardPage() {
   const supabase = await createClient()
@@ -76,6 +77,8 @@ export default async function DashboardPage() {
       </header>
 
       <main style={{ maxWidth: 680, margin: '0 auto', padding: '48px 24px' }}>
+        <ResumePurchaseBanner plan={plan} />
+
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 32 }}>
           <div>
             <h1 style={{ fontSize: 28, fontWeight: 800, margin: '0 0 4px' }}>Moje CV</h1>

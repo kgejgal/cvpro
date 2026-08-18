@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { track } from '@vercel/analytics'
 import { createClient } from '@/lib/supabase/client'
+import { INTENT_KEY } from '@/components/ResumePurchaseBanner'
 
 const D = {
   bg: '#0d1c35', card: '#162d50', surf: '#122040',
@@ -33,7 +34,13 @@ export default function CenikPage() {
     track('checkout_started', { plan: planId })
     const supabase = createClient()
     const { data: { user } } = await supabase.auth.getUser()
-    if (!user) { router.push('/auth/signup'); return }
+    if (!user) {
+      // Remember the plan so the dashboard can offer to finish the purchase after
+      // the signup + e-mail confirmation round trip.
+      try { localStorage.setItem(INTENT_KEY, planId) } catch {}
+      router.push('/auth/signup')
+      return
+    }
 
     const res = await fetch('/api/stripe/checkout', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ plan: planId }) })
     const { url } = await res.json()
