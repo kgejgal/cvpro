@@ -36,7 +36,10 @@ export async function POST(request: NextRequest) {
   }
 
   const sessionParams: Stripe.Checkout.SessionCreateParams = {
-    payment_method_types: ['card', 'blik', 'p24'],
+    // 'p24' is not yet activated on the Stripe account (dashboard.stripe.com/account/payments/settings) —
+    // including it makes Stripe reject session creation entirely, so *every* checkout fails, not just P24 ones.
+    // Re-add it once verified active in Stripe. Card + BLIK are confirmed working.
+    payment_method_types: ['card', 'blik'],
     line_items: [{ price: priceId, quantity: 1 }],
     mode: 'payment',
     customer_email: user.email,
