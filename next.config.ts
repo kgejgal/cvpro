@@ -14,6 +14,18 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: ['@dnd-kit/core', '@dnd-kit/sortable'],
   },
+  // playwright-core reads browsers.json at runtime (not via a static import Turbopack's
+  // tracer can follow), and @sparticuz/chromium's brotli-compressed binaries are read the
+  // same way — both were silently dropped from the deployed function, breaking PDF export
+  // in production (confirmed via Vercel runtime error: "Cannot find module
+  // '/var/task/node_modules/playwright-core/browsers.json'", 26 occurrences / 8 users
+  // since July 2026). Force them into the trace explicitly.
+  outputFileTracingIncludes: {
+    '/api/cv/pdf': [
+      './node_modules/playwright-core/browsers.json',
+      './node_modules/@sparticuz/chromium/bin/**',
+    ],
+  },
   async headers() {
     return [
       {
