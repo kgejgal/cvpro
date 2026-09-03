@@ -168,16 +168,17 @@ html, body {
   .cv-exp-item, .cv-section-title { page-break-inside: avoid; break-inside: avoid; }
   [contenteditable] { outline: none !important; background: transparent !important; cursor: default !important; }
 
-  /* Free-plan watermark */
+  /* Free-plan watermark — kept in sync with the server-side PDF watermark
+     opacity (src/lib/cv/print-css.ts) so "Drukuj" can't be used to bypass it. */
   body.cv-free-print::after {
-    content: 'cvpro.pl';
+    content: 'cvpro.pl — WERSJA PRÓBNA';
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) rotate(-35deg);
-    font-size: 72px;
+    font-size: 60px;
     font-weight: 900;
-    color: rgba(0, 0, 0, 0.07);
+    color: rgba(0, 0, 0, 0.16);
     letter-spacing: 0.08em;
     pointer-events: none;
     z-index: 9999;

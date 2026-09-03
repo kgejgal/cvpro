@@ -93,6 +93,8 @@ export default function CVForm({ data, onChange, plan = 'free' }: Props) {
   const [suggestedSkills, setSuggestedSkills] = useState<string[]>([])
   const [bulletSuggestLoading, setBulletSuggestLoading] = useState<Record<number, boolean>>({})
   const [suggestedBullets, setSuggestedBullets] = useState<Record<number, string[]>>({})
+  const [suggestSkillsError, setSuggestSkillsError] = useState('')
+  const [suggestBulletsError, setSuggestBulletsError] = useState<Record<number, string>>({})
 
   function toggle(key: keyof typeof openSections) {
     setOpenSections(s => ({ ...s, [key]: !s[key] }))
@@ -127,16 +129,21 @@ export default function CVForm({ data, onChange, plan = 'free' }: Props) {
   async function suggestSkills() {
     setSuggestLoading(true)
     setSuggestedSkills([])
+    setSuggestSkillsError('')
     try {
       const res = await fetch('/api/suggest-skills', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ title: data.title, experience: data.experience }),
       })
-      if (res.ok) {
-        const { skills } = await res.json()
-        setSuggestedSkills(skills.filter((s: string) => !data.skills.includes(s)))
+      const body = await res.json().catch(() => null)
+      if (res.ok && body) {
+        setSuggestedSkills((body.skills ?? []).filter((s: string) => !data.skills.includes(s)))
+      } else {
+        setSuggestSkillsError(body?.error || 'Nie udało się pobrać sugestii. Spróbuj ponownie.')
       }
+    } catch {
+      setSuggestSkillsError('Błąd połączenia. Sprawdź internet i spróbuj ponownie.')
     } finally {
       setSuggestLoading(false)
     }
@@ -151,16 +158,21 @@ export default function CVForm({ data, onChange, plan = 'free' }: Props) {
     const e = data.experience[i]
     setBulletSuggestLoading(prev => ({ ...prev, [i]: true }))
     setSuggestedBullets(prev => ({ ...prev, [i]: [] }))
+    setSuggestBulletsError(prev => ({ ...prev, [i]: '' }))
     try {
       const res = await fetch('/api/suggest-bullets', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ position: e.position, company: e.company, description: (e.bullets ?? []).filter(Boolean).join('. ') }),
       })
-      if (res.ok) {
-        const { bullets } = await res.json()
-        setSuggestedBullets(prev => ({ ...prev, [i]: bullets }))
+      const body = await res.json().catch(() => null)
+      if (res.ok && body) {
+        setSuggestedBullets(prev => ({ ...prev, [i]: body.bullets ?? [] }))
+      } else {
+        setSuggestBulletsError(prev => ({ ...prev, [i]: body?.error || 'Nie udało się pobrać sugestii. Spróbuj ponownie.' }))
       }
+    } catch {
+      setSuggestBulletsError(prev => ({ ...prev, [i]: 'Błąd połączenia. Sprawdź internet i spróbuj ponownie.' }))
     } finally {
       setBulletSuggestLoading(prev => ({ ...prev, [i]: false }))
     }
@@ -327,6 +339,9 @@ export default function CVForm({ data, onChange, plan = 'free' }: Props) {
                     ))}
                   </div>
                 )}
+                {suggestBulletsError[i] && (
+                  <div style={{ marginTop: 8, fontSize: 12, color: '#e88' }}>⚠ {suggestBulletsError[i]}</div>
+                )}
               </div>
             </div>
           ))}
@@ -406,6 +421,9 @@ export default function CVForm({ data, onChange, plan = 'free' }: Props) {
                 ))}
               </div>
             </div>
+          )}
+          {suggestSkillsError && (
+            <div style={{ marginTop: 8, fontSize: 12, color: '#e88' }}>⚠ {suggestSkillsError}</div>
           )}
           <div style={{ fontSize: 11, color: '#4a6a99', marginTop: 6 }}>Naciśnij Enter lub przecinek, aby dodać</div>
         </div>

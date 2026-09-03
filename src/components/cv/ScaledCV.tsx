@@ -28,7 +28,7 @@ export default function ScaledCV({ children, maxScale = 0.85 }: { children: Reac
   }, [maxScale])
 
   return (
-    <div ref={outerRef} className="cv-scale-wrapper" style={{ display: 'flex', justifyContent: 'center', height, overflow: 'visible' }}>
+    <div ref={outerRef} className="cv-scale-wrapper" style={{ display: 'flex', justifyContent: 'center', alignItems: 'flex-start', height, overflow: 'visible' }}>
       <div ref={innerRef} className="cv-scale-inner" style={{ transform: `scale(${scale})`, transformOrigin: 'top center', flexShrink: 0 }}>
         {children}
       </div>

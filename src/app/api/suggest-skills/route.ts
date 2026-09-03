@@ -1,8 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server'
 import Anthropic from '@anthropic-ai/sdk'
+import { zodOutputFormat } from '@anthropic-ai/sdk/helpers/zod'
+import { z } from 'zod'
 import { createClient } from '@/lib/supabase/server'
 
 const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
+
+const SkillsSchema = z.object({ skills: z.array(z.string()) })
 
 const rateLimitMap = new Map<string, number>()
 const COOLDOWN_MS = 60_000
@@ -37,24 +41,25 @@ export async function POST(req: NextRequest) {
     .map((e) => `${e.position} w ${e.company}`)
     .join(', ')
 
-  const message = await anthropic.messages.create({
-    model: 'claude-sonnet-4-6',
-    max_tokens: 256,
-    messages: [{
-      role: 'user',
-      content: `Podaj 12 kluczowych umiejętności do CV dla osoby na stanowisko: "${title}".${expText ? ` Doświadczenie: ${expText}.` : ''}
-Zwróć TYLKO listę JSON bez żadnego opisu, np.:
-["Umiejętność 1", "Umiejętność 2", ...]
-Umiejętności powinny być po polsku, konkretne i wartościowe dla rekrutera.`,
-    }],
-  })
-
-  const raw = message.content[0].type === 'text' ? message.content[0].text : ''
+  let message
   try {
-    const match = raw.match(/\[[\s\S]*\]/)
-    const skills: string[] = match ? JSON.parse(match[0]) : []
-    return NextResponse.json({ skills: skills.slice(0, 12) })
-  } catch {
-    return NextResponse.json({ skills: [] })
+    message = await anthropic.messages.parse({
+      model: 'claude-opus-5',
+      max_tokens: 1024,
+      output_config: { format: zodOutputFormat(SkillsSchema) },
+      messages: [{
+        role: 'user',
+        content: `Podaj 12 kluczowych umiejętności do CV dla osoby na stanowisko: "${title}".${expText ? ` Doświadczenie: ${expText}.` : ''}
+Umiejętności powinny być po polsku, konkretne i wartościowe dla rekrutera.`,
+      }],
+    })
+  } catch (err) {
+    console.error('suggest-skills: Anthropic call failed', err)
+    return NextResponse.json({ error: 'Nie udało się wygenerować sugestii. Spróbuj ponownie.' }, { status: 502 })
   }
+
+  if (!message.parsed_output) {
+    return NextResponse.json({ error: 'Nie udało się wygenerować sugestii. Spróbuj ponownie.' }, { status: 502 })
+  }
+  return NextResponse.json({ skills: message.parsed_output.skills.slice(0, 12) })
 }

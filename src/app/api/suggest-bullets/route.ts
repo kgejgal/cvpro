@@ -1,8 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server'
 import Anthropic from '@anthropic-ai/sdk'
+import { zodOutputFormat } from '@anthropic-ai/sdk/helpers/zod'
+import { z } from 'zod'
 import { createClient } from '@/lib/supabase/server'
 
 const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
+
+const BulletsSchema = z.object({ bullets: z.array(z.string()) })
 
 const rateLimitMap = new Map<string, number>()
 const COOLDOWN_MS = 60_000
@@ -32,31 +36,31 @@ export async function POST(req: NextRequest) {
   const { position, company, description } = body as { position?: string; company?: string; description?: string }
   if (!position) return NextResponse.json({ bullets: [] })
 
-  const message = await anthropic.messages.create({
-    model: 'claude-sonnet-4-6',
-    max_tokens: 400,
-    messages: [{
-      role: 'user',
-      content: `Napisz 3 osiągnięcia do CV dla stanowiska: "${position}"${company ? ` w firmie ${company}` : ''}.${description ? `\nOpis zadań: ${description}` : ''}
+  let message
+  try {
+    message = await anthropic.messages.parse({
+      model: 'claude-opus-5',
+      max_tokens: 1024,
+      output_config: { format: zodOutputFormat(BulletsSchema) },
+      messages: [{
+        role: 'user',
+        content: `Napisz 3 osiągnięcia do CV dla stanowiska: "${position}"${company ? ` w firmie ${company}` : ''}.${description ? `\nOpis zadań: ${description}` : ''}
 
 Wymagania:
 - Każde osiągnięcie zaczyna się od mocnego czasownika (np. Wdrożyłem, Zoptymalizowałem, Stworzyłem)
 - Zawiera konkretne liczby lub procenty gdy to możliwe
 - Maksymalnie 15 słów każde
 - Po polsku
-- Nie używaj słów "AI", "sztuczna inteligencja"
-
-Zwróć TYLKO listę JSON, np.:
-["Wdrożyłem system X, zwiększając wydajność o 30%", "Zarządzałem zespołem 5 osób...", "Zoptymalizowałem procesy..."]`,
-    }],
-  })
-
-  const raw = message.content[0].type === 'text' ? message.content[0].text : ''
-  try {
-    const match = raw.match(/\[[\s\S]*\]/)
-    const bullets: string[] = match ? JSON.parse(match[0]) : []
-    return NextResponse.json({ bullets: bullets.slice(0, 3) })
-  } catch {
-    return NextResponse.json({ bullets: [] })
+- Nie używaj słów "AI", "sztuczna inteligencja"`,
+      }],
+    })
+  } catch (err) {
+    console.error('suggest-bullets: Anthropic call failed', err)
+    return NextResponse.json({ error: 'Nie udało się wygenerować sugestii. Spróbuj ponownie.' }, { status: 502 })
   }
+
+  if (!message.parsed_output) {
+    return NextResponse.json({ error: 'Nie udało się wygenerować sugestii. Spróbuj ponownie.' }, { status: 502 })
+  }
+  return NextResponse.json({ bullets: message.parsed_output.bullets.slice(0, 3) })
 }
