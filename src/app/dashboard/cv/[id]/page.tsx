@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { createClient } from '@/lib/supabase/client'
 import type { CVData } from '@/lib/cv/types'
 import { EMPTY_CV, planAllows } from '@/lib/cv/types'
+import { track } from '@/lib/analytics'
 import CVForm from '@/components/cv/CVForm'
 import CVPreview from '@/components/cv/CVPreview'
 import ScaledCV from '@/components/cv/ScaledCV'
@@ -75,6 +76,8 @@ export default function CVEditorPage() {
 
   const saveTimer = useRef<ReturnType<typeof setTimeout>>(undefined)
 
+  useEffect(() => { track('cv_started') }, [])
+
   useEffect(() => {
     const supabase = createClient()
     supabase.auth.getUser().then(async ({ data: { user } }) => {
@@ -132,7 +135,7 @@ export default function CVEditorPage() {
 
   function handleDownloadPDF() {
     // Free plan: show the watermark/upgrade choice before generating
-    if (plan === 'free') { setShowWatermarkModal(true); return }
+    if (plan === 'free') { track('paywall_viewed'); setShowWatermarkModal(true); return }
     void generatePDF()
   }
 
@@ -639,7 +642,7 @@ export default function CVEditorPage() {
             {saving ? 'Zapisywanie...' : saved ? '✓ Zapisano' : '● Niezapisane'}
           </span>
           <button
-            onClick={() => { save(data, titleInput); setMode('preview') }}
+            onClick={() => { track('cv_completed'); save(data, titleInput); setMode('preview') }}
             style={{ background: 'linear-gradient(135deg,#4477FF,#7C3AED)', color: '#fff', border: 'none', borderRadius: 8, padding: '7px 18px', fontSize: 13, fontWeight: 700, cursor: 'pointer', boxShadow: '0 2px 12px rgba(68,119,255,0.4)', whiteSpace: 'nowrap' }}
           >
             Gotowe →

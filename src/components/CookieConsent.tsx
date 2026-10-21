@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
+import { setClarityConsent } from '@/lib/analytics'
 
 declare global {
   interface Window { gtag?: (...args: unknown[]) => void }
@@ -16,6 +17,7 @@ function applyConsent(granted: boolean) {
     ad_personalization: granted ? 'granted' : 'denied',
     analytics_storage: granted ? 'granted' : 'denied',
   })
+  setClarityConsent(granted)
 }
 
 export default function CookieConsent() {
@@ -23,8 +25,15 @@ export default function CookieConsent() {
 
   useEffect(() => {
     const stored = localStorage.getItem(KEY)
-    if (stored === null) { setVisible(true); return }
+    if (stored === null) {
+      // No choice yet: Clarity stays in no-consent mode until the visitor decides.
+      setClarityConsent(false)
+      setVisible(true)
+      return
+    }
+    // Google already defaults to denied (layout.tsx), so only Clarity needs the explicit "denied".
     if (stored === 'granted') applyConsent(true)
+    else setClarityConsent(false)
   }, [])
 
   function decide(granted: boolean) {
@@ -38,7 +47,7 @@ export default function CookieConsent() {
   return (
     <div role="dialog" aria-label="Zgoda na pliki cookie" style={{ position: 'fixed', bottom: 16, left: 16, right: 16, zIndex: 300, maxWidth: 560, margin: '0 auto', background: '#122040', border: '1px solid rgba(56,100,200,0.35)', borderRadius: 14, padding: '16px 18px', boxShadow: '0 12px 48px rgba(0,0,0,0.5)', display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 12 }}>
       <p style={{ margin: 0, fontSize: 13, color: '#9ab4d8', lineHeight: 1.55, flex: '1 1 260px' }}>
-        Używamy plików cookie do pomiaru skuteczności reklam. Szczegóły w{' '}
+        Używamy plików cookie do pomiaru skuteczności reklam oraz Microsoft Clarity (nagrania sesji i mapy kliknięć), aby ulepszać serwis. Szczegóły w{' '}
         <Link href="/polityka-prywatnosci" style={{ color: '#7aafff' }}>polityce prywatności</Link>.
       </p>
       <div style={{ display: 'flex', gap: 8, flexShrink: 0 }}>

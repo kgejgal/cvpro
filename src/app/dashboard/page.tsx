@@ -1,13 +1,30 @@
 import { redirect } from 'next/navigation'
 import Link from 'next/link'
+import Stripe from 'stripe'
 import { createClient } from '@/lib/supabase/server'
 import NotificationBell from '@/components/NotificationBell'
 import ResumePurchaseBanner from '@/components/ResumePurchaseBanner'
+import PurchaseSuccessTracker from '@/components/PurchaseSuccessTracker'
 
-export default async function DashboardPage() {
+// `?success=1` alone is forgeable, so the purchase is only reported when Stripe itself says
+// this checkout session is paid and was created for the signed-in user.
+async function confirmedCheckoutSession(sessionId: string | string[] | undefined, userId: string) {
+  if (typeof sessionId !== 'string' || !sessionId.startsWith('cs_')) return null
+  try {
+    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!)
+    const session = await stripe.checkout.sessions.retrieve(sessionId)
+    return session.payment_status === 'paid' && session.metadata?.user_id === userId ? session.id : null
+  } catch {
+    return null
+  }
+}
+
+export default async function DashboardPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) redirect('/auth/login')
+
+  const paidSessionId = await confirmedCheckoutSession((await searchParams).session_id, user.id)
 
   const { data: profile } = await supabase.from('profiles').select('plan').eq('id', user.id).single()
   const { data: cvs } = await supabase.from('cvs').select('id, title, template, updated_at, is_public, view_count').eq('user_id', user.id).order('updated_at', { ascending: false })
@@ -77,6 +94,7 @@ export default async function DashboardPage() {
       </header>
 
       <main style={{ maxWidth: 680, margin: '0 auto', padding: '48px 24px' }}>
+        {paidSessionId && <PurchaseSuccessTracker sessionId={paidSessionId} />}
         <ResumePurchaseBanner plan={plan} />
 
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 32 }}>

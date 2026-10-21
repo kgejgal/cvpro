@@ -44,7 +44,8 @@ export async function POST(request: NextRequest) {
     mode: 'payment',
     customer_email: user.email,
     metadata: { user_id: user.id, plan: plan },
-    success_url: `${process.env.NEXT_PUBLIC_SITE_URL}/dashboard?success=1`,
+    // {CHECKOUT_SESSION_ID} is substituted by Stripe; the dashboard uses it to confirm the payment server-side.
+    success_url: `${process.env.NEXT_PUBLIC_SITE_URL}/dashboard?success=1&session_id={CHECKOUT_SESSION_ID}`,
     cancel_url: `${process.env.NEXT_PUBLIC_SITE_URL}/cennik`,
     locale: 'pl',
     // Art. 38 pkt 13 ustawy o prawach konsumenta — consent to immediate delivery

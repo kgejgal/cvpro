@@ -191,7 +191,7 @@ export default function CVForm({ data, onChange, plan = 'free' }: Props) {
   )
 
   return (
-    <div style={{ padding: '0 16px', overflowY: 'auto', height: '100%' }}>
+    <div data-clarity-mask="True" style={{ padding: '0 16px', overflowY: 'auto', height: '100%' }}>
       {/* Situation */}
       {section('situation', '1. Twoja sytuacja', (
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>

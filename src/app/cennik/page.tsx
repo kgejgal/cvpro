@@ -1,8 +1,10 @@
 'use client'
 
 import Link from 'next/link'
+import { useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { track } from '@vercel/analytics'
+import { track as clarityTrack } from '@/lib/analytics'
 import { createClient } from '@/lib/supabase/client'
 import { INTENT_KEY } from '@/components/ResumePurchaseBanner'
 
@@ -30,6 +32,8 @@ const PLANS = [
 export default function CenikPage() {
   const router = useRouter()
 
+  useEffect(() => { clarityTrack('paywall_viewed') }, [])
+
   async function buyPlan(planId: string) {
     track('checkout_started', { plan: planId })
     const supabase = createClient()
@@ -44,7 +48,10 @@ export default function CenikPage() {
 
     const res = await fetch('/api/stripe/checkout', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ plan: planId }) })
     const { url } = await res.json()
-    if (url) window.location.href = url
+    if (url) {
+      clarityTrack('checkout_started')
+      window.location.href = url
+    }
   }
 
   return (

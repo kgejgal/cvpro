@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { track } from '@/lib/analytics'
 
 // Plan chosen on /cennik before signing up is stashed in localStorage, because the
 // signup flow goes through an e-mail confirmation and loses any URL state.
@@ -40,7 +41,7 @@ export default function ResumePurchaseBanner({ plan }: { plan: string }) {
         body: JSON.stringify({ plan: intent }),
       })
       const { url } = await res.json()
-      if (url) { try { localStorage.removeItem(INTENT_KEY) } catch {}; window.location.href = url; return }
+      if (url) { try { localStorage.removeItem(INTENT_KEY) } catch {}; track('checkout_started'); window.location.href = url; return }
       router.push('/cennik')
     } catch {
       router.push('/cennik')
