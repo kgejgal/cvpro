@@ -12,7 +12,7 @@ export default function CompactTemplate({ data }: { data: CVData }) {
   )
 
   return (
-    <div id="cv-doc" style={{ width: 794, minHeight: 1123, background: '#fff', fontFamily: 'var(--font-lato), Lato, sans-serif', fontSize: 11.5, color: '#222', padding: '28px 36px' }}>
+    <div id="cv-doc" data-clarity-mask="True" style={{ width: 794, minHeight: 1123, background: '#fff', fontFamily: 'var(--font-lato), Lato, sans-serif', fontSize: 11.5, color: '#222', padding: '28px 36px' }}>
       {/* Compact header — everything on one block */}
       <div style={{ marginBottom: 14, paddingBottom: 10, borderBottom: `2px solid ${accent}` }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>

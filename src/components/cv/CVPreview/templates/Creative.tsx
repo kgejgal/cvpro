@@ -10,7 +10,7 @@ export default function CreativeTemplate({ data }: { data: CVData }) {
   const initials = `${data.firstName?.[0] || ''}${data.lastName?.[0] || ''}`
 
   return (
-    <div id="cv-doc" style={{ width: 794, minHeight: 1123, background: '#fff', fontFamily: 'var(--font-onest), Onest, sans-serif', fontSize: 13, color: '#222', display: 'flex' }}>
+    <div id="cv-doc" data-clarity-mask="True" style={{ width: 794, minHeight: 1123, background: '#fff', fontFamily: 'var(--font-onest), Onest, sans-serif', fontSize: 13, color: '#222', display: 'flex' }}>
       {/* Left accent bar */}
       <div style={{ width: 6, background: accent, flexShrink: 0 }} />
       {/* Left panel */}

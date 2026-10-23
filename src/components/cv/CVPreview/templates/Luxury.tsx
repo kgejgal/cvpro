@@ -12,7 +12,7 @@ export default function LuxuryTemplate({ data }: { data: CVData }) {
   const initials = `${data.firstName?.[0] || ''}${data.lastName?.[0] || ''}`
 
   return (
-    <div id="cv-doc" style={{ width: 794, minHeight: 1123, background: '#fff', fontFamily: 'var(--font-lato), Lato, sans-serif', fontSize: 13, color: '#2c2c2c' }}>
+    <div id="cv-doc" data-clarity-mask="True" style={{ width: 794, minHeight: 1123, background: '#fff', fontFamily: 'var(--font-lato), Lato, sans-serif', fontSize: 13, color: '#2c2c2c' }}>
       {/* Navy hero band */}
       <div style={{ background: navy, padding: '36px 44px', display: 'flex', gap: 28, alignItems: 'center' }}>
         {data.photo

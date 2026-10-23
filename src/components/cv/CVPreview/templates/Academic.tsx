@@ -15,7 +15,7 @@ export default function AcademicTemplate({ data }: { data: CVData }) {
   )
 
   return (
-    <div id="cv-doc" style={{ width: 794, minHeight: 1123, background: '#fdfcfa', fontFamily: 'Georgia, serif', fontSize: 13, color: '#1a1a2e', '--cv-accent': accent } as React.CSSProperties}>
+    <div id="cv-doc" data-clarity-mask="True" style={{ width: 794, minHeight: 1123, background: '#fdfcfa', fontFamily: 'Georgia, serif', fontSize: 13, color: '#1a1a2e', '--cv-accent': accent } as React.CSSProperties}>
       <div style={{ textAlign: 'center', padding: '40px 60px 24px', borderBottom: '1px solid #d0cec8', position: 'relative' }}>
         <div contentEditable suppressContentEditableWarning style={{ fontSize: 30, fontWeight: 700, letterSpacing: '0.01em', color: '#0d0d1a', fontFamily: 'Georgia, serif', marginBottom: 6 }}>
           {data.firstName} {data.lastName}

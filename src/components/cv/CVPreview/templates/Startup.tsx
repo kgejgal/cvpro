@@ -24,7 +24,7 @@ export default function StartupTemplate({ data }: { data: CVData }) {
   )
 
   return (
-    <div id="cv-doc" style={{ width: 794, minHeight: 1123, background: '#f8faff', fontFamily: 'var(--font-dm-sans), DM Sans, sans-serif', fontSize: 13, color: '#1a2035', '--cv-accent': accent } as React.CSSProperties}>
+    <div id="cv-doc" data-clarity-mask="True" style={{ width: 794, minHeight: 1123, background: '#f8faff', fontFamily: 'var(--font-dm-sans), DM Sans, sans-serif', fontSize: 13, color: '#1a2035', '--cv-accent': accent } as React.CSSProperties}>
       <div style={{ background: `linear-gradient(135deg, ${accent} 0%, ${a(0.75)} 100%)`, padding: '36px 44px 30px', position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', top: -40, right: -40, width: 180, height: 180, borderRadius: '50%', background: 'rgba(255,255,255,0.08)' }} />
         <div style={{ position: 'absolute', bottom: -20, right: 100, width: 100, height: 100, borderRadius: '50%', background: 'rgba(255,255,255,0.06)' }} />

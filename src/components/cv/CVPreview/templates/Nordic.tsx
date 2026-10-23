@@ -18,7 +18,7 @@ export default function NordicTemplate({ data }: { data: CVData }) {
   )
 
   return (
-    <div id="cv-doc" style={{ width: 794, minHeight: 1123, background: '#fff', fontFamily: 'var(--font-dm-sans), DM Sans, sans-serif', fontSize: 13, color: '#1e2832', '--cv-accent': accent } as React.CSSProperties}>
+    <div id="cv-doc" data-clarity-mask="True" style={{ width: 794, minHeight: 1123, background: '#fff', fontFamily: 'var(--font-dm-sans), DM Sans, sans-serif', fontSize: 13, color: '#1e2832', '--cv-accent': accent } as React.CSSProperties}>
       <div style={{ padding: '52px 64px 0' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
           <div>

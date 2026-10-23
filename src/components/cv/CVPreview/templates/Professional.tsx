@@ -9,7 +9,7 @@ export default function ProfessionalTemplate({ data }: { data: CVData }) {
   const accent = data.colorTheme || '#2563eb'
 
   return (
-    <div id="cv-doc" style={{ width: 794, minHeight: 1123, background: '#fff', fontFamily: 'var(--font-poppins), Poppins, sans-serif', fontSize: 12.5, color: '#222' }}>
+    <div id="cv-doc" data-clarity-mask="True" style={{ width: 794, minHeight: 1123, background: '#fff', fontFamily: 'var(--font-poppins), Poppins, sans-serif', fontSize: 12.5, color: '#222' }}>
       {/* Traditional top bar */}
       <div style={{ background: accent, height: 8 }} />
       <div style={{ padding: '28px 40px 20px', borderBottom: '2px solid #222' }}>

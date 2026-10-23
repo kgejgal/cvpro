@@ -42,7 +42,7 @@ export default function TimelineTemplate({ data }: { data: CVData }) {
   )
 
   return (
-    <div id="cv-doc" style={{ width: 794, minHeight: 1123, background: '#fff', fontFamily: 'var(--font-onest), Onest, sans-serif', fontSize: 13, color: '#1a2035', '--cv-accent': accent } as React.CSSProperties}>
+    <div id="cv-doc" data-clarity-mask="True" style={{ width: 794, minHeight: 1123, background: '#fff', fontFamily: 'var(--font-onest), Onest, sans-serif', fontSize: 13, color: '#1a2035', '--cv-accent': accent } as React.CSSProperties}>
       <div style={{ padding: '36px 40px 28px', background: '#0f1827', position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 4, background: `linear-gradient(90deg, ${accent}, ${a(0.4)})` }} />
         <div style={{ position: 'absolute', top: -60, right: -60, width: 200, height: 200, borderRadius: '50%', background: a(0.06) }} />

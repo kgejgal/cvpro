@@ -11,7 +11,7 @@ export default function ExecutiveTemplate({ data }: { data: CVData }) {
   const initials = `${data.firstName?.[0] || ''}${data.lastName?.[0] || ''}`
 
   return (
-    <div id="cv-doc" style={{ width: 794, minHeight: 1123, background: '#fff', fontFamily: 'var(--font-playfair), Playfair Display, serif', fontSize: 13, color: '#222' }}>
+    <div id="cv-doc" data-clarity-mask="True" style={{ width: 794, minHeight: 1123, background: '#fff', fontFamily: 'var(--font-playfair), Playfair Display, serif', fontSize: 13, color: '#222' }}>
       {/* Prestige header */}
       <div style={{ background: darkSlate, padding: '40px 48px', display: 'flex', gap: 28, alignItems: 'center' }}>
         {data.photo

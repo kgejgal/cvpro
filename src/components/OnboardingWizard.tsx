@@ -107,7 +107,7 @@ export default function OnboardingWizard({ onComplete, plan }: Props) {
       background: 'rgba(5,12,28,0.92)', backdropFilter: 'blur(6px)',
       display: 'flex', alignItems: 'center', justifyContent: 'center',
     }}>
-      <div style={{
+      <div data-clarity-mask="True" style={{
         background: '#0f1e38', border: '1px solid #1e3f75', borderRadius: 20,
         padding: '36px 40px', width: 520, maxWidth: '92vw',
         boxShadow: '0 24px 80px rgba(0,0,0,0.6)',

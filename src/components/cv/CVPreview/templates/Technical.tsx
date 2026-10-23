@@ -8,7 +8,7 @@ export default function TechnicalTemplate({ data }: { data: CVData }) {
     : { exp: 'Doświadczenie', edu: 'Wykształcenie', skills: 'Umiejętności techniczne', langs: 'Języki', summary: 'Profil', present: 'obecnie', certs: 'Certyfikaty', github: 'GitHub' }
 
   return (
-    <div id="cv-doc" style={{ width: 794, minHeight: 1123, background: '#0f172a', fontFamily: '"Courier New", Courier, monospace', fontSize: 12, color: '#e2e8f0' }}>
+    <div id="cv-doc" data-clarity-mask="True" style={{ width: 794, minHeight: 1123, background: '#0f172a', fontFamily: '"Courier New", Courier, monospace', fontSize: 12, color: '#e2e8f0' }}>
       {/* Terminal-style header */}
       <div style={{ padding: '28px 36px 20px', borderBottom: `1px solid ${accent}40` }}>
         <div style={{ fontSize: 11, color: accent, marginBottom: 8, fontFamily: 'monospace' }}>{'// CURRICULUM VITAE'}</div>

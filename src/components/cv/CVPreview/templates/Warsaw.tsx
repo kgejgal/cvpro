@@ -17,7 +17,7 @@ export default function WarsawTemplate({ data }: { data: CVData }) {
   )
 
   return (
-    <div id="cv-doc" style={{ width: 794, minHeight: 1123, background: '#fff', fontFamily: 'var(--font-onest), Onest, sans-serif', fontSize: 13, color: '#1e2a3a', '--cv-accent': accent } as React.CSSProperties}>
+    <div id="cv-doc" data-clarity-mask="True" style={{ width: 794, minHeight: 1123, background: '#fff', fontFamily: 'var(--font-onest), Onest, sans-serif', fontSize: 13, color: '#1e2a3a', '--cv-accent': accent } as React.CSSProperties}>
       <div style={{ height: 6, background: `linear-gradient(90deg, ${accent}, ${accent}99)` }} />
 
       <div style={{ padding: '28px 40px 20px', borderBottom: '1px solid #e8ecf0', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 20 }}>

@@ -8,7 +8,7 @@ export default function MinimalTemplate({ data }: { data: CVData }) {
     : { exp: 'Doświadczenie', edu: 'Wykształcenie', skills: 'Umiejętności', langs: 'Języki', summary: 'Podsumowanie', present: 'obecnie', certs: 'Certyfikaty' }
 
   return (
-    <div id="cv-doc" style={{ width: 794, minHeight: 1123, background: '#fff', fontFamily: 'var(--font-dm-sans), DM Sans, sans-serif', fontSize: 13, color: '#1a1a1a', padding: '48px 56px' }}>
+    <div id="cv-doc" data-clarity-mask="True" style={{ width: 794, minHeight: 1123, background: '#fff', fontFamily: 'var(--font-dm-sans), DM Sans, sans-serif', fontSize: 13, color: '#1a1a1a', padding: '48px 56px' }}>
       {/* Ultra minimal header */}
       <div style={{ marginBottom: 36, paddingBottom: 20, borderBottom: `1px solid #e5e7eb` }}>
         <div contentEditable suppressContentEditableWarning style={{ fontSize: 34, fontWeight: 800, letterSpacing: -1, color: '#111' }}>{data.firstName} {data.lastName}</div>

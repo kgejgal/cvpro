@@ -20,7 +20,7 @@ export default function ClassicTemplate({ data }: { data: CVData }) {
 
   return (
     <div
-      id="cv-doc"
+      id="cv-doc" data-clarity-mask="True"
       style={{
         width: 794,
         minHeight: 1123,
