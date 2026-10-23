@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { createClient } from '@/lib/supabase/client'
 import { SITUATION_CHIPS, ALL_TEMPLATES } from '@/lib/cv/types'
 import type { CVData } from '@/lib/cv/types'
@@ -20,6 +20,36 @@ export default function OnboardingWizard({ onComplete, plan }: Props) {
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
 
+  // Browser Back must step through the wizard instead of leaving the page (which threw away
+  // everything typed so far). While the wizard is open one extra history entry sits on top of
+  // the stack; every Back press consumes it, moves one step back and puts it back.
+  const stepRef = useRef(0)
+  const armedRef = useRef(false)
+  const closingRef = useRef(false)
+  useEffect(() => { stepRef.current = step }, [step])
+
+  useEffect(() => {
+    if (!visible) return
+    if (!armedRef.current) {
+      // After a reload the entry we added earlier is still on top; don't stack a second one.
+      if (!window.history.state?.cvWizard) window.history.pushState({ cvWizard: true }, '')
+      armedRef.current = true
+    }
+    function onPop() {
+      if (closingRef.current) { closingRef.current = false; return }
+      if (stepRef.current > 0) {
+        setStep(stepRef.current - 1)
+        window.history.pushState({ cvWizard: true }, '')
+      } else {
+        // First step: Back leaves the creator, as it always did.
+        armedRef.current = false
+        window.history.back()
+      }
+    }
+    window.addEventListener('popstate', onPop)
+    return () => window.removeEventListener('popstate', onPop)
+  }, [visible])
+
   useEffect(() => {
     if (typeof window === 'undefined') return
     if (localStorage.getItem(STORAGE_KEY)) return
@@ -38,9 +68,19 @@ export default function OnboardingWizard({ onComplete, plan }: Props) {
     setVisible(true)
   }, [])
 
-  function finish() {
+  function close() {
     localStorage.setItem(STORAGE_KEY, '1')
     setVisible(false)
+    if (armedRef.current) {
+      // Drop the wizard's history entry so the next Back leaves the editor in one press.
+      armedRef.current = false
+      closingRef.current = true
+      window.history.back()
+    }
+  }
+
+  function finish() {
+    close()
     const patch: Partial<CVData> = { template: template as CVData['template'] }
     if (situation) patch.situation = situation
     if (firstName) patch.firstName = firstName
@@ -49,8 +89,7 @@ export default function OnboardingWizard({ onComplete, plan }: Props) {
   }
 
   function skip() {
-    localStorage.setItem(STORAGE_KEY, '1')
-    setVisible(false)
+    close()
   }
 
   if (!visible) return null
@@ -150,7 +189,7 @@ export default function OnboardingWizard({ onComplete, plan }: Props) {
               ))}
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-              <button onClick={() => setStep(0)} style={{ background: 'none', border: '1px solid #1e3f75', color: '#8ba3c4', borderRadius: 10, padding: '10px 20px', fontSize: 13, cursor: 'pointer' }}>← Wróć</button>
+              <button onClick={() => window.history.back()} style={{ background: 'none', border: '1px solid #1e3f75', color: '#8ba3c4', borderRadius: 10, padding: '10px 20px', fontSize: 13, cursor: 'pointer' }}>← Wróć</button>
               <button onClick={() => setStep(2)} style={{ background: 'linear-gradient(135deg,#4477FF,#7C3AED)', color: '#fff', border: 'none', borderRadius: 10, padding: '11px 28px', fontSize: 14, fontWeight: 700, cursor: 'pointer' }}>
                 Dalej →
               </button>
@@ -189,7 +228,7 @@ export default function OnboardingWizard({ onComplete, plan }: Props) {
               ))}
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <button onClick={() => setStep(1)} style={{ background: 'none', border: '1px solid #1e3f75', color: '#8ba3c4', borderRadius: 10, padding: '10px 20px', fontSize: 13, cursor: 'pointer' }}>← Wróć</button>
+              <button onClick={() => window.history.back()} style={{ background: 'none', border: '1px solid #1e3f75', color: '#8ba3c4', borderRadius: 10, padding: '10px 20px', fontSize: 13, cursor: 'pointer' }}>← Wróć</button>
               <button onClick={finish} style={{ background: 'linear-gradient(135deg,#4477FF,#7C3AED)', color: '#fff', border: 'none', borderRadius: 10, padding: '11px 28px', fontSize: 14, fontWeight: 700, cursor: 'pointer' }}>
                 Zacznij tworzyć CV 🚀
               </button>

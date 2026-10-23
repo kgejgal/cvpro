@@ -1,4 +1,5 @@
 import type { CVData } from '@/lib/cv/types'
+import { dateRange } from '@/lib/cv/format'
 
 function hex2rgb(hex: string) {
   const n = parseInt(hex.replace('#', ''), 16)
@@ -9,7 +10,6 @@ export default function StartupTemplate({ data }: { data: CVData }) {
   const accent = data.colorTheme || '#2563eb'
   const { r, g, b } = hex2rgb(accent)
   const a = (alpha: number) => `rgba(${r},${g},${b},${alpha})`
-  const isPresent = (d: string) => d === 'present' || d === 'obecnie'
 
   const L = data.language === 'en'
     ? { exp: 'Experience', edu: 'Education', skills: 'Skills', langs: 'Languages', hobbies: 'Interests', certs: 'Certifications', summary: 'About', present: 'present' }
@@ -76,7 +76,7 @@ export default function StartupTemplate({ data }: { data: CVData }) {
                       </div>
                     </div>
                     <span style={{ fontSize: 10, fontWeight: 600, color: '#8a9ab0', background: '#f0f4fa', padding: '3px 9px', borderRadius: 8, flexShrink: 0 }}>
-                      {e.startDate} – {isPresent(e.endDate) ? L.present : e.endDate}
+                      {dateRange(e.startDate, e.endDate, L.present)}
                     </span>
                   </div>
                   {(e.bullets ?? []).filter(Boolean).map((b, j) => (
@@ -100,7 +100,7 @@ export default function StartupTemplate({ data }: { data: CVData }) {
                       <div contentEditable suppressContentEditableWarning style={{ fontWeight: 700, fontSize: 13, color: '#0f1827' }}>{e.degree}{e.field ? ` — ${e.field}` : ''}</div>
                       <div contentEditable suppressContentEditableWarning style={{ fontSize: 12, color: accent, fontWeight: 600 }}>{e.school}</div>
                     </div>
-                    <span style={{ fontSize: 10, color: '#8a9ab0', flexShrink: 0 }}>{e.startDate}{e.endDate ? ` – ${e.endDate}` : ''}</span>
+                    <span style={{ fontSize: 10, color: '#8a9ab0', flexShrink: 0 }}>{dateRange(e.startDate, e.endDate)}</span>
                   </div>
                 </div>
               ))}

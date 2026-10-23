@@ -1,4 +1,5 @@
 import type { CVData } from '@/lib/cv/types'
+import { dateRange } from '@/lib/cv/format'
 
 export default function LuxuryTemplate({ data }: { data: CVData }) {
   const gold = '#C9A86A'
@@ -85,7 +86,7 @@ export default function LuxuryTemplate({ data }: { data: CVData }) {
                 <div key={i} style={{ marginBottom: 18, paddingLeft: 14, borderLeft: `2px solid ${gold}` }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                     <div contentEditable suppressContentEditableWarning style={{ fontWeight: 700, fontSize: 13 }}>{e.position}</div>
-                    <div style={{ fontSize: 11, color: '#888', whiteSpace: 'nowrap' }}>{e.startDate} – {e.endDate === 'present' || e.endDate === 'obecnie' ? L.present : e.endDate}</div>
+                    <div style={{ fontSize: 11, color: '#888', whiteSpace: 'nowrap' }}>{dateRange(e.startDate, e.endDate, L.present)}</div>
                   </div>
                   <div contentEditable suppressContentEditableWarning style={{ fontSize: 12, color: gold, marginBottom: 6 }}>{e.company}{e.city ? ` · ${e.city}` : ''}</div>
                   {( e.bullets ?? []).filter(Boolean).map((b, j) => (
@@ -106,7 +107,7 @@ export default function LuxuryTemplate({ data }: { data: CVData }) {
                     <div contentEditable suppressContentEditableWarning style={{ fontWeight: 700, fontSize: 13 }}>{e.degree}{e.field ? ` — ${e.field}` : ''}</div>
                     <div contentEditable suppressContentEditableWarning style={{ fontSize: 12, color: gold }}>{e.school}</div>
                   </div>
-                  <div style={{ fontSize: 11, color: '#888' }}>{e.startDate} – {e.endDate}</div>
+                  <div style={{ fontSize: 11, color: '#888' }}>{dateRange(e.startDate, e.endDate)}</div>
                 </div>
               ))}
             </div>

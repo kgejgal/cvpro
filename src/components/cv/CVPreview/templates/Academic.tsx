@@ -1,8 +1,8 @@
 import type { CVData } from '@/lib/cv/types'
+import { dateRange } from '@/lib/cv/format'
 
 export default function AcademicTemplate({ data }: { data: CVData }) {
   const accent = data.colorTheme || '#2563eb'
-  const isPresent = (d: string) => d === 'present' || d === 'obecnie'
 
   const L = data.language === 'en'
     ? { exp: 'Work Experience', edu: 'Education', skills: 'Skills', langs: 'Languages', hobbies: 'Interests', certs: 'Certifications', summary: 'Professional Summary', present: 'present' }
@@ -47,8 +47,8 @@ export default function AcademicTemplate({ data }: { data: CVData }) {
             <Section title={L.exp} />
             {data.experience.map((e, i) => (
               <div key={i} style={{ marginBottom: 16, display: 'grid', gridTemplateColumns: '130px 1fr', gap: '0 20px' }}>
-                <div style={{ fontSize: 11, color: '#7a8a9a', paddingTop: 2, lineHeight: 1.6, fontFamily: 'Georgia, serif' }}>
-                  {e.startDate} –<br />{isPresent(e.endDate) ? L.present : e.endDate}
+                <div style={{ fontSize: 11, color: '#7a8a9a', paddingTop: 2, lineHeight: 1.6, fontFamily: 'Georgia, serif', whiteSpace: 'pre-line' }}>
+                  {dateRange(e.startDate, e.endDate, L.present, ' –\n')}
                 </div>
                 <div>
                   <div contentEditable suppressContentEditableWarning style={{ fontWeight: 700, fontSize: 14, color: '#0d0d1a' }}>{e.position}</div>
@@ -73,7 +73,7 @@ export default function AcademicTemplate({ data }: { data: CVData }) {
             {data.education.map((e, i) => (
               <div key={i} style={{ marginBottom: 14, display: 'grid', gridTemplateColumns: '130px 1fr', gap: '0 20px' }}>
                 <div style={{ fontSize: 11, color: '#7a8a9a', paddingTop: 2, fontFamily: 'Georgia, serif' }}>
-                  {e.startDate}{e.endDate ? ` – ${e.endDate}` : ''}
+                  {dateRange(e.startDate, e.endDate)}
                 </div>
                 <div>
                   <div contentEditable suppressContentEditableWarning style={{ fontWeight: 700, fontSize: 13, color: '#0d0d1a' }}>{e.degree}{e.field ? ` — ${e.field}` : ''}</div>

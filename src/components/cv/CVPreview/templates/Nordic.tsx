@@ -1,8 +1,8 @@
 import type { CVData } from '@/lib/cv/types'
+import { dateRange } from '@/lib/cv/format'
 
 export default function NordicTemplate({ data }: { data: CVData }) {
   const accent = data.colorTheme || '#2563eb'
-  const isPresent = (d: string) => d === 'present' || d === 'obecnie'
 
   const L = data.language === 'en'
     ? { exp: 'Work Experience', edu: 'Education', skills: 'Skills', langs: 'Languages', hobbies: 'Interests', certs: 'Certifications', summary: 'Summary', present: 'present' }
@@ -61,7 +61,7 @@ export default function NordicTemplate({ data }: { data: CVData }) {
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
                     <div contentEditable suppressContentEditableWarning style={{ fontWeight: 700, fontSize: 14, color: '#0d1520' }}>{e.position}</div>
                     <span style={{ fontSize: 11, color: '#9aabb8', flexShrink: 0 }}>
-                      {e.startDate} – {isPresent(e.endDate) ? L.present : e.endDate}
+                      {dateRange(e.startDate, e.endDate, L.present)}
                     </span>
                   </div>
                   <div contentEditable suppressContentEditableWarning style={{ fontSize: 12, color: accent, fontWeight: 600, marginTop: 2, marginBottom: 6 }}>
@@ -85,7 +85,7 @@ export default function NordicTemplate({ data }: { data: CVData }) {
                 <div key={i} style={{ marginBottom: 16 }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
                     <div contentEditable suppressContentEditableWarning style={{ fontWeight: 700, fontSize: 13, color: '#0d1520' }}>{e.degree}{e.field ? ` — ${e.field}` : ''}</div>
-                    <span style={{ fontSize: 11, color: '#9aabb8', flexShrink: 0 }}>{e.startDate}{e.endDate ? ` – ${e.endDate}` : ''}</span>
+                    <span style={{ fontSize: 11, color: '#9aabb8', flexShrink: 0 }}>{dateRange(e.startDate, e.endDate)}</span>
                   </div>
                   <div contentEditable suppressContentEditableWarning style={{ fontSize: 12, color: accent, fontWeight: 600, marginTop: 2 }}>{e.school}</div>
                   {e.grade && <div style={{ fontSize: 11, color: '#5a6878', marginTop: 3 }}>{e.grade}</div>}

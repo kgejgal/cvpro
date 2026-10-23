@@ -1,4 +1,5 @@
 import type { CVData } from '@/lib/cv/types'
+import { dateRange } from '@/lib/cv/format'
 
 export default function ExecutiveTemplate({ data }: { data: CVData }) {
   const L = data.language === 'en'
@@ -46,7 +47,7 @@ export default function ExecutiveTemplate({ data }: { data: CVData }) {
               <div key={i} style={{ marginBottom: 20 }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
                   <div contentEditable suppressContentEditableWarning style={{ fontWeight: 700, fontSize: 15, color: darkSlate }}>{e.position}</div>
-                  <div style={{ fontSize: 11, color: '#888', fontFamily: 'var(--font-lato), Lato, sans-serif' }}>{e.startDate} – {e.endDate === 'present' || e.endDate === 'obecnie' ? L.present : e.endDate}</div>
+                  <div style={{ fontSize: 11, color: '#888', fontFamily: 'var(--font-lato), Lato, sans-serif' }}>{dateRange(e.startDate, e.endDate, L.present)}</div>
                 </div>
                 <div contentEditable suppressContentEditableWarning style={{ fontSize: 12, color: gold, fontStyle: 'italic', marginBottom: 8, fontFamily: 'var(--font-lato), Lato, sans-serif' }}>{e.company}{e.city ? ` · ${e.city}` : ''}</div>
                 {( e.bullets ?? []).filter(Boolean).map((b, j) => (
@@ -68,7 +69,7 @@ export default function ExecutiveTemplate({ data }: { data: CVData }) {
                   <div key={i} style={{ marginBottom: 12 }}>
                     <div contentEditable suppressContentEditableWarning style={{ fontWeight: 700, fontSize: 13 }}>{e.degree}{e.field ? ` — ${e.field}` : ''}</div>
                     <div contentEditable suppressContentEditableWarning style={{ fontSize: 12, color: gold, fontStyle: 'italic', fontFamily: 'var(--font-lato), Lato, sans-serif' }}>{e.school}</div>
-                    <div style={{ fontSize: 11, color: '#888', fontFamily: 'var(--font-lato), Lato, sans-serif' }}>{e.startDate} – {e.endDate}</div>
+                    <div style={{ fontSize: 11, color: '#888', fontFamily: 'var(--font-lato), Lato, sans-serif' }}>{dateRange(e.startDate, e.endDate)}</div>
                   </div>
                 ))}
               </div>

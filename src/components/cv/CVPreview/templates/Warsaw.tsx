@@ -1,8 +1,8 @@
 import type { CVData } from '@/lib/cv/types'
+import { dateRange } from '@/lib/cv/format'
 
 export default function WarsawTemplate({ data }: { data: CVData }) {
   const accent = data.colorTheme || '#2563eb'
-  const isPresent = (d: string) => d === 'present' || d === 'obecnie'
 
   const L = data.language === 'en'
     ? { exp: 'Experience', edu: 'Education', skills: 'Skills', langs: 'Languages', hobbies: 'Interests', certs: 'Certifications', summary: 'Profile', present: 'present' }
@@ -62,7 +62,7 @@ export default function WarsawTemplate({ data }: { data: CVData }) {
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
                     <div contentEditable suppressContentEditableWarning style={{ fontWeight: 700, fontSize: 14, color: '#0f1a2a' }}>{e.position}</div>
                     <div style={{ fontSize: 11, color: '#7a8a9a', flexShrink: 0 }}>
-                      {e.startDate} – {isPresent(e.endDate) ? L.present : e.endDate}
+                      {dateRange(e.startDate, e.endDate, L.present)}
                     </div>
                   </div>
                   <div contentEditable suppressContentEditableWarning style={{ fontSize: 12, color: accent, fontWeight: 600, marginBottom: 5 }}>
@@ -86,7 +86,7 @@ export default function WarsawTemplate({ data }: { data: CVData }) {
                 <div key={i} style={{ marginBottom: 14 }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
                     <div contentEditable suppressContentEditableWarning style={{ fontWeight: 700, fontSize: 13, color: '#0f1a2a' }}>{e.degree}{e.field ? ` — ${e.field}` : ''}</div>
-                    <div style={{ fontSize: 11, color: '#7a8a9a', flexShrink: 0 }}>{e.startDate}{e.endDate ? ` – ${e.endDate}` : ''}</div>
+                    <div style={{ fontSize: 11, color: '#7a8a9a', flexShrink: 0 }}>{dateRange(e.startDate, e.endDate)}</div>
                   </div>
                   <div contentEditable suppressContentEditableWarning style={{ fontSize: 12, color: accent, fontWeight: 600 }}>{e.school}</div>
                 </div>

@@ -1,4 +1,5 @@
 import type { CVData } from '@/lib/cv/types'
+import { dateRange } from '@/lib/cv/format'
 
 export default function BoldTemplate({ data }: { data: CVData }) {
   const accent = data.colorTheme || '#2563eb'
@@ -60,7 +61,7 @@ export default function BoldTemplate({ data }: { data: CVData }) {
                   <div style={{ display: 'flex', gap: 8, fontSize: 11, marginBottom: 6 }}>
                     <span contentEditable suppressContentEditableWarning style={{ color: accent, fontWeight: 600 }}>{e.company}{e.city ? ` · ${e.city}` : ''}</span>
                     <span style={{ color: '#999' }}>|</span>
-                    <span style={{ color: '#999' }}>{e.startDate} – {e.endDate === 'present' || e.endDate === 'obecnie' ? labels.present : e.endDate}</span>
+                    <span style={{ color: '#999' }}>{dateRange(e.startDate, e.endDate, labels.present)}</span>
                   </div>
                   {( e.bullets ?? []).filter(Boolean).map((b, j) => (
                     <div key={j} contentEditable suppressContentEditableWarning style={{ fontSize: 12, color: '#333', marginBottom: 4, lineHeight: 1.6 }}>→ {b}</div>
@@ -78,7 +79,7 @@ export default function BoldTemplate({ data }: { data: CVData }) {
                   <div contentEditable suppressContentEditableWarning style={{ fontWeight: 700 }}>{e.degree}{e.field ? ` — ${e.field}` : ''}</div>
                   <div style={{ fontSize: 12 }}>
                     <span contentEditable suppressContentEditableWarning style={{ color: accent }}>{e.school}</span>
-                    <span style={{ color: '#999' }}> · {e.startDate} – {e.endDate}</span>
+                    <span style={{ color: '#999' }}>{dateRange(e.startDate, e.endDate) && ` · ${dateRange(e.startDate, e.endDate)}`}</span>
                   </div>
                 </div>
               ))}

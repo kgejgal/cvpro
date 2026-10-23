@@ -1,4 +1,5 @@
 import type { CVData } from '@/lib/cv/types'
+import { dateRange } from '@/lib/cv/format'
 
 function hex2rgb(hex: string) {
   const n = parseInt(hex.replace('#', ''), 16)
@@ -9,7 +10,6 @@ export default function TimelineTemplate({ data }: { data: CVData }) {
   const accent = data.colorTheme || '#2563eb'
   const { r, g, b } = hex2rgb(accent)
   const a = (alpha: number) => `rgba(${r},${g},${b},${alpha})`
-  const isPresent = (d: string) => d === 'present' || d === 'obecnie'
 
   const L = data.language === 'en'
     ? { exp: 'Experience', edu: 'Education', skills: 'Skills', langs: 'Languages', hobbies: 'Interests', certs: 'Certifications', summary: 'Profile', present: 'present' }
@@ -85,7 +85,7 @@ export default function TimelineTemplate({ data }: { data: CVData }) {
                 <TimelineItem key={i}
                   title={e.position}
                   sub={`${e.company}${e.city ? ` · ${e.city}` : ''}`}
-                  date={`${e.startDate} – ${isPresent(e.endDate) ? L.present : e.endDate}`}
+                  date={dateRange(e.startDate, e.endDate, L.present)}
                   bullets={e.bullets}
                 />
               ))}
@@ -99,7 +99,7 @@ export default function TimelineTemplate({ data }: { data: CVData }) {
                 <TimelineItem key={i}
                   title={`${e.degree}${e.field ? ` — ${e.field}` : ''}`}
                   sub={e.school}
-                  date={`${e.startDate}${e.endDate ? ` – ${e.endDate}` : ''}`}
+                  date={dateRange(e.startDate, e.endDate)}
                 />
               ))}
             </>

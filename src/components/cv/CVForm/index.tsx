@@ -35,14 +35,15 @@ function Field({ label, children }: { label: string; children: React.ReactNode }
   )
 }
 
-function Input({ value, onChange, placeholder, type = 'text' }: { value: string; onChange: (v: string) => void; placeholder?: string; type?: string }) {
+function Input({ value, onChange, placeholder, type = 'text', disabled = false }: { value: string; onChange: (v: string) => void; placeholder?: string; type?: string; disabled?: boolean }) {
   return (
     <input
       type={type}
       value={value}
       onChange={e => onChange(e.target.value)}
       placeholder={placeholder}
-      style={INPUT_STYLE}
+      disabled={disabled}
+      style={disabled ? { ...INPUT_STYLE, opacity: 0.5, cursor: 'not-allowed' } : INPUT_STYLE}
     />
   )
 }
@@ -298,7 +299,21 @@ export default function CVForm({ data, onChange, plan = 'free' }: Props) {
                 <Field label="Stanowisko"><Input value={e.position} onChange={v => patchExp(i, { position: v })} placeholder="Senior Developer" /></Field>
                 <Field label="Firma"><Input value={e.company} onChange={v => patchExp(i, { company: v })} placeholder="Tech Corp" /></Field>
                 <Field label="Od (np. 2022-03)"><Input value={e.startDate} onChange={v => patchExp(i, { startDate: v })} placeholder="2022-03" /></Field>
-                <Field label="Do (lub 'obecnie')"><Input value={e.endDate} onChange={v => patchExp(i, { endDate: v })} placeholder="obecnie" /></Field>
+                <Field label="Do">
+                  {/* "Obecnie" is a checkbox, as in other CV builders, so nobody has to type the word (and spell it right). */}
+                  {(() => {
+                    const current = /^(obecnie|present)$/i.test((e.endDate || '').trim())
+                    return (
+                      <>
+                        <Input value={current ? 'obecnie' : e.endDate} onChange={v => patchExp(i, { endDate: v })} placeholder="np. 2024-05" disabled={current} />
+                        <label style={{ display: 'flex', alignItems: 'center', gap: 6, marginTop: 6, fontSize: 12, color: '#7a94bb', cursor: 'pointer' }}>
+                          <input type="checkbox" checked={current} onChange={ev => patchExp(i, { endDate: ev.target.checked ? 'obecnie' : '' })} />
+                          Obecnie tu pracuję
+                        </label>
+                      </>
+                    )
+                  })()}
+                </Field>
                 <Field label="Miasto"><Input value={e.city || ''} onChange={v => patchExp(i, { city: v })} placeholder="Warszawa" /></Field>
               </div>
               <div style={{ marginTop: 8 }}>

@@ -1,10 +1,11 @@
 'use client'
 
-import { useEffect, useState, lazy, Suspense } from 'react'
+import { useEffect, useRef, useState, lazy, Suspense } from 'react'
 import { useParams } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
 import type { CVData } from '@/lib/cv/types'
 import { EMPTY_CV } from '@/lib/cv/types'
+import ScaledCV from '@/components/cv/ScaledCV'
 import Link from 'next/link'
 
 const TEMPLATE_MAP: Record<string, React.LazyExoticComponent<React.ComponentType<{ data: CVData }>>> = {
@@ -31,6 +32,19 @@ export default function PublicCVPage() {
   const [data, setData] = useState<CVData | null>(null)
   const [loading, setLoading] = useState(true)
   const [notFound, setNotFound] = useState(false)
+  const docRef = useRef<HTMLDivElement>(null)
+
+  // Shared CVs are read-only: the templates mark their text blocks contentEditable (that is how
+  // the owner's live preview works), which a visitor must not be able to type into.
+  useEffect(() => {
+    const root = docRef.current
+    if (!root) return
+    const lock = () => root.querySelectorAll('[contenteditable]').forEach(el => el.setAttribute('contenteditable', 'false'))
+    lock()
+    const observer = new MutationObserver(lock) // templates are lazy-loaded, so they mount after this runs
+    observer.observe(root, { childList: true, subtree: true })
+    return () => observer.disconnect()
+  }, [data])
 
   useEffect(() => {
     const supabase = createClient()
@@ -44,8 +58,8 @@ export default function PublicCVPage() {
         if (!cv) { setNotFound(true); setLoading(false); return }
         setData({ ...EMPTY_CV, ...(cv.data as CVData) })
         setLoading(false)
-        // Track view — fire and forget
-        fetch('/api/cv/view', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ cv_id: id }) })
+        // Track view — fire and forget (a blocked or offline request must not surface as an unhandled error)
+        fetch('/api/cv/view', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ cv_id: id }) }).catch(() => {})
       })
   }, [id])
 
@@ -81,12 +95,16 @@ export default function PublicCVPage() {
         </Link>
       </div>
 
-      <div style={{ padding: '32px 16px', display: 'flex', justifyContent: 'center' }}>
-        <div style={{ width: 794, boxShadow: '0 4px 40px rgba(0,0,0,0.5)', borderRadius: 4, overflow: 'hidden' }}>
-          <Suspense fallback={<div style={{ width: 794, minHeight: 600, background: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#ccc' }}>Ładowanie…</div>}>
-            <Template data={data!} />
-          </Suspense>
-        </div>
+      <style>{'.cv-readonly [contenteditable]{outline:none!important;cursor:default!important;background:transparent!important}'}</style>
+      {/* ScaledCV shrinks the fixed 794px A4 page to fit phones; without it the right half was cut off and unreachable. */}
+      <div style={{ padding: '32px 16px' }}>
+        <ScaledCV maxScale={1}>
+          <div ref={docRef} className="cv-readonly" style={{ width: 794, boxShadow: '0 4px 40px rgba(0,0,0,0.5)', borderRadius: 4, overflow: 'hidden' }}>
+            <Suspense fallback={<div style={{ width: 794, minHeight: 600, background: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#ccc' }}>Ładowanie…</div>}>
+              <Template data={data!} />
+            </Suspense>
+          </div>
+        </ScaledCV>
       </div>
     </div>
   )

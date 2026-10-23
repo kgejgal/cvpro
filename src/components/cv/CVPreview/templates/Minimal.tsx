@@ -1,4 +1,5 @@
 import type { CVData } from '@/lib/cv/types'
+import { dateRange } from '@/lib/cv/format'
 
 export default function MinimalTemplate({ data }: { data: CVData }) {
   const accent = data.colorTheme || '#2563eb'
@@ -31,8 +32,8 @@ export default function MinimalTemplate({ data }: { data: CVData }) {
           <div style={{ fontSize: 11, fontWeight: 800, letterSpacing: 3, textTransform: 'uppercase', color: '#999', marginBottom: 16 }}>{L.exp}</div>
           {data.experience.map((e, i) => (
             <div key={i} style={{ marginBottom: 20, display: 'grid', gridTemplateColumns: '100px 1fr', gap: 16 }}>
-              <div style={{ fontSize: 11, color: '#aaa', paddingTop: 2, lineHeight: 1.5 }}>
-                {e.startDate}<br />–<br />{e.endDate === 'present' || e.endDate === 'obecnie' ? L.present : e.endDate}
+              <div style={{ fontSize: 11, color: '#aaa', paddingTop: 2, lineHeight: 1.5, whiteSpace: 'pre-line' }}>
+                {dateRange(e.startDate, e.endDate, L.present, '\n–\n')}
               </div>
               <div>
                 <div contentEditable suppressContentEditableWarning style={{ fontWeight: 700 }}>{e.position}</div>
@@ -55,7 +56,7 @@ export default function MinimalTemplate({ data }: { data: CVData }) {
                 <div key={i} style={{ marginBottom: 12 }}>
                   <div contentEditable suppressContentEditableWarning style={{ fontWeight: 700, fontSize: 12 }}>{e.degree}{e.field ? ` — ${e.field}` : ''}</div>
                   <div contentEditable suppressContentEditableWarning style={{ fontSize: 12, color: accent }}>{e.school}</div>
-                  <div style={{ fontSize: 11, color: '#aaa' }}>{e.startDate} – {e.endDate}</div>
+                  <div style={{ fontSize: 11, color: '#aaa' }}>{dateRange(e.startDate, e.endDate)}</div>
                 </div>
               ))}
             </div>

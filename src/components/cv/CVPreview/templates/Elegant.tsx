@@ -1,4 +1,5 @@
 import type { CVData } from '@/lib/cv/types'
+import { dateRange } from '@/lib/cv/format'
 
 export default function ElegantTemplate({ data }: { data: CVData }) {
   const accent = data.colorTheme || '#2563eb'
@@ -53,8 +54,8 @@ export default function ElegantTemplate({ data }: { data: CVData }) {
             <div style={{ borderTop: `1px solid ${accent}`, paddingTop: 14 }}>
               {data.experience.map((e, i) => (
                 <div key={i} style={{ marginBottom: 18, display: 'grid', gridTemplateColumns: '120px 1fr', gap: 16 }}>
-                  <div style={{ fontSize: 11, color: '#888', paddingTop: 2 }}>
-                    {e.startDate}<br />–<br />{e.endDate === 'present' || e.endDate === 'obecnie' ? labels.present : e.endDate}
+                  <div style={{ fontSize: 11, color: '#888', paddingTop: 2, whiteSpace: 'pre-line' }}>
+                    {dateRange(e.startDate, e.endDate, labels.present, '\n–\n')}
                   </div>
                   <div>
                     <div contentEditable suppressContentEditableWarning style={{ fontWeight: 700, fontSize: 13, color: '#1a1a1a' }}>{e.position}</div>
@@ -82,7 +83,7 @@ export default function ElegantTemplate({ data }: { data: CVData }) {
                     <div key={i} style={{ marginBottom: 12 }}>
                       <div contentEditable suppressContentEditableWarning style={{ fontWeight: 700, fontSize: 12 }}>{e.degree}{e.field ? ` — ${e.field}` : ''}</div>
                       <div contentEditable suppressContentEditableWarning style={{ fontSize: 11, color: accent, fontStyle: 'italic' }}>{e.school}</div>
-                      <div style={{ fontSize: 11, color: '#888' }}>{e.startDate} – {e.endDate}</div>
+                      <div style={{ fontSize: 11, color: '#888' }}>{dateRange(e.startDate, e.endDate)}</div>
                     </div>
                   ))}
                 </div>

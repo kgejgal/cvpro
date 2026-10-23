@@ -1,4 +1,5 @@
 import type { CVData } from '@/lib/cv/types'
+import { dateRange } from '@/lib/cv/format'
 
 function tint(hex: string, amount: number) {
   const n = parseInt(hex.replace('#', ''), 16)
@@ -118,7 +119,7 @@ export default function ClassicTemplate({ data }: { data: CVData }) {
                       <div contentEditable suppressContentEditableWarning style={{ fontSize: 12, color: accent }}>{e.company}{e.city ? `, ${e.city}` : ''}</div>
                     </div>
                     <div style={{ fontSize: 11, color: '#7a8594', whiteSpace: 'nowrap', marginLeft: 8 }}>
-                      {e.startDate} – {e.endDate === 'present' || e.endDate === 'obecnie' ? (data.language === 'en' ? 'present' : 'obecnie') : e.endDate}
+                      {dateRange(e.startDate, e.endDate, data.language === 'en' ? 'present' : 'obecnie')}
                     </div>
                   </div>
                   {(e.bullets ?? []).length > 0 && (
@@ -146,7 +147,7 @@ export default function ClassicTemplate({ data }: { data: CVData }) {
                     {e.grade && <div style={{ fontSize: 11, color: '#7a8594' }}>{e.grade}</div>}
                   </div>
                   <div style={{ fontSize: 11, color: '#7a8594', whiteSpace: 'nowrap', marginLeft: 8 }}>
-                    {e.startDate} – {e.endDate}
+                    {dateRange(e.startDate, e.endDate)}
                   </div>
                 </div>
               </div>

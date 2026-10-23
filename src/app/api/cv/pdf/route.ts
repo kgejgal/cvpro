@@ -39,6 +39,23 @@ const TEMPLATES: Record<string, React.ComponentType<{ data: CVData }>> = {
 const FONTS_URL =
   'https://fonts.googleapis.com/css2?family=Onest:wght@400;600;700;800;900&family=Poppins:wght@400;600;700&family=DM+Sans:wght@400;500;700&family=Lato:wght@400;700;900&family=Playfair+Display:wght@400;600;700&display=swap&subset=latin-ext'
 
+// Runs inside the page (serialised by Playwright, so it must not use anything from this module).
+// Makes the A4 layout predictable: short CVs fill exactly one page, longer ones flow onto
+// further pages without cutting a job, school or skill group in half.
+function layoutForA4() {
+  const doc = document.getElementById('cv-doc')
+  if (!doc) return
+  const pageHeight = 297 * (96 / 25.4)
+  doc.querySelectorAll('*').forEach(node => {
+    const el = node as HTMLElement
+    if (el.offsetHeight > 0 && el.offsetHeight <= 260 && (el.textContent || '').trim()) el.style.breakInside = 'avoid'
+  })
+  // Whole number of pages, minus a hair so rounding can never push a blank page; this also
+  // lets side panels and dark backgrounds run to the bottom edge instead of stopping mid-page.
+  const pages = Math.max(1, Math.ceil((doc.getBoundingClientRect().height - 1) / pageHeight))
+  doc.style.setProperty('min-height', `${pages * 297 - 0.6}mm`, 'important')
+}
+
 async function getBrowser() {
   const { chromium: pw } = await import('playwright-core')
   if (process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME) {
@@ -112,8 +129,10 @@ ${PRINT_CSS}
     const page = await browser.newPage({ viewport: { width: 794, height: 1123 } })
     await page.setContent(html, { waitUntil: 'networkidle', timeout: 30_000 })
     await page.evaluate(() => document.fonts.ready)
+    await page.evaluate(layoutForA4)
     const pdf = await page.pdf({
       format: 'A4',
+      preferCSSPageSize: true,
       printBackground: true,
       margin: { top: 0, bottom: 0, left: 0, right: 0 },
     })

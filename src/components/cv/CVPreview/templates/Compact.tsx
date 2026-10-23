@@ -1,4 +1,5 @@
 import type { CVData } from '@/lib/cv/types'
+import { dateRange } from '@/lib/cv/format'
 
 export default function CompactTemplate({ data }: { data: CVData }) {
   const accent = data.colorTheme || '#2563eb'
@@ -45,7 +46,7 @@ export default function CompactTemplate({ data }: { data: CVData }) {
                   <span contentEditable suppressContentEditableWarning style={{ fontWeight: 700 }}>{e.position}</span>
                   <span style={{ color: accent, marginLeft: 6, fontSize: 11 }}>— {e.company}{e.city ? `, ${e.city}` : ''}</span>
                 </div>
-                <div style={{ fontSize: 10, color: '#777', whiteSpace: 'nowrap', marginLeft: 8 }}>{e.startDate} – {e.endDate === 'present' || e.endDate === 'obecnie' ? L.present : e.endDate}</div>
+                <div style={{ fontSize: 10, color: '#777', whiteSpace: 'nowrap', marginLeft: 8 }}>{dateRange(e.startDate, e.endDate, L.present)}</div>
               </div>
               {( e.bullets ?? []).filter(Boolean).map((b, j) => (
                 <div key={j} contentEditable suppressContentEditableWarning style={{ fontSize: 11, color: '#444', paddingLeft: 10, marginTop: 2, lineHeight: 1.5 }}>• {b}</div>
@@ -64,7 +65,7 @@ export default function CompactTemplate({ data }: { data: CVData }) {
               <div key={i} style={{ marginBottom: 8 }}>
                 <div contentEditable suppressContentEditableWarning style={{ fontWeight: 700, fontSize: 11 }}>{e.degree}{e.field ? ` — ${e.field}` : ''}</div>
                 <div contentEditable suppressContentEditableWarning style={{ color: accent, fontSize: 10 }}>{e.school}</div>
-                <div style={{ color: '#888', fontSize: 10 }}>{e.startDate}–{e.endDate}</div>
+                <div style={{ color: '#888', fontSize: 10 }}>{dateRange(e.startDate, e.endDate)}</div>
               </div>
             ))}
           </div>

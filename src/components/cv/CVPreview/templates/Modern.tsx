@@ -1,4 +1,5 @@
 import type { CVData } from '@/lib/cv/types'
+import { dateRange } from '@/lib/cv/format'
 
 export default function ModernTemplate({ data }: { data: CVData }) {
   const accent = data.colorTheme || '#2563eb'
@@ -65,7 +66,7 @@ export default function ModernTemplate({ data }: { data: CVData }) {
                     <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                       <div contentEditable suppressContentEditableWarning style={{ fontWeight: 700, fontSize: 13 }}>{e.position}</div>
                       <div style={{ fontSize: 11, color: '#7a8594', whiteSpace: 'nowrap' }}>
-                        {e.startDate} – {e.endDate === 'present' || e.endDate === 'obecnie' ? labels.present : e.endDate}
+                        {dateRange(e.startDate, e.endDate, labels.present)}
                       </div>
                     </div>
                     <div contentEditable suppressContentEditableWarning style={{ fontSize: 12, color: accent, marginBottom: 6 }}>{e.company}{e.city ? ` · ${e.city}` : ''}</div>
@@ -88,7 +89,7 @@ export default function ModernTemplate({ data }: { data: CVData }) {
                   <div key={i} style={{ marginBottom: 12 }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                       <div contentEditable suppressContentEditableWarning style={{ fontWeight: 600 }}>{e.degree}{e.field ? ` — ${e.field}` : ''}</div>
-                      <div style={{ fontSize: 11, color: '#7a8594' }}>{e.startDate} – {e.endDate}</div>
+                      <div style={{ fontSize: 11, color: '#7a8594' }}>{dateRange(e.startDate, e.endDate)}</div>
                     </div>
                     <div contentEditable suppressContentEditableWarning style={{ fontSize: 12, color: accent }}>{e.school}</div>
                   </div>

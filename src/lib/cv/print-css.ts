@@ -2,13 +2,16 @@
 // Mirrors the .cv-* helper styles from globals.css — keep in sync when templates change.
 export const PRINT_CSS = `
 * { box-sizing: border-box; }
+@page { size: A4; margin: 0; }
 html, body { margin: 0; padding: 0; background: #fff; }
 
+/* The page is exactly A4 wide (210mm = 793.7px; the old 794px overflowed it by a hair) and its
+   height is set per document by layoutForA4() in the PDF route (whole A4 pages, never taller). */
 #cv-doc {
   box-shadow: none !important;
   border-radius: 0 !important;
-  width: 794px !important;
-  min-height: auto !important;
+  width: 210mm !important;
+  min-height: 0 !important;
   margin: 0 !important;
 }
 
@@ -94,8 +97,10 @@ html, body { margin: 0; padding: 0; background: #fff; }
   opacity: 0.75;
 }
 
-/* Pagination hygiene */
+/* Pagination hygiene (compact blocks are also kept whole by layoutForA4()) */
 .cv-exp-item, .cv-section-title { page-break-inside: avoid; break-inside: avoid; }
+.cv-section-title { break-after: avoid; }
+h1, h2, h3, h4 { break-after: avoid; }
 
 /* Exact colors in print */
 #cv-doc, #cv-doc *, .cv-panel {

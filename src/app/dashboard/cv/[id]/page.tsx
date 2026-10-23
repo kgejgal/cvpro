@@ -78,6 +78,16 @@ export default function CVEditorPage() {
 
   useEffect(() => { track('cv_started') }, [])
 
+  // The edit -> preview step gets its own history entry, so browser Back returns to the form
+  // (with everything typed so far) instead of leaving the editor.
+  const modeRef = useRef(mode)
+  useEffect(() => { modeRef.current = mode }, [mode])
+  useEffect(() => {
+    function onPop() { setMode(window.history.state?.cvMode === 'preview' ? 'preview' : 'edit') }
+    window.addEventListener('popstate', onPop)
+    return () => window.removeEventListener('popstate', onPop)
+  }, [])
+
   useEffect(() => {
     const supabase = createClient()
     supabase.auth.getUser().then(async ({ data: { user } }) => {
@@ -114,6 +124,20 @@ export default function CVEditorPage() {
     setSaved(true)
     return savedId
   }, [cvId])
+
+  async function goToPreview() {
+    track('cv_completed')
+    setMode('preview')
+    try { await save(data, titleInput) } catch { /* autosave will retry on the next edit */ }
+    // Pushed only after the first save has settled the URL (/new -> /<id>), and only if the
+    // user is still on the preview.
+    if (modeRef.current === 'preview') window.history.pushState({ cvMode: 'preview' }, '')
+  }
+
+  function backToEdit() {
+    if (window.history.state?.cvMode === 'preview') window.history.back()
+    else setMode('edit')
+  }
 
   function handleChange(patch: Partial<CVData>) {
     const next = { ...data, ...patch }
@@ -221,15 +245,40 @@ export default function CVEditorPage() {
     finally { setCoverLoading(false) }
   }
 
-  async function toggleShare() {
-    if (!cvId) return
-    const next = !isPublic; setIsPublic(next)
-    const supabase = createClient()
-    await supabase.from('cvs').update({ is_public: next }).eq('id', cvId)
-    if (next) {
-      await navigator.clipboard.writeText(`${window.location.origin}/cv/${cvId}`).catch(() => {})
-      setShareCopied(true); setTimeout(() => setShareCopied(false), 3000)
+  async function copyShareLink() {
+    const url = `${window.location.origin}/cv/${cvId}`
+    try {
+      await navigator.clipboard.writeText(url)
+    } catch {
+      // Clipboard is blocked (Safari/Firefox after an await, or no permission): show the link instead.
+      window.prompt('Skopiuj link do CV:', url)
+      return
     }
+    setShareCopied(true); setTimeout(() => setShareCopied(false), 3000)
+  }
+
+  // Writes is_public and only reports success when the database really accepted it.
+  async function setSharing(next: boolean): Promise<boolean> {
+    if (!cvId) return false
+    const supabase = createClient()
+    const { error } = await supabase.from('cvs').update({ is_public: next }).eq('id', cvId)
+    if (error) {
+      setErrorMsg(next ? 'Nie udało się udostępnić CV. Spróbuj ponownie.' : 'Nie udało się wyłączyć udostępniania. Spróbuj ponownie.')
+      return false
+    }
+    setIsPublic(next)
+    return true
+  }
+
+  async function shareClick() {
+    if (!cvId) return
+    if (!isPublic) {
+      // Share exactly what the owner sees now, not the last autosave.
+      clearTimeout(saveTimer.current)
+      await save(data, titleInput)
+      if (!(await setSharing(true))) return
+    }
+    await copyShareLink()
   }
 
   function printCoverLetter() {
@@ -285,7 +334,7 @@ export default function CVEditorPage() {
 
         {/* Preview top bar */}
         <div className="no-print" style={{ background: '#122040', borderBottom: '1px solid #1e3f75', height: 52, display: 'flex', alignItems: 'center', padding: '0 20px', flexShrink: 0 }}>
-          <button onClick={() => setMode('edit')} style={{ background: 'none', border: 'none', color: '#7a94bb', fontSize: 13, cursor: 'pointer' }}>
+          <button onClick={backToEdit} style={{ background: 'none', border: 'none', color: '#7a94bb', fontSize: 13, cursor: 'pointer' }}>
             ← Edytuj
           </button>
           <div style={{ flex: 1, textAlign: 'center' }}>
@@ -534,10 +583,20 @@ export default function CVEditorPage() {
 
           {cvId && (
             <button
-              onClick={toggleShare}
+              onClick={() => void shareClick()}
+              title={isPublic ? 'Link jest publiczny — kliknij, aby skopiować' : 'Udostępnij CV pod linkiem tylko do odczytu'}
               style={{ background: isPublic ? '#1a3d2e' : '#162d50', border: `1px solid ${isPublic ? '#2a5a40' : '#1e3f75'}`, color: isPublic ? '#3db36a' : '#a0b8e8', borderRadius: 8, padding: '9px 18px', fontSize: 13, fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6 }}
             >
-              🔗 {shareCopied ? 'Skopiowano!' : isPublic ? 'Publiczne' : 'Udostępnij link'}
+              🔗 {shareCopied ? 'Skopiowano!' : isPublic ? 'Kopiuj link' : 'Udostępnij link'}
+            </button>
+          )}
+          {cvId && isPublic && (
+            <button
+              onClick={() => void setSharing(false)}
+              title="Link przestanie działać"
+              style={{ background: '#162d50', border: '1px solid #1e3f75', color: '#a0b8e8', borderRadius: 8, padding: '9px 14px', fontSize: 13, fontWeight: 600, cursor: 'pointer' }}
+            >
+              Wyłącz link
             </button>
           )}
 
@@ -549,7 +608,7 @@ export default function CVEditorPage() {
           </button>
 
           <button
-            onClick={() => setMode('edit')}
+            onClick={backToEdit}
             style={{ background: '#162d50', border: '1px solid #1e3f75', color: '#7a94bb', borderRadius: 8, padding: '9px 18px', fontSize: 13, cursor: 'pointer' }}
           >
             ← Wstecz
@@ -642,7 +701,7 @@ export default function CVEditorPage() {
             {saving ? 'Zapisywanie...' : saved ? '✓ Zapisano' : '● Niezapisane'}
           </span>
           <button
-            onClick={() => { track('cv_completed'); save(data, titleInput); setMode('preview') }}
+            onClick={() => void goToPreview()}
             style={{ background: 'linear-gradient(135deg,#4477FF,#7C3AED)', color: '#fff', border: 'none', borderRadius: 8, padding: '7px 18px', fontSize: 13, fontWeight: 700, cursor: 'pointer', boxShadow: '0 2px 12px rgba(68,119,255,0.4)', whiteSpace: 'nowrap' }}
           >
             Gotowe →

@@ -1,4 +1,5 @@
 import type { CVData } from '@/lib/cv/types'
+import { dateRange } from '@/lib/cv/format'
 
 export default function TechnicalTemplate({ data }: { data: CVData }) {
   const accent = data.colorTheme || '#2563eb'
@@ -38,7 +39,7 @@ export default function TechnicalTemplate({ data }: { data: CVData }) {
                 <div key={i} style={{ marginBottom: 16, paddingLeft: 12, borderLeft: `1px solid ${accent}50` }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 4 }}>
                     <div contentEditable suppressContentEditableWarning style={{ fontWeight: 700, color: '#fff' }}>{e.position}</div>
-                    <div style={{ fontSize: 11, color: '#64748b', fontFamily: 'monospace' }}>[{e.startDate} → {e.endDate === 'present' || e.endDate === 'obecnie' ? L.present : e.endDate}]</div>
+                    <div style={{ fontSize: 11, color: '#64748b', fontFamily: 'monospace' }}>[{dateRange(e.startDate, e.endDate, L.present, ' → ')}]</div>
                   </div>
                   <div contentEditable suppressContentEditableWarning style={{ fontSize: 11, color: accent, marginBottom: 6 }}>{e.company}{e.city ? ` @ ${e.city}` : ''}</div>
                   {( e.bullets ?? []).filter(Boolean).map((b, j) => (
@@ -57,7 +58,7 @@ export default function TechnicalTemplate({ data }: { data: CVData }) {
                 <div key={i} style={{ marginBottom: 10 }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                     <div contentEditable suppressContentEditableWarning style={{ fontWeight: 700, color: '#fff', fontSize: 12 }}>{e.degree}{e.field ? ` — ${e.field}` : ''}</div>
-                    <div style={{ fontSize: 11, color: '#64748b' }}>{e.startDate}–{e.endDate}</div>
+                    <div style={{ fontSize: 11, color: '#64748b' }}>{dateRange(e.startDate, e.endDate)}</div>
                   </div>
                   <div contentEditable suppressContentEditableWarning style={{ fontSize: 11, color: accent }}>{e.school}</div>
                 </div>
