@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Cennik kreatora CV — jednorazowa płatność od 15 zł',
-  description: 'Jednorazowa płatność, bez subskrypcji. Wybierz plan i stwórz profesjonalne CV już od 15 zł. BLIK, karta, Przelewy24.',
+  description: 'Jednorazowa płatność, bez subskrypcji. Wybierz plan i stwórz profesjonalne CV już od 15 zł. BLIK i karta.',
   alternates: { canonical: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://cvpro.pl'}/cennik` },
   openGraph: {
     title: 'Cennik kreatora CV — jednorazowa płatność od 15 zł — CVPro.pl',

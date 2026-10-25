@@ -105,7 +105,7 @@ export default function CVEditorPage() {
         const { data: profile } = await supabase.from('profiles').select('plan, ats_free_used').eq('id', user.id).single()
         if (cancelled) return
         setPlan(profile?.plan || 'free')
-      tag('plan', profile?.plan || 'free')
+        tag('plan', profile?.plan || 'free')
         setAtsFreeUsed(profile?.ats_free_used ?? false)
         if (id !== 'new') {
           const { data: cv, error } = await supabase.from('cvs').select('*').eq('id', id).eq('user_id', user.id).single()
