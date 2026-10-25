@@ -13,7 +13,13 @@ export type AnalyticsEvent =
   | "cv_completed"
   | "paywall_viewed"
   | "checkout_started"
-  | "purchase_success";
+  | "purchase_success"
+  // Kliknięcia w zablokowane funkcje (dotąd martwe kliknięcia) i błędy wejścia do serwisu.
+  | "template_locked_click"
+  | "docx_locked_click"
+  | "ats_locked_click"
+  | "signup_error"
+  | "login_error";
 
 // Stub window.clarity powstaje dopiero w <Script strategy="afterInteractive">
 // z ClarityConsent, czyli po hydracji. Efekty stron odpalają się wcześniej, więc
@@ -79,8 +85,11 @@ export function setClarityConsent(granted: boolean) {
   });
 }
 
-export function track(event: AnalyticsEvent) {
+// `detail` (np. id szablonu, plan) trafia do Clarity jako tag o nazwie zdarzenia,
+// więc nagrania z danym zdarzeniem można filtrować też po szczegółach. Bez danych osobowych.
+export function track(event: AnalyticsEvent, detail?: string) {
   enqueue({ consent: false, run: (clarity) => clarity("event", event) });
+  if (detail) tag(event, detail);
 }
 
 // Tagi do filtrowania nagrań, np. plan lub źródło ruchu.

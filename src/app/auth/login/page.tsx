@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
+import { track } from '@/lib/analytics'
 
 const D = {
   bg: '#0d1c35', card: '#162d50', surf: '#122040',
@@ -33,6 +34,7 @@ export default function LoginPage() {
     const supabase = createClient()
     const { error } = await supabase.auth.signInWithPassword({ email, password })
     if (error) {
+      track('login_error', error.code || String(error.status ?? 'unknown'))
       setError('Nieprawidłowy email lub hasło.')
       setLoading(false)
     } else {

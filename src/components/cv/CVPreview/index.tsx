@@ -4,6 +4,7 @@ import { lazy, Suspense } from 'react'
 import type { CVData } from '@/lib/cv/types'
 import { COLOR_THEMES, ALL_TEMPLATES, planAllows } from '@/lib/cv/types'
 import ScaledCV from '@/components/cv/ScaledCV'
+import { track } from '@/lib/analytics'
 
 const TEMPLATE_MAP: Record<string, React.LazyExoticComponent<React.ComponentType<{ data: CVData }>>> = {
   classic:      lazy(() => import('./templates/Classic')),
@@ -47,7 +48,7 @@ export default function CVPreview({ data, plan, onChange, onDownloadPDF }: Props
             return (
               <button
                 key={t.id}
-                onClick={() => !locked && onChange({ template: t.id as CVData['template'] })}
+                onClick={() => { if (locked) track('template_locked_click', t.id); else onChange({ template: t.id as CVData['template'] }) }}
                 title={locked ? `Wymaga planu ${t.minPlan}` : t.desc}
                 style={{
                   padding: '4px 10px',

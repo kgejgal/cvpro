@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { createClient } from '@/lib/supabase/client'
 import type { CVData } from '@/lib/cv/types'
 import { EMPTY_CV, planAllows } from '@/lib/cv/types'
-import { track } from '@/lib/analytics'
+import { track, tag } from '@/lib/analytics'
 import CVForm from '@/components/cv/CVForm'
 import CVPreview from '@/components/cv/CVPreview'
 import ScaledCV from '@/components/cv/ScaledCV'
@@ -105,6 +105,7 @@ export default function CVEditorPage() {
         const { data: profile } = await supabase.from('profiles').select('plan, ats_free_used').eq('id', user.id).single()
         if (cancelled) return
         setPlan(profile?.plan || 'free')
+      tag('plan', profile?.plan || 'free')
         setAtsFreeUsed(profile?.ats_free_used ?? false)
         if (id !== 'new') {
           const { data: cv, error } = await supabase.from('cvs').select('*').eq('id', id).eq('user_id', user.id).single()
@@ -574,7 +575,7 @@ export default function CVEditorPage() {
               {docxLoading ? '⏳ Generuję…' : '📄 Pobierz DOCX'}
             </button>
           ) : (
-            <button onClick={() => router.push('/cennik')} style={{ background: '#162d50', border: '1px solid #1e3f75', color: '#3a5070', borderRadius: 8, padding: '9px 18px', fontSize: 13, cursor: 'pointer' }}>
+            <button onClick={() => { track('docx_locked_click'); router.push('/cennik') }} style={{ background: '#162d50', border: '1px solid #1e3f75', color: '#3a5070', borderRadius: 8, padding: '9px 18px', fontSize: 13, cursor: 'pointer' }}>
               🔒 Pobierz DOCX
             </button>
           )}
@@ -597,7 +598,7 @@ export default function CVEditorPage() {
               )}
             </button>
           ) : (
-            <button onClick={() => router.push('/cennik')} style={{ background: '#162d50', border: '1px solid #1e3f75', color: '#3a5070', borderRadius: 8, padding: '9px 18px', fontSize: 13, cursor: 'pointer' }}>
+            <button onClick={() => { track('ats_locked_click'); router.push('/cennik') }} style={{ background: '#162d50', border: '1px solid #1e3f75', color: '#3a5070', borderRadius: 8, padding: '9px 18px', fontSize: 13, cursor: 'pointer' }}>
               🔒 Analiza ATS
             </button>
           )}

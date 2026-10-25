@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
+import { track } from '@/lib/analytics'
 
 const D = {
   bg: '#0d1c35', card: '#162d50', surf: '#122040',
@@ -38,6 +39,7 @@ export default function SignupPage() {
       options: { emailRedirectTo: `${window.location.origin}/auth/callback` },
     })
     if (error) {
+      track('signup_error', error.code || String(error.status ?? 'unknown'))
       setError(error.message)
       setLoading(false)
     } else {
