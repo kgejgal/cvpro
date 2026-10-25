@@ -48,6 +48,11 @@ export default function CVEditorPage() {
   const [userId, setUserId] = useState<string | null>(null)
   const [saving, setSaving] = useState(false)
   const [saved, setSaved] = useState(true)
+  // The saved CV is fetched after mount. Until it arrives `data` is EMPTY_CV, so nothing may be
+  // edited or saved in that window - an autosave of the placeholder would overwrite the real CV.
+  const [loaded, setLoaded] = useState(id === 'new')
+  const [loadError, setLoadError] = useState(false)
+  const [loadAttempt, setLoadAttempt] = useState(0)
   const [cvId, setCvId] = useState<string | null>(id === 'new' ? null : id)
   const [titleInput, setTitleInput] = useState('Moje CV')
   const [mode, setMode] = useState<'edit' | 'preview'>('edit')
@@ -90,25 +95,36 @@ export default function CVEditorPage() {
 
   useEffect(() => {
     const supabase = createClient()
-    supabase.auth.getUser().then(async ({ data: { user } }) => {
-      if (!user) { router.push('/auth/login'); return }
-      setUserId(user.id)
-      const { data: profile } = await supabase.from('profiles').select('plan, ats_free_used').eq('id', user.id).single()
-      setPlan(profile?.plan || 'free')
-      setAtsFreeUsed(profile?.ats_free_used ?? false)
-      if (id !== 'new') {
-        const { data: cv } = await supabase.from('cvs').select('*').eq('id', id).eq('user_id', user.id).single()
-        if (cv) {
+    let cancelled = false
+    ;(async () => {
+      try {
+        const { data: { user } } = await supabase.auth.getUser()
+        if (cancelled) return
+        if (!user) { router.push('/auth/login'); return }
+        setUserId(user.id)
+        const { data: profile } = await supabase.from('profiles').select('plan, ats_free_used').eq('id', user.id).single()
+        if (cancelled) return
+        setPlan(profile?.plan || 'free')
+        setAtsFreeUsed(profile?.ats_free_used ?? false)
+        if (id !== 'new') {
+          const { data: cv, error } = await supabase.from('cvs').select('*').eq('id', id).eq('user_id', user.id).single()
+          if (cancelled) return
+          if (error || !cv) { setLoadError(true); return }
           setData({ ...EMPTY_CV, ...(cv.data as CVData) })
           setTitleInput(cv.title || 'Moje CV')
           setCvId(cv.id)
           setIsPublic(cv.is_public ?? false)
         }
+        setLoaded(true)
+      } catch {
+        if (!cancelled) setLoadError(true)
       }
-    })
-  }, [id, router])
+    })()
+    return () => { cancelled = true }
+  }, [id, router, loadAttempt])
 
   const save = useCallback(async (cvData: CVData, title: string): Promise<string | null> => {
+    if (!loaded) return null
     setSaving(true)
     const supabase = createClient()
     const { data: { user } } = await supabase.auth.getUser()
@@ -123,7 +139,7 @@ export default function CVEditorPage() {
     setSaving(false)
     setSaved(true)
     return savedId
-  }, [cvId])
+  }, [cvId, loaded])
 
   async function goToPreview() {
     track('cv_completed')
@@ -140,6 +156,7 @@ export default function CVEditorPage() {
   }
 
   function handleChange(patch: Partial<CVData>) {
+    if (!loaded) return
     const next = { ...data, ...patch }
     setData(next)
     setSaved(false)
@@ -325,6 +342,23 @@ export default function CVEditorPage() {
   )
 
   // ─── PREVIEW MODE ────────────────────────────────────────────────────────────
+  if (!loaded) {
+    return (
+      <div style={{ minHeight: '100vh', background: '#0d1c35', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 24, textAlign: 'center' }}>
+        {loadError ? (
+          <div>
+            <p style={{ color: '#e2eeff', fontSize: 16, margin: '0 0 6px' }}>Nie udało się wczytać CV.</p>
+            <p style={{ color: '#6b84aa', fontSize: 13, margin: '0 0 20px' }}>Twoje dane są bezpieczne. Spróbuj ponownie.</p>
+            <button onClick={() => { setLoadError(false); setLoadAttempt(n => n + 1) }} style={{ background: '#4477ff', color: '#fff', border: 'none', borderRadius: 10, padding: '10px 22px', fontSize: 14, fontWeight: 700, cursor: 'pointer' }}>Spróbuj ponownie</button>
+            <div style={{ marginTop: 14 }}><Link href="/dashboard" style={{ color: '#8ab4ff', fontSize: 13 }}>← Wróć do panelu</Link></div>
+          </div>
+        ) : (
+          <p style={{ color: '#6b84aa', fontSize: 14 }}>Wczytuję CV…</p>
+        )}
+      </div>
+    )
+  }
+
   if (mode === 'preview') {
     return (
       <>

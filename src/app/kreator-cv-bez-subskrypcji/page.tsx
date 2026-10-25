@@ -54,7 +54,7 @@ const FAQS = [
   },
   {
     q: 'Jak mogę zapłacić?',
-    a: 'Obsługujemy BLIK, karty płatnicze oraz Przelewy24. Płatność jest jednorazowa i bezpieczna.',
+    a: 'Obsługujemy BLIK i karty płatnicze. Płatność jest jednorazowa i bezpieczna.',
   },
 ]
 

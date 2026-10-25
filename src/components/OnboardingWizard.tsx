@@ -60,10 +60,9 @@ export default function OnboardingWizard({ onComplete, plan }: Props) {
         const parts = (meta.full_name as string).split(' ')
         setFirstName(parts[0] ?? '')
         setLastName(parts.slice(1).join(' ') ?? '')
-      } else if (user?.email) {
-        // Use email prefix as fallback first name hint
-        setFirstName(user.email.split('@')[0] ?? '')
       }
+      // No full_name in the profile: leave the name empty. The email prefix
+      // (e.g. "kg.webdeveloper") is not a name and ended up in the CV header.
     })
     setVisible(true)
   }, [])

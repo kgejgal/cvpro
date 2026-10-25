@@ -17,11 +17,11 @@ const D = {
 const PLANS = [
   {
     id: 'basic', name: 'Podstawowy', price: '15', highlight: false,
-    features: ['1 wersja CV', '4 szablony', 'Eksport PDF i Word (DOCX)', 'Bez znaku wodnego'],
+    features: ['1 wersja CV', '6 szablonów', 'Eksport PDF i Word (DOCX)', 'Bez znaku wodnego'],
   },
   {
     id: 'pro', name: 'Pro', price: '29', highlight: true,
-    features: ['3 wersje CV', '8 szablonów', 'Eksport PDF i Word (DOCX)', 'Analiza ATS', 'Priorytetowe wsparcie'],
+    features: ['3 wersje CV', '12 szablonów', 'Eksport PDF i Word (DOCX)', 'Analiza ATS', 'Priorytetowe wsparcie'],
   },
   {
     id: 'premium', name: 'Premium', price: '39', highlight: false,
@@ -61,7 +61,7 @@ export default function CenikPage() {
         <h1 style={{ fontSize: 40, fontWeight: 900, textAlign: 'center', marginBottom: 10, background: 'linear-gradient(135deg, #E2EEFF 25%, #8899FF 70%, #C084FC)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
           Wybierz swój plan
         </h1>
-        <p style={{ textAlign: 'center', color: D.muted, marginBottom: 52, fontSize: 16 }}>Jednorazowa płatność · Bez subskrypcji · BLIK, karta, P24</p>
+        <p style={{ textAlign: 'center', color: D.muted, marginBottom: 52, fontSize: 16 }}>Jednorazowa płatność · Bez subskrypcji · BLIK i karta</p>
 
         <div className="rg-3" style={{ gap: 20, alignItems: 'start' }}>
           {PLANS.map(({ id, name, price, features, highlight }) => (
@@ -133,7 +133,7 @@ export default function CenikPage() {
             </div>
           ))}
         </div>
-        <p style={{ textAlign: 'center', color: '#4a6a99', marginTop: 24, fontSize: 13 }}>Akceptujemy: BLIK · Karta · Przelewy24 · Apple Pay</p>
+        <p style={{ textAlign: 'center', color: '#4a6a99', marginTop: 24, fontSize: 13 }}>Akceptujemy: BLIK · Karta (w tym Apple Pay)</p>
       </div>
     </div>
   )

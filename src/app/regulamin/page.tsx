@@ -31,7 +31,7 @@ export default function Regulamin() {
           <p style={S.p}>Korzystanie z edytora CV wymaga założenia bezpłatnego konta przy użyciu adresu e-mail. Użytkownik ponosi odpowiedzialność za bezpieczeństwo danych logowania oraz za działania podjęte z jego konta. Jedno konto jest przeznaczone dla jednej osoby fizycznej.</p>
 
           <h2 style={S.h2}>3. Płatności</h2>
-          <p style={S.p}>Opłaty w Serwisie mają charakter jednorazowy i są realizowane za pośrednictwem systemu Stripe (karta płatnicza, BLIK, Przelewy24). Serwis nie oferuje subskrypcji cyklicznych. Po zaksięgowaniu płatności Użytkownik uzyskuje natychmiastowy dostęp do wykupionego pakietu bez ograniczeń czasowych.</p>
+          <p style={S.p}>Opłaty w Serwisie mają charakter jednorazowy i są realizowane za pośrednictwem systemu Stripe (karta płatnicza, BLIK). Serwis nie oferuje subskrypcji cyklicznych. Po zaksięgowaniu płatności Użytkownik uzyskuje natychmiastowy dostęp do wykupionego pakietu bez ograniczeń czasowych.</p>
 
           <h2 style={S.h2}>4. Prawo do odstąpienia od umowy</h2>
           <p style={S.p}>Zgodnie z art. 38 pkt 13 ustawy o prawach konsumenta, prawo do odstąpienia od umowy wygasa z chwilą pobrania pliku cyfrowego (PDF lub Word), jeśli Użytkownik wyraził uprzednią zgodę na rozpoczęcie świadczenia przed upływem terminu do odstąpienia. Jeżeli plik nie został pobrany, Użytkownik może odstąpić od umowy w terminie 14 dni od daty zakupu, przesyłając informację na adres <a href="mailto:kontakt@cvpro.pl" style={S.a}>kontakt@cvpro.pl</a>. Zwrot zostanie zrealizowany w ciągu 14 dni tą samą metodą płatności.</p>

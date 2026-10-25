@@ -13,12 +13,12 @@ const PLANS = [
   {
     name: 'Podstawowy', price: '15', popular: false, priceId: 'basic',
     cta: 'Wybierz Podstawowy',
-    features: ['Eksport PDF bez znaku wodnego', 'Eksport Word (DOCX)', '1 profesjonalne CV', '4 szablony', 'Klauzula RODO'],
+    features: ['Eksport PDF bez znaku wodnego', 'Eksport Word (DOCX)', '1 profesjonalne CV', '6 szablonów', 'Klauzula RODO'],
   },
   {
     name: 'Pro', price: '29', popular: true, priceId: 'pro',
     cta: 'Wypróbuj Pro',
-    features: ['3 wersje CV', '8 szablonów', 'Eksport PDF', 'Analiza ATS', 'Wsparcie priorytetowe'],
+    features: ['3 wersje CV', '12 szablonów', 'Eksport PDF', 'Analiza ATS', 'Wsparcie priorytetowe'],
   },
   {
     name: 'Premium', price: '39', popular: false, priceId: 'premium',
@@ -278,8 +278,8 @@ export default async function HomePage() {
       <section style={{ padding: '28px 5%', background: 'rgba(68,119,255,0.04)', borderTop: `1px solid ${D.border}`, borderBottom: `1px solid ${D.border}` }}>
         <div style={{ maxWidth: 900, margin: '0 auto', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 40, flexWrap: 'wrap' }}>
           {[
-            { n: '2 100+', label: 'użytkowników' },
-            { n: '4.9 / 5', label: 'średnia ocena' },
+            { n: '16', label: 'szablonów CV' },
+            { n: 'PDF + Word', label: 'eksport bez znaku wodnego' },
             { n: '100%', label: 'jednorazowa płatność' },
             { n: '0 zł', label: 'ukrytych opłat' },
           ].map(({ n, label }) => (
@@ -322,11 +322,8 @@ export default async function HomePage() {
               { feature: 'Płatność BLIK', cvpro: '✓', im: '✗', cvm: '✗' },
               { feature: 'Brak auto-odnowienia', cvpro: '✓', im: '✗', cvm: '✗' },
               { feature: 'Pełne CV po polsku', cvpro: '✓', im: '✓', cvm: '~' },
-              { feature: 'Szablony', cvpro: '11', im: '20+', cvm: '20+' },
               { feature: 'Analiza ATS', cvpro: '✓ Pro', im: '✓', cvm: '✗' },
               { feature: 'Generator listu motywacyjnego', cvpro: '✓ Premium', im: '✓', cvm: '✗' },
-              { feature: 'Cena miesięczna', cvpro: '0 – 39 zł raz', im: 'od ~200 zł/mies.', cvm: 'od ~250 zł/mies.' },
-              { feature: 'Skargi do UOKiK / negatywne opinie', cvpro: '✗ brak', im: '⚠ tak', cvm: '⚠ tak' },
             ].map(({ feature, cvpro, im, cvm }, i) => (
               <div
                 key={feature}
@@ -347,44 +344,6 @@ export default async function HomePage() {
             </Link>
             <div style={{ marginTop: 12, fontSize: 12, color: D.dim }}>Bez karty kredytowej. Bez pułapek. Płacisz tylko za PDF.</div>
           </div>
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section style={{ padding: '80px 5%', maxWidth: 1020, margin: '0 auto' }}>
-        <div style={{ textAlign: 'center', marginBottom: 48 }}>
-          <div style={{ fontSize: 12, fontWeight: 700, color: '#8ab4ff', letterSpacing: '0.1em', marginBottom: 12 }}>OPINIE UŻYTKOWNIKÓW</div>
-          <h2 style={{ fontFamily: 'var(--font-onest), sans-serif', fontSize: 36, fontWeight: 900, letterSpacing: '-0.04em', margin: 0 }}>Co mówią nasi użytkownicy?</h2>
-        </div>
-        <div className="rg-3" style={{ gap: 20 }}>
-          {[
-            {
-              name: 'Karolina W.', role: 'Specjalista ds. HR, Kraków',
-              text: 'Znalazłam pracę w 2 tygodnie od wysłania pierwszego CV z CVPro.pl. Szablon był profesjonalny i przeszedł przez ATS bez problemów.',
-            },
-            {
-              name: 'Michał K.', role: 'Junior Developer, Warszawa',
-              text: 'Miałem strach przed pisaniem CV po polsku — tutaj formularz prowadzi Cię krok po kroku. Cena jednorazowa to strzał w dziesiątkę.',
-            },
-            {
-              name: 'Agnieszka R.', role: 'Zmiana branży: finanse → marketing',
-              text: 'Opcja "Zmiana branży" dosłownie opisała moją sytuację. CV wyglądało tak profesjonalnie, że rekruterka zapytała, kto mi je robiło.',
-            },
-          ].map(({ name, role, text }) => (
-            <div key={name} style={{ background: D.card, border: `1px solid ${D.border}`, borderRadius: 16, padding: 28 }}>
-              <div style={{ color: D.primary, fontSize: 18, letterSpacing: 2, marginBottom: 16 }}>★★★★★</div>
-              <p style={{ fontSize: 14, color: D.muted, lineHeight: 1.75, margin: '0 0 20px', fontStyle: 'italic' }}>&ldquo;{text}&rdquo;</p>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-                <div style={{ width: 38, height: 38, borderRadius: '50%', background: `linear-gradient(135deg,${D.primary},#7055FF)`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 14, fontWeight: 800, color: '#fff', flexShrink: 0 }}>
-                  {name.charAt(0)}
-                </div>
-                <div>
-                  <div style={{ fontSize: 13, fontWeight: 700, color: D.text }}>{name}</div>
-                  <div style={{ fontSize: 11, color: D.dim }}>{role}</div>
-                </div>
-              </div>
-            </div>
-          ))}
         </div>
       </section>
 
