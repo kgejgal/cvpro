@@ -112,7 +112,7 @@ export default function KreatorBezSubskrypcjiPage() {
           <p style={{ color: '#9ab4d8', fontSize: 15, lineHeight: 1.7, margin: 0 }}>
             Praktyka ta jest na tyle problematyczna, że w 2026 roku{' '}
             <a href="https://uokik.gov.pl/kreator-cv-z-subskrypcja-w-tle-zarzuty-prezesa-uokik" target="_blank" rel="noopener noreferrer" style={{ color: '#7aafff' }}>
-              UOKiK nałożył na operatora jednego z największych kreatorów CV karę ponad 760 000 zł
+              UOKiK nałożył na operatora jednego z największych kreatorów CV karę ponad 760 000 zł (decyzja nie jest jeszcze prawomocna, spółka się odwołała)
             </a>{' '}
             za ukrywanie informacji o subskrypcji. CVPro.pl powstało jako uczciwa alternatywa — płacisz raz i temat jest zamknięty.
           </p>

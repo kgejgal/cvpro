@@ -41,7 +41,7 @@ export const ARTICLES: Article[] = [
         heading: 'Model subskrypcyjny — gdzie kryje się pułapka',
         body: [
           'To najczęstsze źródło rozczarowań. Serwis reklamuje bardzo niską cenę startową — na przykład 5,95 zł za "14-dniowy dostęp" — ale w tle uruchamia automatycznie odnawianą subskrypcję. Po okresie próbnym z konta zaczyna znikać znacznie wyższa kwota, często 60–100 zł co miesiąc.',
-          'Problem jest na tyle poważny, że w 2026 roku UOKiK nałożył na operatora jednego z największych polskich kreatorów CV karę ponad 760 000 zł — właśnie za niejasne informowanie o subskrypcji. Użytkownicy dowiadywali się o cyklicznych opłatach dopiero przy próbie pobrania gotowego dokumentu.',
+          'Problem jest na tyle poważny, że w 2026 roku UOKiK nałożył na operatora jednego z największych polskich kreatorów CV karę ponad 760 000 zł (decyzja nie jest jeszcze prawomocna, spółka się odwołała) — właśnie za niejasne informowanie o subskrypcji. Użytkownicy dowiadywali się o cyklicznych opłatach dopiero przy próbie pobrania gotowego dokumentu.',
           'Jeśli wybierasz taki serwis, koniecznie sprawdź regulamin i pamiętaj o anulowaniu subskrypcji — inaczej "tanie" CV może kosztować kilkaset złotych w skali roku.',
         ],
       },
@@ -404,7 +404,7 @@ export const ARTICLES: Article[] = [
         heading: 'Jak działa pułapka subskrypcyjna w kreatorach CV',
         body: [
           'Wchodzisz na stronę kreatora CV. Cena wygląda atrakcyjnie — 5,95 zł za dostęp. Tworzysz CV, jesteś zadowolony, klikasz "pobierz". I wtedy okazuje się, że PDF jest zablokowany, dopóki nie podasz karty kredytowej. Po wpisaniu danych zaczyna się subskrypcja — automatycznie odnawiana co miesiąc kwotą 60–100 zł.',
-          'To nie jest przypadek. To model biznesowy zaprojektowany tak, żebyś nie zauważył, kiedy 5,95 zł stało się setkami złotych w skali roku. W 2026 roku UOKiK nałożył karę ponad 760 000 zł na operatora jednego z największych polskich kreatorów CV właśnie za tę praktykę — ukryte informowanie o cyklicznych opłatach.',
+          'To nie jest przypadek. To model biznesowy zaprojektowany tak, żebyś nie zauważył, kiedy 5,95 zł stało się setkami złotych w skali roku. W 2026 roku UOKiK nałożył karę ponad 760 000 zł (decyzja nie jest jeszcze prawomocna, spółka się odwołała) na operatora jednego z największych polskich kreatorów CV właśnie za tę praktykę — ukryte informowanie o cyklicznych opłatach.',
         ],
       },
       {
