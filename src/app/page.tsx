@@ -23,7 +23,7 @@ const PLANS = [
   {
     name: 'Premium', price: '39', popular: false, priceId: 'premium',
     cta: 'Wypróbuj Premium',
-    features: ['Nieograniczone wersje', 'Wszystkie 16 szablonów', 'Eksport PDF', 'Analiza ATS', 'List motywacyjny', '30 dni edycji'],
+    features: ['Nieograniczone wersje', 'Wszystkie 16 szablonów', 'Eksport PDF', 'Analiza ATS', 'List motywacyjny'],
   },
 ]
 
@@ -126,7 +126,7 @@ export default async function HomePage() {
           {/* Honest pricing strip */}
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: 14, flexWrap: 'wrap', justifyContent: 'center', padding: '12px 22px', borderRadius: 14, background: 'rgba(16,185,129,0.06)', border: '1px solid rgba(16,185,129,0.22)', marginBottom: 52 }}>
             <span style={{ fontSize: 13, color: '#e09090', textDecoration: 'line-through', opacity: 0.85 }}>
-              Inne kreatory: 5,95 zł → potem ~100 zł co miesiąc
+              Kreatory z abonamentem: niska cena na start, potem opłaty co miesiąc
             </span>
             <span style={{ fontSize: 14, color: '#34D399', fontWeight: 800 }}>
               CVPro: 15 zł. Raz. Bez subskrypcji.
@@ -296,8 +296,8 @@ export default async function HomePage() {
         <div style={{ maxWidth: 860, margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: 48 }}>
             <div style={{ fontSize: 12, fontWeight: 700, color: '#8ab4ff', letterSpacing: '0.1em', marginBottom: 12 }}>DLACZEGO MY?</div>
-            <h2 style={{ fontFamily: 'var(--font-onest), sans-serif', fontSize: 36, fontWeight: 900, letterSpacing: '-0.04em', margin: '0 0 14px' }}>CVPro.pl vs. konkurencja</h2>
-            <p style={{ color: D.muted, fontSize: 15, margin: 0 }}>Inne kreatory CV mają pułapki. My nie.</p>
+            <h2 style={{ fontFamily: 'var(--font-onest), sans-serif', fontSize: 36, fontWeight: 900, letterSpacing: '-0.04em', margin: '0 0 14px' }}>CVPro.pl vs. kreatory z abonamentem</h2>
+            <p style={{ color: D.muted, fontSize: 15, margin: 0 }}>Kreatory z abonamentem i automatycznym odnawianiem kosztują więcej, niż się wydaje. U nas płacisz raz.</p>
           </div>
 
           <div className="hide-mob" style={{ borderRadius: 16, overflow: 'hidden', border: `1px solid ${D.border}` }}>
@@ -306,8 +306,7 @@ export default async function HomePage() {
               <div style={{ padding: '14px 20px', fontSize: 12, fontWeight: 700, color: D.muted, textTransform: 'uppercase', letterSpacing: '0.07em' }}>Funkcja</div>
               {[
                 { name: 'CVPro.pl', highlight: true },
-                { name: 'InterviewMe', highlight: false },
-                { name: 'CV Maker', highlight: false },
+                { name: 'Kreator z abonamentem', highlight: false },
               ].map(({ name, highlight }) => (
                 <div key={name} style={{ padding: '14px 20px', textAlign: 'center', fontSize: 13, fontWeight: 800, color: highlight ? D.primary : D.muted }}>
                   {name}
@@ -318,13 +317,13 @@ export default async function HomePage() {
 
             {/* Rows */}
             {[
-              { feature: 'Jednorazowa płatność (nie abonament)', cvpro: '✓', im: '✗', cvm: '✗' },
-              { feature: 'Płatność BLIK', cvpro: '✓', im: '✗', cvm: '✗' },
-              { feature: 'Brak auto-odnowienia', cvpro: '✓', im: '✗', cvm: '✗' },
-              { feature: 'Pełne CV po polsku', cvpro: '✓', im: '✓', cvm: '~' },
-              { feature: 'Analiza ATS', cvpro: '✓ Pro', im: '✓', cvm: '✗' },
-              { feature: 'Generator listu motywacyjnego', cvpro: '✓ Premium', im: '✓', cvm: '✗' },
-            ].map(({ feature, cvpro, im, cvm }, i) => (
+              { feature: 'Jednorazowa płatność (nie abonament)', cvpro: '✓', im: '✗' },
+              { feature: 'Brak auto-odnowienia', cvpro: '✓', im: '✗' },
+              { feature: 'Płatność BLIK', cvpro: '✓', im: '–' },
+              { feature: 'Pełne CV po polsku', cvpro: '✓', im: '–' },
+              { feature: 'Analiza ATS', cvpro: '✓ Pro', im: '–' },
+              { feature: 'Generator listu motywacyjnego', cvpro: '✓ Premium', im: '–' },
+            ].map(({ feature, cvpro, im }, i) => (
               <div
                 key={feature}
                 className="rg-cmp"
@@ -333,7 +332,6 @@ export default async function HomePage() {
                 <div style={{ padding: '13px 20px', fontSize: 13, color: D.muted }}>{feature}</div>
                 <div style={{ padding: '13px 20px', textAlign: 'center', fontSize: 13, fontWeight: 700, color: cvpro.startsWith('✓') || cvpro === '✗ brak' ? '#3db36a' : D.text }}>{cvpro}</div>
                 <div style={{ padding: '13px 20px', textAlign: 'center', fontSize: 13, color: im.startsWith('✗') || im.startsWith('⚠') ? '#e55' : D.muted }}>{im}</div>
-                <div style={{ padding: '13px 20px', textAlign: 'center', fontSize: 13, color: cvm.startsWith('✗') || cvm.startsWith('⚠') ? '#e55' : D.muted }}>{cvm}</div>
               </div>
             ))}
           </div>

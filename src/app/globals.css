@@ -241,7 +241,7 @@ html, body {
 /* Responsive grid helpers */
 .rg-3 { display: grid; grid-template-columns: repeat(3, 1fr); }
 .rg-2 { display: grid; grid-template-columns: 1fr 1fr; }
-.rg-cmp { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; }
+.rg-cmp { display: grid; grid-template-columns: 2fr 1fr 1fr; }
 
 /* CV editor split — form | preview */
 .editor-grid { display: grid; grid-template-columns: 360px 1fr; overflow: hidden; }

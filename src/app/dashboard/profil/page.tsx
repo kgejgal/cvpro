@@ -7,19 +7,19 @@ import ProfileClient from './ProfileClient'
 const PLAN_META: Record<string, { label: string; color: string; bg: string; features: string[] }> = {
   free: {
     label: 'Free', color: '#94a3b8', bg: 'rgba(100,116,139,0.15)',
-    features: ['1 CV', '2 szablony', 'Podgląd na żywo', 'PDF ze znakiem wodnym'],
+    features: ['1 CV', '3 szablony', 'Podgląd na żywo', 'PDF ze znakiem wodnym'],
   },
   basic: {
     label: 'Basic', color: '#38BDF8', bg: 'rgba(56,189,248,0.15)',
-    features: ['1 CV', '4 szablony', 'PDF bez znaku wodnego', 'Klauzula RODO'],
+    features: ['1 CV', '6 szablonów', 'PDF bez znaku wodnego', 'Klauzula RODO'],
   },
   pro: {
     label: 'Pro', color: '#4477FF', bg: 'rgba(68,119,255,0.15)',
-    features: ['3 CV', '8 szablonów', 'PDF bez znaku wodnego', 'Analiza ATS', 'Wsparcie priorytetowe'],
+    features: ['3 CV', '12 szablonów', 'PDF bez znaku wodnego', 'Analiza ATS', 'Wsparcie priorytetowe'],
   },
   premium: {
     label: 'Premium', color: '#a78bfa', bg: 'rgba(124,58,237,0.15)',
-    features: ['Nieograniczone CV', 'Wszystkie 16 szablonów', 'PDF bez znaku wodnego', 'Analiza ATS', 'List motywacyjny', '30 dni edycji'],
+    features: ['Nieograniczone CV', 'Wszystkie 16 szablonów', 'PDF bez znaku wodnego', 'Analiza ATS', 'List motywacyjny'],
   },
 }
 
