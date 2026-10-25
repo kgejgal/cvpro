@@ -1,6 +1,7 @@
 'use client'
 
-import { lazy, Suspense } from 'react'
+import { lazy, Suspense, useState } from 'react'
+import Link from 'next/link'
 import type { CVData } from '@/lib/cv/types'
 import { COLOR_THEMES, ALL_TEMPLATES, planAllows } from '@/lib/cv/types'
 import ScaledCV from '@/components/cv/ScaledCV'
@@ -34,6 +35,14 @@ interface Props {
 
 export default function CVPreview({ data, plan, onChange, onDownloadPDF }: Props) {
   const canDownload = plan !== 'free'
+  const [lockedId, setLockedId] = useState<string | null>(null)
+  const locked = ALL_TEMPLATES.find(t => t.id === lockedId)
+  const PLAN_INFO: Record<string, { name: string; price: string }> = {
+    basic: { name: 'Podstawowy', price: '15 zł' },
+    pro: { name: 'Pro', price: '29 zł' },
+    premium: { name: 'Premium', price: '39 zł' },
+  }
+  const lockedPlan = locked ? PLAN_INFO[locked.minPlan] : undefined
   const TemplateComponent = TEMPLATE_MAP[data.template] ?? TEMPLATE_MAP.classic
 
   return (
@@ -43,28 +52,28 @@ export default function CVPreview({ data, plan, onChange, onDownloadPDF }: Props
         {/* Template picker */}
         <div style={{ display: 'flex', gap: 4, flexWrap: 'wrap' }}>
           {ALL_TEMPLATES.map(t => {
-            const locked = !planAllows(plan, t.minPlan)
+            const isLocked = !planAllows(plan, t.minPlan)
             const active = data.template === t.id
             return (
               <button
                 key={t.id}
-                onClick={() => { if (locked) track('template_locked_click', t.id); else onChange({ template: t.id as CVData['template'] }) }}
-                title={locked ? `Wymaga planu ${t.minPlan}` : t.desc}
+                onClick={() => { if (isLocked) { track('template_locked_click', t.id); setLockedId(t.id) } else onChange({ template: t.id as CVData['template'] }) }}
+                title={isLocked ? `Wymaga planu ${t.minPlan}` : t.desc}
                 style={{
                   padding: '4px 10px',
                   borderRadius: 6,
                   fontSize: 11,
                   fontWeight: 600,
                   border: '1px solid',
-                  cursor: locked ? 'not-allowed' : 'pointer',
+                  cursor: 'pointer',
                   transition: 'all 0.15s',
                   borderColor: active ? data.colorTheme : '#1e3f75',
                   background: active ? data.colorTheme + '22' : 'transparent',
-                  color: locked ? '#3a5070' : active ? data.colorTheme : '#7a94bb',
+                  color: isLocked ? '#3a5070' : active ? data.colorTheme : '#7a94bb',
                   position: 'relative',
                 }}
               >
-                {locked && <span style={{ marginRight: 4, fontSize: 9 }}>🔒</span>}{t.label}
+                {isLocked && <span style={{ marginRight: 4, fontSize: 9 }}>🔒</span>}{t.label}
               </button>
             )
           })}
@@ -147,6 +156,21 @@ export default function CVPreview({ data, plan, onChange, onDownloadPDF }: Props
           </div>
         </ScaledCV>
       </div>
+      {locked && lockedPlan && (
+        <div role="dialog" aria-label="Szablon w wyższym planie" onClick={() => setLockedId(null)} style={{ position: 'fixed', inset: 0, background: 'rgba(5,12,28,0.7)', zIndex: 400, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 16 }}>
+          <div onClick={e => e.stopPropagation()} style={{ background: '#122040', border: '1px solid #2d5499', borderRadius: 14, padding: '24px 22px', maxWidth: 380, width: '100%', textAlign: 'center' }}>
+            <div style={{ fontSize: 28, marginBottom: 8 }}>🔒</div>
+            <h3 style={{ margin: '0 0 8px', fontSize: 17, color: '#e2eeff' }}>Szablon &bdquo;{locked.label}&rdquo;</h3>
+            <p style={{ margin: '0 0 18px', fontSize: 13.5, color: '#9ab4d8', lineHeight: 1.55 }}>
+              Jest dostępny w planie {lockedPlan.name} ({lockedPlan.price}, jednorazowo, bez subskrypcji). Twoje CV zostaje zapisane.
+            </p>
+            <div style={{ display: 'flex', gap: 8, justifyContent: 'center', flexWrap: 'wrap' }}>
+              <Link href="/cennik" style={{ background: '#4477ff', color: '#fff', borderRadius: 8, padding: '9px 18px', fontSize: 13, fontWeight: 700, textDecoration: 'none' }}>Zobacz plany</Link>
+              <button onClick={() => setLockedId(null)} style={{ background: 'none', border: '1px solid #2d5499', color: '#9ab4d8', borderRadius: 8, padding: '9px 16px', fontSize: 13, fontWeight: 600, cursor: 'pointer' }}>Zostań przy darmowych</button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
