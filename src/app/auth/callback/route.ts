@@ -26,6 +26,11 @@ export async function GET(request: NextRequest) {
     if (!error) {
       return NextResponse.redirect(`${origin}/dashboard`)
     }
+    console.error('auth callback: exchangeCodeForSession failed', error.message)
+  } else {
+    // Supabase redirects here without a code when the provider step failed
+    // (e.g. error=server_error, "Unable to exchange external code"). Keep it in the logs.
+    console.error('auth callback: no code', searchParams.get('error'), searchParams.get('error_code'), searchParams.get('error_description'))
   }
 
   return NextResponse.redirect(`${origin}/auth/login?error=auth`)

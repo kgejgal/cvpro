@@ -1,8 +1,8 @@
 'use client'
 
 import Link from 'next/link'
-import { useState } from 'react'
-import { useRouter } from 'next/navigation'
+import { Suspense, useEffect, useState } from 'react'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
 import { track } from '@/lib/analytics'
 
@@ -19,12 +19,19 @@ const inputStyle: React.CSSProperties = {
   transition: 'border-color 0.15s',
 }
 
-export default function LoginPage() {
+// /auth/callback sends visitors here with ?error=auth when the sign-in could not be completed
+// (e.g. Google/Supabase failed). Before, that was silent and looked like an endless login loop.
+const OAUTH_FAILED = 'Logowanie przez Google nie powiodło się. Spróbuj ponownie lub zaloguj się adresem e-mail i hasłem.'
+
+function LoginForm() {
   const router = useRouter()
+  const oauthFailed = useSearchParams().get('error') === 'auth'
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
-  const [error, setError] = useState('')
+  const [error, setError] = useState(oauthFailed ? OAUTH_FAILED : '')
+
+  useEffect(() => { if (oauthFailed) track('login_error', 'oauth_callback') }, [oauthFailed])
   const [loading, setLoading] = useState(false)
 
   async function handleSubmit(e: React.FormEvent) {
@@ -152,4 +159,9 @@ export default function LoginPage() {
       </div>
     </div>
   )
+}
+
+// useSearchParams needs a Suspense boundary on a statically rendered page.
+export default function LoginPage() {
+  return <Suspense fallback={null}><LoginForm /></Suspense>
 }
