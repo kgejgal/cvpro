@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import CVImport from '@/components/cv/CVImport'
 import type { CVData, ExperienceItem, EducationItem } from '@/lib/cv/types'
 import { SITUATION_CHIPS, LANGUAGE_LEVELS } from '@/lib/cv/types'
 
@@ -193,6 +194,8 @@ export default function CVForm({ data, onChange, plan = 'free' }: Props) {
 
   return (
     <div data-clarity-mask="True" style={{ padding: '0 16px', overflowY: 'auto', height: '100%' }}>
+      <CVImport data={data} onChange={onChange} />
+
       {/* Situation */}
       {section('situation', '1. Twoja sytuacja', (
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
