@@ -20,6 +20,8 @@ export async function POST(req: NextRequest) {
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) return fail('Zaloguj się, aby wczytać CV z pliku.', 401)
 
+  const started = Date.now()
+
   // A handful of imports per hour per user; each one is a paid request.
   const { ok } = rateLimit(`import:${user.id}`, 5, 3_600_000)
   if (!ok) return fail('Wykorzystano limit wczytań pliku (5 na godzinę). Spróbuj za jakiś czas albo wypełnij formularz ręcznie.', 429)
@@ -62,5 +64,12 @@ export async function POST(req: NextRequest) {
   }
   if (!message.parsed_output) return fail('Nie udało się wczytać danych z pliku. Spróbuj ponownie za chwilę.', 502)
 
-  return NextResponse.json({ data: toCVPatch(message.parsed_output) })
+  const data = toCVPatch(message.parsed_output)
+  // Successes are logged too (sizes and timing only, never the file's content), so the runtime
+  // logs show that imports work instead of only listing the failures.
+  console.log(
+    `cv import: ok kind=${kind} chars=${text.length} jobs=${data.experience?.length ?? 0} ` +
+    `tokens_in=${message.usage.input_tokens} tokens_out=${message.usage.output_tokens} ms=${Date.now() - started}`,
+  )
+  return NextResponse.json({ data })
 }
