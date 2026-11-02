@@ -1,35 +1,52 @@
 import { redirect } from 'next/navigation'
 import Link from 'next/link'
 import Stripe from 'stripe'
+import { createClient as createServiceClient } from '@supabase/supabase-js'
 import { createClient } from '@/lib/supabase/server'
 import NotificationBell from '@/components/NotificationBell'
 import ResumePurchaseBanner from '@/components/ResumePurchaseBanner'
 import PurchaseSuccessTracker from '@/components/PurchaseSuccessTracker'
 
-// `?success=1` alone is forgeable, so the purchase is only reported when Stripe itself says
-// this checkout session is paid and was created for the signed-in user.
-async function confirmedCheckoutSession(sessionId: string | string[] | undefined, userId: string) {
+// `?success=1` alone is forgeable, so the purchase is only trusted when Stripe itself says
+// this checkout session is paid and was created for the signed-in user. Returns the paid
+// session id plus the plan it was for, so the dashboard can upgrade the buyer directly.
+async function confirmedCheckoutSession(sessionId: string | string[] | undefined, userId: string): Promise<{ id: string; plan: string | null } | null> {
   if (typeof sessionId !== 'string' || !sessionId.startsWith('cs_')) return null
   try {
     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!)
     const session = await stripe.checkout.sessions.retrieve(sessionId)
-    return session.payment_status === 'paid' && session.metadata?.user_id === userId ? session.id : null
+    if (session.payment_status === 'paid' && session.metadata?.user_id === userId) {
+      return { id: session.id, plan: session.metadata?.plan ?? null }
+    }
+    return null
   } catch {
     return null
   }
 }
+
+const PLAN_RANK: Record<string, number> = { free: 0, basic: 1, pro: 2, premium: 3 }
 
 export default async function DashboardPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) redirect('/auth/login')
 
-  const paidSessionId = await confirmedCheckoutSession((await searchParams).session_id, user.id)
+  const paid = await confirmedCheckoutSession((await searchParams).session_id, user.id)
 
   const { data: profile } = await supabase.from('profiles').select('plan').eq('id', user.id).single()
   const { data: cvs } = await supabase.from('cvs').select('id, title, template, updated_at, is_public, view_count').eq('user_id', user.id).order('updated_at', { ascending: false })
 
-  const plan = profile?.plan ?? 'free'
+  let plan = profile?.plan ?? 'free'
+
+  // If Stripe has confirmed this checkout as paid but the webhook hasn't upgraded the plan
+  // yet — or never does, as it silently failed to for weeks in Aug 2026 — upgrade the buyer
+  // here from the paid session so they are never stuck on their old plan after paying. Uses
+  // the service role because users (correctly) cannot change their own plan.
+  if (paid?.plan && (PLAN_RANK[paid.plan] ?? 0) > (PLAN_RANK[plan] ?? 0) && process.env.SUPABASE_SERVICE_ROLE_KEY) {
+    const admin = createServiceClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY)
+    await admin.from('profiles').upsert({ id: user.id, plan: paid.plan }, { onConflict: 'id' })
+    plan = paid.plan
+  }
 
   async function signOut() {
     'use server'
@@ -94,7 +111,7 @@ export default async function DashboardPage({ searchParams }: { searchParams: Pr
       </header>
 
       <main style={{ maxWidth: 680, margin: '0 auto', padding: '48px 24px' }}>
-        {paidSessionId && <PurchaseSuccessTracker sessionId={paidSessionId} />}
+        {paid && <PurchaseSuccessTracker sessionId={paid.id} />}
         <ResumePurchaseBanner plan={plan} />
 
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 32 }}>
