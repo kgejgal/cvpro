@@ -91,18 +91,26 @@ export default async function DashboardPage({ searchParams }: { searchParams: Pr
 
   return (
     <div style={{ minHeight: '100vh', background: '#0d1c35', color: '#e2eeff', fontFamily: 'var(--font-onest), sans-serif' }}>
+      {/* On a phone the header row runs out of width and clips "Wyloguj", so below 520px
+          the email is hidden (plan badge + bell + Wyloguj stay) and the gutters tighten. */}
+      <style>{`
+        @media (max-width: 520px) {
+          .dash-head { padding-left: 14px !important; padding-right: 14px !important; gap: 8px !important; }
+          .dash-email { display: none !important; }
+        }
+      `}</style>
       {/* Header */}
       <header style={{ borderBottom: '1px solid #1a3060' }}>
-        <div style={{ maxWidth: 900, margin: '0 auto', padding: '0 24px', height: 56, display: 'grid', gridTemplateColumns: '1fr auto 1fr', alignItems: 'center' }}>
+        <div className="dash-head" style={{ maxWidth: 900, margin: '0 auto', padding: '0 24px', height: 56, display: 'grid', gridTemplateColumns: '1fr auto 1fr', alignItems: 'center' }}>
           <Link href="/" style={{ color: '#7a94bb', textDecoration: 'none', fontSize: 14 }}>← Powrót</Link>
           <Link href="/" style={{ fontWeight: 800, fontSize: 18, color: '#e2eeff', textDecoration: 'none', letterSpacing: -0.3 }}>
             <span style={{ color: '#4477ff' }}>CV</span>Pro<span style={{ color: '#4477ff', fontSize: 13 }}>.pl</span>
           </Link>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 12, justifyContent: 'flex-end' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12, justifyContent: 'flex-end', minWidth: 0 }}>
             <NotificationBell userId={user.id} />
-            <Link href="/dashboard/profil" style={{ fontSize: 13, color: '#7a94bb', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 6 }}>
-              <span style={{ fontSize: 11, padding: '2px 8px', borderRadius: 10, background: 'rgba(68,119,255,0.15)', color: '#4477ff', fontWeight: 700, textTransform: 'capitalize' }}>{plan}</span>
-              <span style={{ maxWidth: 140, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{user.email}</span>
+            <Link href="/dashboard/profil" style={{ fontSize: 13, color: '#7a94bb', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 6, minWidth: 0 }}>
+              <span style={{ fontSize: 11, padding: '2px 8px', borderRadius: 10, background: 'rgba(68,119,255,0.15)', color: '#4477ff', fontWeight: 700, textTransform: 'capitalize', flexShrink: 0 }}>{plan}</span>
+              <span className="dash-email" style={{ maxWidth: 140, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{user.email}</span>
             </Link>
             <form action={signOut}>
               <button style={{ background: 'none', border: 'none', color: '#4a6a99', cursor: 'pointer', fontSize: 13 }}>Wyloguj</button>
