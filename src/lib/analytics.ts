@@ -22,7 +22,9 @@ export type AnalyticsEvent =
   | "login_error"
   // Wczytywanie starego CV z pliku (PDF/DOCX).
   | "cv_import_success"
-  | "cv_import_error";
+  | "cv_import_error"
+  // Kliknięcie "Wczytaj CV z pliku" na pustym pulpicie — pomiar aktywacji nowych kont.
+  | "dashboard_import_click";
 
 // Stub window.clarity powstaje dopiero w <Script strategy="afterInteractive">
 // z ClarityConsent, czyli po hydracji. Efekty stron odpalają się wcześniej, więc

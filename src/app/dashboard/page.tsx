@@ -6,6 +6,7 @@ import { createClient } from '@/lib/supabase/server'
 import NotificationBell from '@/components/NotificationBell'
 import ResumePurchaseBanner from '@/components/ResumePurchaseBanner'
 import PurchaseSuccessTracker from '@/components/PurchaseSuccessTracker'
+import DashboardImportCTA from '@/components/DashboardImportCTA'
 
 // `?success=1` alone is forgeable, so the purchase is only trusted when Stripe itself says
 // this checkout session is paid and was created for the signed-in user. Returns the paid
@@ -177,30 +178,50 @@ export default async function DashboardPage({ searchParams }: { searchParams: Pr
             ))}
           </div>
         ) : (
-          <div style={{ textAlign: 'center', padding: '60px 0' }}>
-            <div style={{ fontSize: 48, marginBottom: 16 }}>📄</div>
-            <h2 style={{ fontSize: 18, fontWeight: 700, marginBottom: 8 }}>Nie masz jeszcze żadnego CV</h2>
-            <p style={{ color: '#7a94bb', fontSize: 14, marginBottom: 24 }}>Stwórz swoje pierwsze profesjonalne CV w kilka minut.</p>
+          <div style={{ padding: '8px 0 0', textAlign: 'center' }}>
+            <div style={{ fontSize: 44, marginBottom: 10 }}>📄</div>
+            <h2 style={{ fontSize: 20, fontWeight: 800, marginBottom: 6 }}>Zacznij tworzyć swoje CV</h2>
+            <p style={{ color: '#7a94bb', fontSize: 14, marginBottom: 28, lineHeight: 1.5 }}>
+              Masz już CV w pliku? Wczytaj je i oszczędź czas — albo zacznij od zera.
+            </p>
+
+            {/* Primary path: upload an existing CV (the activation lever) */}
+            <DashboardImportCTA userId={user.id} />
+
+            {/* Secondary path: start from a blank form */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: 12, margin: '24px 0 16px', color: '#4a6a99', fontSize: 12 }}>
+              <div style={{ flex: 1, height: 1, background: '#1a3060' }} />
+              <span>albo zacznij od zera</span>
+              <div style={{ flex: 1, height: 1, background: '#1a3060' }} />
+            </div>
+            <Link
+              href="/dashboard/cv/new"
+              style={{ display: 'inline-block', background: '#162d50', border: '1px solid #1e3f75', color: '#a0b8e8', textDecoration: 'none', fontSize: 14, fontWeight: 700, padding: '11px 26px', borderRadius: 10 }}
+            >
+              + Nowe, puste CV
+            </Link>
           </div>
         )}
 
-        <div style={{ marginTop: 20 }}>
-          {canCreate ? (
-            <Link
-              href="/dashboard/cv/new"
-              style={{ display: 'inline-block', background: '#4477ff', color: '#fff', textDecoration: 'none', fontSize: 14, fontWeight: 700, padding: '10px 24px', borderRadius: 8 }}
-            >
-              + Nowe CV
-            </Link>
-          ) : (
-            <Link
-              href="/cennik"
-              style={{ display: 'inline-block', background: '#1e3f75', color: '#7a94bb', textDecoration: 'none', fontSize: 14, fontWeight: 600, padding: '10px 24px', borderRadius: 8 }}
-            >
-              🔒 Upgrade — więcej CV
-            </Link>
-          )}
-        </div>
+        {cvs && cvs.length > 0 && (
+          <div style={{ marginTop: 20 }}>
+            {canCreate ? (
+              <Link
+                href="/dashboard/cv/new"
+                style={{ display: 'inline-block', background: '#4477ff', color: '#fff', textDecoration: 'none', fontSize: 14, fontWeight: 700, padding: '10px 24px', borderRadius: 8 }}
+              >
+                + Nowe CV
+              </Link>
+            ) : (
+              <Link
+                href="/cennik"
+                style={{ display: 'inline-block', background: '#1e3f75', color: '#7a94bb', textDecoration: 'none', fontSize: 14, fontWeight: 600, padding: '10px 24px', borderRadius: 8 }}
+              >
+                🔒 Upgrade — więcej CV
+              </Link>
+            )}
+          </div>
+        )}
       </main>
     </div>
   )
