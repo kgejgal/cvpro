@@ -1,4 +1,5 @@
 import { redirect } from 'next/navigation'
+import { revalidatePath } from 'next/cache'
 import Link from 'next/link'
 import Stripe from 'stripe'
 import { createClient as createServiceClient } from '@supabase/supabase-js'
@@ -7,6 +8,7 @@ import NotificationBell from '@/components/NotificationBell'
 import ResumePurchaseBanner from '@/components/ResumePurchaseBanner'
 import PurchaseSuccessTracker from '@/components/PurchaseSuccessTracker'
 import DashboardImportCTA from '@/components/DashboardImportCTA'
+import PendingButton from '@/components/PendingButton'
 
 // `?success=1` alone is forgeable, so the purchase is only trusted when Stripe itself says
 // this checkout session is paid and was created for the signed-in user. Returns the paid
@@ -62,7 +64,9 @@ export default async function DashboardPage({ searchParams }: { searchParams: Pr
     const supabase = await createClient()
     const { data: { user } } = await supabase.auth.getUser()
     if (user) await supabase.from('cvs').delete().eq('id', id).eq('user_id', user.id)
-    redirect('/dashboard')
+    // Refresh the list in place instead of redirect('/dashboard'), which re-renders the whole
+    // page (re-auth + refetch profile + refetch every CV) just to drop one row.
+    revalidatePath('/dashboard')
   }
 
   async function cloneCV(formData: FormData) {
@@ -113,7 +117,7 @@ export default async function DashboardPage({ searchParams }: { searchParams: Pr
               <span className="dash-email" style={{ maxWidth: 140, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{user.email}</span>
             </Link>
             <form action={signOut}>
-              <button style={{ background: 'none', border: 'none', color: '#4a6a99', cursor: 'pointer', fontSize: 13 }}>Wyloguj</button>
+              <PendingButton pendingText="Wylogowuję…" style={{ background: 'none', border: 'none', color: '#4a6a99', fontSize: 13 }}>Wyloguj</PendingButton>
             </form>
           </div>
         </div>
@@ -165,21 +169,21 @@ export default async function DashboardPage({ searchParams }: { searchParams: Pr
                   </Link>
                   <form action={cloneCV}>
                     <input type="hidden" name="id" value={cv.id} />
-                    <button
-                      type="submit"
-                      style={{ background: 'none', border: '1px solid #1e3f75', color: '#7a94bb', fontSize: 13, fontWeight: 600, padding: '7px 14px', borderRadius: 8, cursor: 'pointer' }}
+                    <PendingButton
+                      pendingText="Duplikuję…"
+                      style={{ background: 'none', border: '1px solid #1e3f75', color: '#7a94bb', fontSize: 13, fontWeight: 600, padding: '7px 14px', borderRadius: 8 }}
                     >
                       Duplikuj
-                    </button>
+                    </PendingButton>
                   </form>
                   <form action={deleteCV}>
                     <input type="hidden" name="id" value={cv.id} />
-                    <button
-                      type="submit"
-                      style={{ background: 'none', border: '1px solid #8b2a2a', color: '#e55', fontSize: 13, fontWeight: 600, padding: '7px 16px', borderRadius: 8, cursor: 'pointer' }}
+                    <PendingButton
+                      pendingText="Usuwam…"
+                      style={{ background: 'none', border: '1px solid #8b2a2a', color: '#e55', fontSize: 13, fontWeight: 600, padding: '7px 16px', borderRadius: 8 }}
                     >
                       Usuń
-                    </button>
+                    </PendingButton>
                   </form>
                 </div>
               </div>
