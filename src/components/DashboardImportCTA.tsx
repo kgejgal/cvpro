@@ -6,6 +6,7 @@ import { createClient } from '@/lib/supabase/client'
 import { EMPTY_CV, type CVData } from '@/lib/cv/types'
 import { MAX_IMPORT_BYTES, withoutEmpty } from '@/lib/cv/import-shared'
 import { track } from '@/lib/analytics'
+import InlineSpinner from '@/components/InlineSpinner'
 
 const ACCEPT = '.pdf,.docx,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document'
 
@@ -113,12 +114,19 @@ export default function DashboardImportCTA({ userId }: { userId: string }) {
           style={{
             background: 'linear-gradient(135deg,#4477FF,#7C3AED)', color: '#fff', border: 'none',
             borderRadius: 10, padding: '12px 22px', fontSize: 14, fontWeight: 700,
-            cursor: busy ? 'wait' : 'pointer', opacity: busy ? 0.75 : 1,
+            cursor: busy ? 'wait' : 'pointer', opacity: busy ? 0.85 : 1,
             boxShadow: '0 4px 20px rgba(68,119,255,0.35)',
+            display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 9,
           }}
         >
-          {busy ? 'Wczytuję dane z pliku…' : '↥ Wczytaj CV z pliku (PDF lub DOCX)'}
+          {busy ? <><InlineSpinner /> Wczytuję dane z pliku…</> : '↥ Wczytaj CV z pliku (PDF lub DOCX)'}
         </button>
+
+        {busy && (
+          <div style={{ marginTop: 12, fontSize: 12.5, color: '#9ab4d8', lineHeight: 1.5 }}>
+            To potrwa kilka sekund — analizujemy Twój plik i uzupełniamy formularz. Nie zamykaj tej strony.
+          </div>
+        )}
       </div>
 
       {error && (

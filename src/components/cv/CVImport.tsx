@@ -4,6 +4,7 @@ import { useRef, useState } from 'react'
 import type { CVData } from '@/lib/cv/types'
 import { MAX_IMPORT_BYTES, withoutEmpty } from '@/lib/cv/import-shared'
 import { track } from '@/lib/analytics'
+import InlineSpinner from '@/components/InlineSpinner'
 
 interface Props {
   data: CVData
@@ -78,10 +79,13 @@ export default function CVImport({ data, onChange }: Props) {
         border: hasContent ? '1px solid #1e3f75' : 'none',
         color: hasContent ? '#a0b8e8' : '#fff',
         borderRadius: 8, padding: hasContent ? '7px 12px' : '10px 16px', fontSize: 13, fontWeight: 700,
-        cursor: busy ? 'wait' : 'pointer', opacity: busy ? 0.7 : 1,
+        cursor: busy ? 'wait' : 'pointer', opacity: busy ? 0.85 : 1,
+        display: 'inline-flex', alignItems: 'center', gap: 8,
       }}
     >
-      {busy ? 'Wczytuję dane z pliku…' : hasContent ? '↥ Wczytaj dane z pliku' : '↥ Wczytaj CV z pliku (PDF lub DOCX)'}
+      {busy
+        ? <><InlineSpinner color={hasContent ? '#a0b8e8' : '#fff'} /> Wczytuję dane z pliku…</>
+        : hasContent ? '↥ Wczytaj dane z pliku' : '↥ Wczytaj CV z pliku (PDF lub DOCX)'}
     </button>
   )
 
@@ -97,6 +101,11 @@ export default function CVImport({ data, onChange }: Props) {
             Wczytaj plik PDF lub DOCX (do 4 MB), a my uzupełnimy formularz Twoimi danymi. Plik nie jest zapisywany.
           </div>
           {button}
+        </div>
+      )}
+      {busy && (
+        <div style={{ marginTop: 10, fontSize: 12.5, color: '#9ab4d8', lineHeight: 1.5 }}>
+          To potrwa kilka sekund — analizujemy plik i uzupełniamy formularz.
         </div>
       )}
       <div aria-live="polite">
