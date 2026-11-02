@@ -29,8 +29,9 @@ export default function OGImage() {
         </div>
 
         {/* Tagline */}
-        <div style={{ fontSize: 38, fontWeight: 700, color: '#E2EEFF', textAlign: 'center', maxWidth: 800, lineHeight: 1.25, marginBottom: 28 }}>
-          Profesjonalne CV<br />w języku polskim
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', fontSize: 38, fontWeight: 700, color: '#E2EEFF', textAlign: 'center', maxWidth: 800, lineHeight: 1.25, marginBottom: 28 }}>
+          <span>Profesjonalne CV</span>
+          <span>w języku polskim</span>
         </div>
 
         {/* Sub */}
