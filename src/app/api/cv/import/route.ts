@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import Anthropic from '@anthropic-ai/sdk'
 import { zodOutputFormat } from '@anthropic-ai/sdk/helpers/zod'
 import { createClient } from '@/lib/supabase/server'
+import { logAiError } from '@/lib/ai-error'
 import { rateLimit } from '@/lib/rate-limit'
 import {
   IMPORT_PROMPT, ImportedCVSchema, ImportFileError, MAX_IMPORT_BYTES, MIN_TEXT_CHARS,
@@ -59,7 +60,7 @@ export async function POST(req: NextRequest) {
       messages: [{ role: 'user', content: IMPORT_PROMPT(text) }],
     })
   } catch (err) {
-    console.error('cv import: Anthropic call failed', err)
+    logAiError('cv-import', err)
     return fail('Nie udało się wczytać danych z pliku. Spróbuj ponownie za chwilę.', 502)
   }
   if (!message.parsed_output) return fail('Nie udało się wczytać danych z pliku. Spróbuj ponownie za chwilę.', 502)

@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import Anthropic from '@anthropic-ai/sdk'
 import { createClient } from '@/lib/supabase/server'
+import { aiErrorResponse } from '@/lib/ai-error'
 import type { CVData } from '@/lib/cv/types'
 
 const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
@@ -50,12 +51,14 @@ export async function POST(req: NextRequest) {
 
   const jobAdSection = jobAd ? `\n\nOGŁOSZENIE O PRACĘ:\n${jobAd}` : ''
 
-  const message = await anthropic.messages.create({
-    model: 'claude-sonnet-4-6',
-    max_tokens: 1024,
-    messages: [{
-      role: 'user',
-      content: `Jesteś ekspertem od systemów ATS (Applicant Tracking Systems). Przeanalizuj poniższe CV i oceń jego skuteczność.${jobAdSection ? ' Uwzględnij dopasowanie do ogłoszenia.' : ''}
+  let message
+  try {
+    message = await anthropic.messages.create({
+      model: 'claude-sonnet-4-6',
+      max_tokens: 1024,
+      messages: [{
+        role: 'user',
+        content: `Jesteś ekspertem od systemów ATS (Applicant Tracking Systems). Przeanalizuj poniższe CV i oceń jego skuteczność.${jobAdSection ? ' Uwzględnij dopasowanie do ogłoszenia.' : ''}
 
 CV:
 ${cvText}${jobAdSection}
@@ -73,8 +76,11 @@ Zwróć TYLKO JSON w tym formacie (bez markdown, bez opisu):
   ],
   "keywords": { "found": ["<słowo kluczowe>"], "missing": ["<brakujące słowo>"] }
 }`,
-    }],
-  })
+      }],
+    })
+  } catch (err) {
+    return aiErrorResponse('ats-analysis', err)
+  }
 
   const raw = message.content[0].type === 'text' ? message.content[0].text : '{}'
 

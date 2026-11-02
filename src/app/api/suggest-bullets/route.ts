@@ -3,6 +3,7 @@ import Anthropic from '@anthropic-ai/sdk'
 import { zodOutputFormat } from '@anthropic-ai/sdk/helpers/zod'
 import { z } from 'zod'
 import { createClient } from '@/lib/supabase/server'
+import { aiErrorResponse } from '@/lib/ai-error'
 
 const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
 
@@ -55,8 +56,7 @@ Wymagania:
       }],
     })
   } catch (err) {
-    console.error('suggest-bullets: Anthropic call failed', err)
-    return NextResponse.json({ error: 'Nie udało się wygenerować sugestii. Spróbuj ponownie.' }, { status: 502 })
+    return aiErrorResponse('suggest-bullets', err)
   }
 
   if (!message.parsed_output) {

@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import Anthropic from '@anthropic-ai/sdk'
 import { createClient } from '@/lib/supabase/server'
+import { aiErrorResponse } from '@/lib/ai-error'
 import type { CVData } from '@/lib/cv/types'
 
 const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
@@ -40,7 +41,9 @@ export async function POST(req: NextRequest) {
     `${e.position} w ${e.company} (${e.startDate}–${e.endDate === 'present' ? 'obecnie' : e.endDate}): ${e.bullets.slice(0, 2).join('. ')}`
   ).join('\n')
 
-  const message = await anthropic.messages.create({
+  let message
+  try {
+    message = await anthropic.messages.create({
     model: 'claude-sonnet-4-6',
     max_tokens: 1024,
     messages: [{
@@ -67,7 +70,10 @@ WYMAGANIA:
 
 Zwróć TYLKO treść listu, bez nagłówka, bez pozdrowień "Z poważaniem" itp. — sam tekst akapitów.`,
     }],
-  })
+    })
+  } catch (err) {
+    return aiErrorResponse('cover-letter', err)
+  }
 
   const text = message.content[0].type === 'text' ? message.content[0].text.trim() : ''
   return NextResponse.json({ letter: text })
