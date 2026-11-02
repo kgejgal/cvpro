@@ -4,6 +4,7 @@ export type WzorCV = {
   title: string
   titleGen: string  // genitive: "CV programisty"
   intro: string
+  metaDesc?: string  // optional search-result meta description; falls back to `intro` when unset
   shouldContain: string[]
   example: {
     name: string
@@ -182,6 +183,7 @@ export const WZORY: WzorCV[] = [
     title: 'CV sprzedawcy',
     titleGen: 'CV sprzedawcy',
     intro: 'CV sprzedawcy powinno pokazać wyniki sprzedaży w liczbach i umiejętność pracy z klientem. Kluczowe są doświadczenie z kasą fiskalną, obsługa reklamacji i realizacja planów sprzedażowych.',
+    metaDesc: 'Gotowy wzór CV sprzedawcy z przykładem — wyniki sprzedaży, obsługa klienta i kasa fiskalna. Wypełnij i pobierz profesjonalne CV za darmo.',
     shouldContain: [
       'Doświadczenie w obsłudze klienta i sprzedaży bezpośredniej',
       'Obsługa kasy fiskalnej i terminala płatniczego',
@@ -448,6 +450,7 @@ export const WZORY: WzorCV[] = [
     title: 'CV kelnera',
     titleGen: 'CV kelnera',
     intro: 'CV kelnera powinno podkreślać obsługę klienta, znajomość win lub menu degustacyjnego i doświadczenie w lokalach różnych kategorii. Ważna jest szybkość, precyzja i wysoka kultura osobista.',
+    metaDesc: 'Wzór CV kelnera z gotowym przykładem — obsługa klienta, znajomość menu i praca w lokalach. Stwórz profesjonalne CV w kilka minut, bez subskrypcji.',
     shouldContain: [
       'Doświadczenie w lokalach (restauracja, hotel, catering)',
       'Obsługa systemu POS i terminala płatniczego',
@@ -486,6 +489,7 @@ export const WZORY: WzorCV[] = [
     title: 'CV elektryka',
     titleGen: 'CV elektryka',
     intro: 'CV elektryka musi pokazać uprawnienia SEP, rodzaj instalacji, przy których pracujesz i doświadczenie z projektami komercyjnymi lub przemysłowymi. Liczy się precyzja i znajomość norm.',
+    metaDesc: 'Gotowy wzór CV elektryka z przykładem — uprawnienia SEP, instalacje i znajomość norm. Wypełnij i pobierz profesjonalne CV za darmo, bez subskrypcji.',
     shouldContain: [
       'Uprawnienia SEP (G1, E, D) z grupą napięciową',
       'Instalacje: domowe, przemysłowe, fotowoltaika, BMS',
@@ -676,6 +680,7 @@ export const WZORY: WzorCV[] = [
     title: 'CV grafika',
     titleGen: 'CV grafika',
     intro: 'CV grafika musi zawierać link do portfolio — to ważniejsze niż jakikolwiek certyfikat. Podkreśl oprogramowanie i specjalizację (UI/UX, branding, ilustracja, motion).',
+    metaDesc: 'Gotowy wzór CV grafika z przykładem — portfolio, oprogramowanie i specjalizacja (UI/UX, branding). Stwórz profesjonalne CV za darmo, bez subskrypcji.',
     shouldContain: [
       'Link do portfolio (Behance, Dribbble, własna strona)',
       'Oprogramowanie: Adobe CC, Figma, Sketch, Canva',
@@ -790,6 +795,7 @@ export const WZORY: WzorCV[] = [
     title: 'CV kasjera',
     titleGen: 'CV kasjera',
     intro: 'CV kasjera powinno podkreślać szybkość i dokładność obsługi klientów, doświadczenie z kasą fiskalną i umiejętność pracy w zatłoczonych środowiskach.',
+    metaDesc: 'Wzór CV kasjera z gotowym przykładem do wypełnienia — kasa fiskalna, obsługa klienta, szybkość i dokładność. Stwórz CV w kilka minut, bez subskrypcji.',
     shouldContain: [
       'Obsługa kasy fiskalnej i terminala płatniczego',
       'Przyjmowanie i wydawanie reszty bez błędów',
@@ -865,6 +871,7 @@ export const WZORY: WzorCV[] = [
     title: 'CV pracownika ochrony',
     titleGen: 'CV pracownika ochrony',
     intro: 'CV pracownika ochrony musi jasno pokazać licencję SUFO (jeśli dotyczy), doświadczenie z obiektami i obszarami obsługi oraz przebyte szkolenia.',
+    metaDesc: 'Gotowy wzór CV pracownika ochrony z przykładem — licencja SUFO, szkolenia i doświadczenie na obiektach. Wypełnij i pobierz profesjonalne CV za darmo.',
     shouldContain: [
       'Licencja pracownika ochrony I lub II stopnia (jeśli posiadasz)',
       'Rodzaje ochranianego mienia (obiekty, wydarzenia, sklepy)',
@@ -1131,6 +1138,7 @@ export const WZORY: WzorCV[] = [
     title: 'CV kosmetyczki',
     titleGen: 'CV kosmetyczki',
     intro: 'CV kosmetyczki powinno pokazać posiadane certyfikaty, specjalizacje (manicure, pedicure, zabiegi twarzy) i obsługiwane marki produktów. Portfolio zdjęć przed/po to duży atut.',
+    metaDesc: 'Wzór CV kosmetyczki z przykładem do wypełnienia — certyfikaty, specjalizacje i zabiegi. Stwórz profesjonalne CV w kilka minut, bez subskrypcji.',
     shouldContain: [
       'Certyfikaty: manicure, pedicure, zabiegi twarzy, depilacja',
       'Obsługiwane marki (Peggy Sage, OPI, Shellac)',

@@ -10,15 +10,19 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const wzor = getWzor(slug)
   if (!wzor) return {}
   const url = `${BASE}/wzory-cv/${slug}`
+  // A search-result-facing description (promise + concrete detail + "za darmo / bez subskrypcji")
+  // where one is written; otherwise the on-page intro. The intro reads like the start of an
+  // article, so a purpose-written `metaDesc` tends to earn more clicks for the same ranking.
+  const metaDescription = wzor.metaDesc ?? wzor.intro
   return {
-    title: `${wzor.titleGen} — wzór i przykład 2026`,
-    description: wzor.intro,
+    title: `${wzor.titleGen} — wzór i przykład do wypełnienia`,
+    description: metaDescription,
     alternates: { canonical: url },
     openGraph: {
       type: 'article',
       url,
       title: wzor.titleGen,
-      description: wzor.intro,
+      description: metaDescription,
       locale: 'pl_PL',
       siteName: 'CVPro.pl',
       images: [{ url: '/opengraph-image', width: 1200, height: 630 }],
@@ -26,7 +30,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     twitter: {
       card: 'summary_large_image',
       title: wzor.titleGen,
-      description: wzor.intro,
+      description: metaDescription,
     },
   }
 }
