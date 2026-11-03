@@ -98,6 +98,12 @@ export default async function DashboardPage({ searchParams }: { searchParams: Pr
       {/* On a phone the header row runs out of width and clips "Wyloguj", so below 520px
           the email is hidden (plan badge + bell + Wyloguj stay) and the gutters tighten. */}
       <style>{`
+        @keyframes dashrise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+        .dash-rise { animation: dashrise .5s cubic-bezier(.22,.61,.36,1) both; }
+        .dash-rise-2 { animation-delay: .06s; }
+        .dash-rise-3 { animation-delay: .12s; }
+        .dash-rise-4 { animation-delay: .18s; }
+        @media (prefers-reduced-motion: reduce) { .dash-rise { animation: none; } }
         @media (max-width: 560px) {
           /* The rigid 1fr auto 1fr grid forces the right cluster into a narrow track where the
              plan badge and "Wyloguj" collide. On phones switch to flex: drop the redundant
@@ -195,27 +201,40 @@ export default async function DashboardPage({ searchParams }: { searchParams: Pr
             ))}
           </div>
         ) : (
-          <div style={{ padding: '8px 0 0', textAlign: 'center' }}>
-            <div style={{ fontSize: 44, marginBottom: 10 }}>📄</div>
-            <h2 style={{ fontSize: 20, fontWeight: 800, marginBottom: 6 }}>Zacznij tworzyć swoje CV</h2>
-            <p style={{ color: '#7a94bb', fontSize: 14, marginBottom: 28, lineHeight: 1.5 }}>
-              Masz już CV w pliku? Wczytaj je i oszczędź czas — albo zacznij od zera.
+          <div style={{ maxWidth: 460, margin: '0 auto', textAlign: 'center', paddingTop: 40 }}>
+            {/* Refined document-upload icon in a soft brand surface (replaces the 📄 emoji). */}
+            <div className="dash-rise" style={{ width: 72, height: 72, margin: '0 auto 24px', borderRadius: 20, background: 'radial-gradient(120% 120% at 30% 18%, rgba(68,119,255,0.22), rgba(68,119,255,0.05))', border: '1px solid rgba(68,119,255,0.28)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#8fb6ff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                <path d="M13 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V9z" />
+                <path d="M13 3v6h6" />
+                <path d="M12 18.5V13" />
+                <path d="M9.5 15.5 12 13l2.5 2.5" />
+              </svg>
+            </div>
+            <h2 className="dash-rise dash-rise-2" style={{ fontSize: 27, fontWeight: 800, letterSpacing: '-0.02em', lineHeight: 1.15, margin: '0 0 10px', textWrap: 'balance' }}>
+              Stwórz swoje pierwsze CV
+            </h2>
+            <p className="dash-rise dash-rise-2" style={{ color: '#9ab4d8', fontSize: 15, lineHeight: 1.6, margin: '0 auto 28px', maxWidth: 360 }}>
+              Masz już CV? Wczytaj je i masz gotowe w kilka sekund. Wolisz zacząć od zera — też dobrze.
             </p>
 
             {/* Primary path: upload an existing CV (the activation lever) */}
-            <DashboardImportCTA userId={user.id} />
+            <div className="dash-rise dash-rise-3">
+              <DashboardImportCTA userId={user.id} />
+            </div>
 
             {/* Secondary path: start from a blank form */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: 12, margin: '24px 0 16px', color: '#4a6a99', fontSize: 12 }}>
+            <div className="dash-rise dash-rise-4" style={{ display: 'flex', alignItems: 'center', gap: 14, margin: '22px 0 16px', color: '#466089', fontSize: 12 }}>
               <div style={{ flex: 1, height: 1, background: '#1a3060' }} />
-              <span>albo zacznij od zera</span>
+              <span>albo</span>
               <div style={{ flex: 1, height: 1, background: '#1a3060' }} />
             </div>
             <Link
               href="/dashboard/cv/new"
-              style={{ display: 'inline-block', background: '#162d50', border: '1px solid #1e3f75', color: '#a0b8e8', textDecoration: 'none', fontSize: 14, fontWeight: 700, padding: '11px 26px', borderRadius: 10 }}
+              className="dash-rise dash-rise-4"
+              style={{ display: 'inline-flex', alignItems: 'center', gap: 8, color: '#9ab4d8', textDecoration: 'none', fontSize: 14, fontWeight: 600, padding: '11px 22px', borderRadius: 11, border: '1px solid #223c6b' }}
             >
-              + Nowe, puste CV
+              Zacznij od pustego formularza <span style={{ color: '#6f8dc0' }}>→</span>
             </Link>
           </div>
         )}

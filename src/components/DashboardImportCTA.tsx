@@ -98,33 +98,48 @@ export default function DashboardImportCTA({ userId }: { userId: string }) {
       />
 
       {/* Primary path: upload an existing CV */}
-      <div style={{ border: '1px dashed #2d5499', borderRadius: 14, padding: '22px 22px 24px', background: 'linear-gradient(135deg,#122040,#16294d)', textAlign: 'left' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 6 }}>
-          <span style={{ fontSize: 22 }}>↥</span>
-          <div style={{ fontSize: 17, fontWeight: 800, color: '#e2eeff' }}>Masz już CV?</div>
+      <div style={{ textAlign: 'left', border: '1px dashed rgba(68,119,255,0.32)', borderRadius: 16, padding: '22px 22px 20px', background: '#101e3b' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 7 }}>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8fb6ff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+            <path d="M12 19V7" /><path d="M6 11l6-6 6 6" /><path d="M5 21h14" />
+          </svg>
+          <div style={{ fontSize: 16, fontWeight: 800, color: '#eaf1ff' }}>Masz już CV?</div>
         </div>
         <div style={{ fontSize: 13.5, color: '#9ab4d8', lineHeight: 1.6, marginBottom: 16 }}>
-          Wgraj plik PDF lub DOCX (do 4 MB), a my uzupełnimy formularz Twoimi danymi w kilka sekund.
-          Potem sprawdzisz wszystko w edytorze i pobierzesz gotowe CV. Plik nie jest zapisywany.
+          Wgraj plik PDF lub DOCX, a my uzupełnimy formularz Twoimi danymi. Potem sprawdzisz wszystko
+          w edytorze i pobierzesz gotowe CV.
         </div>
         <button
           type="button"
           onClick={pick}
           disabled={busy}
           style={{
-            background: 'linear-gradient(135deg,#4477FF,#7C3AED)', color: '#fff', border: 'none',
-            borderRadius: 10, padding: '12px 22px', fontSize: 14, fontWeight: 700,
+            width: '100%', background: 'linear-gradient(135deg,#4878ff,#6a52e6)', color: '#fff', border: 'none',
+            borderRadius: 11, padding: '13px 20px', fontSize: 14, fontWeight: 700,
             cursor: busy ? 'wait' : 'pointer', opacity: busy ? 0.85 : 1,
-            boxShadow: '0 4px 20px rgba(68,119,255,0.35)',
+            boxShadow: '0 1px 2px rgba(0,0,0,0.3), 0 6px 18px -6px rgba(68,119,255,0.5)',
             display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 9,
           }}
         >
-          {busy ? <><InlineSpinner /> Wczytuję dane z pliku…</> : '↥ Wczytaj CV z pliku (PDF lub DOCX)'}
+          {busy ? (
+            <><InlineSpinner /> Wczytuję dane z pliku…</>
+          ) : (
+            <>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                <path d="M12 15V3" /><path d="M7 8l5-5 5 5" /><path d="M5 21h14" />
+              </svg>
+              Wczytaj CV z pliku
+            </>
+          )}
         </button>
 
-        {busy && (
-          <div style={{ marginTop: 12, fontSize: 12.5, color: '#9ab4d8', lineHeight: 1.5 }}>
+        {busy ? (
+          <div style={{ marginTop: 12, fontSize: 12.5, color: '#9ab4d8', lineHeight: 1.5, textAlign: 'center' }}>
             To potrwa kilka sekund — analizujemy Twój plik i uzupełniamy formularz. Nie zamykaj tej strony.
+          </div>
+        ) : (
+          <div style={{ marginTop: 11, fontSize: 11.5, color: '#5e79a0', textAlign: 'center' }}>
+            PDF lub DOCX · do 4 MB · plik nie jest zapisywany
           </div>
         )}
       </div>
