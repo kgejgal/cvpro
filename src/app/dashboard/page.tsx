@@ -98,19 +98,24 @@ export default async function DashboardPage({ searchParams }: { searchParams: Pr
       {/* On a phone the header row runs out of width and clips "Wyloguj", so below 520px
           the email is hidden (plan badge + bell + Wyloguj stay) and the gutters tighten. */}
       <style>{`
-        @media (max-width: 520px) {
-          .dash-head { padding-left: 14px !important; padding-right: 14px !important; gap: 8px !important; }
+        @media (max-width: 560px) {
+          /* The rigid 1fr auto 1fr grid forces the right cluster into a narrow track where the
+             plan badge and "Wyloguj" collide. On phones switch to flex: drop the redundant
+             back-link and email, keep logo left and push the actions to the right edge. */
+          .dash-head { display: flex !important; grid-template-columns: none !important; padding-left: 14px !important; padding-right: 14px !important; gap: 10px !important; }
+          .dash-back { display: none !important; }
           .dash-email { display: none !important; }
+          .dash-actions { margin-left: auto; }
         }
       `}</style>
       {/* Header */}
       <header style={{ borderBottom: '1px solid #1a3060' }}>
         <div className="dash-head" style={{ maxWidth: 900, margin: '0 auto', padding: '0 24px', height: 56, display: 'grid', gridTemplateColumns: '1fr auto 1fr', alignItems: 'center' }}>
-          <Link href="/" style={{ color: '#7a94bb', textDecoration: 'none', fontSize: 14 }}>← Powrót</Link>
+          <Link href="/" className="dash-back" style={{ color: '#7a94bb', textDecoration: 'none', fontSize: 14 }}>← Powrót</Link>
           <Link href="/" style={{ fontWeight: 800, fontSize: 18, color: '#e2eeff', textDecoration: 'none', letterSpacing: -0.3 }}>
             <span style={{ color: '#4477ff' }}>CV</span>Pro<span style={{ color: '#4477ff', fontSize: 13 }}>.pl</span>
           </Link>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 12, justifyContent: 'flex-end', minWidth: 0 }}>
+          <div className="dash-actions" style={{ display: 'flex', alignItems: 'center', gap: 12, justifyContent: 'flex-end', minWidth: 0 }}>
             <NotificationBell userId={user.id} />
             <Link href="/dashboard/profil" style={{ fontSize: 13, color: '#7a94bb', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 6, minWidth: 0 }}>
               <span style={{ fontSize: 11, padding: '2px 8px', borderRadius: 10, background: 'rgba(68,119,255,0.15)', color: '#4477ff', fontWeight: 700, textTransform: 'capitalize', flexShrink: 0 }}>{plan}</span>
