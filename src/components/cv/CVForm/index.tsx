@@ -267,7 +267,7 @@ export default function CVForm({ data, onChange, plan = 'free' }: Props) {
             </div>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0 12px' }}>
+          <div className="rg-2" style={{ gap: '0 12px' }}>
             <Field label="Imię"><Input value={data.firstName} onChange={v => onChange({ firstName: v })} placeholder="Jan" /></Field>
             <Field label="Nazwisko"><Input value={data.lastName} onChange={v => onChange({ lastName: v })} placeholder="Kowalski" /></Field>
             <Field label="Stanowisko"><Input value={data.title} onChange={v => onChange({ title: v })} placeholder="Programista Frontend" /></Field>
@@ -298,7 +298,7 @@ export default function CVForm({ data, onChange, plan = 'free' }: Props) {
                 <span style={{ fontSize: 12, color: '#7a94bb', fontWeight: 600 }}>Pozycja {i + 1}</span>
                 <button onClick={() => onChange({ experience: data.experience.filter((_, j) => j !== i) })} style={{ background: 'none', border: 'none', color: '#e55', cursor: 'pointer', fontSize: 12 }}>✕ Usuń</button>
               </div>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0 12px' }}>
+              <div className="rg-2" style={{ gap: '0 12px' }}>
                 <Field label="Stanowisko"><Input value={e.position} onChange={v => patchExp(i, { position: v })} placeholder="Senior Developer" /></Field>
                 <Field label="Firma"><Input value={e.company} onChange={v => patchExp(i, { company: v })} placeholder="Tech Corp" /></Field>
                 <Field label="Od (np. 2022-03)"><Input value={e.startDate} onChange={v => patchExp(i, { startDate: v })} placeholder="2022-03" /></Field>
@@ -378,7 +378,7 @@ export default function CVForm({ data, onChange, plan = 'free' }: Props) {
                 <button onClick={() => onChange({ education: data.education.filter((_, j) => j !== i) })} style={{ background: 'none', border: 'none', color: '#e55', cursor: 'pointer', fontSize: 12 }}>✕ Usuń</button>
               </div>
               <Field label="Uczelnia"><Input value={e.school} onChange={v => patchEdu(i, { school: v })} placeholder="Politechnika Warszawska" /></Field>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0 12px' }}>
+              <div className="rg-2" style={{ gap: '0 12px' }}>
                 <Field label="Stopień"><Input value={e.degree} onChange={v => patchEdu(i, { degree: v })} placeholder="Magister" /></Field>
                 <Field label="Kierunek"><Input value={e.field} onChange={v => patchEdu(i, { field: v })} placeholder="Informatyka" /></Field>
                 <Field label="Od"><Input value={e.startDate} onChange={v => patchEdu(i, { startDate: v })} placeholder="2018" /></Field>
@@ -513,7 +513,7 @@ export default function CVForm({ data, onChange, plan = 'free' }: Props) {
                 <span style={{ fontSize: 12, color: '#7a94bb' }}>Certyfikat {i + 1}</span>
                 <button onClick={() => onChange({ certifications: (data.certifications || []).filter((_, j) => j !== i) })} style={{ background: 'none', border: 'none', color: '#e55', cursor: 'pointer', fontSize: 12 }}>✕ Usuń</button>
               </div>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0 12px' }}>
+              <div className="rg-2" style={{ gap: '0 12px' }}>
                 <Field label="Nazwa"><input value={c.name} onChange={e => { const cc = [...(data.certifications || [])]; cc[i] = { ...cc[i], name: e.target.value }; onChange({ certifications: cc }) }} placeholder="AWS Solutions Architect" style={INPUT_STYLE} /></Field>
                 <Field label="Wystawca"><input value={c.issuer} onChange={e => { const cc = [...(data.certifications || [])]; cc[i] = { ...cc[i], issuer: e.target.value }; onChange({ certifications: cc }) }} placeholder="Amazon" style={INPUT_STYLE} /></Field>
                 <Field label="Data"><input value={c.date} onChange={e => { const cc = [...(data.certifications || [])]; cc[i] = { ...cc[i], date: e.target.value }; onChange({ certifications: cc }) }} placeholder="2024-06" style={INPUT_STYLE} /></Field>

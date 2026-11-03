@@ -243,6 +243,18 @@ html, body {
 .rg-2 { display: grid; grid-template-columns: 1fr 1fr; }
 .rg-cmp { display: grid; grid-template-columns: 2fr 1fr 1fr; }
 
+/* ATS results: three columns on desktop, stacked on phones (dividers flip to the bottom). */
+.ats-cols { display: grid; grid-template-columns: 1fr 1fr 1fr; }
+.ats-col { border-right: 1px solid #1e3f75; }
+.ats-col:last-child { border-right: none; }
+@media (max-width: 640px) {
+  .ats-cols { grid-template-columns: 1fr; }
+  .ats-col { border-right: none; border-bottom: 1px solid #1e3f75; }
+  .ats-col:last-child { border-bottom: none; }
+  /* Onboarding template picker: 3 across is too tight on a phone — drop to 2. */
+  .wiz-3to2 { grid-template-columns: 1fr 1fr !important; }
+}
+
 /* CV editor split — form | preview */
 .editor-grid { display: grid; grid-template-columns: 360px 1fr; overflow: hidden; }
 

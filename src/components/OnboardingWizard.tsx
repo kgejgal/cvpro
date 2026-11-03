@@ -169,7 +169,7 @@ export default function OnboardingWizard({ onComplete, plan }: Props) {
               <div style={{ fontSize: 22, fontWeight: 800, color: '#e2eeff', marginBottom: 8 }}>Wybierz szablon</div>
               <div style={{ fontSize: 14, color: '#8ba3c4' }}>Możesz zmienić w dowolnym momencie</div>
             </div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 10, marginBottom: 28 }}>
+            <div className="wiz-3to2" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 10, marginBottom: 28 }}>
               {availableTemplates.map(t => (
                 <button key={t.id} onClick={() => setTemplate(t.id)}
                   style={{

@@ -449,10 +449,10 @@ export default function CVEditorPage() {
                     </div>
                   )}
 
-                  {/* Three-column table */}
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 0 }}>
+                  {/* Three-column table (stacks to one column on phones via .ats-cols) */}
+                  <div className="ats-cols" style={{ gap: 0 }}>
                     {/* Column 1: Strengths */}
-                    <div style={{ borderRight: '1px solid #1e3f75', padding: '16px 18px' }}>
+                    <div className="ats-col" style={{ padding: '16px 18px' }}>
                       <div style={{ fontSize: 11, fontWeight: 700, color: '#3db36a', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 12, display: 'flex', alignItems: 'center', gap: 6 }}>
                         <span style={{ fontSize: 14 }}>✅</span> Co jest OK
                       </div>
@@ -471,7 +471,7 @@ export default function CVEditorPage() {
                     </div>
 
                     {/* Column 2: High-priority fixes */}
-                    <div style={{ borderRight: '1px solid #1e3f75', padding: '16px 18px' }}>
+                    <div className="ats-col" style={{ padding: '16px 18px' }}>
                       <div style={{ fontSize: 11, fontWeight: 700, color: '#e55', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 12, display: 'flex', alignItems: 'center', gap: 6 }}>
                         <span style={{ fontSize: 14 }}>❌</span> Co poprawić
                       </div>
@@ -490,7 +490,7 @@ export default function CVEditorPage() {
                     </div>
 
                     {/* Column 3: To add (medium/low + missing keywords) */}
-                    <div style={{ padding: '16px 18px' }}>
+                    <div className="ats-col" style={{ padding: '16px 18px' }}>
                       <div style={{ fontSize: 11, fontWeight: 700, color: '#f0a500', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 12, display: 'flex', alignItems: 'center', gap: 6 }}>
                         <span style={{ fontSize: 14 }}>💡</span> Co dodać
                       </div>
