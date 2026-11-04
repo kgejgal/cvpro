@@ -40,7 +40,7 @@ export async function POST(req: NextRequest) {
   let message
   try {
     message = await anthropic.messages.parse({
-      model: 'claude-opus-5',
+      model: 'claude-sonnet-4-6',
       max_tokens: 1024,
       output_config: { format: zodOutputFormat(BulletsSchema) },
       messages: [{

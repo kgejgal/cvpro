@@ -54,7 +54,7 @@ export async function POST(req: NextRequest) {
   let message
   try {
     message = await anthropic.messages.parse({
-      model: 'claude-opus-5',
+      model: 'claude-sonnet-4-6',
       max_tokens: 8000,
       output_config: { format: zodOutputFormat(ImportedCVSchema) },
       messages: [{ role: 'user', content: IMPORT_PROMPT(text) }],
