@@ -164,6 +164,14 @@ export default function CVForm({ data, onChange, plan = 'free' }: Props) {
     onChange({ education: moveItem(data.education, i, i + dir) })
   }
 
+  function moveLang(i: number, dir: -1 | 1) {
+    onChange({ languages: moveItem(data.languages, i, i + dir) })
+  }
+
+  function moveCert(i: number, dir: -1 | 1) {
+    onChange({ certifications: moveItem(data.certifications || [], i, i + dir) })
+  }
+
   async function suggestSkills() {
     setSuggestLoading(true)
     setSuggestedSkills([])
@@ -504,7 +512,10 @@ export default function CVForm({ data, onChange, plan = 'free' }: Props) {
               <select value={l.level} onChange={e => { const ll = [...data.languages]; ll[i] = { ...ll[i], level: e.target.value }; onChange({ languages: ll }) }} style={{ ...INPUT_STYLE, cursor: 'pointer' }}>
                 {LANGUAGE_LEVELS.map(lv => <option key={lv} value={lv}>{lv}</option>)}
               </select>
-              <button onClick={() => onChange({ languages: data.languages.filter((_, j) => j !== i) })} style={{ background: 'none', border: 'none', color: '#e55', cursor: 'pointer', fontSize: 14, padding: '0 4px' }}>✕</button>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                <MoveButtons onUp={() => moveLang(i, -1)} onDown={() => moveLang(i, 1)} upDisabled={i === 0} downDisabled={i === data.languages.length - 1} />
+                <button onClick={() => onChange({ languages: data.languages.filter((_, j) => j !== i) })} style={{ background: 'none', border: 'none', color: '#e55', cursor: 'pointer', fontSize: 14, padding: '0 4px' }}>✕</button>
+              </div>
             </div>
           ))}
           <button onClick={() => onChange({ languages: [...data.languages, { name: '', level: 'B2 – Wyższy średniozaawansowany' }] })} style={{ background: 'none', border: '1px dashed #1e3f75', color: '#7a94bb', fontSize: 12, padding: '6px 14px', borderRadius: 6, cursor: 'pointer' }}>
@@ -557,9 +568,12 @@ export default function CVForm({ data, onChange, plan = 'free' }: Props) {
         <div>
           {(data.certifications || []).map((c, i) => (
             <div key={i} style={{ background: '#0d1c35', border: '1px solid #1e3f75', borderRadius: 8, padding: 14, marginBottom: 12 }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 8 }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
                 <span style={{ fontSize: 12, color: '#7a94bb' }}>Certyfikat {i + 1}</span>
-                <button onClick={() => onChange({ certifications: (data.certifications || []).filter((_, j) => j !== i) })} style={{ background: 'none', border: 'none', color: '#e55', cursor: 'pointer', fontSize: 12 }}>✕ Usuń</button>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+                  <MoveButtons onUp={() => moveCert(i, -1)} onDown={() => moveCert(i, 1)} upDisabled={i === 0} downDisabled={i === (data.certifications || []).length - 1} />
+                  <button onClick={() => onChange({ certifications: (data.certifications || []).filter((_, j) => j !== i) })} style={{ background: 'none', border: 'none', color: '#e55', cursor: 'pointer', fontSize: 12 }}>✕ Usuń</button>
+                </div>
               </div>
               <div className="rg-2" style={{ gap: '0 12px' }}>
                 <Field label="Nazwa"><input value={c.name} onChange={e => { const cc = [...(data.certifications || [])]; cc[i] = { ...cc[i], name: e.target.value }; onChange({ certifications: cc }) }} placeholder="AWS Solutions Architect" style={INPUT_STYLE} /></Field>
