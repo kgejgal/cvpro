@@ -36,6 +36,30 @@ function Field({ label, children }: { label: string; children: React.ReactNode }
   )
 }
 
+// Moves the whole thing down to one spot: a ▲/▼ pair for reordering a list item without
+// deleting and retyping it. Buttons disable at the ends. Touch-friendly (unlike drag).
+function MoveButtons({ onUp, onDown, upDisabled, downDisabled }: { onUp: () => void; onDown: () => void; upDisabled: boolean; downDisabled: boolean }) {
+  const btn = (disabled: boolean): React.CSSProperties => ({
+    background: 'none', border: 'none', color: disabled ? '#2d4668' : '#7a94bb',
+    cursor: disabled ? 'default' : 'pointer', padding: '2px 5px', fontSize: 12, lineHeight: 1,
+  })
+  return (
+    <>
+      <button type="button" onClick={onUp} disabled={upDisabled} title="Przenieś wyżej" aria-label="Przenieś wyżej" style={btn(upDisabled)}>▲</button>
+      <button type="button" onClick={onDown} disabled={downDisabled} title="Przenieś niżej" aria-label="Przenieś niżej" style={btn(downDisabled)}>▼</button>
+    </>
+  )
+}
+
+// Returns a new array with the item at `from` moved to `to`; a no-op if `to` is out of range.
+function moveItem<T>(arr: T[], from: number, to: number): T[] {
+  if (to < 0 || to >= arr.length) return arr
+  const next = [...arr]
+  const [item] = next.splice(from, 1)
+  next.splice(to, 0, item)
+  return next
+}
+
 function Input({ value, onChange, placeholder, type = 'text', disabled = false }: { value: string; onChange: (v: string) => void; placeholder?: string; type?: string; disabled?: boolean }) {
   return (
     <input
@@ -126,6 +150,18 @@ export default function CVForm({ data, onChange, plan = 'free' }: Props) {
 
   function removeBullet(expIdx: number, bulletIdx: number) {
     patchExp(expIdx, { bullets: (data.experience[expIdx].bullets ?? []).filter((_, i) => i !== bulletIdx) })
+  }
+
+  function moveBullet(expIdx: number, bulletIdx: number, dir: -1 | 1) {
+    patchExp(expIdx, { bullets: moveItem(data.experience[expIdx].bullets ?? [], bulletIdx, bulletIdx + dir) })
+  }
+
+  function moveExp(i: number, dir: -1 | 1) {
+    onChange({ experience: moveItem(data.experience, i, i + dir) })
+  }
+
+  function moveEdu(i: number, dir: -1 | 1) {
+    onChange({ education: moveItem(data.education, i, i + dir) })
   }
 
   async function suggestSkills() {
@@ -294,9 +330,12 @@ export default function CVForm({ data, onChange, plan = 'free' }: Props) {
         <div>
           {data.experience.map((e, i) => (
             <div key={i} style={{ background: '#0d1c35', border: '1px solid #1e3f75', borderRadius: 8, padding: 14, marginBottom: 12 }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 10 }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
                 <span style={{ fontSize: 12, color: '#7a94bb', fontWeight: 600 }}>Pozycja {i + 1}</span>
-                <button onClick={() => onChange({ experience: data.experience.filter((_, j) => j !== i) })} style={{ background: 'none', border: 'none', color: '#e55', cursor: 'pointer', fontSize: 12 }}>✕ Usuń</button>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+                  <MoveButtons onUp={() => moveExp(i, -1)} onDown={() => moveExp(i, 1)} upDisabled={i === 0} downDisabled={i === data.experience.length - 1} />
+                  <button onClick={() => onChange({ experience: data.experience.filter((_, j) => j !== i) })} style={{ background: 'none', border: 'none', color: '#e55', cursor: 'pointer', fontSize: 12 }}>✕ Usuń</button>
+                </div>
               </div>
               <div className="rg-2" style={{ gap: '0 12px' }}>
                 <Field label="Stanowisko"><Input value={e.position} onChange={v => patchExp(i, { position: v })} placeholder="Senior Developer" /></Field>
@@ -322,14 +361,20 @@ export default function CVForm({ data, onChange, plan = 'free' }: Props) {
               <div style={{ marginTop: 8 }}>
                 <label style={LABEL_STYLE}>Obowiązki i osiągnięcia</label>
                 {(e.bullets ?? []).map((b, j) => (
-                  <div key={j} style={{ display: 'flex', gap: 6, marginBottom: 6 }}>
+                  <div key={j} style={{ display: 'flex', gap: 4, marginBottom: 6, alignItems: 'center' }}>
                     <input
                       value={b}
                       onChange={ev => patchBullet(i, j, ev.target.value)}
                       placeholder={`Punkt ${j + 1}...`}
-                      style={{ ...INPUT_STYLE, flex: 1 }}
+                      style={{ ...INPUT_STYLE, flex: 1, minWidth: 0 }}
                     />
-                    <button onClick={() => removeBullet(i, j)} style={{ background: 'none', border: 'none', color: '#e55', cursor: 'pointer', padding: '0 4px' }}>✕</button>
+                    <MoveButtons
+                      onUp={() => moveBullet(i, j, -1)}
+                      onDown={() => moveBullet(i, j, 1)}
+                      upDisabled={j === 0}
+                      downDisabled={j === (e.bullets ?? []).length - 1}
+                    />
+                    <button onClick={() => removeBullet(i, j)} title="Usuń punkt" aria-label="Usuń punkt" style={{ background: 'none', border: 'none', color: '#e55', cursor: 'pointer', padding: '0 4px' }}>✕</button>
                   </div>
                 ))}
                 <div style={{ display: 'flex', gap: 6, marginTop: 4 }}>
@@ -373,9 +418,12 @@ export default function CVForm({ data, onChange, plan = 'free' }: Props) {
         <div>
           {data.education.map((e, i) => (
             <div key={i} style={{ background: '#0d1c35', border: '1px solid #1e3f75', borderRadius: 8, padding: 14, marginBottom: 12 }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 10 }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
                 <span style={{ fontSize: 12, color: '#7a94bb', fontWeight: 600 }}>Edukacja {i + 1}</span>
-                <button onClick={() => onChange({ education: data.education.filter((_, j) => j !== i) })} style={{ background: 'none', border: 'none', color: '#e55', cursor: 'pointer', fontSize: 12 }}>✕ Usuń</button>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+                  <MoveButtons onUp={() => moveEdu(i, -1)} onDown={() => moveEdu(i, 1)} upDisabled={i === 0} downDisabled={i === data.education.length - 1} />
+                  <button onClick={() => onChange({ education: data.education.filter((_, j) => j !== i) })} style={{ background: 'none', border: 'none', color: '#e55', cursor: 'pointer', fontSize: 12 }}>✕ Usuń</button>
+                </div>
               </div>
               <Field label="Uczelnia"><Input value={e.school} onChange={v => patchEdu(i, { school: v })} placeholder="Politechnika Warszawska" /></Field>
               <div className="rg-2" style={{ gap: '0 12px' }}>
