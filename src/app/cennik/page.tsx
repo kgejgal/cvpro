@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { track } from '@vercel/analytics'
 import { track as clarityTrack } from '@/lib/analytics'
@@ -29,28 +29,53 @@ const PLANS = [
   },
 ]
 
+const GENERIC_CHECKOUT_ERROR = 'Nie udało się przejść do płatności. Odśwież stronę i spróbuj jeszcze raz.'
+
 export default function CenikPage() {
   const router = useRouter()
+
+  const [busyPlan, setBusyPlan] = useState<string | null>(null)
+  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => { clarityTrack('paywall_viewed') }, [])
 
   async function buyPlan(planId: string) {
+    if (busyPlan) return
+    setError(null)
+    setBusyPlan(planId)
     track('checkout_started', { plan: planId })
-    const supabase = createClient()
-    const { data: { user } } = await supabase.auth.getUser()
-    if (!user) {
-      // Remember the plan so the dashboard can offer to finish the purchase after
-      // the signup + e-mail confirmation round trip.
-      try { localStorage.setItem(INTENT_KEY, planId) } catch {}
-      router.push('/auth/signup')
-      return
-    }
+    try {
+      const supabase = createClient()
+      const { data: { user } } = await supabase.auth.getUser()
+      if (!user) {
+        // Remember the plan so the dashboard can offer to finish the purchase after
+        // the signup + e-mail confirmation round trip.
+        try { localStorage.setItem(INTENT_KEY, planId) } catch {}
+        router.push('/auth/signup')
+        return
+      }
 
-    const res = await fetch('/api/stripe/checkout', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ plan: planId }) })
-    const { url } = await res.json()
-    if (url) {
-      clarityTrack('checkout_started')
-      window.location.href = url
+      const res = await fetch('/api/stripe/checkout', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ plan: planId }) })
+      const data = await res.json().catch(() => ({} as { url?: string; error?: string }))
+      if (res.ok && data.url) {
+        clarityTrack('checkout_started')
+        window.location.assign(data.url)
+        return // keep the button disabled while the browser navigates to Stripe
+      }
+      if (res.status === 401) {
+        // Session expired between page load and click — same path as a logged-out visitor.
+        try { localStorage.setItem(INTENT_KEY, planId) } catch {}
+        router.push('/auth/login')
+        return
+      }
+      // Previously any other failure left the button doing nothing. Say so, and record it.
+      clarityTrack('checkout_error')
+      setError(res.status === 429 && data.error ? data.error : GENERIC_CHECKOUT_ERROR)
+      setBusyPlan(null)
+    } catch {
+      clarityTrack('checkout_error')
+      setError(GENERIC_CHECKOUT_ERROR)
+      setBusyPlan(null)
     }
   }
 
@@ -62,6 +87,12 @@ export default function CenikPage() {
           Wybierz swój plan
         </h1>
         <p style={{ textAlign: 'center', color: D.muted, marginBottom: 52, fontSize: 16 }}>Jednorazowa płatność · Bez subskrypcji · BLIK i karta</p>
+
+        {error && (
+          <div role="alert" style={{ maxWidth: 560, margin: '0 auto 28px', padding: '12px 16px', borderRadius: 10, background: 'rgba(239,68,68,0.12)', border: '1px solid rgba(239,68,68,0.45)', color: '#fecaca', fontSize: 14, textAlign: 'center' }}>
+            {error}
+          </div>
+        )}
 
         <div className="rg-3" style={{ gap: 20, alignItems: 'start' }}>
           {PLANS.map(({ id, name, price, features, highlight }) => (
@@ -98,13 +129,15 @@ export default function CenikPage() {
               </ul>
               <button
                 onClick={() => buyPlan(id)}
+                disabled={busyPlan !== null}
                 style={{
                   width: '100%',
                   padding: '12px',
                   borderRadius: 10,
                   fontWeight: 700,
                   fontSize: 14,
-                  cursor: 'pointer',
+                  cursor: busyPlan !== null ? 'wait' : 'pointer',
+                  opacity: busyPlan !== null && busyPlan !== id ? 0.6 : 1,
                   border: 'none',
                   background: highlight
                     ? 'linear-gradient(135deg, #4477FF, #7C3AED)'
@@ -113,7 +146,7 @@ export default function CenikPage() {
                   boxShadow: highlight ? '0 4px 20px rgba(68,119,255,0.35)' : 'none',
                 }}
               >
-                Kup teraz
+                {busyPlan === id ? 'Przekierowuję…' : 'Kup teraz'}
               </button>
             </div>
           ))}

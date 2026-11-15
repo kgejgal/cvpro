@@ -13,6 +13,7 @@ export type AnalyticsEvent =
   | "cv_completed"
   | "paywall_viewed"
   | "checkout_started"
+  | "checkout_error"
   | "purchase_success"
   // Kliknięcia w zablokowane funkcje (dotąd martwe kliknięcia) i błędy wejścia do serwisu.
   | "template_locked_click"
