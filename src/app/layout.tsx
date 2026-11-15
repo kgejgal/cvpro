@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Onest } from 'next/font/google'
+import { Onest, Bricolage_Grotesque } from 'next/font/google'
 import Script from 'next/script'
 import { Analytics } from '@vercel/analytics/next'
 import CookieConsent from '@/components/CookieConsent'
@@ -7,6 +7,8 @@ import ClarityConsent from '@/components/ClarityConsent'
 import './globals.css'
 
 const onest = Onest({ subsets: ['latin'], variable: '--font-onest', display: 'swap', preload: true, adjustFontFallback: false })
+// Display face for app/marketing headlines (not the CV documents — those set their own fonts).
+const bricolage = Bricolage_Grotesque({ subsets: ['latin', 'latin-ext'], variable: '--font-display', display: 'swap', weight: ['600', '700', '800'] })
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://cvpro.pl'
 const TITLE = 'Kreator CV online po polsku — CVPro.pl'
@@ -79,7 +81,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="pl"
-      className={onest.variable}
+      className={`${onest.variable} ${bricolage.variable}`}
     >
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />

@@ -42,6 +42,12 @@ html, body {
   max-width: 100%;
 }
 
+/* Display face (Bricolage Grotesque) for app & marketing headlines. The CV templates set their
+   own fontFamily inline, so a stylesheet rule can't reach them; the #cv-doc / .cv-readonly guard
+   below is belt-and-suspenders for any heading that relies on inheritance inside a rendered CV. */
+h1, h2 { font-family: var(--font-display), var(--font-onest), sans-serif; }
+#cv-doc h1, #cv-doc h2, .cv-readonly h1, .cv-readonly h2 { font-family: inherit; }
+
 ::placeholder { color: var(--text-dim); }
 
 ::-webkit-scrollbar { width: 5px; }
