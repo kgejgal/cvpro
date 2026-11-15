@@ -1,6 +1,9 @@
 'use client'
 
 import { useState } from 'react'
+import { DndContext, closestCenter, PointerSensor, useSensor, useSensors, type DragEndEvent } from '@dnd-kit/core'
+import { SortableContext, useSortable, verticalListSortingStrategy } from '@dnd-kit/sortable'
+import { CSS } from '@dnd-kit/utilities'
 import CVImport from '@/components/cv/CVImport'
 import type { CVData, ExperienceItem, EducationItem } from '@/lib/cv/types'
 import { SITUATION_CHIPS, LANGUAGE_LEVELS } from '@/lib/cv/types'
@@ -58,6 +61,51 @@ function moveItem<T>(arr: T[], from: number, to: number): T[] {
   const [item] = next.splice(from, 1)
   next.splice(to, 0, item)
   return next
+}
+
+// Drag-and-drop reordering alongside the ▲/▼ buttons: a grip handle you press and drag.
+// The grip alone carries the drag listeners, so the inputs stay editable and a touch
+// anywhere else still scrolls the form normally (touch-action:none only on the grip).
+// Built inline here so the dnd-kit attributes/listeners keep their precise types.
+function SortableRow({ id, children }: { id: string; children: (grip: React.ReactNode) => React.ReactNode }) {
+  const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({ id })
+  const style: React.CSSProperties = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+    opacity: isDragging ? 0.55 : 1,
+    position: 'relative',
+    zIndex: isDragging ? 5 : undefined,
+  }
+  const grip = (
+    <span
+      {...attributes}
+      {...listeners}
+      tabIndex={-1}
+      title="Przeciągnij, aby zmienić kolejność"
+      aria-label="Przeciągnij, aby zmienić kolejność"
+      style={{ color: '#5a7bb0', cursor: 'grab', padding: '2px 4px', fontSize: 15, lineHeight: 1, touchAction: 'none', userSelect: 'none', display: 'inline-flex', alignItems: 'center' }}
+    >
+      ⠿
+    </span>
+  )
+  return <div ref={setNodeRef} style={style}>{children(grip)}</div>
+}
+
+// Sets up a sortable context over `count` index-keyed rows and reports the from/to on drop.
+function DragList({ count, onReorder, children }: { count: number; onReorder: (from: number, to: number) => void; children: React.ReactNode }) {
+  // Match the Kanban board: a 6px activation distance tells a tap apart from a drag, on mouse and touch.
+  const sensors = useSensors(useSensor(PointerSensor, { activationConstraint: { distance: 6 } }))
+  const ids = Array.from({ length: count }, (_, i) => String(i))
+  function handleEnd(ev: DragEndEvent) {
+    const { active, over } = ev
+    if (!over || active.id === over.id) return
+    onReorder(Number(active.id), Number(over.id))
+  }
+  return (
+    <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleEnd}>
+      <SortableContext items={ids} strategy={verticalListSortingStrategy}>{children}</SortableContext>
+    </DndContext>
+  )
 }
 
 function Input({ value, onChange, placeholder, type = 'text', disabled = false }: { value: string; onChange: (v: string) => void; placeholder?: string; type?: string; disabled?: boolean }) {
@@ -335,11 +383,12 @@ export default function CVForm({ data, onChange, plan = 'free' }: Props) {
 
       {/* Experience */}
       {section('experience', '4. Doświadczenie',
-        <div>
+        <DragList count={data.experience.length} onReorder={(from, to) => onChange({ experience: moveItem(data.experience, from, to) })}>
           {data.experience.map((e, i) => (
-            <div key={i} style={{ background: '#0d1c35', border: '1px solid #1e3f75', borderRadius: 8, padding: 14, marginBottom: 12 }}>
+            <SortableRow key={i} id={String(i)}>{grip => (
+            <div style={{ background: '#0d1c35', border: '1px solid #1e3f75', borderRadius: 8, padding: 14, marginBottom: 12 }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
-                <span style={{ fontSize: 12, color: '#7a94bb', fontWeight: 600 }}>Pozycja {i + 1}</span>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>{grip}<span style={{ fontSize: 12, color: '#7a94bb', fontWeight: 600 }}>Pozycja {i + 1}</span></div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
                   <MoveButtons onUp={() => moveExp(i, -1)} onDown={() => moveExp(i, 1)} upDisabled={i === 0} downDisabled={i === data.experience.length - 1} />
                   <button onClick={() => onChange({ experience: data.experience.filter((_, j) => j !== i) })} style={{ background: 'none', border: 'none', color: '#e55', cursor: 'pointer', fontSize: 12 }}>✕ Usuń</button>
@@ -368,8 +417,11 @@ export default function CVForm({ data, onChange, plan = 'free' }: Props) {
               </div>
               <div style={{ marginTop: 8 }}>
                 <label style={LABEL_STYLE}>Obowiązki i osiągnięcia</label>
+                <DragList count={(e.bullets ?? []).length} onReorder={(from, to) => patchExp(i, { bullets: moveItem(e.bullets ?? [], from, to) })}>
                 {(e.bullets ?? []).map((b, j) => (
-                  <div key={j} style={{ display: 'flex', gap: 4, marginBottom: 6, alignItems: 'center' }}>
+                  <SortableRow key={j} id={String(j)}>{grip => (
+                  <div style={{ display: 'flex', gap: 4, marginBottom: 6, alignItems: 'center' }}>
+                    {grip}
                     <input
                       value={b}
                       onChange={ev => patchBullet(i, j, ev.target.value)}
@@ -384,7 +436,9 @@ export default function CVForm({ data, onChange, plan = 'free' }: Props) {
                     />
                     <button onClick={() => removeBullet(i, j)} title="Usuń punkt" aria-label="Usuń punkt" style={{ background: 'none', border: 'none', color: '#e55', cursor: 'pointer', padding: '0 4px' }}>✕</button>
                   </div>
+                  )}</SortableRow>
                 ))}
+                </DragList>
                 <div style={{ display: 'flex', gap: 6, marginTop: 4 }}>
                   <button onClick={() => addBullet(i)} style={{ background: 'none', border: '1px dashed #1e3f75', color: '#7a94bb', fontSize: 12, padding: '5px 12px', borderRadius: 6, cursor: 'pointer', flex: 1 }}>
                     + Dodaj punkt
@@ -415,19 +469,21 @@ export default function CVForm({ data, onChange, plan = 'free' }: Props) {
                 )}
               </div>
             </div>
+            )}</SortableRow>
           ))}
-        </div>,
+        </DragList>,
         () => onChange({ experience: [...data.experience, { company: '', position: '', startDate: '', endDate: 'obecnie', city: '', bullets: [''] }] }),
         'Dodaj'
       )}
 
       {/* Education */}
       {section('education', '5. Wykształcenie',
-        <div>
+        <DragList count={data.education.length} onReorder={(from, to) => onChange({ education: moveItem(data.education, from, to) })}>
           {data.education.map((e, i) => (
-            <div key={i} style={{ background: '#0d1c35', border: '1px solid #1e3f75', borderRadius: 8, padding: 14, marginBottom: 12 }}>
+            <SortableRow key={i} id={String(i)}>{grip => (
+            <div style={{ background: '#0d1c35', border: '1px solid #1e3f75', borderRadius: 8, padding: 14, marginBottom: 12 }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
-                <span style={{ fontSize: 12, color: '#7a94bb', fontWeight: 600 }}>Edukacja {i + 1}</span>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>{grip}<span style={{ fontSize: 12, color: '#7a94bb', fontWeight: 600 }}>Edukacja {i + 1}</span></div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
                   <MoveButtons onUp={() => moveEdu(i, -1)} onDown={() => moveEdu(i, 1)} upDisabled={i === 0} downDisabled={i === data.education.length - 1} />
                   <button onClick={() => onChange({ education: data.education.filter((_, j) => j !== i) })} style={{ background: 'none', border: 'none', color: '#e55', cursor: 'pointer', fontSize: 12 }}>✕ Usuń</button>
@@ -442,8 +498,9 @@ export default function CVForm({ data, onChange, plan = 'free' }: Props) {
                 <Field label="Wynik / GPA (opcjonalnie)"><Input value={e.grade || ''} onChange={v => patchEdu(i, { grade: v })} placeholder="4.5 / 5.0" /></Field>
               </div>
             </div>
+            )}</SortableRow>
           ))}
-        </div>,
+        </DragList>,
         () => onChange({ education: [...data.education, { school: '', degree: '', field: '', startDate: '', endDate: '', grade: '' }] }),
         'Dodaj'
       )}
@@ -506,8 +563,11 @@ export default function CVForm({ data, onChange, plan = 'free' }: Props) {
       {/* Languages */}
       {section('languages', '7. Języki',
         <div>
+          <DragList count={data.languages.length} onReorder={(from, to) => onChange({ languages: moveItem(data.languages, from, to) })}>
           {data.languages.map((l, i) => (
-            <div key={i} style={{ display: 'grid', gridTemplateColumns: '1fr 1fr auto', gap: 8, marginBottom: 8, alignItems: 'center' }}>
+            <SortableRow key={i} id={String(i)}>{grip => (
+            <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr 1fr auto', gap: 8, marginBottom: 8, alignItems: 'center' }}>
+              {grip}
               <input value={l.name} onChange={e => { const ll = [...data.languages]; ll[i] = { ...ll[i], name: e.target.value }; onChange({ languages: ll }) }} placeholder="Polski" style={INPUT_STYLE} />
               <select value={l.level} onChange={e => { const ll = [...data.languages]; ll[i] = { ...ll[i], level: e.target.value }; onChange({ languages: ll }) }} style={{ ...INPUT_STYLE, cursor: 'pointer' }}>
                 {LANGUAGE_LEVELS.map(lv => <option key={lv} value={lv}>{lv}</option>)}
@@ -517,7 +577,9 @@ export default function CVForm({ data, onChange, plan = 'free' }: Props) {
                 <button onClick={() => onChange({ languages: data.languages.filter((_, j) => j !== i) })} style={{ background: 'none', border: 'none', color: '#e55', cursor: 'pointer', fontSize: 14, padding: '0 4px' }}>✕</button>
               </div>
             </div>
+            )}</SortableRow>
           ))}
+          </DragList>
           <button onClick={() => onChange({ languages: [...data.languages, { name: '', level: 'B2 – Wyższy średniozaawansowany' }] })} style={{ background: 'none', border: '1px dashed #1e3f75', color: '#7a94bb', fontSize: 12, padding: '6px 14px', borderRadius: 6, cursor: 'pointer' }}>
             + Dodaj język
           </button>
@@ -565,11 +627,12 @@ export default function CVForm({ data, onChange, plan = 'free' }: Props) {
 
       {/* Certifications */}
       {section('certifications', '10. Certyfikaty (opcjonalnie)',
-        <div>
+        <DragList count={(data.certifications || []).length} onReorder={(from, to) => onChange({ certifications: moveItem(data.certifications || [], from, to) })}>
           {(data.certifications || []).map((c, i) => (
-            <div key={i} style={{ background: '#0d1c35', border: '1px solid #1e3f75', borderRadius: 8, padding: 14, marginBottom: 12 }}>
+            <SortableRow key={i} id={String(i)}>{grip => (
+            <div style={{ background: '#0d1c35', border: '1px solid #1e3f75', borderRadius: 8, padding: 14, marginBottom: 12 }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
-                <span style={{ fontSize: 12, color: '#7a94bb' }}>Certyfikat {i + 1}</span>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>{grip}<span style={{ fontSize: 12, color: '#7a94bb' }}>Certyfikat {i + 1}</span></div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
                   <MoveButtons onUp={() => moveCert(i, -1)} onDown={() => moveCert(i, 1)} upDisabled={i === 0} downDisabled={i === (data.certifications || []).length - 1} />
                   <button onClick={() => onChange({ certifications: (data.certifications || []).filter((_, j) => j !== i) })} style={{ background: 'none', border: 'none', color: '#e55', cursor: 'pointer', fontSize: 12 }}>✕ Usuń</button>
@@ -581,8 +644,9 @@ export default function CVForm({ data, onChange, plan = 'free' }: Props) {
                 <Field label="Data"><input value={c.date} onChange={e => { const cc = [...(data.certifications || [])]; cc[i] = { ...cc[i], date: e.target.value }; onChange({ certifications: cc }) }} placeholder="2024-06" style={INPUT_STYLE} /></Field>
               </div>
             </div>
+            )}</SortableRow>
           ))}
-        </div>,
+        </DragList>,
         () => onChange({ certifications: [...(data.certifications || []), { name: '', issuer: '', date: '' }] }),
         'Dodaj'
       )}
