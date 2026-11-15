@@ -106,12 +106,12 @@ export default async function HomePage() {
                 Moje CV →
               </Link>
             ) : (
-              <Link href="/auth/signup" style={{
+              <Link href="/kreator" style={{
                 background: `linear-gradient(135deg,${D.primary},#7055FF)`, color: '#fff',
                 textDecoration: 'none', fontSize: 16, fontWeight: 700, padding: '14px 32px', borderRadius: 12,
                 boxShadow: '0 4px 22px rgba(68,119,255,0.42)',
               }}>
-                Stwórz swoje CV →
+                Stwórz CV bez rejestracji →
               </Link>
             )}
             <a href="#jak-to-dziala" style={{
@@ -337,10 +337,10 @@ export default async function HomePage() {
           </div>
 
           <div style={{ textAlign: 'center', marginTop: 32 }}>
-            <Link href="/auth/signup" style={{ background: `linear-gradient(135deg,${D.primary},#7055FF)`, color: '#fff', textDecoration: 'none', fontSize: 15, fontWeight: 700, padding: '13px 32px', borderRadius: 12, boxShadow: '0 4px 22px rgba(68,119,255,0.38)', display: 'inline-block' }}>
+            <Link href="/kreator" style={{ background: `linear-gradient(135deg,${D.primary},#7055FF)`, color: '#fff', textDecoration: 'none', fontSize: 15, fontWeight: 700, padding: '13px 32px', borderRadius: 12, boxShadow: '0 4px 22px rgba(68,119,255,0.38)', display: 'inline-block' }}>
               Wypróbuj CVPro.pl za darmo →
             </Link>
-            <div style={{ marginTop: 12, fontSize: 12, color: D.dim }}>Bez karty kredytowej. Bez pułapek. Płacisz tylko za PDF.</div>
+            <div style={{ marginTop: 12, fontSize: 12, color: D.dim }}>Bez rejestracji na start. Bez karty. Płacisz tylko za PDF.</div>
           </div>
         </div>
       </section>

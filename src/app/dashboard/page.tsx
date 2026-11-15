@@ -9,6 +9,7 @@ import ResumePurchaseBanner from '@/components/ResumePurchaseBanner'
 import PurchaseSuccessTracker from '@/components/PurchaseSuccessTracker'
 import DashboardImportCTA from '@/components/DashboardImportCTA'
 import PendingButton from '@/components/PendingButton'
+import GuestDraftRedirect from '@/components/GuestDraftRedirect'
 
 // `?success=1` alone is forgeable, so the purchase is only trusted when Stripe itself says
 // this checkout session is paid and was created for the signed-in user. Returns the paid
@@ -136,6 +137,7 @@ export default async function DashboardPage({ searchParams }: { searchParams: Pr
 
       <main style={{ maxWidth: 680, margin: '0 auto', padding: '48px 24px' }}>
         {paid && <PurchaseSuccessTracker sessionId={paid.id} />}
+        <GuestDraftRedirect enabled={(cvs?.length ?? 0) === 0} />
         <ResumePurchaseBanner plan={plan} />
 
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 32 }}>

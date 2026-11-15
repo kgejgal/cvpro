@@ -25,7 +25,13 @@ export type AnalyticsEvent =
   | "cv_import_success"
   | "cv_import_error"
   // Kliknięcie "Wczytaj CV z pliku" na pustym pulpicie — pomiar aktywacji nowych kont.
-  | "dashboard_import_click";
+  | "dashboard_import_click"
+  // Kreator bez konta (/kreator): wejście, pierwsza edycja i kliknięcia w drodze do rejestracji.
+  | "guest_editor_opened"
+  | "guest_cv_started"
+  | "guest_download_click"
+  | "guest_signup_click"
+  | "guest_login_click";
 
 // Stub window.clarity powstaje dopiero w <Script strategy="afterInteractive">
 // z ClarityConsent, czyli po hydracji. Efekty stron odpalają się wcześniej, więc

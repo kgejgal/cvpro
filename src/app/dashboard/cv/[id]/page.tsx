@@ -7,6 +7,7 @@ import { createClient } from '@/lib/supabase/client'
 import type { CVData } from '@/lib/cv/types'
 import { EMPTY_CV, planAllows } from '@/lib/cv/types'
 import { track, tag } from '@/lib/analytics'
+import { loadGuestDraft, clearGuestDraft } from '@/lib/cv/guest-draft'
 import CVForm from '@/components/cv/CVForm'
 import CVPreview from '@/components/cv/CVPreview'
 import ScaledCV from '@/components/cv/ScaledCV'
@@ -78,6 +79,8 @@ export default function CVEditorPage() {
   const [docxLoading, setDocxLoading] = useState(false)
   const [atsFreeUsed, setAtsFreeUsed] = useState(true)
   const [showWatermarkModal, setShowWatermarkModal] = useState(false)
+  // A CV started without an account in /kreator: picked up once after signup, then saved as this account's first CV.
+  const [guestDraft, setGuestDraft] = useState(false)
 
   const saveTimer = useRef<ReturnType<typeof setTimeout>>(undefined)
 
@@ -101,6 +104,10 @@ export default function CVEditorPage() {
         const { data: { user } } = await supabase.auth.getUser()
         if (cancelled) return
         if (!user) { router.push('/auth/login'); return }
+        if (id === 'new') {
+          const draft = loadGuestDraft()
+          if (draft) { setData({ ...EMPTY_CV, ...draft }); setSaved(false); setGuestDraft(true) }
+        }
         setUserId(user.id)
         const { data: profile } = await supabase.from('profiles').select('plan, ats_free_used').eq('id', user.id).single()
         if (cancelled) return
@@ -135,12 +142,20 @@ export default function CVEditorPage() {
       await supabase.from('cvs').update({ data: cvData as never, title, template: cvData.template, color: cvData.colorTheme, updated_at: new Date().toISOString() }).eq('id', cvId)
     } else {
       const { data: newCv } = await supabase.from('cvs').insert({ user_id: user.id, data: cvData as never, title, template: cvData.template, color: cvData.colorTheme, is_public: false }).select().single()
-      if (newCv) { setCvId(newCv.id); savedId = newCv.id; window.history.replaceState(null, '', `/dashboard/cv/${newCv.id}`) }
+      if (newCv) { setCvId(newCv.id); savedId = newCv.id; clearGuestDraft(); window.history.replaceState(null, '', `/dashboard/cv/${newCv.id}`) }
     }
     setSaving(false)
     setSaved(true)
     return savedId
   }, [cvId, loaded])
+
+  // Save the carried-over draft right away so it exists on the account even if the user leaves without editing.
+  useEffect(() => {
+    if (!guestDraft || !userId) return
+    const t = setTimeout(() => { void save(data, titleInput) }, 0)
+    return () => clearTimeout(t)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [guestDraft, userId])
 
   async function goToPreview() {
     track('cv_completed')
@@ -717,7 +732,7 @@ export default function CVEditorPage() {
     <div className="editor-root" style={{ height: '100vh', display: 'flex', flexDirection: 'column', background: '#0d1c35', color: '#e2eeff' }}>
       {watermarkModal}
 
-      {id === 'new' && (
+      {id === 'new' && userId && !guestDraft && (
         <OnboardingWizard plan={plan} onComplete={patch => setData(d => ({ ...d, ...patch }))} />
       )}
 

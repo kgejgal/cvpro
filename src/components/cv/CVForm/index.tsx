@@ -234,7 +234,7 @@ export default function CVForm({ data, onChange, plan = 'free' }: Props) {
       if (res.ok && body) {
         setSuggestedSkills((body.skills ?? []).filter((s: string) => !data.skills.includes(s)))
       } else {
-        setSuggestSkillsError(body?.error || 'Nie udało się pobrać sugestii. Spróbuj ponownie.')
+        setSuggestSkillsError(res.status === 401 ? 'Zaloguj się, aby korzystać z podpowiedzi.' : body?.error || 'Nie udało się pobrać sugestii. Spróbuj ponownie.')
       }
     } catch {
       setSuggestSkillsError('Błąd połączenia. Sprawdź internet i spróbuj ponownie.')
@@ -263,7 +263,7 @@ export default function CVForm({ data, onChange, plan = 'free' }: Props) {
       if (res.ok && body) {
         setSuggestedBullets(prev => ({ ...prev, [i]: body.bullets ?? [] }))
       } else {
-        setSuggestBulletsError(prev => ({ ...prev, [i]: body?.error || 'Nie udało się pobrać sugestii. Spróbuj ponownie.' }))
+        setSuggestBulletsError(prev => ({ ...prev, [i]: res.status === 401 ? 'Zaloguj się, aby korzystać z podpowiedzi.' : body?.error || 'Nie udało się pobrać sugestii. Spróbuj ponownie.' }))
       }
     } catch {
       setSuggestBulletsError(prev => ({ ...prev, [i]: 'Błąd połączenia. Sprawdź internet i spróbuj ponownie.' }))
