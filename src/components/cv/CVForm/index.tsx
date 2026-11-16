@@ -159,9 +159,12 @@ interface Props {
   data: CVData
   onChange: (patch: Partial<CVData>) => void
   plan?: string
+  // Wczytywanie CV z pliku wymaga konta (endpoint /api/cv/import odrzuca niezalogowanych),
+  // więc kreator bez konta (/kreator) wyłącza tę kartę zamiast pokazywać przycisk, który zawsze zwraca błąd.
+  allowImport?: boolean
 }
 
-export default function CVForm({ data, onChange, plan = 'free' }: Props) {
+export default function CVForm({ data, onChange, plan = 'free', allowImport = true }: Props) {
   const [openSections, setOpenSections] = useState({ situation: true, personal: true, summary: false, experience: true, education: true, skills: false, languages: false, hobbies: false, certifications: false, jobad: false })
   const [suggestLoading, setSuggestLoading] = useState(false)
   const [suggestedSkills, setSuggestedSkills] = useState<string[]>([])
@@ -286,7 +289,7 @@ export default function CVForm({ data, onChange, plan = 'free' }: Props) {
 
   return (
     <div data-clarity-mask="True" style={{ padding: '0 16px', overflowY: 'auto', height: '100%' }}>
-      <CVImport data={data} onChange={onChange} />
+      {allowImport && <CVImport data={data} onChange={onChange} />}
 
       {/* Situation */}
       {section('situation', '1. Twoja sytuacja', (

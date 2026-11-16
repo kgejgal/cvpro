@@ -67,7 +67,7 @@ function Editor() {
 
       <div className="editor-grid" style={{ flex: 1 }}>
         <div className="no-print editor-form-panel" style={{ borderRight: '1px solid #1e3f75', overflowY: 'auto', background: '#162d50' }}>
-          <CVForm data={data} onChange={handleChange} plan="free" />
+          <CVForm data={data} onChange={handleChange} plan="free" allowImport={false} />
         </div>
         <div className="editor-preview-panel" style={{ overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
           <CVPreview data={data} plan="free" onChange={handleChange} onDownloadPDF={openSignup} />
