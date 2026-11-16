@@ -436,6 +436,7 @@ export default async function HomePage() {
           <Link href="/polityka-prywatnosci" style={{ color: 'inherit', textDecoration: 'none' }}>Polityka prywatności</Link>
           <Link href="/regulamin" style={{ color: 'inherit', textDecoration: 'none' }}>Regulamin</Link>
           <Link href="/polityka-prywatnosci" style={{ color: 'inherit', textDecoration: 'none' }}>RODO</Link>
+          <Link href="/dla-partnerow" style={{ color: 'inherit', textDecoration: 'none' }}>Dla partnerów</Link>
           <Link href="/kontakt" style={{ color: 'inherit', textDecoration: 'none' }}>Kontakt</Link>
         </div>
         <div style={{ fontSize: 11, color: D.dim }}>© {new Date().getFullYear()} CVPro.pl · Wszelkie prawa zastrzeżone</div>

@@ -4,6 +4,7 @@ import Script from 'next/script'
 import { Analytics } from '@vercel/analytics/next'
 import CookieConsent from '@/components/CookieConsent'
 import ClarityConsent from '@/components/ClarityConsent'
+import PartnerRefCapture from '@/components/PartnerRefCapture'
 import './globals.css'
 
 const onest = Onest({ subsets: ['latin'], variable: '--font-onest', display: 'swap', preload: true, adjustFontFallback: false })
@@ -125,6 +126,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </Script>
         <CookieConsent />
         <ClarityConsent />
+        <PartnerRefCapture />
       </body>
     </html>
   )

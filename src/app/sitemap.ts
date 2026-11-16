@@ -24,6 +24,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/kreator`,            lastModified: new Date('2026-11-16'), changeFrequency: 'monthly', priority: 0.9 },
     { url: `${BASE}/wzory-cv`,            lastModified: WZORY_UPDATED,  changeFrequency: 'weekly',  priority: 0.8 },
     { url: `${BASE}/poradnik`,            lastModified: poradnikLatest, changeFrequency: 'weekly',  priority: 0.7 },
+    { url: `${BASE}/dla-partnerow`,       lastModified: new Date('2026-11-16'), changeFrequency: 'yearly', priority: 0.5 },
     { url: `${BASE}/kontakt`,             lastModified: KONTAKT_UPDATED, changeFrequency: 'yearly', priority: 0.4 },
     { url: `${BASE}/regulamin`,           lastModified: LEGAL_UPDATED,  changeFrequency: 'yearly',  priority: 0.3 },
     { url: `${BASE}/polityka-prywatnosci`,lastModified: LEGAL_UPDATED,  changeFrequency: 'yearly',  priority: 0.3 },
