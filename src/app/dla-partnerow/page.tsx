@@ -6,7 +6,7 @@ const BASE = process.env.NEXT_PUBLIC_SITE_URL || 'https://cvpro.pl'
 
 export const metadata: Metadata = {
   title: 'CVPro dla agencji pracy, biur karier i szkół',
-  description: 'Poleć swoim kandydatom i uczniom prosty kreator CV po polsku: start bez konta, wczytanie starego CV z pliku, płatność jednorazowa od 15 zł. Napisz do nas.',
+  description: 'Poleć swoim kandydatom i uczniom prosty kreator CV po polsku: start bez konta, wzory CV dla wielu zawodów, płatność jednorazowa od 15 zł. Napisz do nas.',
   alternates: { canonical: `${BASE}/dla-partnerow` },
 }
 
@@ -15,7 +15,7 @@ const MAIL_HREF = `mailto:${MAIL}?subject=${encodeURIComponent('Współpraca z C
 
 const BENEFITS: { title: string; text: string }[] = [
   { title: 'Start bez zakładania konta', text: 'Kandydat otwiera kreator i od razu pisze CV. Szkic zapisuje się w jego przeglądarce, a konto założy dopiero, gdy będzie chciał go zachować.' },
-  { title: 'Wczytanie starego CV', text: 'Ktoś ma już CV w pliku PDF lub DOCX? Wczytuje je, a formularz uzupełnia się danymi, które wystarczy sprawdzić i poprawić.' },
+  { title: 'Wczytanie starego CV', text: 'Ktoś ma już CV w pliku PDF lub DOCX? Po założeniu darmowego konta wczytuje je, a formularz uzupełnia się danymi, które wystarczy sprawdzić i poprawić.' },
   { title: 'Działa na telefonie', text: 'Większość kandydatów ma pod ręką tylko telefon. Edytor i podgląd CV działają na małym ekranie.' },
   { title: 'Cena bez niespodzianek', text: 'Płatność jednorazowa od 15 zł, BLIK lub karta. Bez subskrypcji i bez ukrytych opłat.' },
   { title: `Wzory CV dla ${WZORY.length} zawodów`, text: 'Gotowe przykłady, od kasjera i operatora wózka widłowego po księgową i programistę. Kandydat widzi, co wpisać.' },
@@ -24,7 +24,7 @@ const BENEFITS: { title: string; text: string }[] = [
 
 const STEPS: { n: string; title: string; text: string }[] = [
   { n: '1', title: 'Udostępniasz link', text: 'W mailu do kandydatów, na swojej stronie, w wiadomości albo na ulotce. Do linku dopisujemy Twój znacznik.' },
-  { n: '2', title: 'Kandydat robi CV', text: 'W kilka minut, bez rejestracji, z telefonu lub komputera. Może też wczytać stare CV z pliku.' },
+  { n: '2', title: 'Kandydat robi CV', text: 'W kilka minut, bez rejestracji, z telefonu lub komputera. Szkic zapisuje się w przeglądarce, a konto założy dopiero, gdy będzie chciał go zachować.' },
   { n: '3', title: 'Pobiera gotowy plik', text: 'Pobiera CV w PDF i wysyła je dalej. Wersja bez znaku wodnego kosztuje jednorazowo od 15 zł.' },
 ]
 
