@@ -50,10 +50,37 @@ function layoutForA4() {
     const el = node as HTMLElement
     if (el.offsetHeight > 0 && el.offsetHeight <= 260 && (el.textContent || '').trim()) el.style.breakInside = 'avoid'
   })
+  // A CV that spills only slightly onto a second page (a few lines) is shrunk to fit on one:
+  // the document is zoomed down and widened by the same factor, so it still fills the page width
+  // and the text simply sets a touch smaller. Up to ~14% smaller; anything longer stays multi-page.
+  const MIN_ZOOM = 0.86
+  const baseWidth = doc.getBoundingClientRect().width
+  const originalWidth = doc.style.width // templates set an inline width; restore it if shrinking is not enough
+  let zoom = 1
+  if (doc.getBoundingClientRect().height - 1 > pageHeight) {
+    const fits = (z: number) => {
+      doc.style.setProperty('zoom', String(z))
+      doc.style.setProperty('width', `${baseWidth / z}px`, 'important')
+      return doc.getBoundingClientRect().height - 1 <= pageHeight
+    }
+    if (fits(MIN_ZOOM)) {
+      let lo = MIN_ZOOM, hi = 1 // lo fits, hi does not
+      for (let i = 0; i < 8; i++) {
+        const mid = (lo + hi) / 2
+        if (fits(mid)) lo = mid; else hi = mid
+      }
+      zoom = lo
+      fits(zoom)
+    } else {
+      doc.style.removeProperty('zoom')
+      doc.style.width = originalWidth
+    }
+  }
   // Whole number of pages, minus a hair so rounding can never push a blank page; this also
   // lets side panels and dark backgrounds run to the bottom edge instead of stopping mid-page.
+  // min-height is in the document's own (zoomed) units, hence the division by zoom.
   const pages = Math.max(1, Math.ceil((doc.getBoundingClientRect().height - 1) / pageHeight))
-  doc.style.setProperty('min-height', `${pages * 297 - 0.6}mm`, 'important')
+  doc.style.setProperty('min-height', `${(pages * 297 - 0.6) / zoom}mm`, 'important')
 }
 
 async function getBrowser() {
