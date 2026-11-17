@@ -43,3 +43,4 @@ fakturai/
 
 # Wygenerowane kody QR dla partnerów (npm run partner-qr)
 /partner-qr/
+/partner-outreach/
