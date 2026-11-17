@@ -32,7 +32,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const wzoryPages: MetadataRoute.Sitemap = WZORY.map(w => ({
     url: `${BASE}/wzory-cv/${w.slug}`,
-    lastModified: WZORY_UPDATED,
+    lastModified: w.updated ? new Date(w.updated) : WZORY_UPDATED,
     changeFrequency: 'monthly' as const,
     priority: 0.7,
   }))

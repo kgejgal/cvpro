@@ -68,7 +68,7 @@ export default async function WzorSlugPage({ params }: { params: Promise<{ slug:
     author: { '@type': 'Organization', name: 'CVPro.pl', url: BASE },
     publisher: { '@type': 'Organization', name: 'CVPro.pl', url: BASE },
     datePublished: '2026-06-27',
-    dateModified: '2026-06-27',
+    dateModified: wzor.updated ?? '2026-06-27',
   }
 
   const breadcrumbLd = {
@@ -163,6 +163,16 @@ export default async function WzorSlugPage({ params }: { params: Promise<{ slug:
             </div>
           </div>
         </section>
+
+        {/* Jak napisać: dłuższe, opisowe sekcje (tylko dla stron, które je mają) */}
+        {wzor.sections?.map(sec => (
+          <section key={sec.heading} style={{ marginBottom: 48 }}>
+            <h2 style={{ fontSize: 20, fontWeight: 700, margin: '0 0 16px', color: '#e2eeff' }}>{sec.heading}</h2>
+            {sec.paragraphs.map((p, i) => (
+              <p key={i} style={{ color: '#9ab4d8', fontSize: 15, lineHeight: 1.7, margin: '0 0 14px', maxWidth: 680 }}>{p}</p>
+            ))}
+          </section>
+        ))}
 
         {/* Wskazówki */}
         <section style={{ marginBottom: 48 }}>

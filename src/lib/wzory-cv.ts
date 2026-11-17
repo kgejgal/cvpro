@@ -5,6 +5,8 @@ export type WzorCV = {
   titleGen: string  // genitive: "CV programisty"
   intro: string
   metaDesc?: string  // optional search-result meta description; falls back to `intro` when unset
+  updated?: string  // YYYY-MM-DD of the last real content change; feeds dateModified and the sitemap
+  sections?: { heading: string; paragraphs: string[] }[]  // optional how-to prose shown after the example CV
   shouldContain: string[]
   example: {
     name: string
@@ -451,6 +453,7 @@ export const WZORY: WzorCV[] = [
     titleGen: 'CV kelnera',
     intro: 'CV kelnera powinno podkreślać obsługę klienta, znajomość win lub menu degustacyjnego i doświadczenie w lokalach różnych kategorii. Ważna jest szybkość, precyzja i wysoka kultura osobista.',
     metaDesc: 'Wzór CV kelnera z gotowym przykładem — obsługa klienta, znajomość menu i praca w lokalach. Stwórz profesjonalne CV w kilka minut, bez subskrypcji.',
+    updated: '2026-11-17',
     shouldContain: [
       'Doświadczenie w lokalach (restauracja, hotel, catering)',
       'Obsługa systemu POS i terminala płatniczego',
@@ -474,13 +477,43 @@ export const WZORY: WzorCV[] = [
       }],
       skills: ['Obsługa à la carte', 'Serwis bankietowy', 'POS', 'Karta win', 'Angielski B2', 'Rosyjski B1', 'Obsługa klienta'],
     },
+    sections: [
+      {
+        heading: 'Jak napisać CV kelnera',
+        paragraphs: [
+          'W podsumowaniu napisz, w jakich lokalach pracowałeś, ile miejsc miała sala i jaki serwis obsługiwałeś: à la carte, bankiety, catering. Restauracja hotelowa, bar szybkiej obsługi i lokal fine dining wymagają różnych umiejętności.',
+          'W doświadczeniu opisz konkretne zadania: przyjmowanie zamówień, polecanie dań i win, obsługa kasy lub systemu POS, rozliczanie rachunków. Dodaj liczby, jeśli je znasz, na przykład ilu gości obsługiwałeś w weekend.',
+        ],
+      },
+      {
+        heading: 'Znajomość menu, alergenów i napojów',
+        paragraphs: [
+          'Kelner doradza gościom, więc znajomość menu jest podstawą. Wpisz, czy znasz zasady łączenia dań z winami oraz podstawy barmaństwa lub parzenia kawy. Jeśli ukończyłeś kurs sommelierski lub barmański, podaj nazwę i rok.',
+          'Napisz też, że potrafisz poinformować gościa o składnikach i alergenach w daniach. W gastronomii to ważna kompetencja, bo od niej zależy bezpieczeństwo klientów.',
+        ],
+      },
+      {
+        heading: 'Języki, dyspozycyjność i praca pod presją',
+        paragraphs: [
+          'W miejscach turystycznych i hotelach języki obce są dużym atutem. Wpisz poziom, na przykład angielski B2, i jeśli to możliwe, dodaj, że używasz go w pracy z gośćmi.',
+          'Dyspozycyjność w weekendy, święta i wieczory to dla pracodawcy kluczowa informacja, więc napisz o niej wprost. Dodaj, jak radzisz sobie z presją w godzinach szczytu.',
+        ],
+      },
+    ],
     tips: [
       'Podaj rodzaje lokali i liczbę obsługiwanych miejsc.',
       'Znajomość języków obcych jest dużym plusem w hotelach i restauracjach turystycznych.',
       'Certyfikat sommeliera lub szkolenie barmańskie wyróżnią Twoje CV.',
+      'Podaj liczbę miejsc w lokalu i największe wydarzenia, które obsługiwałeś (na przykład bankiet na 200 osób).',
+      'Wpisz, czy znasz system POS, o którym piszą w ogłoszeniu.',
+      'Dołącz informację o aktualnych badaniach sanitarno-epidemiologicznych, jeśli je masz.',
     ],
     faqs: [
       { q: 'Czy CV kelnera bez doświadczenia ma szansę?', a: 'Tak — podkreśl komunikatywność, gotowość do nauki, doświadczenie w obsłudze klienta (np. sprzedaż) i dyspozycyjność.' },
+      { q: 'Jakie umiejętności wpisać w CV kelnera?', a: 'Obsługę gości, znajomość menu i napojów, obsługę POS i terminala, pracę w zespole, komunikatywność, języki obce oraz umiejętność pracy pod presją. Do każdej dodaj konkretny przykład z poprzedniej pracy.' },
+      { q: 'Czy kelner potrzebuje badań sanitarno-epidemiologicznych?', a: 'W gastronomii zwykle się je wymaga, bo kelner ma kontakt z żywnością. Wpisz, że masz je aktualne, jeśli tak jest.' },
+      { q: 'Jak opisać pracę na bankietach i eventach w CV kelnera?', a: 'Podaj wielkość wydarzenia, liczbę obsługiwanych gości i swoją rolę: serwis, koordynacja zespołu, obsługa baru. Dla pracodawcy to dowód, że umiesz pracować w dużej skali.' },
+      { q: 'Czy kelner powinien dołączyć zdjęcie do CV?', a: 'Nie jest wymagane, ale w pracy z klientem wielu pracodawców je lubi. Jeśli je dodajesz, wybierz profesjonalne, uśmiechnięte zdjęcie portretowe.' },
     ],
   },
   {
@@ -833,6 +866,7 @@ export const WZORY: WzorCV[] = [
     title: 'CV pracownika produkcji',
     titleGen: 'CV pracownika produkcji',
     intro: 'CV pracownika produkcji powinno pokazać obsługiwane maszyny, znajomość norm jakości i doświadczenie z pracą zmianową. Ważne jest też doświadczenie z procedurami BHP.',
+    updated: '2026-11-17',
     shouldContain: [
       'Obsługiwane maszyny i linie produkcyjne',
       'Standardy jakości: ISO, HACCP, GMP',
@@ -856,13 +890,43 @@ export const WZORY: WzorCV[] = [
       }],
       skills: ['Linia produkcyjna', 'HACCP', 'GMP', 'ISO 9001', 'Kontrola jakości', 'Praca zmianowa', 'BHP', '5S'],
     },
+    sections: [
+      {
+        heading: 'Jak napisać CV pracownika produkcji',
+        paragraphs: [
+          'Rekruterzy w zakładach produkcyjnych przeglądają dużo zgłoszeń naraz, więc na górze wpisz, w jakiej branży pracowałeś (spożywczej, motoryzacyjnej, opakowaniowej, elektronicznej) i na jakich stanowiskach: operator maszyn, pakowacz, kontroler jakości, monter. Dzięki temu od razu widać, czy pasujesz do oferty.',
+          'W opisie obowiązków podawaj liczby, jeśli je znasz: ile sztuk na godzinę obsługiwała linia, ilu osób było w zespole, w ilu zmianach pracowałeś. Samo „praca na produkcji” niczego nie mówi pracodawcy.',
+        ],
+      },
+      {
+        heading: 'Co wpisać w sekcji uprawnień i szkoleń',
+        paragraphs: [
+          'Wpisz szkolenie BHP, uprawnienia na wózki jezdniowe (jeśli je masz), badania do celów sanitarno-epidemiologicznych, jeśli praca dotyczy żywności, oraz kursy z jakości lub obsługi maszyn. Przy każdym podaj rok.',
+          'Jeśli znasz organizację stanowiska pracy metodą 5S lub podstawy Lean, napisz o tym jednym zdaniem. W fabrykach, które wdrażają takie systemy, to realny plus.',
+        ],
+      },
+      {
+        heading: 'Praca zmianowa i dyspozycyjność: jak o nich napisać',
+        paragraphs: [
+          'Dyspozycyjność jest dla pracodawcy ważna, więc wpisz, że pracujesz w systemie dwuzmianowym lub trzyzmianowym, w tym na zmianach nocnych, jeśli to prawda. Dodaj, czy możesz pracować w weekendy.',
+          'Napisz też, skąd dojeżdżasz albo czy masz prawo jazdy i własny transport. Zakłady poza miastem często dopytują o dojazd, więc lepiej mieć tę informację w CV niż dopiero na rozmowie.',
+        ],
+      },
+    ],
     tips: [
       'Wymień konkretne maszyny lub linie, które obsługujesz.',
       'Certyfikaty BHP i szkolenia z norm jakości są dużym plusem.',
       'Doświadczenie z systemem 5S lub Lean jest cenione w fabrykach.',
+      'Dodaj, w ilu zmianach na dobę pracowałeś i czy obejmowały zmiany nocne.',
+      'Uprawnienia na wózek widłowy wpisz osobno, razem z rokiem uzyskania.',
+      'Napisz o dojeździe lub własnym transporcie, bo wiele zakładów leży poza miastem.',
     ],
     faqs: [
       { q: 'Czy pracownik produkcji bez doświadczenia może liczyć na zatrudnienie?', a: 'Tak — wiele zakładów przyjmuje kandydatów bez doświadczenia i szkoli ich na stanowisku. Ważna jest gotowość do pracy zmianowej.' },
+      { q: 'Jakie umiejętności wpisać w CV pracownika produkcji?', a: 'Obsługę konkretnych maszyn lub linii, znajomość BHP, kontrolę jakości, pracę z dokumentacją produkcyjną, pakowanie i kompletowanie oraz cechy potwierdzone faktami, na przykład praca w trzy zmiany albo bez zwolnień lekarskich. Unikaj ogólników, za którymi nic nie stoi.' },
+      { q: 'Czy w CV pracownika produkcji trzeba pisać o BHP?', a: 'Tak, krótko. Wpisz aktualne szkolenie BHP lub informację, że przeszedłeś je u poprzedniego pracodawcy. Wiele firm i tak szkoli na stanowisku, ale taki wpis pokazuje, że znasz zasady.' },
+      { q: 'Jak opisać pracę zmianową w CV?', a: 'Napisz, w jakim systemie pracowałeś (dwuzmianowy, trzyzmianowy, praca nocna) i od kiedy. Dla pracodawcy to informacja o dyspozycyjności, a nie wada.' },
+      { q: 'Czy zdjęcie jest potrzebne w CV na produkcję?', a: 'Nie jest wymagane. Jeśli je dodajesz, wybierz wyraźne, schludne zdjęcie twarzy. Przy pracy na produkcji zwykle liczą się przede wszystkim doświadczenie i dyspozycyjność.' },
     ],
   },
   {
@@ -910,6 +974,7 @@ export const WZORY: WzorCV[] = [
     title: 'CV spawacza',
     titleGen: 'CV spawacza',
     intro: 'CV spawacza musi pokazać posiadane uprawnienia spawalnicze (metody, materiały) i doświadczenie z różnymi typami złączy. Branże przemysłowe i budowlane szukają konkretnych kwalifikacji.',
+    updated: '2026-11-17',
     shouldContain: [
       'Metody spawania: MIG/MAG (135/138), TIG (141), elektroda (111)',
       'Materiały: stal, stal nierdzewna, aluminium',
@@ -933,13 +998,43 @@ export const WZORY: WzorCV[] = [
       }],
       skills: ['MIG/MAG (135)', 'TIG (141)', 'Elektroda (111)', 'Stal nierdzewna', 'ISO 9606', 'Spawanie rurociągów', 'Kontrola jakości'],
     },
+    sections: [
+      {
+        heading: 'Jak napisać CV spawacza krok po kroku',
+        paragraphs: [
+          'Zacznij od krótkiego podsumowania w dwóch zdaniach: ile lat spawasz, jakimi metodami i w jakiej branży (konstrukcje stalowe, rurociągi, zbiorniki, stocznie). Rekruter w zakładzie przemysłowym szuka konkretu, więc zamiast „sumienny i dokładny” napisz, co faktycznie spawasz i na jakich materiałach.',
+          'W doświadczeniu przy każdym miejscu pracy wskaż metodę, materiał i rodzaj złączy, na przykład „spawanie blach stalowych metodą 135, spoiny pachwinowe i czołowe”. Jeśli pracowałeś według dokumentacji technologicznej (WPS) lub rysunków wykonawczych, dopisz to.',
+        ],
+      },
+      {
+        heading: 'Jak opisać uprawnienia i certyfikaty spawalnicze',
+        paragraphs: [
+          'Certyfikat spawacza według PN-EN ISO 9606-1 wpisuj tak, jak jest na dokumencie: metoda spawania (na przykład 135 lub 141), grupa materiału, rodzaj złącza, pozycja spawania oraz zakres grubości lub średnic. Pracodawca sprawdza właśnie te parametry, bo od nich zależy, czy możesz pracować przy danym zleceniu.',
+          'Napisz też, kto wydał certyfikat i do kiedy jest ważny. Jeśli uprawnienia wygasają, dopisz, że masz je w trakcie odnowienia. Dodatkowe szkolenia, takie jak praca na wysokości, kurs BHP czy obsługa narzędzi pomiarowych, wpisz osobno w sekcji szkoleń.',
+        ],
+      },
+      {
+        heading: 'Najczęstsze błędy w CV spawacza',
+        paragraphs: [
+          'Pierwszy błąd to samo słowo „spawacz” bez metody. Pracodawca nie wie wtedy, czy spawasz elektrodą, w osłonie gazu czy metodą TIG, więc nie wie, czy pasujesz do oferty. Drugi błąd to brak dat przy certyfikatach, a trzeci to długi opis obowiązków zamiast konkretnych zadań.',
+          'Jeśli pracowałeś za granicą, napisz w jakim kraju i przy jakich projektach. Znajomość języka niemieckiego lub angielskiego bywa w tej pracy istotna, więc wpisz poziom, nawet podstawowy.',
+        ],
+      },
+    ],
     tips: [
       'Podaj metody spawania z kodami (135, 141 itd.) — to standard branżowy.',
       'Certyfikaty PN-EN ISO 9606 są sprawdzane przez pracodawcę.',
       'Doświadczenie ze stalą nierdzewną lub aluminium jest bardzo cenione.',
+      'Dopisz grubości materiałów i pozycje spawania, w których pracujesz (na przykład PA, PC, PF), jeśli masz je w certyfikacie.',
+      'Jeśli wyjeżdżasz na delegacje lub pracujesz za granicą, napisz o tym wprost, bo to dla pracodawcy informacja o dyspozycyjności.',
+      'Dodaj szkolenie do pracy na wysokości i prawo jazdy, jeśli je masz.',
     ],
     faqs: [
       { q: 'Czy spawacz bez certyfikatów znajdzie pracę?', a: 'W prostych pracach instalacyjnych tak, ale do pracy przy konstrukcjach ciśnieniowych certyfikaty są obowiązkowe.' },
+      { q: 'Jakie metody spawania wpisać w CV spawacza?', a: 'Wpisz te, które faktycznie stosujesz, razem z kodem metody: 111 (elektroda otulona), 131 (MIG), 135 lub 138 (MAG) i 141 (TIG). Przy każdej dodaj materiał, na którym ją stosujesz, na przykład stal konstrukcyjna, nierdzewna lub aluminium.' },
+      { q: 'Czy w CV spawacza trzeba podać numer certyfikatu?', a: 'Numer nie jest konieczny w samym CV. Ważniejsze są norma (na przykład PN-EN ISO 9606-1), zakres uprawnienia i data ważności. Numer i skan dokumentu pracodawca zwykle poprosi o okazanie dopiero w trakcie rekrutacji.' },
+      { q: 'Jak napisać CV spawacza bez doświadczenia?', a: 'Skup się na kursie spawalniczym, zdobytych uprawnieniach i praktykach. Wpisz organizatora kursu, metody, z których zdałeś egzamin, oraz prace praktyczne wykonane w trakcie nauki. Dodaj gotowość do pracy zmianowej i na delegacjach, bo przy kandydatach bez stażu to często decyduje.' },
+      { q: 'Jak długie powinno być CV spawacza?', a: 'Jedna strona wystarczy. Najpierw uprawnienia i metody, potem doświadczenie od najnowszego, na końcu szkolenia i języki. Kandydat z długim stażem może zająć dwie strony, jeśli każda linia niesie konkretną informację.' },
     ],
   },
   {
@@ -1139,6 +1234,7 @@ export const WZORY: WzorCV[] = [
     titleGen: 'CV kosmetyczki',
     intro: 'CV kosmetyczki powinno pokazać posiadane certyfikaty, specjalizacje (manicure, pedicure, zabiegi twarzy) i obsługiwane marki produktów. Portfolio zdjęć przed/po to duży atut.',
     metaDesc: 'Wzór CV kosmetyczki z przykładem do wypełnienia — certyfikaty, specjalizacje i zabiegi. Stwórz profesjonalne CV w kilka minut, bez subskrypcji.',
+    updated: '2026-11-17',
     shouldContain: [
       'Certyfikaty: manicure, pedicure, zabiegi twarzy, depilacja',
       'Obsługiwane marki (Peggy Sage, OPI, Shellac)',
@@ -1162,13 +1258,43 @@ export const WZORY: WzorCV[] = [
       }],
       skills: ['Manicure hybrydowy', 'Pedicure', 'Zabiegi twarzy', 'Depilacja', 'OPI', 'Shellac', 'Mezoterapia igłowa', 'Obsługa klienta'],
     },
+    sections: [
+      {
+        heading: 'Jak napisać CV kosmetyczki',
+        paragraphs: [
+          'Zacznij od specjalizacji. Kosmetyczka od zabiegów na twarz, stylistka paznokci i osoba od brwi i rzęs to różne profile, więc napisz w podsumowaniu, co robisz najlepiej i w jakim salonie lub gabinecie pracujesz.',
+          'W opisie doświadczenia pokaż skalę: ile klientek obsługujesz tygodniowo, ile z nich to klientki stałe, jakie zabiegi wykonujesz. Zamiast „wykonuję zabiegi kosmetyczne” napisz „manicure hybrydowy, laminacja brwi, oczyszczanie twarzy”.',
+        ],
+      },
+      {
+        heading: 'Certyfikaty, szkolenia i wykształcenie',
+        paragraphs: [
+          'W branży beauty liczą się kursy, więc wpisz ich listę z nazwą organizatora i rokiem: kursy producentów, szkoły kosmetyczne, szkolenia z nowych technik. Pracodawca może wtedy łatwo sprawdzić, czy kurs jest wiarygodny.',
+          'Jeśli masz wykształcenie kierunkowe, na przykład technik usług kosmetycznych, wpisz je w sekcji wykształcenia. Jeśli nie masz dyplomu, ale ukończyłaś szkolenia, rozbuduj sekcję certyfikatów, żeby pokazać swoje kwalifikacje.',
+        ],
+      },
+      {
+        heading: 'Portfolio i higiena pracy w CV kosmetyczki',
+        paragraphs: [
+          'Wiele salonów ocenia kandydatki po zdjęciach prac. Dopisz link do profilu na Instagramie lub Facebooku z portfolio, ale tylko wtedy, gdy profil jest zadbany, a zdjęcia dodajesz za zgodą klientek.',
+          'Napisz też, że stosujesz sterylizację narzędzi i znasz zasady higieny w gabinecie. W tej branży standardy sanitarne są częścią zawodu i pracodawca czyta je jako sygnał profesjonalizmu.',
+        ],
+      },
+    ],
     tips: [
       'Podaj certyfikaty ze szkoleń producentów — to weryfikowalne.',
       'Liczba stałych klientek świadczy o jakości pracy.',
       'Link do Instagram z portfolio prac to świetne uzupełnienie CV.',
+      'Podaj, ile klientek obsługujesz tygodniowo i ile z nich to stałe klientki.',
+      'Wpisz konkretne techniki i zabiegi zamiast samego hasła „zabiegi kosmetyczne”.',
+      'Zapytaj klientki o zgodę, zanim pokażesz zdjęcia ich zabiegów w portfolio.',
     ],
     faqs: [
       { q: 'Czy kosmetyczka potrzebuje dyplomu?', a: 'W Polsce kosmetyczka nie musi mieć uprawnień państwowych, ale dyplom lub certyfikaty kursów zwiększają zaufanie klientów i pracodawców.' },
+      { q: 'Jak napisać CV kosmetyczki bez doświadczenia?', a: 'Skup się na ukończonych kursach i szkoleniach, praktykach w salonie, zdjęciach prac wykonanych na modelkach i gotowości do nauki. Podaj dokładnie, jakie zabiegi umiesz wykonać samodzielnie.' },
+      { q: 'Czy w CV kosmetyczki powinno być zdjęcie?', a: 'Warto dodać wyraźne, estetyczne zdjęcie, bo w usługach wizerunek ma znaczenie. Zdjęcie nie jest jednak obowiązkowe, a ważniejsze od niego są umiejętności i portfolio prac.' },
+      { q: 'Jakie umiejętności wpisać w CV kosmetyczki?', a: 'Konkretne zabiegi (manicure hybrydowy, pedicure, zabiegi na twarz, laminacja brwi, stylizacja rzęs), znajomość produktów i marek, higienę pracy, obsługę klienta oraz umiejętność budowania stałej bazy klientek.' },
+      { q: 'Czy wpisywać wszystkie kursy w CV kosmetyczki?', a: 'Wpisz te, które są związane ze stanowiskiem i które ukończyłaś w ostatnich latach, każdy z nazwą organizatora i rokiem. Kursy sprzed wielu lat, niezwiązane z oferowanymi zabiegami, możesz pominąć.' },
     ],
   },
   {
@@ -1177,6 +1303,7 @@ export const WZORY: WzorCV[] = [
     title: 'CV baristy',
     titleGen: 'CV baristy',
     intro: 'CV baristy powinno pokazać doświadczenie z espresso, znajomość metod parzenia kawy i obsługę sprzętu kawowego. Certyfikaty SCA lub barista courses to mocne wyróżniki.',
+    updated: '2026-11-17',
     shouldContain: [
       'Znajomość espresso, metod alternatywnych (V60, Chemex, Aeropress)',
       'Obsługa ekspresu ciśnieniowego i młynka',
@@ -1200,13 +1327,43 @@ export const WZORY: WzorCV[] = [
       }],
       skills: ['Espresso', 'V60', 'Chemex', 'Latte art', 'SCA Barista Skills', 'Obsługa klienta', 'Zarządzanie zapasami', 'Otwieranie/zamykanie'],
     },
+    sections: [
+      {
+        heading: 'Jak napisać CV baristy',
+        paragraphs: [
+          'W podsumowaniu napisz, w jakich lokalach pracowałeś: kawiarnia specialty, sieciówka, hotel, kawiarnia przy księgarni. Standardy i tempo bywają różne, więc rekruter od razu widzi, w czym jesteś mocny.',
+          'W opisie obowiązków pokaż skalę i konkret: ilu gości dziennie obsługiwałeś, jakimi ekspresami i młynkami pracowałeś, czy ustawiałeś kalibrację espresso, czy uczyłeś nowe osoby. Zamiast „robię kawę” napisz, jakie kawy i jakimi metodami.',
+        ],
+      },
+      {
+        heading: 'Jak opisać umiejętności i szkolenia baristy',
+        paragraphs: [
+          'Wpisz, jakie metody parzenia znasz (espresso, V60, Chemex, Aeropress), czy robisz latte art i na jakim poziomie. Jeśli masz certyfikat, podaj jego nazwę, na przykład SCA Barista Skills, oraz rok uzyskania.',
+          'Dodaj kurs baristyczny z nazwą organizatora i warsztaty, w których brałeś udział. W kawiarniach specialty chętnie czyta się o udziale w degustacjach i szkoleniach u palarni.',
+        ],
+      },
+      {
+        heading: 'Obsługa klienta i praca w tempie kawiarni',
+        paragraphs: [
+          'Barista to w połowie praca z gośćmi. Napisz, jak radzisz sobie w godzinach szczytu, czy obsługujesz kasę lub system POS i czy doradzasz przy wyborze kawy. To odróżnia kandydata, który zna sprzęt, od takiego, który dobrze prowadzi gości.',
+          'Jeśli możesz pracować w weekendy, rano lub wieczorem, wpisz dyspozycyjność. W kawiarniach grafik bywa zmienny, więc to ważna informacja już na etapie CV.',
+        ],
+      },
+    ],
     tips: [
       'Certyfikat SCA Barista Skills to standard w kawiarniach specialty.',
       'Doświadczenie w kawiarniach specialty jest bardziej cenione niż w sieciówkach.',
       'Latte art to bonus — podaj, jeśli potrafisz robić zaawansowane wzory.',
+      'Napisz, jakim ekspresem i młynkiem pracowałeś, jeśli to sprzęt klasy profesjonalnej.',
+      'Wspomnij o czyszczeniu i konserwacji ekspresu oraz o standardach higieny.',
+      'Podaj, czy masz aktualne badania do celów sanitarno-epidemiologicznych.',
     ],
     faqs: [
       { q: 'Czy barista bez certyfikatów znajdzie pracę?', a: 'Tak — szczególnie w kawiarniach sieciowych. Certyfikaty SCA są wyróżnikiem w kawiarniach specialty.' },
+      { q: 'Co wpisać w CV baristy bez doświadczenia?', a: 'Kurs baristyczny, praktyki lub pracę w obsłudze klienta (sprzedaż, gastronomia) oraz gotowość do nauki i dyspozycyjność. Napisz konkretnie, jakich metod parzenia się uczyłeś i na jakim sprzęcie ćwiczyłeś.' },
+      { q: 'Czy barista musi mieć badania sanitarno-epidemiologiczne?', a: 'W gastronomii zwykle się je wymaga, bo barista ma kontakt z żywnością. Warto wpisać, że masz aktualne badania albo że możesz je szybko wykonać.' },
+      { q: 'Jak opisać latte art w CV?', a: 'Napisz konkretnie, jakie wzory robisz (na przykład serce, tulipan, rosetta) i na jakim poziomie. Jeśli brałeś udział w kursach lub konkursach, wpisz je z rokiem.' },
+      { q: 'Czy certyfikat SCA jest potrzebny, żeby zostać baristą?', a: 'Nie jest wymagany, ale w kawiarniach specialty bywa wyróżnikiem. W sieciówkach zwykle wystarcza doświadczenie w obsłudze klienta, a przygotowania kaw uczy pracodawca.' },
     ],
   },
   {
