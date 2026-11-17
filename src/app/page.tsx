@@ -18,20 +18,20 @@ const PLANS = [
   {
     name: 'Pro', price: '29', popular: true, priceId: 'pro',
     cta: 'Wypróbuj Pro',
-    features: ['3 wersje CV', '12 szablonów', 'Eksport PDF', 'Analiza ATS', 'Wsparcie priorytetowe'],
+    features: ['3 wersje CV', '12 szablonów', 'Eksport PDF i Word (DOCX)', 'Analiza ATS', 'Wsparcie priorytetowe'],
   },
   {
     name: 'Premium', price: '39', popular: false, priceId: 'premium',
     cta: 'Wypróbuj Premium',
-    features: ['Nieograniczone wersje', 'Wszystkie 16 szablonów', 'Eksport PDF', 'Analiza ATS', 'List motywacyjny'],
+    features: ['Nieograniczone wersje', 'Wszystkie 16 szablonów', 'Eksport PDF i Word (DOCX)', 'Analiza ATS', 'List motywacyjny'],
   },
 ]
 
 const FAQS = [
   { q: 'Czy CV jest naprawdę po polsku?', a: 'Tak — całe CV powstaje w naturalnym, profesjonalnym języku polskim, zgodnym ze standardami polskiego rynku pracy.' },
   { q: 'Czy płacę raz, czy to abonament?', a: 'Płatność jednorazowa — bez abonamentu, bez ukrytych opłat. Kupujesz raz i korzystasz bez ograniczeń czasowych.' },
-  { q: 'Czy CV przejdzie przez systemy ATS?', a: 'Tak. Szablony są zoptymalizowane pod systemy ATS. W planach Pro i Premium otrzymujesz szczegółową analizę ATS z konkretnymi wskazówkami.' },
-  { q: 'W jakich formatach pobiorę CV?', a: 'Możesz pobrać CV w formacie PDF — gotowe do wysłania rekruterowi.' },
+  { q: 'Czy CV jest przyjazne dla systemów ATS?', a: 'Szablony mają prostą, czytelną strukturę, którą systemy ATS dobrze odczytują. Żaden kreator nie może jednak zagwarantować, że CV przejdzie rekrutację. Analiza ATS (1 darmowa na koncie, w Pro i Premium bez limitu) to nasza ocena czytelności i słów kluczowych z podpowiedziami, co poprawić. To nie wynik prawdziwego systemu rekrutacyjnego.' },
+  { q: 'W jakich formatach pobiorę CV?', a: 'Możesz pobrać CV w formacie PDF, a po zakupie dowolnego planu także w Word (DOCX).' },
   { q: 'Co z moimi danymi?', a: 'Twoje dane są bezpieczne. Stosujemy szyfrowanie i spełniamy wszystkie wymogi RODO.' },
   { q: 'Czy mogę edytować CV po wygenerowaniu?', a: 'Tak — edytor działa w czasie rzeczywistym, zmiany zapisują się automatycznie.' },
 ]
@@ -111,7 +111,7 @@ export default async function HomePage() {
                 textDecoration: 'none', fontSize: 16, fontWeight: 700, padding: '14px 32px', borderRadius: 12,
                 boxShadow: '0 4px 22px rgba(68,119,255,0.42)',
               }}>
-                Stwórz CV bez rejestracji →
+                Zacznij CV bez rejestracji →
               </Link>
             )}
             <a href="#jak-to-dziala" style={{
@@ -122,6 +122,12 @@ export default async function HomePage() {
               Jak to działa
             </a>
           </div>
+
+          {!user && (
+            <p style={{ fontSize: 13, color: D.muted, margin: '-6px 0 18px' }}>
+              Edytor i podgląd bez konta. Darmowe konto założysz dopiero przy pobieraniu.
+            </p>
+          )}
 
           {/* Honest pricing strip */}
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: 14, flexWrap: 'wrap', justifyContent: 'center', padding: '12px 22px', borderRadius: 14, background: 'rgba(16,185,129,0.06)', border: '1px solid rgba(16,185,129,0.22)', marginBottom: 52 }}>
@@ -212,7 +218,7 @@ export default async function HomePage() {
         <div className="rg-3" style={{ gap: 20 }}>
           {[
             { icon: '🇵🇱', title: '100% po polsku',     desc: 'CV w naturalnym, profesjonalnym języku polskim, zgodnym ze standardami polskiego rynku pracy.' },
-            { icon: '🎯', title: 'Zgodne z ATS',        desc: 'Szablony zoptymalizowane pod systemy rekrutacyjne ATS. W planach Pro i Premium — analiza z wskazówkami.' },
+            { icon: '🎯', title: 'Przyjazne dla ATS',   desc: 'Proste, czytelne szablony, które systemy rekrutacyjne dobrze odczytują. Analiza ATS z wskazówkami: 1 darmowa, w Pro i Premium bez limitu.' },
             { icon: '⚡', title: 'Gotowe w kilka minut', desc: 'Wypełnij formularz, wybierz szablon i kolorystykę, pobierz gotowe CV w formacie PDF.' },
           ].map(({ icon, title, desc }) => (
             <div key={title} style={{ padding: 28, background: D.card, borderRadius: 16, border: `1px solid ${D.border}` }}>
@@ -235,7 +241,7 @@ export default async function HomePage() {
           {/* BEFORE */}
           <div style={{ background: '#1a0d0d', border: '1px solid #3a1515', borderRadius: 16, padding: 24, position: 'relative' }}>
             <div style={{ position: 'absolute', top: 14, left: 14, background: '#cc2222', color: '#fff', fontSize: 12, fontWeight: 700, padding: '3px 10px', borderRadius: 8, letterSpacing: '0.06em' }}>PRZED</div>
-            <div style={{ position: 'absolute', top: 14, right: 14, background: '#3a1515', color: '#e55', fontSize: 11, fontWeight: 700, padding: '3px 10px', borderRadius: 8 }}>ATS: 24%</div>
+            <div style={{ position: 'absolute', top: 14, right: 14, background: '#3a1515', color: '#e55', fontSize: 11, fontWeight: 700, padding: '3px 10px', borderRadius: 8 }}>Przykład: ATS 24%</div>
             <div style={{ marginTop: 36, fontFamily: 'Georgia, serif', color: '#c0a0a0', fontSize: 13, lineHeight: 1.8 }}>
               <div style={{ fontSize: 16, fontWeight: 700, marginBottom: 8, color: '#e0c0c0' }}>Jan Kowalski</div>
               <div>email: jan@gmail.com tel: 123456789</div>
@@ -250,7 +256,7 @@ export default async function HomePage() {
           {/* AFTER */}
           <div style={{ background: D.card, border: `1px solid ${D.border}`, borderRadius: 16, padding: 24, position: 'relative', boxShadow: '0 8px 32px rgba(68,119,255,0.12)' }}>
             <div style={{ position: 'absolute', top: 14, left: 14, background: '#1a7a40', color: '#fff', fontSize: 12, fontWeight: 700, padding: '3px 10px', borderRadius: 8, letterSpacing: '0.06em' }}>PO</div>
-            <div style={{ position: 'absolute', top: 14, right: 14, background: '#0d2a1a', color: '#3db36a', fontSize: 11, fontWeight: 700, padding: '3px 10px', borderRadius: 8 }}>ATS: 91%</div>
+            <div style={{ position: 'absolute', top: 14, right: 14, background: '#0d2a1a', color: '#3db36a', fontSize: 11, fontWeight: 700, padding: '3px 10px', borderRadius: 8 }}>Przykład: ATS 91%</div>
             <div style={{ marginTop: 36 }}>
               <div style={{ borderLeft: `3px solid ${D.primary}`, paddingLeft: 12, marginBottom: 14 }}>
                 <div style={{ fontSize: 16, fontWeight: 800, color: D.text }}>Jan Kowalski</div>
@@ -321,7 +327,7 @@ export default async function HomePage() {
               { feature: 'Brak auto-odnowienia', cvpro: '✓', im: '✗' },
               { feature: 'Płatność BLIK', cvpro: '✓', im: '–' },
               { feature: 'Pełne CV po polsku', cvpro: '✓', im: '–' },
-              { feature: 'Analiza ATS', cvpro: '✓ Pro', im: '–' },
+              { feature: 'Analiza ATS', cvpro: '✓ 1 darmowa, w Pro bez limitu', im: '–' },
               { feature: 'Generator listu motywacyjnego', cvpro: '✓ Premium', im: '–' },
             ].map(({ feature, cvpro, im }, i) => (
               <div
@@ -364,11 +370,6 @@ export default async function HomePage() {
                   boxShadow: popular ? '0 10px 50px rgba(68,119,255,0.14)' : 'none',
                 }}
               >
-                {popular && (
-                  <div style={{ position: 'absolute', top: -13, left: '50%', transform: 'translateX(-50%)', background: 'linear-gradient(135deg,#4477FF,#7055FF)', color: '#fff', fontSize: 11, fontWeight: 700, padding: '4px 14px', borderRadius: 10, letterSpacing: '0.05em', whiteSpace: 'nowrap' }}>
-                    Najpopularniejszy
-                  </div>
-                )}
                 <div style={{ fontFamily: 'var(--font-onest), sans-serif', fontSize: 18, fontWeight: 800, marginBottom: 4 }}>{name}</div>
                 <div style={{ display: 'flex', alignItems: 'baseline', gap: 4, marginBottom: 22 }}>
                   <span style={{ fontFamily: 'var(--font-onest), sans-serif', fontSize: 44, fontWeight: 900, letterSpacing: '-0.05em', color: popular ? D.primary : D.text }}>{price}</span>

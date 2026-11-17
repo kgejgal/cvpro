@@ -118,11 +118,6 @@ export default function CenikPage() {
                 transition: 'transform 0.2s',
               }}
             >
-              {highlight && (
-                <div style={{ position: 'absolute', top: -13, left: '50%', transform: 'translateX(-50%)', background: 'linear-gradient(90deg,#4477FF,#7C3AED)', color: '#fff', fontSize: 11, fontWeight: 700, padding: '4px 16px', borderRadius: 20, whiteSpace: 'nowrap' }}>
-                  Najpopularniejszy
-                </div>
-              )}
               <div style={{ fontSize: 13, fontWeight: 700, color: highlight ? '#8899ff' : D.muted, textTransform: 'uppercase', letterSpacing: 1.5, marginBottom: 8 }}>{name}</div>
               <div style={{ marginBottom: 24 }}>
                 <span style={{ fontSize: 48, fontWeight: 900, color: D.text }}>{price}</span>

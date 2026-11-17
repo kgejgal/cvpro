@@ -449,6 +449,12 @@ export default function CVEditorPage() {
                 </div>
               )}
 
+              {atsResult && !atsLoading && (
+                <div style={{ padding: '8px 20px', fontSize: 12, color: '#6b84aa', borderBottom: '1px solid #1e3f75' }}>
+                  Wynik to nasza ocena czytelności CV i słów kluczowych, z podpowiedziami co poprawić. To nie jest wynik prawdziwego systemu rekrutacyjnego i nie gwarantuje przejścia rekrutacji.
+                </div>
+              )}
+
               {atsResult?.teaser && !atsLoading && (
                 <div style={{ background: '#4477ff12', borderBottom: '1px solid #1e3f75', padding: '10px 20px', fontSize: 13, color: '#9ab4d8', display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
                   ✨ To była Twoja darmowa analiza.{' '}
