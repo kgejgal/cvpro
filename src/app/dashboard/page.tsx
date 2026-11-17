@@ -7,6 +7,7 @@ import { createClient } from '@/lib/supabase/server'
 import NotificationBell from '@/components/NotificationBell'
 import ResumePurchaseBanner from '@/components/ResumePurchaseBanner'
 import PurchaseSuccessTracker from '@/components/PurchaseSuccessTracker'
+import SaveSignupRef from '@/components/SaveSignupRef'
 import DashboardImportCTA from '@/components/DashboardImportCTA'
 import PendingButton from '@/components/PendingButton'
 import GuestDraftRedirect from '@/components/GuestDraftRedirect'
@@ -137,6 +138,7 @@ export default async function DashboardPage({ searchParams }: { searchParams: Pr
 
       <main style={{ maxWidth: 680, margin: '0 auto', padding: '48px 24px' }}>
         {paid && <PurchaseSuccessTracker sessionId={paid.id} />}
+        <SaveSignupRef userId={user.id} />
         <GuestDraftRedirect enabled={(cvs?.length ?? 0) === 0} />
         <ResumePurchaseBanner plan={plan} />
 

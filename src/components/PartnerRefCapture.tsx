@@ -3,7 +3,7 @@
 import { useEffect } from 'react'
 import { tag } from '@/lib/analytics'
 
-const REF_KEY = 'cvpro_ref'
+export const REF_KEY = 'cvpro_ref'
 
 // Partnerzy (agencje pracy, biura karier, szkoły) dostają link z końcówką ?ref=nazwa. Zapamiętujemy
 // pierwszy znacznik w tej przeglądarce i dopisujemy go jako tag sesji w Clarity, żeby było widać,
