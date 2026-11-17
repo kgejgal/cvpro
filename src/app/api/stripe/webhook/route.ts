@@ -2,6 +2,7 @@ import Stripe from 'stripe'
 import { createClient as createSupabaseClient } from '@supabase/supabase-js'
 import { NextRequest, NextResponse } from 'next/server'
 import { Resend } from 'resend'
+import { PLAN_ORDER } from '@/lib/cv/types'
 
 const PLAN_LABELS: Record<string, string> = {
   basic: 'Podstawowy',
@@ -21,21 +22,39 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'Webhook signature verification failed' }, { status: 400 })
   }
 
-  if (event.type === 'checkout.session.completed') {
+  // async_payment_succeeded: metody z opóźnieniem, w których `completed` przychodzi jeszcze jako nieopłacone.
+  if (event.type === 'checkout.session.completed' || event.type === 'checkout.session.async_payment_succeeded') {
     const session = event.data.object as Stripe.Checkout.Session
-    const { user_id, plan } = session.metadata!
+    // Plan nadajemy wyłącznie za opłaconą sesję.
+    if (session.payment_status !== 'paid') return NextResponse.json({ received: true })
+    const { user_id, plan } = session.metadata ?? {}
+    if (!user_id || !plan || !(plan in PLAN_LABELS)) return NextResponse.json({ received: true })
 
     const supabase = createSupabaseClient(
       process.env.NEXT_PUBLIC_SUPABASE_URL!,
       process.env.SUPABASE_SERVICE_ROLE_KEY!
     )
 
-    // Update plan
-    await supabase
-      .from('profiles')
-      .upsert({ id: user_id, plan }, { onConflict: 'id' })
+    // Update plan: tylko w górę. Kupno niższego planu przez kogoś z wyższym nie może go obniżyć.
+    const { data: current } = await supabase.from('profiles').select('plan').eq('id', user_id).single()
+    if ((PLAN_ORDER[plan] ?? 0) > (PLAN_ORDER[current?.plan ?? 'free'] ?? 0)) {
+      await supabase
+        .from('profiles')
+        .upsert({ id: user_id, plan }, { onConflict: 'id' })
+    }
 
     const planLabel = PLAN_LABELS[plan] ?? plan
+
+    // Stripe ponawia zdarzenia: jeśli powiadomienie o tej płatności już jest, nie wysyłamy go ani e-maila drugi raz.
+    const { data: already } = await supabase
+      .from('notifications')
+      .select('id')
+      .eq('user_id', user_id)
+      .eq('type', 'payment_success')
+      .eq('title', `Plan ${planLabel} aktywowany`)
+      .gte('created_at', new Date(session.created * 1000).toISOString())
+      .limit(1)
+    if (already && already.length > 0) return NextResponse.json({ received: true })
 
     // Insert notification
     await supabase.from('notifications').insert({
