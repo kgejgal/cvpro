@@ -54,8 +54,9 @@ function Editor() {
           <span style={{ color: '#4477FF' }}>CV</span><span style={{ color: '#e2eeff' }}>Pro</span><span style={{ color: '#6b84aa', fontSize: 12, fontWeight: 500 }}>.pl</span>
         </Link>
         <div style={{ width: 1, height: 20, background: '#1e3f75', flexShrink: 0 }} />
-        <div style={{ flex: 1, minWidth: 0, fontSize: 12, color: '#7a94bb', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-          Bez rejestracji. Konto założysz dopiero przy pobieraniu.
+        {/* Cena widoczna od pierwszej sekundy, zanim ktoś zainwestuje czas w CV. Na telefonie zawija się do 2 linii. */}
+        <div style={{ flex: 1, minWidth: 0, fontSize: 11.5, lineHeight: 1.3, color: '#9ab4d8', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
+          Podgląd za darmo, PDF od <strong style={{ color: '#e2eeff' }}>15 zł jednorazowo</strong>
         </div>
         <button
           onClick={openSignup}
