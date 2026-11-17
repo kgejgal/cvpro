@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { track } from '@vercel/analytics'
 import { track as clarityTrack } from '@/lib/analytics'
@@ -35,12 +35,16 @@ export default function CenikPage() {
   const router = useRouter()
 
   const [busyPlan, setBusyPlan] = useState<string | null>(null)
+  // Synchroniczna blokada: stan `busyPlan` odświeża się dopiero po renderze, więc dwa szybkie kliknięcia
+  // przechodziły oba. Ref zmienia się od razu.
+  const lock = useRef(false)
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => { clarityTrack('paywall_viewed') }, [])
 
   async function buyPlan(planId: string) {
-    if (busyPlan) return
+    if (lock.current) return
+    lock.current = true
     setError(null)
     setBusyPlan(planId)
     track('checkout_started', { plan: planId })
@@ -52,6 +56,7 @@ export default function CenikPage() {
         // the signup + e-mail confirmation round trip.
         try { localStorage.setItem(INTENT_KEY, planId) } catch {}
         router.push('/auth/signup')
+        lock.current = false
         return
       }
 
@@ -66,15 +71,18 @@ export default function CenikPage() {
         // Session expired between page load and click — same path as a logged-out visitor.
         try { localStorage.setItem(INTENT_KEY, planId) } catch {}
         router.push('/auth/login')
+        lock.current = false
         return
       }
       // Previously any other failure left the button doing nothing. Say so, and record it.
       clarityTrack('checkout_error')
-      setError(res.status === 429 && data.error ? data.error : GENERIC_CHECKOUT_ERROR)
+      setError((res.status === 429 || res.status === 409) && data.error ? data.error : GENERIC_CHECKOUT_ERROR)
+      lock.current = false
       setBusyPlan(null)
     } catch {
       clarityTrack('checkout_error')
       setError(GENERIC_CHECKOUT_ERROR)
+      lock.current = false
       setBusyPlan(null)
     }
   }

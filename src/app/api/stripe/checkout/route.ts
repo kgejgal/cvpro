@@ -2,6 +2,7 @@ import Stripe from 'stripe'
 import { createClient } from '@/lib/supabase/server'
 import { NextRequest, NextResponse } from 'next/server'
 import { rateLimit } from '@/lib/rate-limit'
+import { PLAN_ORDER } from '@/lib/cv/types'
 
 export const dynamic = 'force-dynamic'
 
@@ -35,6 +36,12 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'Invalid plan' }, { status: 400 })
   }
 
+  // Nie sprzedajemy drugi raz tego samego (ani niższego) planu: ktoś już kupił Basic dwa razy w ciągu 10 minut.
+  const { data: profile } = await supabase.from('profiles').select('plan').eq('id', user.id).single()
+  if ((PLAN_ORDER[profile?.plan ?? 'free'] ?? 0) >= (PLAN_ORDER[plan] ?? 0)) {
+    return NextResponse.json({ error: 'Masz już ten plan lub wyższy. Odśwież stronę.' }, { status: 409 })
+  }
+
   const sessionParams: Stripe.Checkout.SessionCreateParams = {
     // 'p24' is not yet activated on the Stripe account (dashboard.stripe.com/account/payments/settings) —
     // including it makes Stripe reject session creation entirely, so *every* checkout fails, not just P24 ones.
@@ -57,16 +64,20 @@ export async function POST(request: NextRequest) {
     },
   }
 
+  // Ten sam użytkownik i plan w tej samej minucie (podwójne kliknięcie, ponowienie żądania) dostaje
+  // od Stripe tę samą sesję zamiast kilku nowych.
+  const idemBase = `checkout:${user.id}:${plan}:${Math.floor(Date.now() / 60_000)}`
+
   let session: Stripe.Checkout.Session
   try {
     session = await stripe.checkout.sessions.create({
       ...sessionParams,
       // Requires the Terms of Service URL configured in Stripe Dashboard → Public details
       consent_collection: { terms_of_service: 'required' },
-    })
+    }, { idempotencyKey: `${idemBase}:tos` })
   } catch {
     // ToS URL not set in Stripe settings — ship the consent text alone
-    session = await stripe.checkout.sessions.create(sessionParams)
+    session = await stripe.checkout.sessions.create(sessionParams, { idempotencyKey: `${idemBase}:plain` })
   }
 
   return NextResponse.json({ url: session.url })

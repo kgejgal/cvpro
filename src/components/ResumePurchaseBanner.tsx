@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { track } from '@/lib/analytics'
 
@@ -15,6 +15,7 @@ export default function ResumePurchaseBanner({ plan }: { plan: string }) {
   const router = useRouter()
   const [intent, setIntent] = useState<string | null>(null)
   const [busy, setBusy] = useState(false)
+  const lock = useRef(false) // synchroniczna blokada podwójnego kliknięcia
 
   useEffect(() => {
     try {
@@ -33,6 +34,8 @@ export default function ResumePurchaseBanner({ plan }: { plan: string }) {
   }
 
   async function resume() {
+    if (lock.current) return
+    lock.current = true
     setBusy(true)
     try {
       const res = await fetch('/api/stripe/checkout', {
@@ -46,6 +49,7 @@ export default function ResumePurchaseBanner({ plan }: { plan: string }) {
     } catch {
       router.push('/cennik')
     }
+    lock.current = false
     setBusy(false)
   }
 
