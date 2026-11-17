@@ -186,6 +186,7 @@ export const WZORY: WzorCV[] = [
     titleGen: 'CV sprzedawcy',
     intro: 'CV sprzedawcy powinno pokazać wyniki sprzedaży w liczbach i umiejętność pracy z klientem. Kluczowe są doświadczenie z kasą fiskalną, obsługa reklamacji i realizacja planów sprzedażowych.',
     metaDesc: 'Gotowy wzór CV sprzedawcy z przykładem — wyniki sprzedaży, obsługa klienta i kasa fiskalna. Wypełnij i pobierz profesjonalne CV za darmo.',
+    updated: '2026-11-17',
     shouldContain: [
       'Doświadczenie w obsłudze klienta i sprzedaży bezpośredniej',
       'Obsługa kasy fiskalnej i terminala płatniczego',
@@ -209,13 +210,43 @@ export const WZORY: WzorCV[] = [
       }],
       skills: ['Obsługa klienta', 'Kasa fiskalna', 'Terminal płatniczy', 'Obsługa reklamacji', 'Cross-selling', 'POS'],
     },
+    sections: [
+      {
+        heading: 'Jak napisać CV sprzedawcy',
+        paragraphs: [
+          'W podsumowaniu napisz, w jakiej branży sprzedawałeś (spożywcza, odzież, RTV/AGD, budowlana) i jak duży był sklep lub dział. Pracodawca od razu widzi, czy znasz podobne produkty i podobny ruch klientów.',
+          'W doświadczeniu opisz, co robiłeś na co dzień: obsługa klientów, kasa i terminal, wykładanie towaru, inwentaryzacja, przyjmowanie dostaw. Jeśli znasz wyniki, wpisz je liczbami, na przykład realizację planu sprzedaży w procentach.',
+        ],
+      },
+      {
+        heading: 'Obsługa klienta, kasy i reklamacji',
+        paragraphs: [
+          'Sprzedawca jest twarzą sklepu, więc napisz wprost, że radzisz sobie z trudnym klientem i potrafisz przyjąć reklamację lub zwrot zgodnie z procedurą. Jeden krótki przykład z pracy przekona bardziej niż samo hasło „komunikatywność”.',
+          'Wymień systemy, które znasz: kasę fiskalną, terminal płatniczy, system magazynowy lub POS. Dla rekrutera to informacja, że wdrożysz się szybciej.',
+        ],
+      },
+      {
+        heading: 'Sprzedawca bez doświadczenia, dyspozycyjność, zmiany',
+        paragraphs: [
+          'Jeśli zaczynasz, pokaż praktykę z innych miejsc: wolontariat, praca dorywcza, obsługa stoiska na wydarzeniu. Dodaj, że szybko się uczysz i jesteś uczciwy przy obsłudze gotówki.',
+          'W handlu liczy się grafik, więc podaj dyspozycyjność: zmiany, weekendy, niedziele handlowe, praca w sezonie. Napisz też, jak dojeżdżasz, bo dla pracodawcy ma to znaczenie.',
+        ],
+      },
+    ],
     tips: [
       'Podawaj wyniki sprzedaży w procentach lub złotówkach.',
       'Wymień obsługiwane branże i typy produktów.',
       'Wspomnij o nagrodach i wyróżnieniach, jeśli je otrzymałeś.',
+      'Wpisz branże i marki, z którymi pracowałeś, to pomaga w filtrowaniu CV.',
+      'Dodaj informację o dyspozycyjności w weekendy i święta.',
+      'Jeśli masz książeczkę sanepidowską, napisz o tym przy pracy w sklepie spożywczym.',
     ],
     faqs: [
       { q: 'Jak opisać doświadczenie sprzedawcy bez dużych sukcesów?', a: 'Skup się na zakresie obowiązków, liczbie obsługiwanych klientów i terminowości. Każde doświadczenie ma wartość.' },
+      { q: 'Jakie umiejętności wpisać w CV sprzedawcy?', a: 'Obsługę klienta, kasy fiskalnej i terminala, znajomość asortymentu, wykładanie towaru, rozliczanie zmiany, obsługę reklamacji i pracę w zespole. Do każdej dodaj miejsce, w którym z niej korzystałeś.' },
+      { q: 'Czy sprzedawca bez doświadczenia ma szansę?', a: 'Tak. Sklepy często szukają ludzi do nauki. Podkreśl komunikatywność, uczciwość, dyspozycyjność i każde doświadczenie z klientem, nawet z pracy dorywczej.' },
+      { q: 'Czy wpisywać wyniki sprzedaży, jeśli nie były imponujące?', a: 'Wpisuj tylko to, co możesz uczciwie potwierdzić. Jeśli nie masz liczb, opisz zakres obowiązków, liczbę obsługiwanych klientów lub wielkość działu.' },
+      { q: 'Czy do CV sprzedawcy trzeba dodać zdjęcie?', a: 'Nie jest wymagane. Jeśli je dodajesz, wybierz schludne zdjęcie portretowe, bo sprzedawca ma bezpośredni kontakt z klientami.' },
     ],
   },
   {
@@ -414,6 +445,7 @@ export const WZORY: WzorCV[] = [
     title: 'CV magazyniera',
     titleGen: 'CV magazyniera',
     intro: 'CV magazyniera powinno jasno pokazać obsługiwane systemy magazynowe, uprawnienia na wózek widłowy i doświadczenie z inwentaryzacją. Liczy się dokładność i fizyczna sprawność.',
+    updated: '2026-11-17',
     shouldContain: [
       'Uprawnienia UDT na wózek widłowy (jeśli posiadasz)',
       'Obsługa systemów WMS i skanerów magazynowych',
@@ -437,13 +469,43 @@ export const WZORY: WzorCV[] = [
       }],
       skills: ['Wózek widłowy UDT', 'WMS', 'Skaner magazynowy', 'FIFO', 'Inwentaryzacja', 'Obsługa dokumentacji', 'Reach truck'],
     },
+    sections: [
+      {
+        heading: 'Jak napisać CV magazyniera',
+        paragraphs: [
+          'W podsumowaniu napisz, w jakim magazynie pracowałeś (spożywczy, e-commerce, budowlany, centrum dystrybucji) i co robiłeś: przyjęcia, kompletacja, wydania, inwentaryzacja. Dodaj, ile lat masz doświadczenia.',
+          'W doświadczeniu podaj liczby, które znasz: ile zamówień kompletowałeś dziennie, jak duży był magazyn, ilu osób liczył zespół. Konkrety pokazują skalę Twojej pracy lepiej niż ogólne opisy.',
+        ],
+      },
+      {
+        heading: 'Uprawnienia, wózki i systemy',
+        paragraphs: [
+          'Uprawnienia na wózki jezdniowe to jedna z najważniejszych informacji. Wpisz rodzaj uprawnień i rok ich zdobycia, a jeśli ich nie masz, napisz, że jesteś gotowy zrobić kurs.',
+          'Wymień systemy, które znasz: WMS, skanery, listy kompletacyjne, programy magazynowe. Dodaj podstawową obsługę komputera i znajomość dokumentów, takich jak WZ czy PZ.',
+        ],
+      },
+      {
+        heading: 'Praca zmianowa, dojazd i BHP',
+        paragraphs: [
+          'W magazynach często pracuje się na zmiany i w weekendy. Napisz, jakie godziny możesz pracować i czy dojedziesz na pierwszą lub nocną zmianę.',
+          'Dodaj informację o aktualnych badaniach lekarskich i szkoleniu BHP, jeśli je masz. Wspomnij o rzetelności i dokładności, ale poprzyj to przykładem, na przykład brakiem różnic inwentaryzacyjnych.',
+        ],
+      },
+    ],
     tips: [
       'Zawsze podawaj numer i kategorie uprawnień UDT.',
       'Wspomnij o powierzchni obsługiwanego magazynu i liczbie SKU.',
       'Dokładność w inwentaryzacji to kluczowy atut.',
+      'Wpisz rodzaj uprawnień na wózki i rok ich uzyskania.',
+      'Podaj liczby: zamówienia dziennie, wielkość magazynu, rodzaj towaru.',
+      'Napisz, jakie zmiany możesz pracować i jak dojeżdżasz.',
     ],
     faqs: [
       { q: 'Czy bez UDT można dostać pracę jako magazynier?', a: 'Tak — wiele firm zatrudnia magazynierów bez UDT i umożliwia zdobycie uprawnień w trakcie pracy.' },
+      { q: 'Czy magazynier bez doświadczenia znajdzie pracę?', a: 'Tak, w wielu magazynach przyjmuje się osoby bez doświadczenia. Podkreśl dyspozycyjność, sprawność, dokładność i gotowość do zrobienia uprawnień na wózek.' },
+      { q: 'Jakie umiejętności wpisać w CV magazyniera?', a: 'Kompletację zamówień, obsługę skanera i systemu WMS, uprawnienia na wózki, prowadzenie dokumentów magazynowych, inwentaryzację i pracę w zespole.' },
+      { q: 'Czy uprawnienia na wózek widłowy trzeba wpisać w CV?', a: 'Tak, zdecydowanie. To jedna z kluczowych informacji dla magazynu. Wpisz rodzaj uprawnień i rok.' },
+      { q: 'Czy do CV magazyniera dołączać zdjęcie?', a: 'Nie jest wymagane. Jeśli je dodasz, wybierz schludne zdjęcie portretowe.' },
     ],
   },
   {
@@ -561,6 +623,7 @@ export const WZORY: WzorCV[] = [
     title: 'CV recepcjonistki',
     titleGen: 'CV recepcjonistki',
     intro: 'CV recepcjonistki powinno podkreślać znajomość języków obcych, obsługę systemów hotelowych i umiejętności komunikacyjne. Pierwsze wrażenie zaczyna się już od CV.',
+    updated: '2026-11-17',
     shouldContain: [
       'Obsługa systemów: Opera, Fidelio, Hotix lub podobnych',
       'Znajomość języków obcych (angielski obowiązkowy)',
@@ -584,13 +647,43 @@ export const WZORY: WzorCV[] = [
       }],
       skills: ['Opera PMS', 'Angielski C1', 'Niemiecki B2', 'Obsługa klienta', 'Check-in/out', 'Rezerwacje', 'Windykacja'],
     },
+    sections: [
+      {
+        heading: 'Jak napisać CV recepcjonistki',
+        paragraphs: [
+          'W podsumowaniu napisz, w jakim miejscu pracowałaś: hotel, gabinet, firma, klub fitness. Dodaj, ile gości lub klientów obsługiwałaś i jakie systemy znasz. To pierwsze, na co patrzy rekruter.',
+          'W doświadczeniu opisz konkretne zadania: przyjmowanie gości, rezerwacje, obsługa telefonów i poczty, rozliczanie płatności, współpraca z innymi działami. Krótkie punkty z liczbami są czytelniejsze niż długi opis.',
+        ],
+      },
+      {
+        heading: 'Języki, systemy i kultura osobista',
+        paragraphs: [
+          'W hotelach i dużych firmach języki obce są podstawą. Wpisz poziom, na przykład angielski B2, i napisz, czy używasz go na co dzień z gośćmi lub klientami.',
+          'Wymień systemy, które znasz: programy rezerwacyjne, kalendarze, pakiet Office. Dodaj też cechy, które potwierdzisz przykładem, jak dyskrecja, opanowanie i umiejętność pracy z trudnym klientem.',
+        ],
+      },
+      {
+        heading: 'Grafik, zmiany i dyspozycyjność',
+        paragraphs: [
+          'Recepcja często pracuje w systemie zmianowym, także w weekendy i w nocy. Napisz wprost, jakie godziny możesz pracować, bo to skraca proces rekrutacji.',
+          'Jeśli zaczynasz, pokaż doświadczenie z obsługi klienta w innych miejscach: sklep, kawiarnia, wolontariat. Dodaj, że szybko uczysz się nowych programów.',
+        ],
+      },
+    ],
     tips: [
       'Zawsze podawaj poziomy znajomości języków obcych.',
       'System rezerwacyjny (Opera, Fidelio) to obowiązkowy punkt w CV.',
       'Oceny gości i nagrody w ankietach satysfakcji to mocne argumenty.',
+      'Wpisz poziom języków obcych i napisz, w jakich sytuacjach ich używasz.',
+      'Wymień programy rezerwacyjne lub biurowe, które obsługujesz.',
+      'Napisz o dyspozycyjności na zmiany i w weekendy.',
     ],
     faqs: [
       { q: 'Czy recepcjonistka hotelowa musi znać angielski?', a: 'Tak — angielski jest standardem. W hotelach sieciowych często wymagany jest poziom minimum B2/C1.' },
+      { q: 'Jakie umiejętności wpisać w CV recepcjonistki?', a: 'Obsługę gości i klientów, telefony i pocztę, rezerwacje, rozliczanie płatności, pakiet Office, języki obce, dyskrecję i pracę pod presją. Dla każdej dodaj miejsce, w którym z niej korzystałaś.' },
+      { q: 'Czy recepcjonistka bez doświadczenia ma szansę?', a: 'Tak, jeśli pokażesz doświadczenie z obsługi klienta w innych miejscach i dobrą znajomość języka. Podkreśl kulturę osobistą i gotowość do nauki.' },
+      { q: 'Czy do CV recepcjonistki trzeba zdjęcie?', a: 'Nie jest wymagane, ale przy pracy z gośćmi wiele firm je lubi. Wybierz schludne, uśmiechnięte zdjęcie portretowe.' },
+      { q: 'Jak opisać pracę w hotelu w CV recepcjonistki?', a: 'Podaj kategorię hotelu, liczbę pokoi, system rezerwacji i swoje zadania, na przykład meldunek, wymeldowanie, obsługę zgłoszeń gości i rozliczenia.' },
     ],
   },
   {
@@ -829,6 +922,7 @@ export const WZORY: WzorCV[] = [
     titleGen: 'CV kasjera',
     intro: 'CV kasjera powinno podkreślać szybkość i dokładność obsługi klientów, doświadczenie z kasą fiskalną i umiejętność pracy w zatłoczonych środowiskach.',
     metaDesc: 'Wzór CV kasjera z gotowym przykładem do wypełnienia — kasa fiskalna, obsługa klienta, szybkość i dokładność. Stwórz CV w kilka minut, bez subskrypcji.',
+    updated: '2026-11-17',
     shouldContain: [
       'Obsługa kasy fiskalnej i terminala płatniczego',
       'Przyjmowanie i wydawanie reszty bez błędów',
@@ -852,12 +946,42 @@ export const WZORY: WzorCV[] = [
       }],
       skills: ['Kasa fiskalna', 'Terminal płatniczy', 'Obsługa klienta', 'Przyjmowanie dostaw', 'Program lojalnościowy', 'Praca zmianowa'],
     },
+    sections: [
+      {
+        heading: 'Jak napisać CV kasjera',
+        paragraphs: [
+          'W podsumowaniu napisz, gdzie pracowałeś na kasie (supermarket, dyskont, stacja paliw, sklep specjalistyczny) i jak długo. Dodaj, że obsługiwałeś klientów przy dużym ruchu, jeśli tak było.',
+          'W doświadczeniu wymień zadania: obsługa kasy fiskalnej, terminala i płatności bezgotówkowych, rozliczanie zmiany, wykładanie towaru, obsługa zwrotów. Jeśli znasz liczby, na przykład ilu klientów dziennie, wpisz je.',
+        ],
+      },
+      {
+        heading: 'Uczciwość, szybkość i obsługa gotówki',
+        paragraphs: [
+          'Praca na kasie wymaga dokładności i uczciwości, więc napisz o rozliczaniu kasy bez niedoborów, jeśli to prawda. Jeden przykład pokazuje więcej niż deklaracja.',
+          'Dodaj, że potrafisz pracować szybko i spokojnie przy kolejce, oraz że masz doświadczenie w rozmowie z trudnym klientem. Wymień systemy, które znasz, na przykład samoobsługowe kasy lub konkretne programy sklepowe.',
+        ],
+      },
+      {
+        heading: 'Zmiany, weekendy i pierwsza praca',
+        paragraphs: [
+          'Kasjerzy pracują zmianowo, także w weekendy i niedziele handlowe. Napisz, jakie godziny możesz pracować, bo to ważne przy układaniu grafiku.',
+          'Jeśli zaczynasz, pokaż doświadczenie z obsługi klienta lub pracy z pieniędzmi, na przykład z wolontariatu, kiermaszu lub pracy dorywczej. Dodaj, że szybko uczysz się obsługi nowych kas.',
+        ],
+      },
+    ],
     tips: [
       'Podkreśl bezbłędność rozliczeń i szybkość obsługi.',
       'Gotowość do pracy w weekendy i święta jest ceniona w handlu.',
+      'Wpisz typy kas i systemów, które obsługiwałeś.',
+      'Napisz o dyspozycyjności na zmiany i w weekendy.',
+      'Jeśli masz książeczkę sanepidowską, dodaj informację o niej.',
     ],
     faqs: [
       { q: 'Czy kasjer bez doświadczenia dostanie pracę?', a: 'Tak — wiele sieci handlowych przyjmuje kandydatów bez doświadczenia i szkoli ich wewnętrznie.' },
+      { q: 'Czy kasjer bez doświadczenia ma szansę?', a: 'Tak, sieci handlowe często szkolą nowych kasjerów. Podkreśl uczciwość, dokładność, dyspozycyjność i kontakt z klientem.' },
+      { q: 'Jakie umiejętności wpisać w CV kasjera?', a: 'Obsługę kasy i terminala płatniczego, rozliczanie zmiany, obsługę zwrotów, pracę z klientem, szybkość i dokładność. Dodaj przykład, gdzie je stosowałeś.' },
+      { q: 'Jak opisać pracę na kasie samoobsługowej?', a: 'Napisz, że pomagałeś klientom w obsłudze kas samoobsługowych, rozwiązywałeś problemy i pilnowałeś poprawności rozliczeń.' },
+      { q: 'Czy w CV kasjera wpisać znajomość matematyki?', a: 'Nie trzeba. Lepiej napisać o dokładności i rozliczaniu kasy, bo to pokazuje, że umiesz pracować z pieniędzmi.' },
     ],
   },
   {
@@ -936,6 +1060,7 @@ export const WZORY: WzorCV[] = [
     titleGen: 'CV pracownika ochrony',
     intro: 'CV pracownika ochrony musi jasno pokazać licencję SUFO (jeśli dotyczy), doświadczenie z obiektami i obszarami obsługi oraz przebyte szkolenia.',
     metaDesc: 'Gotowy wzór CV pracownika ochrony z przykładem — licencja SUFO, szkolenia i doświadczenie na obiektach. Wypełnij i pobierz profesjonalne CV za darmo.',
+    updated: '2026-11-17',
     shouldContain: [
       'Licencja pracownika ochrony I lub II stopnia (jeśli posiadasz)',
       'Rodzaje ochranianego mienia (obiekty, wydarzenia, sklepy)',
@@ -959,13 +1084,43 @@ export const WZORY: WzorCV[] = [
       }],
       skills: ['Licencja SUFO I stopnia', 'Monitoring CCTV', 'Kontrola dostępu', 'Pierwsza pomoc', 'Prawo jazdy B', 'Radiotelefonista', 'Eventy masowe'],
     },
+    sections: [
+      {
+        heading: 'Jak napisać CV pracownika ochrony',
+        paragraphs: [
+          'W podsumowaniu napisz, jaki obiekt chroniłeś (sklep, magazyn, biurowiec, osiedle, impreza) i na czym polegała Twoja praca: patrole, monitoring, kontrola wejść. Dodaj, ile lat pracujesz w zawodzie.',
+          'W doświadczeniu wymień konkretne zadania i odpowiedzialność: obsługę systemu CCTV, kontrolę dostępu, sporządzanie raportów, reagowanie na zdarzenia. Podaj wielkość obiektu lub liczbę osób, którymi się opiekowałeś.',
+        ],
+      },
+      {
+        heading: 'Uprawnienia, szkolenia i badania',
+        paragraphs: [
+          'W ochronie liczą się dokumenty. Wpisz, czy masz wpis na listę kwalifikowanych pracowników ochrony fizycznej, kurs pierwszej pomocy, szkolenia z przeciwpożarowej lub z obsługi monitoringu. Przy każdym podaj rok.',
+          'Dodaj też informację o aktualnych badaniach lekarskich i psychologicznych oraz o niekaralności, jeśli stanowisko tego wymaga. Wpisuj tylko to, co faktycznie posiadasz.',
+        ],
+      },
+      {
+        heading: 'Dyspozycyjność, grafik i cechy',
+        paragraphs: [
+          'Praca w ochronie to zwykle system zmianowy, także nocami i w święta. Napisz wprost, jakie godziny możesz pracować i czy masz własny transport.',
+          'Cechy takie jak opanowanie, rzetelność i dyskrecja warto poprzeć przykładem, na przykład „bez incydentów podczas dyżurów przez dwa lata”, jeśli to prawda.',
+        ],
+      },
+    ],
     tips: [
       'Podaj numer i stopień licencji pracownika ochrony.',
       'Doświadczenie na eventach masowych jest dużym wyróżnikiem.',
       'Certyfikat ratownictwa medycznego lub KPP zwiększa wartość CV.',
+      'Wpisz posiadane uprawnienia i kursy razem z datami.',
+      'Opisz typ obiektu i zakres odpowiedzialności.',
+      'Napisz o dyspozycyjności na zmiany nocne i weekendy.',
     ],
     faqs: [
       { q: 'Czy pracownik ochrony bez licencji SUFO znajdzie pracę?', a: 'Tak — część pracodawców zatrudnia bez licencji (np. sklepy), ale licencja znacznie poszerza możliwości i wynagrodzenie.' },
+      { q: 'Jakie dokumenty trzeba dodać do CV pracownika ochrony?', a: 'CV powinno zawierać informację o uprawnieniach, kursach i badaniach. Same dokumenty dołącza się na prośbę pracodawcy, więc przygotuj ich kopie.' },
+      { q: 'Czy pracownik ochrony bez doświadczenia ma szansę?', a: 'Tak. Wiele firm przyjmuje osoby po kursie i uczy je na obiekcie. Podkreśl dyspozycyjność, rzetelność i ukończone szkolenia.' },
+      { q: 'Jakie umiejętności wpisać w CV pracownika ochrony?', a: 'Obsługę monitoringu, kontrolę dostępu, patrolowanie, pisanie raportów, pierwszą pomoc, znajomość procedur ppoż. i komunikatywność. Dodaj przykład z poprzedniej pracy.' },
+      { q: 'Czy w CV ochroniarza podawać wzrost i sprawność fizyczną?', a: 'Nie ma takiego obowiązku. Jeśli pracodawca wymaga określonej sprawności, wspomnij o niej krótko, na przykład o kondycji lub uprawianym sporcie.' },
     ],
   },
   {
@@ -1410,6 +1565,7 @@ export const WZORY: WzorCV[] = [
     title: 'CV studenta',
     titleGen: 'CV studenta',
     intro: 'CV studenta bez doświadczenia powinno podkreślać projekty uczelniane, wolontariat, staże i umiejętności miękkie. Rekruterzy szukają potencjału, motywacji i gotowości do nauki.',
+    updated: '2026-11-17',
     shouldContain: [
       'Wykształcenie: kierunek, uczelnia, rok studiów, GPA (jeśli dobre)',
       'Staże i praktyki studenckie',
@@ -1433,15 +1589,45 @@ export const WZORY: WzorCV[] = [
       }],
       skills: ['React', 'Python', 'JavaScript', 'Git', 'SQL', 'MS Excel', 'Angielski C1', 'Figma (podstawy)', 'Jira'],
     },
+    sections: [
+      {
+        heading: 'Jak napisać CV studenta bez doświadczenia',
+        paragraphs: [
+          'Gdy nie masz jeszcze pracy w zawodzie, zacznij od wykształcenia: kierunek, uczelnia, przewidywany rok ukończenia i ważne przedmioty lub projekty. Dla pracodawcy to dowód, czego się uczysz i co potrafisz.',
+          'Potem dodaj to, co pokazuje zaangażowanie: koła naukowe, wolontariat, organizację wydarzeń, praktyki, prace dorywcze. Opisz, co dokładnie robiłeś i jaki był efekt.',
+        ],
+      },
+      {
+        heading: 'Projekty, praktyki i umiejętności',
+        paragraphs: [
+          'Projekt zaliczeniowy lub praca grupowa to pełnoprawne doświadczenie. Napisz, jaka była Twoja rola, jakich narzędzi użyłeś i co powstało. Wystarczą dwa lub trzy zdania.',
+          'Umiejętności dopasuj do ogłoszenia: pakiet Office, języki obce z poziomem, programy specjalistyczne, prawo jazdy. Nie wypełniaj listy ogólnikami, których nie umiesz poprzeć przykładem.',
+        ],
+      },
+      {
+        heading: 'Dyspozycyjność i klauzula o danych',
+        paragraphs: [
+          'Pracodawcy chętnie zatrudniają studentów, ale chcą wiedzieć, ile masz czasu. Napisz, ile godzin tygodniowo możesz pracować, czy jesteś dostępny w sesji i czy studiujesz w trybie dziennym.',
+          'Na końcu dodaj klauzulę o zgodzie na przetwarzanie danych osobowych w procesie rekrutacji. Bez niej część firm nie weźmie CV pod uwagę.',
+        ],
+      },
+    ],
     tips: [
       'Projekty uczelniane i własne projekty githubowe zastępują brak doświadczenia.',
       'Podaj GPA lub wyróżnienia naukowe, jeśli są dobre.',
       'Wolontariat i działalność w kołach naukowych pokazują inicjatywę.',
       'Staże — nawet krótkie — bardzo poprawiają CV studenta.',
+      'Zacznij od wykształcenia, jeśli nie masz jeszcze pracy.',
+      'Opisz projekty i działalność w kołach naukowych jak doświadczenie zawodowe.',
+      'Napisz, ile godzin tygodniowo możesz pracować i w jakim trybie studiujesz.',
     ],
     faqs: [
       { q: 'Jak napisać CV studenta bez doświadczenia?', a: 'Postaw na projekty uczelniane, staże, wolontariat i umiejętności. Napisz krótkie podsumowanie, które pokazuje Twoją motywację i kierunek rozwoju.' },
       { q: 'Czy student powinien pisać o ocenach w CV?', a: 'Tylko jeśli GPA jest dobre (4.0+ lub wyróżnienie). Dla pracodawców ważniejsze są projekty i staże niż oceny.' },
+      { q: 'Co wpisać w CV studenta, jeśli nie mam doświadczenia?', a: 'Wykształcenie, projekty, praktyki, wolontariat, koła naukowe, prace dorywcze, języki i umiejętności. Pokaż, czego się nauczyłeś i co zrobiłeś, a nie tylko, gdzie byłeś.' },
+      { q: 'Czy CV studenta powinno mieć jedną stronę?', a: 'Tak, jedna strona w zupełności wystarcza. Zostaw tylko to, co ma związek ze stanowiskiem, na które aplikujesz.' },
+      { q: 'Czy wpisywać liceum w CV studenta?', a: 'Jeśli studiujesz, zwykle wystarczy uczelnia. Liceum możesz dodać tylko wtedy, gdy masz tam osiągnięcia związane z ofertą, na przykład olimpiady lub certyfikaty językowe.' },
+      { q: 'Jak napisać CV na staż lub praktyki?', a: 'Wskaż kierunek i rok studiów, dopasuj umiejętności do ogłoszenia i krótko napisz, czego chcesz się nauczyć. Dodaj dostępność w tygodniu.' },
     ],
   },
   {
