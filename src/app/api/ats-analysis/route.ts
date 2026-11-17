@@ -86,7 +86,10 @@ Zwróć TYLKO JSON w tym formacie (bez markdown, bez opisu):
 
   // Burn the free teaser only after a successful generation
   if (isTeaser) {
-    await supabase.from('profiles').upsert({ id: userId, ats_free_used: true }, { onConflict: 'id' })
+    // update, not upsert: profiles has no INSERT policy for users, so an upsert was rejected by RLS
+    // (silently) and the free teaser never got used up. The profile row always exists (created at signup).
+    const { error: flagError } = await supabase.from('profiles').update({ ats_free_used: true }).eq('id', userId)
+    if (flagError) console.error('ats-analysis: could not mark free teaser as used', flagError.message)
   }
 
   try {
