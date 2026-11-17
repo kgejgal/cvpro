@@ -5,6 +5,7 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
 import { track } from '@/lib/analytics'
+import { readStoredRef } from '@/lib/attribution'
 
 const D = {
   bg: '#0d1c35', card: '#162d50', surf: '#122040',
@@ -36,7 +37,8 @@ export default function SignupPage() {
     const { error } = await supabase.auth.signUp({
       email,
       password,
-      options: { emailRedirectTo: `${window.location.origin}/auth/callback` },
+      // signup_ref w metadanych przeżywa potwierdzenie e-maila w innej przeglądarce niż ta, w której wszedł użytkownik.
+      options: { emailRedirectTo: `${window.location.origin}/auth/callback`, data: { signup_ref: readStoredRef() } },
     })
     if (error) {
       track('signup_error', error.code || String(error.status ?? 'unknown'))

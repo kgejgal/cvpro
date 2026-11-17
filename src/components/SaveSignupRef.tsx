@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react'
 import { createClient } from '@/lib/supabase/client'
-import { REF_KEY } from '@/components/PartnerRefCapture'
+import { readStoredRef } from '@/lib/attribution'
 
 const SAVED_KEY = 'cvpro_ref_saved'
 
@@ -15,7 +15,7 @@ export default function SaveSignupRef({ userId }: { userId: string }) {
   useEffect(() => {
     let ref = ''
     try {
-      ref = localStorage.getItem(REF_KEY) ?? ''
+      ref = readStoredRef()
       if (!ref || sessionStorage.getItem(SAVED_KEY) === userId) return
       sessionStorage.setItem(SAVED_KEY, userId)
     } catch {

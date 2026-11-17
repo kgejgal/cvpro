@@ -1,6 +1,7 @@
 import { createServerClient } from '@supabase/ssr'
 import { cookies } from 'next/headers'
 import { NextRequest, NextResponse } from 'next/server'
+import { REF_COOKIE, sanitizeRef } from '@/lib/attribution'
 
 export async function GET(request: NextRequest) {
   const { searchParams, origin } = new URL(request.url)
@@ -24,6 +25,15 @@ export async function GET(request: NextRequest) {
     )
     const { error } = await supabase.auth.exchangeCodeForSession(code)
     if (!error) {
+      // Znacznik kanału: cookie z tej przeglądarki (także logowanie Google) albo metadane z formularza
+      // rejestracji (e-mail potwierdzony w innej przeglądarce). Pierwszy kontakt wygrywa.
+      try {
+        const { data: { user } } = await supabase.auth.getUser()
+        const ref = sanitizeRef(decodeURIComponent(cookieStore.get(REF_COOKIE)?.value ?? '')) || sanitizeRef(user?.user_metadata?.signup_ref)
+        if (user && ref) {
+          await supabase.from('profiles').update({ signup_ref: ref }).eq('id', user.id).is('signup_ref', null)
+        }
+      } catch { /* statystyka, nie może zepsuć logowania */ }
       return NextResponse.redirect(`${origin}/dashboard`)
     }
     console.error('auth callback: exchangeCodeForSession failed', error.message)
