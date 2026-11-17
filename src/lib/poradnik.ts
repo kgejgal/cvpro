@@ -18,7 +18,7 @@ export const ARTICLES: Article[] = [
     icon: '💰',
     title: 'Ile naprawdę kosztuje kreator CV?',
     metaTitle: 'Ile kosztuje kreator CV? Ceny i ukryte opłaty (2026)',
-    description: 'Sprawdź, ile realnie kosztuje stworzenie CV online — od darmowych narzędzi, przez pułapki subskrypcyjne, po uczciwą jednorazową płatność. Praktyczne porównanie modeli cenowych.',
+    description: 'Sprawdź, ile realnie kosztuje stworzenie CV online, od darmowych narzędzi, przez pułapki subskrypcyjne, po uczciwą jednorazową płatność. Praktyczne porównanie modeli cenowych.',
     readingTime: '5 min',
     datePublished: '2026-06-28',
     dateModified: '2026-06-28',
@@ -26,44 +26,44 @@ export const ARTICLES: Article[] = [
       {
         heading: 'Trzy modele cenowe kreatorów CV',
         body: [
-          'Kreatory CV w Polsce działają w jednym z trzech modeli: całkowicie darmowym, subskrypcyjnym oraz jednorazowej płatności. Każdy z nich oznacza coś innego dla Twojego portfela — i nie zawsze najtańsza cena na stronie głównej jest faktycznie najtańsza.',
+          'Kreatory CV w Polsce działają w jednym z trzech modeli: całkowicie darmowym, subskrypcyjnym oraz jednorazowej płatności. Każdy z nich oznacza coś innego dla Twojego portfela, i nie zawsze najtańsza cena na stronie głównej jest faktycznie najtańsza.',
           'Zanim wybierzesz narzędzie, warto rozumieć, za co naprawdę płacisz i czy po pobraniu gotowego CV nie czekają Cię kolejne, nieoczekiwane opłaty.',
         ],
       },
       {
-        heading: 'Model darmowy — za co naprawdę płacisz?',
+        heading: 'Model darmowy, za co naprawdę płacisz?',
         body: [
           'Darmowe kreatory (np. proste generatory online czy szablony w narzędziach graficznych) pozwalają stworzyć CV bez opłat. Minusem bywa ograniczona liczba szablonów, znak wodny na dokumencie albo brak optymalizacji pod systemy ATS, których używają rekruterzy.',
           'Darmowe rozwiązanie jest dobre na szybko, ale jeśli zależy Ci na profesjonalnym wyglądzie i przejściu przez automatyczną selekcję, zwykle trzeba dopłacić za eksport bez znaku wodnego lub lepsze szablony.',
         ],
       },
       {
-        heading: 'Model subskrypcyjny — gdzie kryje się pułapka',
+        heading: 'Model subskrypcyjny, gdzie kryje się pułapka',
         body: [
-          'To najczęstsze źródło rozczarowań. Serwis reklamuje bardzo niską cenę startową — na przykład 5,95 zł za "14-dniowy dostęp" — ale w tle uruchamia automatycznie odnawianą subskrypcję. Po okresie próbnym z konta zaczyna znikać znacznie wyższa kwota, często 60–100 zł co miesiąc.',
-          'Problem jest na tyle poważny, że w 2026 roku UOKiK nałożył na operatora jednego z największych polskich kreatorów CV karę ponad 760 000 zł (decyzja nie jest jeszcze prawomocna, spółka się odwołała) — właśnie za niejasne informowanie o subskrypcji. Użytkownicy dowiadywali się o cyklicznych opłatach dopiero przy próbie pobrania gotowego dokumentu.',
-          'Jeśli wybierasz taki serwis, koniecznie sprawdź regulamin i pamiętaj o anulowaniu subskrypcji — inaczej "tanie" CV może kosztować kilkaset złotych w skali roku.',
+          'To najczęstsze źródło rozczarowań. Serwis reklamuje bardzo niską cenę startową, na przykład 5,95 zł za "14-dniowy dostęp", ale w tle uruchamia automatycznie odnawianą subskrypcję. Po okresie próbnym z konta zaczyna znikać znacznie wyższa kwota, często 60–100 zł co miesiąc.',
+          'Problem jest na tyle poważny, że w 2026 roku UOKiK nałożył na operatora jednego z największych polskich kreatorów CV karę ponad 760 000 zł (decyzja nie jest jeszcze prawomocna, spółka się odwołała), właśnie za niejasne informowanie o subskrypcji. Użytkownicy dowiadywali się o cyklicznych opłatach dopiero przy próbie pobrania gotowego dokumentu.',
+          'Jeśli wybierasz taki serwis, koniecznie sprawdź regulamin i pamiętaj o anulowaniu subskrypcji, inaczej "tanie" CV może kosztować kilkaset złotych w skali roku.',
         ],
       },
       {
-        heading: 'Model jednorazowy — płacisz raz i koniec',
+        heading: 'Model jednorazowy, płacisz raz i koniec',
         body: [
           'W modelu jednorazowym płacisz jedną, jawną kwotę za dostęp do narzędzia i pobranie CV. Nie ma automatycznych odnowień ani ukrytych opłat. Cena jest widoczna od początku, więc dokładnie wiesz, ile wydasz.',
-          'W CVPro.pl plany zaczynają się od 15 zł jednorazowo, a pełny pakiet z analizą ATS i listem motywacyjnym to 39 zł — również raz. To rozwiązanie dla osób, które chcą uniknąć ryzyka cyklicznych opłat i mieć sprawę zamkniętą.',
+          'W CVPro.pl plany zaczynają się od 15 zł jednorazowo, a pełny pakiet z analizą ATS i listem motywacyjnym to 39 zł, również raz. To rozwiązanie dla osób, które chcą uniknąć ryzyka cyklicznych opłat i mieć sprawę zamkniętą.',
         ],
       },
       {
         heading: 'Co realnie się opłaca?',
         body: [
-          'Jeśli potrzebujesz CV raz na jakiś czas (a tak jest w większości przypadków), jednorazowa płatność wychodzi najtaniej i najbezpieczniej. Subskrypcja opłaca się tylko wtedy, gdy faktycznie korzystasz z narzędzia stale — i pamiętasz, żeby ją anulować.',
+          'Jeśli potrzebujesz CV raz na jakiś czas (a tak jest w większości przypadków), jednorazowa płatność wychodzi najtaniej i najbezpieczniej. Subskrypcja opłaca się tylko wtedy, gdy faktycznie korzystasz z narzędzia stale, i pamiętasz, żeby ją anulować.',
           'Najważniejsza zasada: zanim klikniesz "zapłać", sprawdź, czy cena jest jednorazowa, czy cykliczna. Ta jedna informacja decyduje o tym, ile naprawdę zapłacisz.',
         ],
       },
     ],
     faqs: [
-      { q: 'Czy darmowy kreator CV wystarczy?', a: 'Na szybkie, proste CV — tak. Jeśli jednak zależy Ci na profesjonalnym szablonie bez znaku wodnego i optymalizacji pod ATS, zwykle trzeba dopłacić. Wtedy jednorazowa płatność jest najbezpieczniejsza.' },
+      { q: 'Czy darmowy kreator CV wystarczy?', a: 'Na szybkie, proste CV, tak. Jeśli jednak zależy Ci na profesjonalnym szablonie bez znaku wodnego i optymalizacji pod ATS, zwykle trzeba dopłacić. Wtedy jednorazowa płatność jest najbezpieczniejsza.' },
       { q: 'Dlaczego niektóre kreatory CV są tak tanie na początku?', a: 'Niska cena startowa (np. 5,95 zł) to często okres próbny subskrypcji, która automatycznie odnawia się po kilku dniach na znacznie wyższą kwotę. Zawsze sprawdzaj, czy płatność jest jednorazowa.' },
-      { q: 'Ile kosztuje CV w CVPro.pl?', a: 'Plany zaczynają się od 15 zł jednorazowo. Pełny pakiet z analizą ATS i listem motywacyjnym to 39 zł — bez subskrypcji i ukrytych opłat.' },
+      { q: 'Ile kosztuje CV w CVPro.pl?', a: 'Plany zaczynają się od 15 zł jednorazowo. Pełny pakiet z analizą ATS i listem motywacyjnym to 39 zł, bez subskrypcji i ukrytych opłat.' },
     ],
     related: [
       { href: '/kreator-cv-bez-subskrypcji', label: 'Kreator CV bez subskrypcji' },
@@ -74,8 +74,8 @@ export const ARTICLES: Article[] = [
   {
     slug: 'jak-napisac-cv',
     icon: '📝',
-    title: 'Jak napisać CV w 2026 — krok po kroku',
-    metaTitle: 'Jak napisać CV w 2026 — praktyczny poradnik krok po kroku',
+    title: 'Jak napisać CV w 2026, krok po kroku',
+    metaTitle: 'Jak napisać CV w 2026, praktyczny poradnik krok po kroku',
     description: 'Kompletny przewodnik, jak napisać skuteczne CV w 2026 roku: dane kontaktowe, podsumowanie zawodowe, doświadczenie z efektami, umiejętności, klauzula RODO i najczęstsze błędy.',
     readingTime: '7 min',
     datePublished: '2026-06-28',
@@ -96,19 +96,19 @@ export const ARTICLES: Article[] = [
         ],
       },
       {
-        heading: 'Dane kontaktowe — bez zbędnych informacji',
+        heading: 'Dane kontaktowe, bez zbędnych informacji',
         body: [
-          'Podaj imię i nazwisko, numer telefonu, profesjonalny adres e-mail oraz miasto. W wielu branżach warto dodać link do LinkedIn lub portfolio. Nie podawaj adresu zamieszkania co do ulicy, stanu cywilnego ani daty urodzenia — to dane zbędne i nieaktualne standardy.',
+          'Podaj imię i nazwisko, numer telefonu, profesjonalny adres e-mail oraz miasto. W wielu branżach warto dodać link do LinkedIn lub portfolio. Nie podawaj adresu zamieszkania co do ulicy, stanu cywilnego ani daty urodzenia, to dane zbędne i nieaktualne standardy.',
         ],
       },
       {
-        heading: 'Podsumowanie zawodowe — Twój nagłówek',
+        heading: 'Podsumowanie zawodowe, Twój nagłówek',
         body: [
           'To 2–3 zdania na górze CV, które streszczają, kim jesteś zawodowo i co wnosisz. Dopasuj je do konkretnej oferty: wymień stanowisko, lata doświadczenia i najmocniejszy atut. To pierwsza rzecz, którą czyta rekruter, więc niech będzie konkretna, nie ogólnikowa.',
         ],
       },
       {
-        heading: 'Doświadczenie — pokazuj efekty, nie obowiązki',
+        heading: 'Doświadczenie, pokazuj efekty, nie obowiązki',
         body: [
           'Najczęstszy błąd to lista obowiązków ("odpowiedzialny za..."). Zamiast tego opisuj osiągnięcia i ich efekt, najlepiej liczbami. Porównaj: "obsługa klientów" kontra "obsłużyłem ponad 40 klientów dziennie, utrzymując 95% pozytywnych ocen".',
           'Każde stanowisko opisz w 3–5 punktach zaczynających się od czasownika: zwiększyłem, wdrożyłem, skróciłem, zarządzałem. Zaczynaj od najnowszego doświadczenia.',
@@ -117,21 +117,21 @@ export const ARTICLES: Article[] = [
       {
         heading: 'Umiejętności i wykształcenie',
         body: [
-          'W sekcji umiejętności wymień te realnie istotne dla stanowiska — narzędzia, programy, języki obce z poziomem. Unikaj wrzucania wszystkiego; lepiej kilka mocnych, dopasowanych kompetencji niż długa, przypadkowa lista.',
-          'Wykształcenie podaj zwięźle: kierunek, uczelnia, lata. Przy dłuższym stażu zawodowym ta sekcja może być krótka — liczy się doświadczenie.',
+          'W sekcji umiejętności wymień te realnie istotne dla stanowiska, narzędzia, programy, języki obce z poziomem. Unikaj wrzucania wszystkiego; lepiej kilka mocnych, dopasowanych kompetencji niż długa, przypadkowa lista.',
+          'Wykształcenie podaj zwięźle: kierunek, uczelnia, lata. Przy dłuższym stażu zawodowym ta sekcja może być krótka, liczy się doświadczenie.',
         ],
       },
       {
         heading: 'Klauzula RODO i format pliku',
         body: [
-          'W Polsce CV powinno zawierać aktualną klauzulę o przetwarzaniu danych osobowych (RODO). Bez niej rekruter formalnie nie może przetwarzać Twojej aplikacji. Zapisuj i wysyłaj CV w formacie PDF — zachowuje układ i jest czytelny zarówno dla człowieka, jak i systemów ATS.',
+          'W Polsce CV powinno zawierać aktualną klauzulę o przetwarzaniu danych osobowych (RODO). Bez niej rekruter formalnie nie może przetwarzać Twojej aplikacji. Zapisuj i wysyłaj CV w formacie PDF, zachowuje układ i jest czytelny zarówno dla człowieka, jak i systemów ATS.',
         ],
       },
     ],
     faqs: [
-      { q: 'Jak długie powinno być CV?', a: 'Najlepiej jedna strona. Dwie strony są dopuszczalne tylko przy wieloletnim, bogatym doświadczeniu — bez wypełniaczy.' },
+      { q: 'Jak długie powinno być CV?', a: 'Najlepiej jedna strona. Dwie strony są dopuszczalne tylko przy wieloletnim, bogatym doświadczeniu, bez wypełniaczy.' },
       { q: 'Czy CV musi mieć zdjęcie?', a: 'Nie jest wymagane. W niektórych branżach (np. IT) bywa pomijane. Jeśli dodajesz zdjęcie, niech będzie profesjonalne.' },
-      { q: 'Czy trzeba dopasowywać CV do każdej oferty?', a: 'Tak — to znacząco zwiększa szanse. Dopasuj podsumowanie i słowa kluczowe do treści ogłoszenia, zwłaszcza jeśli firma używa systemu ATS.' },
+      { q: 'Czy trzeba dopasowywać CV do każdej oferty?', a: 'Tak, to znacząco zwiększa szanse. Dopasuj podsumowanie i słowa kluczowe do treści ogłoszenia, zwłaszcza jeśli firma używa systemu ATS.' },
     ],
     related: [
       { href: '/poradnik/cv-pod-ats', label: 'Jak przejść przez system ATS' },
@@ -143,7 +143,7 @@ export const ARTICLES: Article[] = [
     slug: 'cv-pod-ats',
     icon: '🎯',
     title: 'Jak przejść przez system ATS',
-    metaTitle: 'CV pod ATS — jak przejść przez system rekrutacyjny (2026)',
+    metaTitle: 'CV pod ATS, jak przejść przez system rekrutacyjny (2026)',
     description: 'Dowiedz się, czym jest system ATS i jak przygotować CV, które przejdzie automatyczną selekcję: słowa kluczowe, formatowanie, nazwy sekcji i format pliku.',
     readingTime: '6 min',
     datePublished: '2026-06-28',
@@ -152,14 +152,14 @@ export const ARTICLES: Article[] = [
       {
         heading: 'Czym jest ATS i dlaczego ma znaczenie',
         body: [
-          'ATS (Applicant Tracking System) to oprogramowanie, którego firmy używają do automatycznego zbierania i wstępnej selekcji CV. Zanim Twoje CV trafi do człowieka, często najpierw "czyta" je system — i jeśli nie potrafi go poprawnie odczytać, aplikacja może odpaść już na starcie.',
+          'ATS (Applicant Tracking System) to oprogramowanie, którego firmy używają do automatycznego zbierania i wstępnej selekcji CV. Zanim Twoje CV trafi do człowieka, często najpierw "czyta" je system, i jeśli nie potrafi go poprawnie odczytać, aplikacja może odpaść już na starcie.',
           'Dlatego CV musi być przyjazne nie tylko dla rekrutera, ale i dla maszyny. Dobra wiadomość: zasady są proste.',
         ],
       },
       {
         heading: 'Używaj słów kluczowych z ogłoszenia',
         body: [
-          'ATS dopasowuje CV do oferty na podstawie słów kluczowych — nazw umiejętności, narzędzi i stanowisk. Przeczytaj ogłoszenie i użyj w CV dokładnie tych samych określeń (jeśli faktycznie je posiadasz). Jeśli firma szuka kogoś od "obsługi klienta" i "Excela", użyj tych właśnie słów, a nie synonimów.',
+          'ATS dopasowuje CV do oferty na podstawie słów kluczowych, nazw umiejętności, narzędzi i stanowisk. Przeczytaj ogłoszenie i użyj w CV dokładnie tych samych określeń (jeśli faktycznie je posiadasz). Jeśli firma szuka kogoś od "obsługi klienta" i "Excela", użyj tych właśnie słów, a nie synonimów.',
         ],
       },
       {
@@ -168,10 +168,10 @@ export const ARTICLES: Article[] = [
           'Systemy ATS gubią się przy skomplikowanym układzie. Trzymaj się jednej, czytelnej kolumny tekstu, standardowych czcionek i wyraźnych nagłówków sekcji.',
         ],
         bullets: [
-          'Unikaj tabel i wielokolumnowych układów — ATS może pomieszać kolejność',
-          'Nie umieszczaj kluczowych informacji w grafikach ani ikonach — system ich nie odczyta',
+          'Unikaj tabel i wielokolumnowych układów, ATS może pomieszać kolejność',
+          'Nie umieszczaj kluczowych informacji w grafikach ani ikonach, system ich nie odczyta',
           'Używaj standardowych nazw sekcji: "Doświadczenie", "Umiejętności", "Wykształcenie"',
-          'Nie wstawiaj tekstu w nagłówku/stopce pliku — bywa pomijany',
+          'Nie wstawiaj tekstu w nagłówku/stopce pliku, bywa pomijany',
         ],
       },
       {
@@ -196,17 +196,17 @@ export const ARTICLES: Article[] = [
   {
     slug: 'cv-dla-studenta',
     icon: '🎓',
-    title: 'CV dla studenta bez doświadczenia — jak napisać',
-    metaTitle: 'CV dla studenta bez doświadczenia — wzór i porady 2026',
+    title: 'CV dla studenta bez doświadczenia, jak napisać',
+    metaTitle: 'CV dla studenta bez doświadczenia, wzór i porady 2026',
     description: 'Jak napisać CV gdy nie masz doświadczenia zawodowego? Dowiedz się, co wpisać w sekcję doświadczenia, jak pokazać projekty, wolontariat i umiejętności, żeby wypaść profesjonalnie.',
     readingTime: '6 min',
     datePublished: '2026-06-28',
     dateModified: '2026-06-28',
     sections: [
       {
-        heading: 'Brak doświadczenia to nie problem — to inny punkt startowy',
+        heading: 'Brak doświadczenia to nie problem, to inny punkt startowy',
         body: [
-          'Każdy zaczyna od zera. Rekruterzy wiedzą, że student nie ma 10 lat stażu — szukają czegoś innego: potencjału, inicjatywy i dopasowania do stanowiska. Kluczem jest pokazanie tego, co masz, w jak najbardziej konkretny sposób.',
+          'Każdy zaczyna od zera. Rekruterzy wiedzą, że student nie ma 10 lat stażu, szukają czegoś innego: potencjału, inicjatywy i dopasowania do stanowiska. Kluczem jest pokazanie tego, co masz, w jak najbardziej konkretny sposób.',
           'CV studenta różni się od CV osoby z doświadczeniem głównie kolejnością sekcji: na pierwszym miejscu warto umieścić wykształcenie i projekty, a dopiero potem (skromniejsze) doświadczenie zawodowe.',
         ],
       },
@@ -216,18 +216,18 @@ export const ARTICLES: Article[] = [
           'Nie masz etatu, ale prawie na pewno masz coś, co warto pokazać.',
         ],
         bullets: [
-          'Projekty uczelniane i własne — opis projektu, użyte technologie, efekt (np. "aplikacja webowa z 200 użytkownikami")',
-          'Praktyki i staże — nawet 2-tygodniowy staż to doświadczenie',
-          'Wolontariat — pokazuje zaangażowanie i inicjatywę',
-          'Praca dorywcza — obsługa klienta, sprzedaż, praca fizyczna uczą konkretnych umiejętności',
+          'Projekty uczelniane i własne, opis projektu, użyte technologie, efekt (np. "aplikacja webowa z 200 użytkownikami")',
+          'Praktyki i staże, nawet 2-tygodniowy staż to doświadczenie',
+          'Wolontariat, pokazuje zaangażowanie i inicjatywę',
+          'Praca dorywcza, obsługa klienta, sprzedaż, praca fizyczna uczą konkretnych umiejętności',
           'Działalność w kołach naukowych, samorządzie, organizacjach studenckich',
-          'Freelance — projekty dla znajomych, grafiki, strony WWW, korepetycje',
+          'Freelance, projekty dla znajomych, grafiki, strony WWW, korepetycje',
         ],
       },
       {
         heading: 'Jak opisać projekty bez doświadczenia',
         body: [
-          'Opis projektu powinien zawierać: co zrobiłeś, jakich narzędzi użyłeś i jaki był efekt. Przykład: "Zaprojektowałem i wdrożyłem sklep internetowy w Shopify dla lokalnej firmy — 150 zamówień w pierwszym miesiącu".',
+          'Opis projektu powinien zawierać: co zrobiłeś, jakich narzędzi użyłeś i jaki był efekt. Przykład: "Zaprojektowałem i wdrożyłem sklep internetowy w Shopify dla lokalnej firmy, 150 zamówień w pierwszym miesiącu".',
           'Jeśli projekt jest publiczny (GitHub, portfolio), dodaj link. To natychmiast podnosi wiarygodność.',
         ],
       },
@@ -241,20 +241,20 @@ export const ARTICLES: Article[] = [
     ],
     faqs: [
       { q: 'Co wpisać w CV gdy nie mam żadnego doświadczenia?', a: 'Wpisz projekty uczelniane, wolontariat, pracę dorywczą, kursy i certyfikaty. Każda aktywność, która pokazuje umiejętności lub inicjatywę, jest lepsza niż pusta sekcja.' },
-      { q: 'Czy CV studenta musi mieć 1 stronę?', a: 'Tak — dla osoby bez doświadczenia zawodowego jedna strona jest standardem. Dwie strony przy braku treści wyglądają sztucznie.' },
+      { q: 'Czy CV studenta musi mieć 1 stronę?', a: 'Tak, dla osoby bez doświadczenia zawodowego jedna strona jest standardem. Dwie strony przy braku treści wyglądają sztucznie.' },
       { q: 'Czy warto pisać podsumowanie zawodowe w CV studenta?', a: 'Tak, jeśli jest konkretne. Unikaj ogólników ("ambitny i chętny do nauki"). Napisz: kim jesteś (student X kierunku), co umiesz (języki, narzędzia) i czego szukasz.' },
     ],
     related: [
       { href: '/poradnik/jak-napisac-cv', label: 'Jak napisać CV krok po kroku' },
       { href: '/poradnik/cv-pod-ats', label: 'Jak przejść przez system ATS' },
-      { href: '/kreator-cv-bez-subskrypcji', label: 'Stwórz CV online — od 15 zł' },
+      { href: '/kreator-cv-bez-subskrypcji', label: 'Stwórz CV online, od 15 zł' },
     ],
   },
   {
     slug: 'list-motywacyjny',
     icon: '✉️',
-    title: 'List motywacyjny — wzór 2026 i jak go napisać',
-    metaTitle: 'List motywacyjny — wzór 2026, przykład i jak go napisać',
+    title: 'List motywacyjny, wzór 2026 i jak go napisać',
+    metaTitle: 'List motywacyjny, wzór 2026, przykład i jak go napisać',
     description: 'Gotowy wzór listu motywacyjnego na 2026 rok do skopiowania i uzupełnienia, plus praktyczny poradnik: struktura, czego unikać i jak dopasować list do konkretnej oferty pracy.',
     readingTime: '7 min',
     datePublished: '2026-06-28',
@@ -263,8 +263,8 @@ export const ARTICLES: Article[] = [
       {
         heading: 'Czy list motywacyjny jest jeszcze potrzebny?',
         body: [
-          'Zależy od ogłoszenia. Jeśli firma go nie wymaga — nie wysyłaj (rekruterzy rzadko go czytają jeśli nie jest obowiązkowy). Jeśli ogłoszenie prosi o list, napisz go starannie — bo wtedy rzeczywiście jest czytany i może przesądzić o zaproszeniu na rozmowę.',
-          'Zasada: list motywacyjny nie zastępuje CV — uzupełnia je o kontekst, motywację i dopasowanie do konkretnej firmy.',
+          'Zależy od ogłoszenia. Jeśli firma go nie wymaga, nie wysyłaj (rekruterzy rzadko go czytają jeśli nie jest obowiązkowy). Jeśli ogłoszenie prosi o list, napisz go starannie, bo wtedy rzeczywiście jest czytany i może przesądzić o zaproszeniu na rozmowę.',
+          'Zasada: list motywacyjny nie zastępuje CV, uzupełnia je o kontekst, motywację i dopasowanie do konkretnej firmy.',
         ],
       },
       {
@@ -273,36 +273,36 @@ export const ARTICLES: Article[] = [
           'Dobry list motywacyjny ma 3–4 akapity i mieści się na jednej stronie A4.',
         ],
         bullets: [
-          'Akapit 1 — dlaczego ta firma i to stanowisko (konkretnie, nie ogólnikowo)',
-          'Akapit 2 — co wnosisz: 2–3 osiągnięcia z CV rozwinięte o kontekst',
-          'Akapit 3 — jak pasujesz do kultury firmy lub specyfiki roli',
-          'Zamknięcie — prośba o kontakt, bez "liczę na pozytywne rozpatrzenie"',
+          'Akapit 1, dlaczego ta firma i to stanowisko (konkretnie, nie ogólnikowo)',
+          'Akapit 2, co wnosisz: 2–3 osiągnięcia z CV rozwinięte o kontekst',
+          'Akapit 3, jak pasujesz do kultury firmy lub specyfiki roli',
+          'Zamknięcie, prośba o kontakt, bez "liczę na pozytywne rozpatrzenie"',
         ],
       },
       {
         heading: 'Czego absolutnie unikać',
         body: [
-          '"Jestem osobą ambitną, komunikatywną i chętną do nauki" — to mówi każdy. Zamiast cech charakteru, pokazuj dowody: "Zwiększyłem sprzedaż o 20%" mówi więcej niż "jestem skuteczny".',
-          'Nie przepisuj CV do listu. List to miejsce na kontekst i motywację, nie na powtórkę punktów z CV. Nie pisz też o sobie w superlatywach — niech fakty mówią same za siebie.',
+          '"Jestem osobą ambitną, komunikatywną i chętną do nauki", to mówi każdy. Zamiast cech charakteru, pokazuj dowody: "Zwiększyłem sprzedaż o 20%" mówi więcej niż "jestem skuteczny".',
+          'Nie przepisuj CV do listu. List to miejsce na kontekst i motywację, nie na powtórkę punktów z CV. Nie pisz też o sobie w superlatywach, niech fakty mówią same za siebie.',
         ],
       },
       {
         heading: 'Jak dopasować list do oferty',
         body: [
-          'Przeczytaj ogłoszenie i wypisz 3 kluczowe wymagania. W liście odnieś się do każdego z nich konkretnym przykładem ze swojego doświadczenia. Ten mechanizm sprawia, że list wygląda napisany specjalnie dla tej firmy — bo jest.',
+          'Przeczytaj ogłoszenie i wypisz 3 kluczowe wymagania. W liście odnieś się do każdego z nich konkretnym przykładem ze swojego doświadczenia. Ten mechanizm sprawia, że list wygląda napisany specjalnie dla tej firmy, bo jest.',
           'Zmień przynajmniej pierwszy akapit dla każdej aplikacji. Resztę możesz adaptować z szablonu.',
         ],
       },
       {
-        heading: 'Wzór listu motywacyjnego 2026 — do skopiowania',
+        heading: 'Wzór listu motywacyjnego 2026, do skopiowania',
         body: [
-          'Poniższy wzór listu motywacyjnego możesz skopiować i uzupełnić własnymi danymi. Jest uniwersalny — sprawdzi się w większości branż. Fragmenty w nawiasach kwadratowych zastąp konkretami z ogłoszenia i swojego doświadczenia.',
+          'Poniższy wzór listu motywacyjnego możesz skopiować i uzupełnić własnymi danymi. Jest uniwersalny, sprawdzi się w większości branż. Fragmenty w nawiasach kwadratowych zastąp konkretami z ogłoszenia i swojego doświadczenia.',
           'Warszawa, 3 lipca 2026 r.',
           'Anna Kowalska · tel. 600 000 000 · anna.kowalska@email.com',
           'Szanowna Pani / Szanowny Panie,',
-          'z zainteresowaniem przeczytałam ogłoszenie na stanowisko [nazwa stanowiska] w [nazwa firmy]. Od [X] lat pracuję w [branża/obszar], a Państwa firma od dawna jest dla mnie przykładem [konkretna rzecz, którą firma robi dobrze — produkt, projekt, wartości], dlatego chcę dołączyć właśnie do Waszego zespołu.',
-          'Na obecnym stanowisku w [nazwa firmy] odpowiadam za [kluczowy obszar]. W ubiegłym roku [konkretne osiągnięcie z liczbą — np. zwiększyłam sprzedaż o 20%, skróciłam czas realizacji zamówień o 3 dni, obsłużyłam ponad 40 klientów dziennie z 95% pozytywnych ocen]. Doświadczenie to odpowiada wymaganiom z Państwa ogłoszenia, w szczególności [wymaganie 1] i [wymaganie 2].',
-          'Poza kompetencjami zawodowymi wnoszę [cecha poparta przykładem — np. doświadczenie w pracy w zespole rozproszonym, samodzielność w prowadzeniu projektów od pomysłu do wdrożenia]. Chętnie opowiem podczas rozmowy, jak mogę wykorzystać te umiejętności w [nazwa firmy].',
+          'z zainteresowaniem przeczytałam ogłoszenie na stanowisko [nazwa stanowiska] w [nazwa firmy]. Od [X] lat pracuję w [branża/obszar], a Państwa firma od dawna jest dla mnie przykładem [konkretna rzecz, którą firma robi dobrze, produkt, projekt, wartości], dlatego chcę dołączyć właśnie do Waszego zespołu.',
+          'Na obecnym stanowisku w [nazwa firmy] odpowiadam za [kluczowy obszar]. W ubiegłym roku [konkretne osiągnięcie z liczbą, np. zwiększyłam sprzedaż o 20%, skróciłam czas realizacji zamówień o 3 dni, obsłużyłam ponad 40 klientów dziennie z 95% pozytywnych ocen]. Doświadczenie to odpowiada wymaganiom z Państwa ogłoszenia, w szczególności [wymaganie 1] i [wymaganie 2].',
+          'Poza kompetencjami zawodowymi wnoszę [cecha poparta przykładem, np. doświadczenie w pracy w zespole rozproszonym, samodzielność w prowadzeniu projektów od pomysłu do wdrożenia]. Chętnie opowiem podczas rozmowy, jak mogę wykorzystać te umiejętności w [nazwa firmy].',
           'Zapraszam do kontaktu telefonicznego lub mailowego w dogodnym dla Państwa terminie.',
           'Z poważaniem, Anna Kowalska',
         ],
@@ -310,44 +310,44 @@ export const ARTICLES: Article[] = [
       {
         heading: 'Jak korzystać z tego wzoru',
         body: [
-          'Wzór to szkielet, nie gotowiec. List skopiowany 1:1 rekruter rozpozna natychmiast — widzi dziesiątki takich samych tygodniowo. Wypełnij każdy nawias konkretem: nazwą firmy, liczbą, faktem z Twojego doświadczenia.',
+          'Wzór to szkielet, nie gotowiec. List skopiowany 1:1 rekruter rozpozna natychmiast, widzi dziesiątki takich samych tygodniowo. Wypełnij każdy nawias konkretem: nazwą firmy, liczbą, faktem z Twojego doświadczenia.',
           'Najwięcej pracy włóż w akapit pierwszy (dlaczego ta firma) i drugi (Twoje osiągnięcia dopasowane do wymagań). To one decydują, czy rekruter doczyta list do końca.',
         ],
         bullets: [
           'Zachowaj długość: 3–4 akapity, maksymalnie jedna strona A4',
-          'Użyj tej samej czcionki i nagłówka z danymi co w CV — spójny komplet wygląda profesjonalnie',
+          'Użyj tej samej czcionki i nagłówka z danymi co w CV, spójny komplet wygląda profesjonalnie',
           'Zapisz list jako PDF, chyba że ogłoszenie wymaga innego formatu',
-          'Nie powtarzaj klauzuli RODO — wystarczy, że jest w CV',
+          'Nie powtarzaj klauzuli RODO, wystarczy, że jest w CV',
         ],
       },
     ],
     faqs: [
-      { q: 'Jak długi powinien być list motywacyjny?', a: 'Maksymalnie jedna strona A4, 3–4 akapity. Rekruterzy poświęcają mu kilkanaście sekund — długi list to zły list.' },
-      { q: 'Czy list motywacyjny musi być po polsku?', a: 'Piszesz w języku, w którym jest ogłoszenie. Jeśli firma jest zagraniczna lub ogłoszenie po angielsku — po angielsku. W polskich firmach — po polsku.' },
+      { q: 'Jak długi powinien być list motywacyjny?', a: 'Maksymalnie jedna strona A4, 3–4 akapity. Rekruterzy poświęcają mu kilkanaście sekund, długi list to zły list.' },
+      { q: 'Czy list motywacyjny musi być po polsku?', a: 'Piszesz w języku, w którym jest ogłoszenie. Jeśli firma jest zagraniczna lub ogłoszenie po angielsku, po angielsku. W polskich firmach, po polsku.' },
       { q: 'Czy mogę użyć gotowego wzoru listu motywacyjnego?', a: 'Tak, ale tylko jako szkieletu. Wzór z tego artykułu skopiuj i uzupełnij konkretami: nazwą firmy, stanowiskiem i swoimi osiągnięciami z liczbami. List wysłany bez personalizacji działa na Twoją niekorzyść.' },
-      { q: 'Czym różni się list motywacyjny w 2026 od wcześniejszych lat?', a: 'Coraz więcej firm pomija list, ale tam, gdzie jest wymagany, liczy się konkret zamiast formułek. Rekruterzy rozpoznają też teksty generowane automatycznie bez personalizacji — wzór zawsze uzupełniaj własnymi faktami i liczbami.' },
-      { q: 'Czy CVPro.pl pomaga w napisaniu listu motywacyjnego?', a: 'Tak — plan Premium zawiera generator listu motywacyjnego, który tworzy spersonalizowany list na podstawie Twojego CV i wybranej oferty pracy.' },
+      { q: 'Czym różni się list motywacyjny w 2026 od wcześniejszych lat?', a: 'Coraz więcej firm pomija list, ale tam, gdzie jest wymagany, liczy się konkret zamiast formułek. Rekruterzy rozpoznają też teksty generowane automatycznie bez personalizacji, wzór zawsze uzupełniaj własnymi faktami i liczbami.' },
+      { q: 'Czy CVPro.pl pomaga w napisaniu listu motywacyjnego?', a: 'Tak, plan Premium zawiera generator listu motywacyjnego, który tworzy spersonalizowany list na podstawie Twojego CV i wybranej oferty pracy.' },
     ],
     related: [
       { href: '/poradnik/jak-napisac-cv', label: 'Jak napisać CV krok po kroku' },
       { href: '/cennik', label: 'Plan Premium z generatorem listu' },
-      { href: '/kreator-cv-bez-subskrypcji', label: 'Stwórz CV online — od 15 zł' },
+      { href: '/kreator-cv-bez-subskrypcji', label: 'Stwórz CV online, od 15 zł' },
     ],
   },
   {
     slug: 'cv-zmiana-branzy',
     icon: '🔄',
-    title: 'Zmiana branży — jak napisać CV',
-    metaTitle: 'CV przy zmianie branży — jak napisać i co podkreślić (2026)',
+    title: 'Zmiana branży, jak napisać CV',
+    metaTitle: 'CV przy zmianie branży, jak napisać i co podkreślić (2026)',
     description: 'Zmieniasz branżę i nie wiesz jak napisać CV? Dowiedz się, jak pokazać transferowalne umiejętności, jak wytłumaczyć zmianę kierunku i jak przejść przez selekcję ATS bez doświadczenia w nowej branży.',
     readingTime: '6 min',
     datePublished: '2026-06-28',
     dateModified: '2026-06-28',
     sections: [
       {
-        heading: 'Zmiana branży to nie cofnięcie — to przekierowanie',
+        heading: 'Zmiana branży to nie cofnięcie, to przekierowanie',
         body: [
-          'CV przy zmianie branży ma inne zadanie niż standardowe: musi pokazać, że Twoje dotychczasowe doświadczenie jest wartościowe, nawet jeśli pochodzi z innej branży. Kluczem są transferowalne umiejętności — kompetencje, które działają niezależnie od sektora.',
+          'CV przy zmianie branży ma inne zadanie niż standardowe: musi pokazać, że Twoje dotychczasowe doświadczenie jest wartościowe, nawet jeśli pochodzi z innej branży. Kluczem są transferowalne umiejętności, kompetencje, które działają niezależnie od sektora.',
           'Przykłady: zarządzanie projektami, komunikacja z klientem, analiza danych, sprzedaż, praca pod presją czasu, praca z ludźmi. Te umiejętności przenoszą się wszędzie.',
         ],
       },
@@ -357,44 +357,44 @@ export const ARTICLES: Article[] = [
           'Zmień format na funkcjonalny lub mieszany: zamiast chronologicznej listy stanowisk, zacznij od sekcji "Kluczowe kompetencje" i dopiero potem pokaż historię zatrudnienia.',
         ],
         bullets: [
-          'Podsumowanie zawodowe — wyjaśnij zmianę pozytywnie: "Specjalista ds. sprzedaży przechodzący do marketingu B2B — 5 lat bezpośredniej pracy z klientami"',
-          'Kluczowe kompetencje — wylistuj umiejętności pasujące do nowej branży',
-          'Osiągnięcia — skup się na rezultatach (liczby, procenty) zamiast obowiązkach',
-          'Certyfikaty i kursy — pokaż, że aktywnie uczysz się nowej branży',
-          'Projekty — jeśli zrobiłeś coś w nowym kierunku (nawet hobbystycznie), wpisz to',
+          'Podsumowanie zawodowe, wyjaśnij zmianę pozytywnie: "Specjalista ds. sprzedaży przechodzący do marketingu B2B, 5 lat bezpośredniej pracy z klientami"',
+          'Kluczowe kompetencje, wylistuj umiejętności pasujące do nowej branży',
+          'Osiągnięcia, skup się na rezultatach (liczby, procenty) zamiast obowiązkach',
+          'Certyfikaty i kursy, pokaż, że aktywnie uczysz się nowej branży',
+          'Projekty, jeśli zrobiłeś coś w nowym kierunku (nawet hobbystycznie), wpisz to',
         ],
       },
       {
         heading: 'Jak wytłumaczyć zmianę branży',
         body: [
-          'W podsumowaniu zawodowym napisz krótko dlaczego zmieniasz kierunek — bez przeprosin i bez nadmiernego tłumaczenia. "Po 6 latach w logistyce przechodzę do e-commerce, gdzie chcę połączyć doświadczenie operacyjne z nową dla mnie warstwą cyfrową" — to brzmi profesjonalnie.',
-          'Nie ukrywaj zmiany. Rekruterzy i tak to zobaczą — lepiej żebyś to wyjaśnił z inicjatywy.',
+          'W podsumowaniu zawodowym napisz krótko dlaczego zmieniasz kierunek, bez przeprosin i bez nadmiernego tłumaczenia. "Po 6 latach w logistyce przechodzę do e-commerce, gdzie chcę połączyć doświadczenie operacyjne z nową dla mnie warstwą cyfrową", to brzmi profesjonalnie.',
+          'Nie ukrywaj zmiany. Rekruterzy i tak to zobaczą, lepiej żebyś to wyjaśnił z inicjatywy.',
         ],
       },
       {
         heading: 'ATS przy zmianie branży',
         body: [
           'Systemy ATS filtrują CV pod kątem słów kluczowych z ogłoszenia. Jeśli zmieniasz branżę, Twoje CV może nie przejść selekcji automatycznej, bo brakuje mu branżowego słownictwa.',
-          'Rozwiązanie: czytaj ogłoszenia i używaj tych samych określeń, które pojawiają się w wymaganiach — nawet jeśli Twoje doświadczenie pochodzi z innego kontekstu. Jeśli w ogłoszeniu jest "zarządzanie budżetem" a Ty to robiłeś, użyj dokładnie tych słów.',
+          'Rozwiązanie: czytaj ogłoszenia i używaj tych samych określeń, które pojawiają się w wymaganiach, nawet jeśli Twoje doświadczenie pochodzi z innego kontekstu. Jeśli w ogłoszeniu jest "zarządzanie budżetem" a Ty to robiłeś, użyj dokładnie tych słów.',
         ],
       },
     ],
     faqs: [
-      { q: 'Czy powinienem mieć osobne CV do każdej branży?', a: 'Tak — przy zmianie branży warto mieć kilka wersji CV, każda z innym podsumowaniem i inaczej wyeksponowanymi kompetencjami. CVPro.pl pozwala tworzyć wiele wersji CV w jednym koncie.' },
+      { q: 'Czy powinienem mieć osobne CV do każdej branży?', a: 'Tak, przy zmianie branży warto mieć kilka wersji CV, każda z innym podsumowaniem i inaczej wyeksponowanymi kompetencjami. CVPro.pl pozwala tworzyć wiele wersji CV w jednym koncie.' },
       { q: 'Czy warto podać powód zmiany branży w CV?', a: 'W CV wystarczy krótkie podsumowanie. Szczegółowe wyjaśnienie zachowaj na rozmowę kwalifikacyjną.' },
-      { q: 'Jak szybko mogę zmienić wersję CV pod inną branżę?', a: 'W CVPro.pl możesz skopiować istniejące CV i dostosować je — zmienić podsumowanie, przesunąć sekcje, zaktualizować słowa kluczowe. W planie Pro i Premium masz 3 lub nieograniczone wersje CV.' },
+      { q: 'Jak szybko mogę zmienić wersję CV pod inną branżę?', a: 'W CVPro.pl możesz skopiować istniejące CV i dostosować je, zmienić podsumowanie, przesunąć sekcje, zaktualizować słowa kluczowe. W planie Pro i Premium masz 3 lub nieograniczone wersje CV.' },
     ],
     related: [
       { href: '/poradnik/jak-napisac-cv', label: 'Jak napisać CV krok po kroku' },
-      { href: '/poradnik/cv-pod-ats', label: 'CV pod ATS — jak przejść selekcję' },
-      { href: '/kreator-cv-bez-subskrypcji', label: 'Stwórz CV online — od 15 zł' },
+      { href: '/poradnik/cv-pod-ats', label: 'CV pod ATS, jak przejść selekcję' },
+      { href: '/kreator-cv-bez-subskrypcji', label: 'Stwórz CV online, od 15 zł' },
     ],
   },
   {
     slug: 'cvpro-vs-subskrypcje',
     icon: '🔓',
-    title: 'Kreator CV bez subskrypcji — dlaczego płacisz raz',
-    metaTitle: 'Kreator CV bez subskrypcji — zapłać raz i pobierz PDF (2026)',
+    title: 'Kreator CV bez subskrypcji, dlaczego płacisz raz',
+    metaTitle: 'Kreator CV bez subskrypcji, zapłać raz i pobierz PDF (2026)',
     description: 'Większość kreatorów CV w Polsce ukrywa subskrypcję za niską ceną startową. Sprawdź, jak działa pułapka i dlaczego model jednorazowej płatności jest bezpieczniejszy dla Twojego portfela.',
     readingTime: '5 min',
     datePublished: '2026-06-28',
@@ -403,8 +403,8 @@ export const ARTICLES: Article[] = [
       {
         heading: 'Jak działa pułapka subskrypcyjna w kreatorach CV',
         body: [
-          'Wchodzisz na stronę kreatora CV. Cena wygląda atrakcyjnie — 5,95 zł za dostęp. Tworzysz CV, jesteś zadowolony, klikasz "pobierz". I wtedy okazuje się, że PDF jest zablokowany, dopóki nie podasz karty kredytowej. Po wpisaniu danych zaczyna się subskrypcja — automatycznie odnawiana co miesiąc kwotą 60–100 zł.',
-          'To nie jest przypadek. To model biznesowy zaprojektowany tak, żebyś nie zauważył, kiedy 5,95 zł stało się setkami złotych w skali roku. W 2026 roku UOKiK nałożył karę ponad 760 000 zł (decyzja nie jest jeszcze prawomocna, spółka się odwołała) na operatora jednego z największych polskich kreatorów CV właśnie za tę praktykę — ukryte informowanie o cyklicznych opłatach.',
+          'Wchodzisz na stronę kreatora CV. Cena wygląda atrakcyjnie, 5,95 zł za dostęp. Tworzysz CV, jesteś zadowolony, klikasz "pobierz". I wtedy okazuje się, że PDF jest zablokowany, dopóki nie podasz karty kredytowej. Po wpisaniu danych zaczyna się subskrypcja, automatycznie odnawiana co miesiąc kwotą 60–100 zł.',
+          'To nie jest przypadek. To model biznesowy zaprojektowany tak, żebyś nie zauważył, kiedy 5,95 zł stało się setkami złotych w skali roku. W 2026 roku UOKiK nałożył karę ponad 760 000 zł (decyzja nie jest jeszcze prawomocna, spółka się odwołała) na operatora jednego z największych polskich kreatorów CV właśnie za tę praktykę, ukryte informowanie o cyklicznych opłatach.',
         ],
       },
       {
@@ -413,38 +413,38 @@ export const ARTICLES: Article[] = [
           'Zanim wpiszesz dane karty w jakimkolwiek kreatorze CV, sprawdź trzy rzeczy.',
         ],
         bullets: [
-          'Cena za "dostęp" lub "okres próbny" zamiast jasnej ceny za produkt — to najczęstszy sygnał subskrypcji',
+          'Cena za "dostęp" lub "okres próbny" zamiast jasnej ceny za produkt, to najczęstszy sygnał subskrypcji',
           'Brak widocznej informacji o tym, ile będziesz płacić po okresie próbnym i jak często',
-          'Przycisk "anuluj subskrypcję" głęboko ukryty w ustawieniach konta — jeśli trudno go znaleźć, firma na to liczy',
+          'Przycisk "anuluj subskrypcję" głęboko ukryty w ustawieniach konta, jeśli trudno go znaleźć, firma na to liczy',
         ],
       },
       {
-        heading: 'Model jednorazowy — co oznacza w praktyce',
+        heading: 'Model jednorazowy, co oznacza w praktyce',
         body: [
-          'W modelu jednorazowej płatności kupujesz dostęp raz — dokładnie wiesz ile płacisz, nie ma automatycznych odnowień, nie musisz pamiętać o anulowaniu. Po zakupie możesz tworzyć, edytować i pobierać CV bez żadnych dodatkowych opłat.',
-          'W CVPro.pl plany zaczynają się od 15 zł jednorazowo za podstawowy eksport PDF, a pełny pakiet z analizą ATS, listem motywacyjnym i nielimitowanymi wersjami CV kosztuje 39 zł — również raz. Dla osoby, która szuka pracy raz na kilka lat, to zdecydowanie tańsze i prostsze rozwiązanie niż subskrypcja.',
+          'W modelu jednorazowej płatności kupujesz dostęp raz, dokładnie wiesz ile płacisz, nie ma automatycznych odnowień, nie musisz pamiętać o anulowaniu. Po zakupie możesz tworzyć, edytować i pobierać CV bez żadnych dodatkowych opłat.',
+          'W CVPro.pl plany zaczynają się od 15 zł jednorazowo za podstawowy eksport PDF, a pełny pakiet z analizą ATS, listem motywacyjnym i nielimitowanymi wersjami CV kosztuje 39 zł, również raz. Dla osoby, która szuka pracy raz na kilka lat, to zdecydowanie tańsze i prostsze rozwiązanie niż subskrypcja.',
         ],
       },
       {
         heading: 'Porównanie: subskrypcja vs jednorazowa płatność',
         body: [
-          'Przyjmijmy, że tworzysz CV raz na 2 lata. Przy subskrypcji 89 zł miesięcznie (jeśli zapomnisz anulować po miesiącu) możesz zapłacić ponad 1000 zł zanim zauważysz, że coś jest nie tak. Przy jednorazowej płatności 39 zł — płacisz dokładnie 39 zł i koniec.',
-          'Nawet jeśli pamiętasz o anulowaniu subskrypcji po kilku dniach, musisz o tym pamiętać. To dodatkowy stres i ryzyko w momencie, kiedy i tak masz dużo na głowie — bo szukasz pracy.',
+          'Przyjmijmy, że tworzysz CV raz na 2 lata. Przy subskrypcji 89 zł miesięcznie (jeśli zapomnisz anulować po miesiącu) możesz zapłacić ponad 1000 zł zanim zauważysz, że coś jest nie tak. Przy jednorazowej płatności 39 zł, płacisz dokładnie 39 zł i koniec.',
+          'Nawet jeśli pamiętasz o anulowaniu subskrypcji po kilku dniach, musisz o tym pamiętać. To dodatkowy stres i ryzyko w momencie, kiedy i tak masz dużo na głowie, bo szukasz pracy.',
         ],
       },
       {
         heading: 'Jak wybrać kreator CV, który nie ma ukrytych opłat',
         body: [
-          'Przed zakupem sprawdź regulamin — szukaj słów "subskrypcja", "odnowienie", "cykliczna płatność". Jeśli regulamin jest długi i zawiły, to zazwyczaj nie jest przypadek.',
-          'Szukaj kreatorów, które wprost piszą "płatność jednorazowa" lub "bez subskrypcji" na stronie głównej — nie tylko w małym druczku na dole. Transparentność cenowa to dobry sygnał, że firma nie ma nic do ukrycia.',
+          'Przed zakupem sprawdź regulamin, szukaj słów "subskrypcja", "odnowienie", "cykliczna płatność". Jeśli regulamin jest długi i zawiły, to zazwyczaj nie jest przypadek.',
+          'Szukaj kreatorów, które wprost piszą "płatność jednorazowa" lub "bez subskrypcji" na stronie głównej, nie tylko w małym druczku na dole. Transparentność cenowa to dobry sygnał, że firma nie ma nic do ukrycia.',
         ],
       },
     ],
     faqs: [
-      { q: 'Czy CVPro.pl ma subskrypcję?', a: 'Nie. CVPro.pl działa w modelu jednorazowej płatności — płacisz raz (od 15 zł) i masz dostęp bez limitu czasowego. Nie ma automatycznych odnowień ani ukrytych opłat.' },
+      { q: 'Czy CVPro.pl ma subskrypcję?', a: 'Nie. CVPro.pl działa w modelu jednorazowej płatności, płacisz raz (od 15 zł) i masz dostęp bez limitu czasowego. Nie ma automatycznych odnowień ani ukrytych opłat.' },
       { q: 'Co się stanie z moim CV po zakupie?', a: 'Możesz edytować, pobierać i aktualizować CV bez ograniczeń. Twoje dane są zapisane na koncie tak długo, jak chcesz z nich korzystać.' },
-      { q: 'Jak odzyskać pieniądze za subskrypcję, której nie chciałem?', a: 'Skontaktuj się z bankiem lub dostawcą karty i poproś o chargeback — cofnięcie transakcji. Masz do tego prawo, jeśli nie byłeś wyraźnie poinformowany o warunkach subskrypcji. Możesz też zgłosić sprawę do UOKiK.' },
-      { q: 'Czy mogę wypróbować CVPro.pl przed zakupem?', a: 'Tak — możesz bezpłatnie stworzyć i edytować CV. Płatność jest wymagana dopiero przy pobieraniu finalnego PDF.' },
+      { q: 'Jak odzyskać pieniądze za subskrypcję, której nie chciałem?', a: 'Skontaktuj się z bankiem lub dostawcą karty i poproś o chargeback, cofnięcie transakcji. Masz do tego prawo, jeśli nie byłeś wyraźnie poinformowany o warunkach subskrypcji. Możesz też zgłosić sprawę do UOKiK.' },
+      { q: 'Czy mogę wypróbować CVPro.pl przed zakupem?', a: 'Tak, możesz bezpłatnie stworzyć i edytować CV. Płatność jest wymagana dopiero przy pobieraniu finalnego PDF.' },
     ],
     related: [
       { href: '/poradnik/ile-kosztuje-kreator-cv', label: 'Ile naprawdę kosztuje kreator CV?' },
@@ -455,8 +455,8 @@ export const ARTICLES: Article[] = [
   {
     slug: 'poprawa-cv',
     icon: '🛠️',
-    title: 'Poprawa CV — 7 zmian, które zwiększają liczbę odpowiedzi',
-    metaTitle: 'Poprawa CV — jak poprawić CV, żeby dostawać odpowiedzi (2026)',
+    title: 'Poprawa CV, 7 zmian, które zwiększają liczbę odpowiedzi',
+    metaTitle: 'Poprawa CV, jak poprawić CV, żeby dostawać odpowiedzi (2026)',
     description: 'Wysyłasz CV i cisza? Sprawdź 7 konkretnych poprawek, które najczęściej odblokowują odpowiedzi od rekruterów: od podsumowania i liczb, przez słowa kluczowe pod ATS, po format pliku.',
     readingTime: '6 min',
     datePublished: '2026-07-20',
@@ -472,14 +472,14 @@ export const ARTICLES: Article[] = [
       {
         heading: '1. Zamień obowiązki na efekty (z liczbami)',
         body: [
-          'To poprawka numer jeden. "Odpowiedzialny za obsługę klienta" nie mówi nic. "Obsługiwałem 40+ klientów dziennie, utrzymując 95% pozytywnych ocen" — mówi wszystko.',
+          'To poprawka numer jeden. "Odpowiedzialny za obsługę klienta" nie mówi nic. "Obsługiwałem 40+ klientów dziennie, utrzymując 95% pozytywnych ocen", mówi wszystko.',
           'Przejrzyj każdy punkt w sekcji doświadczenia i zadaj sobie pytanie: co się zmieniło dzięki mojej pracy? Ile? O ile procent? W jakim czasie? Nawet szacunkowa liczba jest lepsza niż jej brak.',
         ],
       },
       {
         heading: '2. Dopasuj słowa kluczowe do ogłoszenia',
         body: [
-          'Systemy ATS porównują treść CV ze słowami z ogłoszenia. Jeśli firma szuka "obsługi klienta", a Ty piszesz "kontakt z klientami" — dla algorytmu to nie to samo.',
+          'Systemy ATS porównują treść CV ze słowami z ogłoszenia. Jeśli firma szuka "obsługi klienta", a Ty piszesz "kontakt z klientami", dla algorytmu to nie to samo.',
           'Przed każdą aplikacją wypisz 5–8 kluczowych wymagań z ogłoszenia i upewnij się, że te dokładne sformułowania (jeśli są prawdziwe) występują w Twoim CV.',
         ],
       },
@@ -499,7 +499,7 @@ export const ARTICLES: Article[] = [
           'Jedna kolumna tekstu (albo szablon zaprojektowany pod ATS)',
           'Standardowe nagłówki: "Doświadczenie", "Umiejętności", "Wykształcenie"',
           'Żadnych kluczowych informacji w grafikach ani nagłówku/stopce pliku',
-          'PDF generowany z tekstu — nigdy skan ani zdjęcie dokumentu',
+          'PDF generowany z tekstu, nigdy skan ani zdjęcie dokumentu',
         ],
       },
       {
@@ -511,26 +511,26 @@ export const ARTICLES: Article[] = [
       {
         heading: '6. Zaktualizuj klauzulę RODO i dane kontaktowe',
         body: [
-          'Stara klauzula (sprzed 2018 roku) albo jej brak to formalny powód odrzucenia aplikacji. Sprawdź też adres e-mail — powinien być profesjonalny (imie.nazwisko@), a numer telefonu aktualny.',
+          'Stara klauzula (sprzed 2018 roku) albo jej brak to formalny powód odrzucenia aplikacji. Sprawdź też adres e-mail, powinien być profesjonalny (imie.nazwisko@), a numer telefonu aktualny.',
         ],
       },
       {
         heading: '7. Zweryfikuj efekt przed wysłaniem',
         body: [
-          'Po poprawkach zrób test: poproś kogoś o 10-sekundowe spojrzenie na CV i pytanie "kim jestem i co umiem?". Jeśli nie potrafi odpowiedzieć — wróć do punktu 3.',
+          'Po poprawkach zrób test: poproś kogoś o 10-sekundowe spojrzenie na CV i pytanie "kim jestem i co umiem?". Jeśli nie potrafi odpowiedzieć, wróć do punktu 3.',
           'Możesz też sprawdzić CV automatycznie: analiza ATS w CVPro.pl porównuje Twoje CV z treścią ogłoszenia i wskazuje brakujące słowa kluczowe oraz problemy z formatowaniem. Pierwsza analiza jest darmowa.',
         ],
       },
     ],
     faqs: [
       { q: 'Od czego zacząć poprawę CV?', a: 'Od sekcji doświadczenia: zamień opisy obowiązków na efekty z liczbami. To zmiana o największym wpływie na liczbę odpowiedzi od rekruterów.' },
-      { q: 'Czy muszę poprawiać CV pod każde ogłoszenie?', a: 'Tak — przynajmniej podsumowanie i słowa kluczowe. Dopasowane CV znacząco zwiększa szanse przejścia przez ATS i zainteresowanie rekrutera.' },
-      { q: 'Jak sprawdzić, czy moje CV przechodzi przez ATS?', a: 'Wklej treść ogłoszenia do analizy ATS w CVPro.pl — otrzymasz ocenę dopasowania, listę brakujących słów kluczowych i konkretne wskazówki. Pierwsza analiza jest bezpłatna.' },
+      { q: 'Czy muszę poprawiać CV pod każde ogłoszenie?', a: 'Tak, przynajmniej podsumowanie i słowa kluczowe. Dopasowane CV znacząco zwiększa szanse przejścia przez ATS i zainteresowanie rekrutera.' },
+      { q: 'Jak sprawdzić, czy moje CV przechodzi przez ATS?', a: 'Wklej treść ogłoszenia do analizy ATS w CVPro.pl, otrzymasz ocenę dopasowania, listę brakujących słów kluczowych i konkretne wskazówki. Pierwsza analiza jest bezpłatna.' },
     ],
     related: [
-      { href: '/poradnik/cv-pod-ats', label: 'CV pod ATS — jak przejść selekcję' },
+      { href: '/poradnik/cv-pod-ats', label: 'CV pod ATS, jak przejść selekcję' },
       { href: '/poradnik/jak-napisac-cv', label: 'Jak napisać CV krok po kroku' },
-      { href: '/kreator-cv-bez-subskrypcji', label: 'Stwórz CV online — od 15 zł' },
+      { href: '/kreator-cv-bez-subskrypcji', label: 'Stwórz CV online, od 15 zł' },
     ],
   },
 ]

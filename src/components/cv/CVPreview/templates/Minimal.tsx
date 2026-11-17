@@ -39,7 +39,7 @@ export default function MinimalTemplate({ data }: { data: CVData }) {
                 <div contentEditable suppressContentEditableWarning style={{ fontWeight: 700 }}>{e.position}</div>
                 <div contentEditable suppressContentEditableWarning style={{ fontSize: 12, color: accent, marginBottom: 6 }}>{e.company}{e.city ? `, ${e.city}` : ''}</div>
                 {( e.bullets ?? []).filter(Boolean).map((b, j) => (
-                  <div key={j} contentEditable suppressContentEditableWarning style={{ fontSize: 12, color: '#555', marginBottom: 3, lineHeight: 1.65 }}>— {b}</div>
+                  <div key={j} contentEditable suppressContentEditableWarning style={{ fontSize: 12, color: '#555', marginBottom: 3, lineHeight: 1.65 }}>· {b}</div>
                 ))}
               </div>
             </div>
@@ -54,7 +54,7 @@ export default function MinimalTemplate({ data }: { data: CVData }) {
               <div style={{ fontSize: 11, fontWeight: 800, letterSpacing: 3, textTransform: 'uppercase', color: '#999', marginBottom: 14 }}>{L.edu}</div>
               {data.education.map((e, i) => (
                 <div key={i} style={{ marginBottom: 12 }}>
-                  <div contentEditable suppressContentEditableWarning style={{ fontWeight: 700, fontSize: 12 }}>{e.degree}{e.field ? ` — ${e.field}` : ''}</div>
+                  <div contentEditable suppressContentEditableWarning style={{ fontWeight: 700, fontSize: 12 }}>{e.degree}{e.field ? `, ${e.field}` : ''}</div>
                   <div contentEditable suppressContentEditableWarning style={{ fontSize: 12, color: accent }}>{e.school}</div>
                   <div style={{ fontSize: 11, color: '#aaa' }}>{dateRange(e.startDate, e.endDate)}</div>
                 </div>
@@ -77,7 +77,7 @@ export default function MinimalTemplate({ data }: { data: CVData }) {
             <div>
               <div style={{ fontSize: 11, fontWeight: 800, letterSpacing: 3, textTransform: 'uppercase', color: '#999', marginBottom: 14 }}>{L.langs}</div>
               {data.languages.map((l, i) => (
-                <div key={i} style={{ fontSize: 12, marginBottom: 5 }}>{l.name} <span style={{ color: '#aaa' }}>— {l.level}</span></div>
+                <div key={i} style={{ fontSize: 12, marginBottom: 5 }}>{l.name} <span style={{ color: '#aaa' }}>· {l.level}</span></div>
               ))}
             </div>
           )}

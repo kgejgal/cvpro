@@ -327,7 +327,7 @@ export default function KanbanBoard({
         </div>
         {isLimited ? (
           <a href="/cennik" style={{ background: '#1e3f75', color: '#6B84AA', textDecoration: 'none', fontSize: 13, fontWeight: 600, padding: '9px 20px', borderRadius: 9 }}>
-            🔒 Upgrade — więcej aplikacji
+            🔒 Upgrade, więcej aplikacji
           </a>
         ) : (
           <button

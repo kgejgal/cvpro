@@ -12,7 +12,7 @@ const onest = Onest({ subsets: ['latin'], variable: '--font-onest', display: 'sw
 const bricolage = Bricolage_Grotesque({ subsets: ['latin', 'latin-ext'], variable: '--font-display', display: 'swap', weight: ['600', '700', '800'] })
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://cvpro.pl'
-const TITLE = 'Kreator CV online po polsku — CVPro.pl'
+const TITLE = 'Kreator CV online po polsku | CVPro.pl'
 const DESC = 'Kreator CV zoptymalizowany pod ATS. 16 szablonów, eksport PDF, analiza ATS. Dostosowany do polskiego rynku pracy. Jednorazowa płatność – bez subskrypcji.'
 
 export const metadata: Metadata = {

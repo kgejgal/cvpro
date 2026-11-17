@@ -76,7 +76,7 @@ export default function AcademicTemplate({ data }: { data: CVData }) {
                   {dateRange(e.startDate, e.endDate)}
                 </div>
                 <div>
-                  <div contentEditable suppressContentEditableWarning style={{ fontWeight: 700, fontSize: 13, color: '#0d0d1a' }}>{e.degree}{e.field ? ` — ${e.field}` : ''}</div>
+                  <div contentEditable suppressContentEditableWarning style={{ fontWeight: 700, fontSize: 13, color: '#0d0d1a' }}>{e.degree}{e.field ? `, ${e.field}` : ''}</div>
                   <div contentEditable suppressContentEditableWarning style={{ fontSize: 12, color: accent, fontStyle: 'italic' }}>{e.school}</div>
                   {e.grade && <div style={{ fontSize: 11, color: '#5a6878', marginTop: 2 }}>{e.grade}</div>}
                 </div>
@@ -102,7 +102,7 @@ export default function AcademicTemplate({ data }: { data: CVData }) {
                 <Section title={L.langs} />
                 {data.languages.map((l, i) => (
                   <div key={i} style={{ fontSize: 12, color: '#2a3a4a', marginBottom: 4 }}>
-                    <span style={{ fontWeight: 700 }}>{l.name}</span> — {l.level}
+                    <span style={{ fontWeight: 700 }}>{l.name}</span>, {l.level}
                   </div>
                 ))}
               </>

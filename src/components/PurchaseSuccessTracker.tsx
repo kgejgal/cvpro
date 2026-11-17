@@ -12,7 +12,7 @@ export default function PurchaseSuccessTracker({ sessionId }: { sessionId: strin
     try {
       if (localStorage.getItem(key)) return
       localStorage.setItem(key, '1')
-    } catch { /* storage unavailable — worst case the event is sent again on refresh */ }
+    } catch { /* storage unavailable, worst case the event is sent again on refresh */ }
     track('purchase_success')
   }, [sessionId])
 

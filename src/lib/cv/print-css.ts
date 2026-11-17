@@ -116,5 +116,5 @@ export const WATERMARK_HTML = `
 <div style="position:fixed;top:22%;left:50%;transform:translate(-50%,-50%) rotate(-35deg);font-size:64px;font-weight:900;color:rgba(0,0,0,0.16);letter-spacing:0.08em;pointer-events:none;z-index:9999;white-space:nowrap;font-family:sans-serif;">cvpro.pl</div>
 <div style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-35deg);font-size:64px;font-weight:900;color:rgba(0,0,0,0.16);letter-spacing:0.08em;pointer-events:none;z-index:9999;white-space:nowrap;font-family:sans-serif;">WERSJA PRÓBNA</div>
 <div style="position:fixed;top:78%;left:50%;transform:translate(-50%,-50%) rotate(-35deg);font-size:64px;font-weight:900;color:rgba(0,0,0,0.16);letter-spacing:0.08em;pointer-events:none;z-index:9999;white-space:nowrap;font-family:sans-serif;">cvpro.pl</div>
-<div style="position:fixed;bottom:5mm;left:0;right:0;text-align:center;font-size:10px;font-weight:600;color:rgba(0,0,0,0.55);font-family:sans-serif;letter-spacing:0.04em;">Wersja próbna — usuń znak wodny za 15 zł na cvpro.pl</div>
+<div style="position:fixed;bottom:5mm;left:0;right:0;text-align:center;font-size:10px;font-weight:600;color:rgba(0,0,0,0.55);font-family:sans-serif;letter-spacing:0.04em;">Wersja próbna, usuń znak wodny za 15 zł na cvpro.pl</div>
 `

@@ -25,7 +25,7 @@ export const WZORY: WzorCV[] = [
     icon: '💻',
     title: 'CV programisty',
     titleGen: 'CV programisty',
-    intro: 'CV programisty musi w kilka sekund pokazać Twój stack technologiczny, realne projekty i wpływ na produkt. Rekruterzy IT skanują CV pod kątem konkretnych technologii — dlatego liczą się fakty, liczby i czytelna struktura.',
+    intro: 'CV programisty musi w kilka sekund pokazać Twój stack technologiczny, realne projekty i wpływ na produkt. Rekruterzy IT skanują CV pod kątem konkretnych technologii, dlatego liczą się fakty, liczby i czytelna struktura.',
     shouldContain: [
       'Dane kontaktowe oraz linki do GitHub i portfolio',
       'Krótkie podsumowanie zawodowe (2–3 zdania)',
@@ -51,15 +51,15 @@ export const WZORY: WzorCV[] = [
       skills: ['JavaScript', 'TypeScript', 'React', 'Node.js', 'SQL', 'Git', 'Docker', 'REST API', 'Agile/Scrum'],
     },
     tips: [
-      'Podaj aktywne linki do GitHub i portfolio — rekruter chce zobaczyć kod.',
+      'Podaj aktywne linki do GitHub i portfolio, rekruter chce zobaczyć kod.',
       'Opisuj osiągnięcia liczbami (wydajność, liczba użytkowników, pokrycie testami).',
       'Dopasuj listę technologii do konkretnej oferty pracy.',
-      'Nie wymieniaj wszystkich technologii świata — wybierz te, które znasz dobrze.',
+      'Nie wymieniaj wszystkich technologii świata, wybierz te, które znasz dobrze.',
       'Dodaj sekcję projektów, jeśli masz krótkie doświadczenie zawodowe.',
     ],
     faqs: [
-      { q: 'Czy CV programisty potrzebuje zdjęcia?', a: 'Zdjęcie nie jest wymagane i w branży IT bywa pomijane. Liczą się umiejętności i projekty — zdjęcie dodaj, jeśli czujesz, że wzmacnia profesjonalny wizerunek.' },
-      { q: 'Jak długie powinno być CV programisty?', a: 'Najlepiej jedna strona przy doświadczeniu do ~5 lat. Przy bogatym doświadczeniu maksymalnie dwie strony — bez wodolejstwa.' },
+      { q: 'Czy CV programisty potrzebuje zdjęcia?', a: 'Zdjęcie nie jest wymagane i w branży IT bywa pomijane. Liczą się umiejętności i projekty, zdjęcie dodaj, jeśli czujesz, że wzmacnia profesjonalny wizerunek.' },
+      { q: 'Jak długie powinno być CV programisty?', a: 'Najlepiej jedna strona przy doświadczeniu do ~5 lat. Przy bogatym doświadczeniu maksymalnie dwie strony, bez wodolejstwa.' },
     ],
   },
   {
@@ -98,7 +98,7 @@ export const WZORY: WzorCV[] = [
       'Certyfikat z rachunkowości znacznie zwiększa atrakcyjność CV.',
     ],
     faqs: [
-      { q: 'Co wyróżnia dobre CV księgowej?', a: 'Konkretne systemy, znajomość aktualnych przepisów i mierzalne osiągnięcia — np. liczba obsługiwanych firm lub skala dokumentacji.' },
+      { q: 'Co wyróżnia dobre CV księgowej?', a: 'Konkretne systemy, znajomość aktualnych przepisów i mierzalne osiągnięcia, np. liczba obsługiwanych firm lub skala dokumentacji.' },
     ],
   },
   {
@@ -132,7 +132,7 @@ export const WZORY: WzorCV[] = [
     },
     tips: [
       'Podawaj wyniki kampanii w liczbach (ROAS, CTR, współczynnik konwersji).',
-      'Wymień narzędzia, które naprawdę znasz — to weryfikowalne.',
+      'Wymień narzędzia, które naprawdę znasz, to weryfikowalne.',
       'Pokaż doświadczenie w zarządzaniu budżetem reklamowym.',
       'Dodaj link do portfolio lub case study, jeśli możesz.',
     ],
@@ -185,7 +185,7 @@ export const WZORY: WzorCV[] = [
     title: 'CV sprzedawcy',
     titleGen: 'CV sprzedawcy',
     intro: 'CV sprzedawcy powinno pokazać wyniki sprzedaży w liczbach i umiejętność pracy z klientem. Kluczowe są doświadczenie z kasą fiskalną, obsługa reklamacji i realizacja planów sprzedażowych.',
-    metaDesc: 'Gotowy wzór CV sprzedawcy z przykładem — wyniki sprzedaży, obsługa klienta i kasa fiskalna. Wypełnij i pobierz profesjonalne CV za darmo.',
+    metaDesc: 'Gotowy wzór CV sprzedawcy z przykładem, wyniki sprzedaży, obsługa klienta i kasa fiskalna. Wypełnij i pobierz profesjonalne CV za darmo.',
     updated: '2026-11-17',
     shouldContain: [
       'Doświadczenie w obsłudze klienta i sprzedaży bezpośredniej',
@@ -272,7 +272,7 @@ export const WZORY: WzorCV[] = [
         dates: '2016 – obecnie',
         bullets: [
           'Prowadzę zajęcia dla klas 4–8 (łącznie 180 uczniów)',
-          'Przygotowuję uczniów do egzaminu ósmoklasisty — średni wynik moich uczniów: 82%',
+          'Przygotowuję uczniów do egzaminu ósmoklasisty, średni wynik moich uczniów: 82%',
           'Prowadzę koło teatralne i organizuję coroczny festiwal językowy',
         ],
       }],
@@ -284,7 +284,7 @@ export const WZORY: WzorCV[] = [
       'Certyfikaty językowe (CELTA, TKT) są dużym atutem w CV nauczyciela angielskiego.',
     ],
     faqs: [
-      { q: 'Czy CV nauczyciela bez stażu pracy ma szansę?', a: 'Tak — podkreśl praktyki pedagogiczne, wolontariat, korepetycje i własne projekty edukacyjne.' },
+      { q: 'Czy CV nauczyciela bez stażu pracy ma szansę?', a: 'Tak, podkreśl praktyki pedagogiczne, wolontariat, korepetycje i własne projekty edukacyjne.' },
     ],
   },
   {
@@ -317,7 +317,7 @@ export const WZORY: WzorCV[] = [
       skills: ['Kuchnia polska', 'Kuchnia fusion', 'HACCP', 'Zarządzanie kuchnią', 'Planowanie menu', 'Praca pod presją', 'Zamówienia surowców'],
     },
     tips: [
-      'Podaj kuchnie, w których się specjalizujesz — to kluczowe dla pracodawcy.',
+      'Podaj kuchnie, w których się specjalizujesz, to kluczowe dla pracodawcy.',
       'Wspomnij o certyfikatach sanitarnych i szkoleniach HACCP.',
       'Doświadczenie w fine dining lub restauracjach z gwiazdkami Michelin to duży atut.',
     ],
@@ -355,12 +355,12 @@ export const WZORY: WzorCV[] = [
       skills: ['Koloryzacja', 'Balayage', 'Ombre', 'Keratyna', 'Wella', 'L\'Oréal', 'Obsługa klienta', 'Stylizacja ślubna'],
     },
     tips: [
-      'Podaj techniki koloryzacji — to najważniejszy element CV fryzjera.',
+      'Podaj techniki koloryzacji, to najważniejszy element CV fryzjera.',
       'Wymień marki produktów, z którymi pracujesz.',
       'Certyfikaty ze szkoleń producentów (Wella, Schwarzkopf) zwiększają wiarygodność.',
     ],
     faqs: [
-      { q: 'Czy CV fryzjera potrzebuje portfolio?', a: 'Tak — portfolio ze zdjęciami fryzur warto dołączyć jako link do Instagram lub osobny plik. Samo CV powinno być tekstowe.' },
+      { q: 'Czy CV fryzjera potrzebuje portfolio?', a: 'Tak, portfolio ze zdjęciami fryzur warto dołączyć jako link do Instagram lub osobny plik. Samo CV powinno być tekstowe.' },
     ],
   },
   {
@@ -431,12 +431,12 @@ export const WZORY: WzorCV[] = [
       skills: ['Rekrutacja', 'Prawo pracy', 'Workday', 'SAP HR', 'Employer Branding', 'Assessment Center', 'Mediacja', 'KPI HR'],
     },
     tips: [
-      'Podaj liczbę przeprowadzonych rekrutacji — to mierzalny wynik.',
+      'Podaj liczbę przeprowadzonych rekrutacji, to mierzalny wynik.',
       'Wymień systemy ATS i HRMS, z których korzystasz.',
       'Znajomość prawa pracy i KP jest podstawą w każdym CV HR.',
     ],
     faqs: [
-      { q: 'Czy certyfikat SHRM lub CIPD warto umieścić w CV?', a: 'Zdecydowanie tak — to prestiżowe certyfikaty rozpoznawalne przez pracodawców na całym świecie.' },
+      { q: 'Czy certyfikat SHRM lub CIPD warto umieścić w CV?', a: 'Zdecydowanie tak, to prestiżowe certyfikaty rozpoznawalne przez pracodawców na całym świecie.' },
     ],
   },
   {
@@ -501,7 +501,7 @@ export const WZORY: WzorCV[] = [
       'Napisz, jakie zmiany możesz pracować i jak dojeżdżasz.',
     ],
     faqs: [
-      { q: 'Czy bez UDT można dostać pracę jako magazynier?', a: 'Tak — wiele firm zatrudnia magazynierów bez UDT i umożliwia zdobycie uprawnień w trakcie pracy.' },
+      { q: 'Czy bez UDT można dostać pracę jako magazynier?', a: 'Tak, wiele firm zatrudnia magazynierów bez UDT i umożliwia zdobycie uprawnień w trakcie pracy.' },
       { q: 'Czy magazynier bez doświadczenia znajdzie pracę?', a: 'Tak, w wielu magazynach przyjmuje się osoby bez doświadczenia. Podkreśl dyspozycyjność, sprawność, dokładność i gotowość do zrobienia uprawnień na wózek.' },
       { q: 'Jakie umiejętności wpisać w CV magazyniera?', a: 'Kompletację zamówień, obsługę skanera i systemu WMS, uprawnienia na wózki, prowadzenie dokumentów magazynowych, inwentaryzację i pracę w zespole.' },
       { q: 'Czy uprawnienia na wózek widłowy trzeba wpisać w CV?', a: 'Tak, zdecydowanie. To jedna z kluczowych informacji dla magazynu. Wpisz rodzaj uprawnień i rok.' },
@@ -514,7 +514,7 @@ export const WZORY: WzorCV[] = [
     title: 'CV kelnera',
     titleGen: 'CV kelnera',
     intro: 'CV kelnera powinno podkreślać obsługę klienta, znajomość win lub menu degustacyjnego i doświadczenie w lokalach różnych kategorii. Ważna jest szybkość, precyzja i wysoka kultura osobista.',
-    metaDesc: 'Wzór CV kelnera z gotowym przykładem — obsługa klienta, znajomość menu i praca w lokalach. Stwórz profesjonalne CV w kilka minut, bez subskrypcji.',
+    metaDesc: 'Wzór CV kelnera z gotowym przykładem, obsługa klienta, znajomość menu i praca w lokalach. Stwórz profesjonalne CV w kilka minut, bez subskrypcji.',
     updated: '2026-11-17',
     shouldContain: [
       'Doświadczenie w lokalach (restauracja, hotel, catering)',
@@ -571,7 +571,7 @@ export const WZORY: WzorCV[] = [
       'Dołącz informację o aktualnych badaniach sanitarno-epidemiologicznych, jeśli je masz.',
     ],
     faqs: [
-      { q: 'Czy CV kelnera bez doświadczenia ma szansę?', a: 'Tak — podkreśl komunikatywność, gotowość do nauki, doświadczenie w obsłudze klienta (np. sprzedaż) i dyspozycyjność.' },
+      { q: 'Czy CV kelnera bez doświadczenia ma szansę?', a: 'Tak, podkreśl komunikatywność, gotowość do nauki, doświadczenie w obsłudze klienta (np. sprzedaż) i dyspozycyjność.' },
       { q: 'Jakie umiejętności wpisać w CV kelnera?', a: 'Obsługę gości, znajomość menu i napojów, obsługę POS i terminala, pracę w zespole, komunikatywność, języki obce oraz umiejętność pracy pod presją. Do każdej dodaj konkretny przykład z poprzedniej pracy.' },
       { q: 'Czy kelner potrzebuje badań sanitarno-epidemiologicznych?', a: 'W gastronomii zwykle się je wymaga, bo kelner ma kontakt z żywnością. Wpisz, że masz je aktualne, jeśli tak jest.' },
       { q: 'Jak opisać pracę na bankietach i eventach w CV kelnera?', a: 'Podaj wielkość wydarzenia, liczbę obsługiwanych gości i swoją rolę: serwis, koordynacja zespołu, obsługa baru. Dla pracodawcy to dowód, że umiesz pracować w dużej skali.' },
@@ -584,7 +584,7 @@ export const WZORY: WzorCV[] = [
     title: 'CV elektryka',
     titleGen: 'CV elektryka',
     intro: 'CV elektryka musi pokazać uprawnienia SEP, rodzaj instalacji, przy których pracujesz i doświadczenie z projektami komercyjnymi lub przemysłowymi. Liczy się precyzja i znajomość norm.',
-    metaDesc: 'Gotowy wzór CV elektryka z przykładem — uprawnienia SEP, instalacje i znajomość norm. Wypełnij i pobierz profesjonalne CV za darmo, bez subskrypcji.',
+    metaDesc: 'Gotowy wzór CV elektryka z przykładem, uprawnienia SEP, instalacje i znajomość norm. Wypełnij i pobierz profesjonalne CV za darmo, bez subskrypcji.',
     shouldContain: [
       'Uprawnienia SEP (G1, E, D) z grupą napięciową',
       'Instalacje: domowe, przemysłowe, fotowoltaika, BMS',
@@ -679,7 +679,7 @@ export const WZORY: WzorCV[] = [
       'Napisz o dyspozycyjności na zmiany i w weekendy.',
     ],
     faqs: [
-      { q: 'Czy recepcjonistka hotelowa musi znać angielski?', a: 'Tak — angielski jest standardem. W hotelach sieciowych często wymagany jest poziom minimum B2/C1.' },
+      { q: 'Czy recepcjonistka hotelowa musi znać angielski?', a: 'Tak, angielski jest standardem. W hotelach sieciowych często wymagany jest poziom minimum B2/C1.' },
       { q: 'Jakie umiejętności wpisać w CV recepcjonistki?', a: 'Obsługę gości i klientów, telefony i pocztę, rezerwacje, rozliczanie płatności, pakiet Office, języki obce, dyskrecję i pracę pod presją. Dla każdej dodaj miejsce, w którym z niej korzystałaś.' },
       { q: 'Czy recepcjonistka bez doświadczenia ma szansę?', a: 'Tak, jeśli pokażesz doświadczenie z obsługi klienta w innych miejscach i dobrą znajomość języka. Podkreśl kulturę osobistą i gotowość do nauki.' },
       { q: 'Czy do CV recepcjonistki trzeba zdjęcie?', a: 'Nie jest wymagane, ale przy pracy z gośćmi wiele firm je lubi. Wybierz schludne, uśmiechnięte zdjęcie portretowe.' },
@@ -754,7 +754,7 @@ export const WZORY: WzorCV[] = [
       skills: ['Diagnostyka OBD', 'ISTA+', 'VCDS', 'Silniki benzynowe/diesel', 'Zawieszenie', 'Elektryka', 'Bosch Car Service'],
     },
     tips: [
-      'Podaj obsługiwane marki — serwisy autoryzowane szukają mechaników z doświadczeniem danej marki.',
+      'Podaj obsługiwane marki, serwisy autoryzowane szukają mechaników z doświadczeniem danej marki.',
       'Certyfikaty producentów (Bosch, Continental) to duże wyróżnienie.',
       'Znajomość oprogramowania diagnostycznego jest obowiązkowa.',
     ],
@@ -777,7 +777,7 @@ export const WZORY: WzorCV[] = [
     ],
     example: {
       name: 'Joanna Wierzbicka',
-      position: 'Pielęgniarka specjalistka — chirurgia',
+      position: 'Pielęgniarka specjalistka, chirurgia',
       summary: 'Pielęgniarka z 9-letnim doświadczeniem na oddziałach chirurgicznych. Posiadam specjalizację z pielęgniarstwa chirurgicznego i certyfikat z opieki perioperacyjnej.',
       experience: [{
         position: 'Pielęgniarka oddziałowa',
@@ -797,7 +797,7 @@ export const WZORY: WzorCV[] = [
       'Doświadczenie na SOR lub OIOM jest bardzo cenione.',
     ],
     faqs: [
-      { q: 'Czy pielęgniarka po studiach bez doświadczenia ma szanse?', a: 'Tak — podkreśl praktyki kliniczne, staże i predyspozycje do pracy w konkretnej specjalności.' },
+      { q: 'Czy pielęgniarka po studiach bez doświadczenia ma szanse?', a: 'Tak, podkreśl praktyki kliniczne, staże i predyspozycje do pracy w konkretnej specjalności.' },
     ],
   },
   {
@@ -805,8 +805,8 @@ export const WZORY: WzorCV[] = [
     icon: '🎨',
     title: 'CV grafika',
     titleGen: 'CV grafika',
-    intro: 'CV grafika musi zawierać link do portfolio — to ważniejsze niż jakikolwiek certyfikat. Podkreśl oprogramowanie i specjalizację (UI/UX, branding, ilustracja, motion).',
-    metaDesc: 'Gotowy wzór CV grafika z przykładem — portfolio, oprogramowanie i specjalizacja (UI/UX, branding). Stwórz profesjonalne CV za darmo, bez subskrypcji.',
+    intro: 'CV grafika musi zawierać link do portfolio, to ważniejsze niż jakikolwiek certyfikat. Podkreśl oprogramowanie i specjalizację (UI/UX, branding, ilustracja, motion).',
+    metaDesc: 'Gotowy wzór CV grafika z przykładem, portfolio, oprogramowanie i specjalizacja (UI/UX, branding). Stwórz profesjonalne CV za darmo, bez subskrypcji.',
     shouldContain: [
       'Link do portfolio (Behance, Dribbble, własna strona)',
       'Oprogramowanie: Adobe CC, Figma, Sketch, Canva',
@@ -831,7 +831,7 @@ export const WZORY: WzorCV[] = [
       skills: ['Figma', 'Adobe Illustrator', 'Photoshop', 'After Effects', 'Canva', 'UI/UX', 'Branding', 'Motion Design'],
     },
     tips: [
-      'Portfolio to Twoja najlepsza wizytówka — link musi działać i być aktualny.',
+      'Portfolio to Twoja najlepsza wizytówka, link musi działać i być aktualny.',
       'Opisuj projekty przez efekty i zakres, nie tylko nazwę klienta.',
       'Wymień oprogramowanie, z którym rzeczywiście pracujesz na co dzień.',
     ],
@@ -907,7 +907,7 @@ export const WZORY: WzorCV[] = [
       skills: ['Sprzedaż B2B', 'CRM Salesforce', 'Negocjacje', 'Cold calling', 'Account management', 'Prawa jazdy kat. B', 'Raportowanie'],
     },
     tips: [
-      'Podaj procent realizacji targetów — to najważniejszy wskaźnik.',
+      'Podaj procent realizacji targetów, to najważniejszy wskaźnik.',
       'Wymień obsługiwane systemy CRM.',
       'Liczba i wartość pozyskanych klientów to mocne argumenty.',
     ],
@@ -921,7 +921,7 @@ export const WZORY: WzorCV[] = [
     title: 'CV kasjera',
     titleGen: 'CV kasjera',
     intro: 'CV kasjera powinno podkreślać szybkość i dokładność obsługi klientów, doświadczenie z kasą fiskalną i umiejętność pracy w zatłoczonych środowiskach.',
-    metaDesc: 'Wzór CV kasjera z gotowym przykładem do wypełnienia — kasa fiskalna, obsługa klienta, szybkość i dokładność. Stwórz CV w kilka minut, bez subskrypcji.',
+    metaDesc: 'Wzór CV kasjera z gotowym przykładem do wypełnienia, kasa fiskalna, obsługa klienta, szybkość i dokładność. Stwórz CV w kilka minut, bez subskrypcji.',
     updated: '2026-11-17',
     shouldContain: [
       'Obsługa kasy fiskalnej i terminala płatniczego',
@@ -936,7 +936,7 @@ export const WZORY: WzorCV[] = [
       summary: 'Kasjerka z 3-letnim doświadczeniem w handlu detalicznym. Sprawnie obsługuję kasę fiskalną i terminal płatniczy, dbam o krótki czas oczekiwania klientów i bezbłędne rozliczenia.',
       experience: [{
         position: 'Kasjerka',
-        company: 'Biedronka — oddział Warszawa Wola',
+        company: 'Biedronka, oddział Warszawa Wola',
         dates: '2022 – obecnie',
         bullets: [
           'Obsługuję 200–300 klientów dziennie na stanowisku kasowym',
@@ -977,7 +977,7 @@ export const WZORY: WzorCV[] = [
       'Jeśli masz książeczkę sanepidowską, dodaj informację o niej.',
     ],
     faqs: [
-      { q: 'Czy kasjer bez doświadczenia dostanie pracę?', a: 'Tak — wiele sieci handlowych przyjmuje kandydatów bez doświadczenia i szkoli ich wewnętrznie.' },
+      { q: 'Czy kasjer bez doświadczenia dostanie pracę?', a: 'Tak, wiele sieci handlowych przyjmuje kandydatów bez doświadczenia i szkoli ich wewnętrznie.' },
       { q: 'Czy kasjer bez doświadczenia ma szansę?', a: 'Tak, sieci handlowe często szkolą nowych kasjerów. Podkreśl uczciwość, dokładność, dyspozycyjność i kontakt z klientem.' },
       { q: 'Jakie umiejętności wpisać w CV kasjera?', a: 'Obsługę kasy i terminala płatniczego, rozliczanie zmiany, obsługę zwrotów, pracę z klientem, szybkość i dokładność. Dodaj przykład, gdzie je stosowałeś.' },
       { q: 'Jak opisać pracę na kasie samoobsługowej?', a: 'Napisz, że pomagałeś klientom w obsłudze kas samoobsługowych, rozwiązywałeś problemy i pilnowałeś poprawności rozliczeń.' },
@@ -1046,7 +1046,7 @@ export const WZORY: WzorCV[] = [
       'Napisz o dojeździe lub własnym transporcie, bo wiele zakładów leży poza miastem.',
     ],
     faqs: [
-      { q: 'Czy pracownik produkcji bez doświadczenia może liczyć na zatrudnienie?', a: 'Tak — wiele zakładów przyjmuje kandydatów bez doświadczenia i szkoli ich na stanowisku. Ważna jest gotowość do pracy zmianowej.' },
+      { q: 'Czy pracownik produkcji bez doświadczenia może liczyć na zatrudnienie?', a: 'Tak, wiele zakładów przyjmuje kandydatów bez doświadczenia i szkoli ich na stanowisku. Ważna jest gotowość do pracy zmianowej.' },
       { q: 'Jakie umiejętności wpisać w CV pracownika produkcji?', a: 'Obsługę konkretnych maszyn lub linii, znajomość BHP, kontrolę jakości, pracę z dokumentacją produkcyjną, pakowanie i kompletowanie oraz cechy potwierdzone faktami, na przykład praca w trzy zmiany albo bez zwolnień lekarskich. Unikaj ogólników, za którymi nic nie stoi.' },
       { q: 'Czy w CV pracownika produkcji trzeba pisać o BHP?', a: 'Tak, krótko. Wpisz aktualne szkolenie BHP lub informację, że przeszedłeś je u poprzedniego pracodawcy. Wiele firm i tak szkoli na stanowisku, ale taki wpis pokazuje, że znasz zasady.' },
       { q: 'Jak opisać pracę zmianową w CV?', a: 'Napisz, w jakim systemie pracowałeś (dwuzmianowy, trzyzmianowy, praca nocna) i od kiedy. Dla pracodawcy to informacja o dyspozycyjności, a nie wada.' },
@@ -1059,7 +1059,7 @@ export const WZORY: WzorCV[] = [
     title: 'CV pracownika ochrony',
     titleGen: 'CV pracownika ochrony',
     intro: 'CV pracownika ochrony musi jasno pokazać licencję SUFO (jeśli dotyczy), doświadczenie z obiektami i obszarami obsługi oraz przebyte szkolenia.',
-    metaDesc: 'Gotowy wzór CV pracownika ochrony z przykładem — licencja SUFO, szkolenia i doświadczenie na obiektach. Wypełnij i pobierz profesjonalne CV za darmo.',
+    metaDesc: 'Gotowy wzór CV pracownika ochrony z przykładem, licencja SUFO, szkolenia i doświadczenie na obiektach. Wypełnij i pobierz profesjonalne CV za darmo.',
     updated: '2026-11-17',
     shouldContain: [
       'Licencja pracownika ochrony I lub II stopnia (jeśli posiadasz)',
@@ -1116,7 +1116,7 @@ export const WZORY: WzorCV[] = [
       'Napisz o dyspozycyjności na zmiany nocne i weekendy.',
     ],
     faqs: [
-      { q: 'Czy pracownik ochrony bez licencji SUFO znajdzie pracę?', a: 'Tak — część pracodawców zatrudnia bez licencji (np. sklepy), ale licencja znacznie poszerza możliwości i wynagrodzenie.' },
+      { q: 'Czy pracownik ochrony bez licencji SUFO znajdzie pracę?', a: 'Tak, część pracodawców zatrudnia bez licencji (np. sklepy), ale licencja znacznie poszerza możliwości i wynagrodzenie.' },
       { q: 'Jakie dokumenty trzeba dodać do CV pracownika ochrony?', a: 'CV powinno zawierać informację o uprawnieniach, kursach i badaniach. Same dokumenty dołącza się na prośbę pracodawcy, więc przygotuj ich kopie.' },
       { q: 'Czy pracownik ochrony bez doświadczenia ma szansę?', a: 'Tak. Wiele firm przyjmuje osoby po kursie i uczy je na obiekcie. Podkreśl dyspozycyjność, rzetelność i ukończone szkolenia.' },
       { q: 'Jakie umiejętności wpisać w CV pracownika ochrony?', a: 'Obsługę monitoringu, kontrolę dostępu, patrolowanie, pisanie raportów, pierwszą pomoc, znajomość procedur ppoż. i komunikatywność. Dodaj przykład z poprzedniej pracy.' },
@@ -1177,7 +1177,7 @@ export const WZORY: WzorCV[] = [
       },
     ],
     tips: [
-      'Podaj metody spawania z kodami (135, 141 itd.) — to standard branżowy.',
+      'Podaj metody spawania z kodami (135, 141 itd.), to standard branżowy.',
       'Certyfikaty PN-EN ISO 9606 są sprawdzane przez pracodawcę.',
       'Doświadczenie ze stalą nierdzewną lub aluminium jest bardzo cenione.',
       'Dopisz grubości materiałów i pozycje spawania, w których pracujesz (na przykład PA, PC, PF), jeśli masz je w certyfikacie.',
@@ -1227,7 +1227,7 @@ export const WZORY: WzorCV[] = [
       'Doświadczenie w wielojęzycznej obsłudze klienta jest dużym atutem.',
     ],
     faqs: [
-      { q: 'Czy doradca klienta bez doświadczenia ma szansę?', a: 'Tak — firmy często szkolą od podstaw. Kluczowe są komunikatywność, cierpliwość i gotowość do uczenia się.' },
+      { q: 'Czy doradca klienta bez doświadczenia ma szansę?', a: 'Tak, firmy często szkolą od podstaw. Kluczowe są komunikatywność, cierpliwość i gotowość do uczenia się.' },
     ],
   },
   {
@@ -1260,12 +1260,12 @@ export const WZORY: WzorCV[] = [
       skills: ['MS Office 365', 'SAP', 'Obsługa zarządu', 'Organizacja podróży', 'Angielski C1', 'Protokoły', 'DMS', 'Dyskrecja'],
     },
     tips: [
-      'Podkreśl poziom organizacyjny i dyskrecję — to kluczowe cechy asystentki.',
+      'Podkreśl poziom organizacyjny i dyskrecję, to kluczowe cechy asystentki.',
       'Wymień obsługiwane systemy (SAP, ERP, narzędzia do zarządzania projektami).',
       'Znajomość angielskiego na poziomie min. B2 jest standardem.',
     ],
     faqs: [
-      { q: 'Czy asystentka bez doświadczenia zarządczego znajdzie pracę?', a: 'Tak — wiele firm szuka asystentek bez doświadczenia w biurach administracyjnych, skąd można awansować do obsługi zarządu.' },
+      { q: 'Czy asystentka bez doświadczenia zarządczego znajdzie pracę?', a: 'Tak, wiele firm szuka asystentek bez doświadczenia w biurach administracyjnych, skąd można awansować do obsługi zarządu.' },
     ],
   },
   {
@@ -1298,12 +1298,12 @@ export const WZORY: WzorCV[] = [
       skills: ['Windows Server 2022', 'Linux', 'Active Directory', 'VMware', 'CCNA', 'Azure', 'Veeam', 'PowerShell'],
     },
     tips: [
-      'Wymień certyfikaty — to najszybszy sposób na wyróżnienie CV informatyka.',
+      'Wymień certyfikaty, to najszybszy sposób na wyróżnienie CV informatyka.',
       'Podaj konkretne środowiska: liczba serwerów, stacji, użytkowników.',
       'Doświadczenie z chmurą (Azure, AWS) jest bardzo poszukiwane.',
     ],
     faqs: [
-      { q: 'Czy informatyk bez certyfikatów znajdzie pracę?', a: 'Tak — szczególnie na helpdesku i w małych firmach. Certyfikaty CCNA czy AZ-900 przyspieszają jednak karierę i zwiększają wynagrodzenie.' },
+      { q: 'Czy informatyk bez certyfikatów znajdzie pracę?', a: 'Tak, szczególnie na helpdesku i w małych firmach. Certyfikaty CCNA czy AZ-900 przyspieszają jednak karierę i zwiększają wynagrodzenie.' },
     ],
   },
   {
@@ -1336,12 +1336,12 @@ export const WZORY: WzorCV[] = [
       skills: ['Testy manualne', 'Cypress', 'Selenium', 'Postman', 'Jira', 'SQL', 'ISTQB Foundation', 'Agile/Scrum', 'API testing'],
     },
     tips: [
-      'ISTQB Foundation to standard — warto go zdobyć jeśli jeszcze nie masz.',
+      'ISTQB Foundation to standard, warto go zdobyć jeśli jeszcze nie masz.',
       'Podaj przykłady bugów krytycznych, które znalazłeś i opisz wpływ.',
       'Automatyzacja testów (Cypress, Selenium) jest bardzo poszukiwana.',
     ],
     faqs: [
-      { q: 'Czy tester bez programowania znajdzie pracę?', a: 'Tak — testy manualne nie wymagają programowania. Automatyzacja to dodatkowy atut, ale nie zawsze wymaganie.' },
+      { q: 'Czy tester bez programowania znajdzie pracę?', a: 'Tak, testy manualne nie wymagają programowania. Automatyzacja to dodatkowy atut, ale nie zawsze wymaganie.' },
     ],
   },
   {
@@ -1374,7 +1374,7 @@ export const WZORY: WzorCV[] = [
       skills: ['PMP', 'PSM I', 'Agile/Scrum', 'Jira', 'Confluence', 'MS Project', 'Zarządzanie ryzykiem', 'Stakeholders'],
     },
     tips: [
-      'Podaj budżety i skalę projektów — to kluczowe informacje dla rekruterów.',
+      'Podaj budżety i skalę projektów, to kluczowe informacje dla rekruterów.',
       'Certyfikaty PMP lub PRINCE2 znacznie wyróżniają CV.',
       'Podkreśl terminowość i realizację w budżecie.',
     ],
@@ -1388,7 +1388,7 @@ export const WZORY: WzorCV[] = [
     title: 'CV kosmetyczki',
     titleGen: 'CV kosmetyczki',
     intro: 'CV kosmetyczki powinno pokazać posiadane certyfikaty, specjalizacje (manicure, pedicure, zabiegi twarzy) i obsługiwane marki produktów. Portfolio zdjęć przed/po to duży atut.',
-    metaDesc: 'Wzór CV kosmetyczki z przykładem do wypełnienia — certyfikaty, specjalizacje i zabiegi. Stwórz profesjonalne CV w kilka minut, bez subskrypcji.',
+    metaDesc: 'Wzór CV kosmetyczki z przykładem do wypełnienia, certyfikaty, specjalizacje i zabiegi. Stwórz profesjonalne CV w kilka minut, bez subskrypcji.',
     updated: '2026-11-17',
     shouldContain: [
       'Certyfikaty: manicure, pedicure, zabiegi twarzy, depilacja',
@@ -1437,7 +1437,7 @@ export const WZORY: WzorCV[] = [
       },
     ],
     tips: [
-      'Podaj certyfikaty ze szkoleń producentów — to weryfikowalne.',
+      'Podaj certyfikaty ze szkoleń producentów, to weryfikowalne.',
       'Liczba stałych klientek świadczy o jakości pracy.',
       'Link do Instagram z portfolio prac to świetne uzupełnienie CV.',
       'Podaj, ile klientek obsługujesz tygodniowo i ile z nich to stałe klientki.',
@@ -1472,7 +1472,7 @@ export const WZORY: WzorCV[] = [
       summary: 'Barista z 3-letnim doświadczeniem w kawiarniach specialty. Posiadam certyfikat SCA Barista Skills Foundation. Specjalizuję się w metodach alternatywnych i latte art.',
       experience: [{
         position: 'Barista',
-        company: 'Kawiarnia The Barn Coffee — Warszawa',
+        company: 'Kawiarnia The Barn Coffee, Warszawa',
         dates: '2022 – obecnie',
         bullets: [
           'Obsługuję 150–200 klientów dziennie w kawiarni specialty',
@@ -1508,13 +1508,13 @@ export const WZORY: WzorCV[] = [
     tips: [
       'Certyfikat SCA Barista Skills to standard w kawiarniach specialty.',
       'Doświadczenie w kawiarniach specialty jest bardziej cenione niż w sieciówkach.',
-      'Latte art to bonus — podaj, jeśli potrafisz robić zaawansowane wzory.',
+      'Latte art to bonus, podaj, jeśli potrafisz robić zaawansowane wzory.',
       'Napisz, jakim ekspresem i młynkiem pracowałeś, jeśli to sprzęt klasy profesjonalnej.',
       'Wspomnij o czyszczeniu i konserwacji ekspresu oraz o standardach higieny.',
       'Podaj, czy masz aktualne badania do celów sanitarno-epidemiologicznych.',
     ],
     faqs: [
-      { q: 'Czy barista bez certyfikatów znajdzie pracę?', a: 'Tak — szczególnie w kawiarniach sieciowych. Certyfikaty SCA są wyróżnikiem w kawiarniach specialty.' },
+      { q: 'Czy barista bez certyfikatów znajdzie pracę?', a: 'Tak, szczególnie w kawiarniach sieciowych. Certyfikaty SCA są wyróżnikiem w kawiarniach specialty.' },
       { q: 'Co wpisać w CV baristy bez doświadczenia?', a: 'Kurs baristyczny, praktyki lub pracę w obsłudze klienta (sprzedaż, gastronomia) oraz gotowość do nauki i dyspozycyjność. Napisz konkretnie, jakich metod parzenia się uczyłeś i na jakim sprzęcie ćwiczyłeś.' },
       { q: 'Czy barista musi mieć badania sanitarno-epidemiologiczne?', a: 'W gastronomii zwykle się je wymaga, bo barista ma kontakt z żywnością. Warto wpisać, że masz aktualne badania albo że możesz je szybko wykonać.' },
       { q: 'Jak opisać latte art w CV?', a: 'Napisz konkretnie, jakie wzory robisz (na przykład serce, tulipan, rosetta) i na jakim poziomie. Jeśli brałeś udział w kursach lub konkursach, wpisz je z rokiem.' },
@@ -1575,7 +1575,7 @@ export const WZORY: WzorCV[] = [
     ],
     example: {
       name: 'Aleksander Wojtyla',
-      position: 'Student Informatyki — szuka stażu',
+      position: 'Student Informatyki, szuka stażu',
       summary: 'Student III roku Informatyki (Politechnika Warszawska). Uczestniczę w kołach naukowych, tworzę projekty webowe w React i interesuję się Machine Learning. Szukam stażu w dziale IT lub software development.',
       experience: [{
         position: 'Stażysta IT',
@@ -1616,7 +1616,7 @@ export const WZORY: WzorCV[] = [
       'Projekty uczelniane i własne projekty githubowe zastępują brak doświadczenia.',
       'Podaj GPA lub wyróżnienia naukowe, jeśli są dobre.',
       'Wolontariat i działalność w kołach naukowych pokazują inicjatywę.',
-      'Staże — nawet krótkie — bardzo poprawiają CV studenta.',
+      'Staże, nawet krótkie, bardzo poprawiają CV studenta.',
       'Zacznij od wykształcenia, jeśli nie masz jeszcze pracy.',
       'Opisz projekty i działalność w kołach naukowych jak doświadczenie zawodowe.',
       'Napisz, ile godzin tygodniowo możesz pracować i w jakim trybie studiujesz.',
@@ -1662,14 +1662,14 @@ export const WZORY: WzorCV[] = [
       skills: ['Obsługa terminala doręczeń', 'Znajomość procedur pocztowych', 'Prawo jazdy kat. B', 'Organizacja trasy', 'Obsługa klienta', 'Rozliczenia gotówkowe', 'Kondycja fizyczna'],
     },
     tips: [
-      'Podaj liczbę doręczanych przesyłek dziennie i wielkość rejonu — konkrety budują wiarygodność.',
-      'Wspomnij o obsłudze terminali mobilnych i przesyłek poleconych — to odróżnia doświadczonych kandydatów.',
-      'Prawo jazdy i własny środek transportu zawsze wpisuj — wiele rejonów tego wymaga.',
+      'Podaj liczbę doręczanych przesyłek dziennie i wielkość rejonu, konkrety budują wiarygodność.',
+      'Wspomnij o obsłudze terminali mobilnych i przesyłek poleconych, to odróżnia doświadczonych kandydatów.',
+      'Prawo jazdy i własny środek transportu zawsze wpisuj, wiele rejonów tego wymaga.',
       'Jeśli aplikujesz bez doświadczenia, podkreśl pracę w terenie, kondycję i znajomość okolicy.',
     ],
     faqs: [
       { q: 'Co wpisać w CV listonosza bez doświadczenia?', a: 'Podkreśl pracę wymagającą samodzielności i kontaktu z ludźmi (kurier, roznoszenie ulotek, sprzedaż), kondycję fizyczną, znajomość rejonu i prawo jazdy. Poczta Polska prowadzi szkolenia dla nowych pracowników.' },
-      { q: 'Czy do pracy listonosza potrzebna jest niekaralność?', a: 'Tak — praca z przesyłkami poleconymi i pobraniami zwykle wymaga oświadczenia o niekaralności. Warto zaznaczyć gotowość do jego przedstawienia.' },
+      { q: 'Czy do pracy listonosza potrzebna jest niekaralność?', a: 'Tak, praca z przesyłkami poleconymi i pobraniami zwykle wymaga oświadczenia o niekaralności. Warto zaznaczyć gotowość do jego przedstawienia.' },
     ],
   },
   {
@@ -1688,7 +1688,7 @@ export const WZORY: WzorCV[] = [
     example: {
       name: 'Kamil Wiśniewski',
       position: 'Kurier',
-      summary: 'Kurier z 3-letnim doświadczeniem w doręczaniu paczek dla DPD i InPost. Doręczam 120–150 paczek dziennie z 98% skutecznością pierwszego doręczenia. Bezszkodowa jazda, własna działalność — możliwość współpracy B2B.',
+      summary: 'Kurier z 3-letnim doświadczeniem w doręczaniu paczek dla DPD i InPost. Doręczam 120–150 paczek dziennie z 98% skutecznością pierwszego doręczenia. Bezszkodowa jazda, własna działalność, możliwość współpracy B2B.',
       experience: [{
         position: 'Kurier (podwykonawca)',
         company: 'DPD Polska, Kraków',
@@ -1696,7 +1696,7 @@ export const WZORY: WzorCV[] = [
         bullets: [
           'Doręczam 120–150 paczek dziennie w rejonie miejskim z 98% skutecznością pierwszej próby',
           'Obsługuję skaner kurierski: statusy, pobrania, zwroty, protokoły szkody',
-          'Planuję trasę doręczeń — średnio 90 przystanków dziennie bez opóźnień',
+          'Planuję trasę doręczeń, średnio 90 przystanków dziennie bez opóźnień',
           '3 lata bezszkodowej jazdy samochodem dostawczym do 3,5 t',
         ],
       }],
@@ -1704,13 +1704,13 @@ export const WZORY: WzorCV[] = [
     },
     tips: [
       'Liczby robią różnicę: paczki dziennie, skuteczność doręczeń, lata bezszkodowej jazdy.',
-      'Napisz, z jakimi firmami/systemami pracowałeś (DPD, InPost, DHL) — skraca wdrożenie.',
-      'Własna działalność gospodarcza to atut — wiele firm kurierskich współpracuje tylko B2B.',
+      'Napisz, z jakimi firmami/systemami pracowałeś (DPD, InPost, DHL), skraca wdrożenie.',
+      'Własna działalność gospodarcza to atut, wiele firm kurierskich współpracuje tylko B2B.',
       'Zaznacz dyspozycyjność i gotowość do pracy w sezonie (listopad–grudzień to szczyt).',
     ],
     faqs: [
-      { q: 'Co wpisać w CV kuriera bez doświadczenia?', a: 'Prawo jazdy z okresem bezszkodowej jazdy, doświadczenie w prowadzeniu auta (także prywatnie), znajomość miasta, kondycję i dyspozycyjność. Firmy kurierskie często szkolą od zera — liczy się niezawodność.' },
-      { q: 'Czy kurier musi mieć własną firmę?', a: 'Nie zawsze, ale wiele firm kurierskich współpracuje w modelu B2B. Jeśli masz działalność lub gotowość do jej założenia, zaznacz to w CV — zwiększa liczbę ofert.' },
+      { q: 'Co wpisać w CV kuriera bez doświadczenia?', a: 'Prawo jazdy z okresem bezszkodowej jazdy, doświadczenie w prowadzeniu auta (także prywatnie), znajomość miasta, kondycję i dyspozycyjność. Firmy kurierskie często szkolą od zera, liczy się niezawodność.' },
+      { q: 'Czy kurier musi mieć własną firmę?', a: 'Nie zawsze, ale wiele firm kurierskich współpracuje w modelu B2B. Jeśli masz działalność lub gotowość do jej założenia, zaznacz to w CV, zwiększa liczbę ofert.' },
     ],
   },
 ]

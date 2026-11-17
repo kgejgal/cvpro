@@ -44,7 +44,7 @@ export default function CompactTemplate({ data }: { data: CVData }) {
               <div style={{ display: 'flex', justifyContent: 'space-between', lineHeight: 1.4 }}>
                 <div>
                   <span contentEditable suppressContentEditableWarning style={{ fontWeight: 700 }}>{e.position}</span>
-                  <span style={{ color: accent, marginLeft: 6, fontSize: 11 }}>— {e.company}{e.city ? `, ${e.city}` : ''}</span>
+                  <span style={{ color: accent, marginLeft: 6, fontSize: 11 }}>· {e.company}{e.city ? `, ${e.city}` : ''}</span>
                 </div>
                 <div style={{ fontSize: 10, color: '#777', whiteSpace: 'nowrap', marginLeft: 8 }}>{dateRange(e.startDate, e.endDate, L.present)}</div>
               </div>
@@ -63,7 +63,7 @@ export default function CompactTemplate({ data }: { data: CVData }) {
             <SectionTitle>{L.edu}</SectionTitle>
             {data.education.map((e, i) => (
               <div key={i} style={{ marginBottom: 8 }}>
-                <div contentEditable suppressContentEditableWarning style={{ fontWeight: 700, fontSize: 11 }}>{e.degree}{e.field ? ` — ${e.field}` : ''}</div>
+                <div contentEditable suppressContentEditableWarning style={{ fontWeight: 700, fontSize: 11 }}>{e.degree}{e.field ? `, ${e.field}` : ''}</div>
                 <div contentEditable suppressContentEditableWarning style={{ color: accent, fontSize: 10 }}>{e.school}</div>
                 <div style={{ color: '#888', fontSize: 10 }}>{dateRange(e.startDate, e.endDate)}</div>
               </div>

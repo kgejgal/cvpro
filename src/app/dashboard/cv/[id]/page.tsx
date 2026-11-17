@@ -343,11 +343,11 @@ export default function CVEditorPage() {
         <div style={{ fontSize: 34, marginBottom: 12 }}>💧</div>
         <div style={{ fontSize: 18, fontWeight: 800, color: '#e2eeff', marginBottom: 8 }}>Twój PDF będzie miał znak wodny</div>
         <p style={{ fontSize: 14, color: '#9ab4d8', lineHeight: 1.6, margin: '0 0 20px' }}>
-          W planie darmowym na CV pojawi się napis „cvpro.pl". Plan Podstawowy usuwa go na zawsze — jednorazowo 15 zł, bez subskrypcji.
+          W planie darmowym na CV pojawi się napis „cvpro.pl". Plan Podstawowy usuwa go na zawsze, jednorazowo 15 zł, bez subskrypcji.
         </p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
           <button onClick={() => { setShowWatermarkModal(false); router.push('/cennik') }} style={{ background: 'linear-gradient(135deg,#4477FF,#7C3AED)', color: '#fff', border: 'none', borderRadius: 10, padding: '13px', fontSize: 14, fontWeight: 700, cursor: 'pointer', boxShadow: '0 4px 20px rgba(68,119,255,0.35)' }}>
-            Usuń znak wodny — 15 zł jednorazowo →
+            Usuń znak wodny, 15 zł jednorazowo →
           </button>
           <button onClick={() => void generatePDF()} style={{ background: 'none', border: '1px solid #1e3f75', color: '#7a94bb', borderRadius: 10, padding: '11px', fontSize: 13, fontWeight: 600, cursor: 'pointer' }}>
             Pobierz ze znakiem wodnym
@@ -640,7 +640,7 @@ export default function CVEditorPage() {
           {cvId && (
             <button
               onClick={() => void shareClick()}
-              title={isPublic ? 'Link jest publiczny — kliknij, aby skopiować' : 'Udostępnij CV pod linkiem tylko do odczytu'}
+              title={isPublic ? 'Link jest publiczny, kliknij, aby skopiować' : 'Udostępnij CV pod linkiem tylko do odczytu'}
               style={{ background: isPublic ? '#1a3d2e' : '#162d50', border: `1px solid ${isPublic ? '#2a5a40' : '#1e3f75'}`, color: isPublic ? '#3db36a' : '#a0b8e8', borderRadius: 8, padding: '9px 18px', fontSize: 13, fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6 }}
             >
               🔗 {shareCopied ? 'Skopiowano!' : isPublic ? 'Kopiuj link' : 'Udostępnij link'}
@@ -700,7 +700,7 @@ export default function CVEditorPage() {
                 }
                 if (e.key === 'Escape') setShowSaveModal(false)
               }}
-              placeholder="np. CV — Backend Developer"
+              placeholder="np. CV, Backend Developer"
               style={{ width: '100%', background: '#0d1c35', border: '1px solid #2d5499', borderRadius: 10, padding: '12px 14px', fontSize: 15, color: '#e2eeff', outline: 'none', boxSizing: 'border-box', marginBottom: 24 }}
               onFocus={e => { e.target.style.borderColor = '#4477ff' }}
               onBlur={e => { e.target.style.borderColor = '#2d5499' }}

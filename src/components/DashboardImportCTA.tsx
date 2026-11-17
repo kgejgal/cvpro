@@ -62,7 +62,7 @@ export default function DashboardImportCTA({ userId }: { userId: string }) {
         .insert({
           user_id: userId,
           data: data as never,
-          title: name ? `CV — ${name}` : 'Moje CV',
+          title: name ? `CV, ${name}` : 'Moje CV',
           template: data.template,
           color: data.colorTheme,
           is_public: false,
@@ -135,7 +135,7 @@ export default function DashboardImportCTA({ userId }: { userId: string }) {
 
         {busy ? (
           <div style={{ marginTop: 12, fontSize: 12.5, color: '#9ab4d8', lineHeight: 1.5, textAlign: 'center' }}>
-            To potrwa kilka sekund — analizujemy Twój plik i uzupełniamy formularz. Nie zamykaj tej strony.
+            To potrwa kilka sekund, analizujemy Twój plik i uzupełniamy formularz. Nie zamykaj tej strony.
           </div>
         ) : (
           <div style={{ marginTop: 11, fontSize: 11.5, color: '#5e79a0', textAlign: 'center' }}>

@@ -142,7 +142,7 @@ export default function ClassicTemplate({ data }: { data: CVData }) {
               <div key={i} style={{ marginBottom: 14 }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                   <div>
-                    <div contentEditable suppressContentEditableWarning style={{ fontWeight: 600, fontSize: 13 }}>{e.degree}{e.field ? ` — ${e.field}` : ''}</div>
+                    <div contentEditable suppressContentEditableWarning style={{ fontWeight: 600, fontSize: 13 }}>{e.degree}{e.field ? `, ${e.field}` : ''}</div>
                     <div contentEditable suppressContentEditableWarning style={{ fontSize: 12, color: accent }}>{e.school}</div>
                     {e.grade && <div style={{ fontSize: 11, color: '#7a8594' }}>{e.grade}</div>}
                   </div>

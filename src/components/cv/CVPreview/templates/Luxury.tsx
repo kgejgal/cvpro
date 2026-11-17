@@ -104,7 +104,7 @@ export default function LuxuryTemplate({ data }: { data: CVData }) {
               {data.education.map((e, i) => (
                 <div key={i} style={{ marginBottom: 12, display: 'flex', justifyContent: 'space-between' }}>
                   <div>
-                    <div contentEditable suppressContentEditableWarning style={{ fontWeight: 700, fontSize: 13 }}>{e.degree}{e.field ? ` — ${e.field}` : ''}</div>
+                    <div contentEditable suppressContentEditableWarning style={{ fontWeight: 700, fontSize: 13 }}>{e.degree}{e.field ? `, ${e.field}` : ''}</div>
                     <div contentEditable suppressContentEditableWarning style={{ fontSize: 12, color: gold }}>{e.school}</div>
                   </div>
                   <div style={{ fontSize: 11, color: '#888' }}>{dateRange(e.startDate, e.endDate)}</div>

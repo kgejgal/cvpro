@@ -57,7 +57,7 @@ export default function TechnicalTemplate({ data }: { data: CVData }) {
               {data.education.map((e, i) => (
                 <div key={i} style={{ marginBottom: 10 }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                    <div contentEditable suppressContentEditableWarning style={{ fontWeight: 700, color: '#fff', fontSize: 12 }}>{e.degree}{e.field ? ` — ${e.field}` : ''}</div>
+                    <div contentEditable suppressContentEditableWarning style={{ fontWeight: 700, color: '#fff', fontSize: 12 }}>{e.degree}{e.field ? `, ${e.field}` : ''}</div>
                     <div style={{ fontSize: 11, color: '#64748b' }}>{dateRange(e.startDate, e.endDate)}</div>
                   </div>
                   <div contentEditable suppressContentEditableWarning style={{ fontSize: 11, color: accent }}>{e.school}</div>

@@ -67,7 +67,7 @@ export default function ExecutiveTemplate({ data }: { data: CVData }) {
                 <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: 2.5, textTransform: 'uppercase', color: darkSlate, fontFamily: 'var(--font-lato), Lato, sans-serif', borderBottom: `2px solid ${gold}`, paddingBottom: 6, marginBottom: 12 }}>{L.edu}</div>
                 {data.education.map((e, i) => (
                   <div key={i} style={{ marginBottom: 12 }}>
-                    <div contentEditable suppressContentEditableWarning style={{ fontWeight: 700, fontSize: 13 }}>{e.degree}{e.field ? ` — ${e.field}` : ''}</div>
+                    <div contentEditable suppressContentEditableWarning style={{ fontWeight: 700, fontSize: 13 }}>{e.degree}{e.field ? `, ${e.field}` : ''}</div>
                     <div contentEditable suppressContentEditableWarning style={{ fontSize: 12, color: gold, fontStyle: 'italic', fontFamily: 'var(--font-lato), Lato, sans-serif' }}>{e.school}</div>
                     <div style={{ fontSize: 11, color: '#888', fontFamily: 'var(--font-lato), Lato, sans-serif' }}>{dateRange(e.startDate, e.endDate)}</div>
                   </div>
@@ -91,7 +91,7 @@ export default function ExecutiveTemplate({ data }: { data: CVData }) {
                 <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: 2.5, textTransform: 'uppercase', color: darkSlate, fontFamily: 'var(--font-lato), Lato, sans-serif', borderBottom: `2px solid ${gold}`, paddingBottom: 6, marginBottom: 12 }}>{L.langs}</div>
                 {data.languages.map((l, i) => (
                   <div key={i} style={{ marginBottom: 8, fontFamily: 'var(--font-lato), Lato, sans-serif', fontSize: 12 }}>
-                    <span style={{ fontWeight: 700 }}>{l.name}</span> — <span style={{ color: '#666' }}>{l.level}</span>
+                    <span style={{ fontWeight: 700 }}>{l.name}</span>, <span style={{ color: '#666' }}>{l.level}</span>
                   </div>
                 ))}
               </div>

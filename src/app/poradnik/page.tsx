@@ -5,7 +5,7 @@ import type { Metadata } from 'next'
 const BASE = process.env.NEXT_PUBLIC_SITE_URL || 'https://cvpro.pl'
 
 export const metadata: Metadata = {
-  title: 'Poradnik CV — jak napisać skuteczne CV',
+  title: 'Poradnik CV, jak napisać skuteczne CV',
   description: 'Praktyczne poradniki o pisaniu CV: jak napisać CV krok po kroku, jak przejść przez system ATS i ile naprawdę kosztuje kreator CV. Wiedza, która pomoże Ci znaleźć pracę.',
   alternates: { canonical: `${BASE}/poradnik` },
 }
@@ -27,7 +27,7 @@ export default function PoradnikPage() {
           Poradnik CV
         </h1>
         <p style={{ color: '#7a94bb', fontSize: 16, lineHeight: 1.65, maxWidth: 560, margin: '0 0 48px' }}>
-          Praktyczna wiedza o pisaniu CV i szukaniu pracy. Dowiedz się, jak stworzyć dokument, który przejdzie przez systemy ATS i przekona rekrutera — oraz ile naprawdę kosztuje kreator CV.
+          Praktyczna wiedza o pisaniu CV i szukaniu pracy. Dowiedz się, jak stworzyć dokument, który przejdzie przez systemy ATS i przekona rekrutera, oraz ile naprawdę kosztuje kreator CV.
         </p>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: 16 }}>

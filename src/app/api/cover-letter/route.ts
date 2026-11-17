@@ -1,3 +1,4 @@
+import { noDashes } from '@/lib/no-dashes'
 import { NextRequest, NextResponse } from 'next/server'
 import Anthropic from '@anthropic-ai/sdk'
 import { createClient } from '@/lib/supabase/server'
@@ -68,7 +69,7 @@ WYMAGANIA:
 - Odnieś się do konkretnych osiągnięć kandydata
 - Zakończ wyraźnym CTA${jobAd ? '\n- Nawiąż do wymagań z ogłoszenia' : ''}
 
-Zwróć TYLKO treść listu, bez nagłówka, bez pozdrowień "Z poważaniem" itp. — sam tekst akapitów.`,
+Zwróć TYLKO treść listu, bez nagłówka, bez pozdrowień "Z poważaniem" itp., sam tekst akapitów. Nie używaj długich myślników (—), zamiast nich użyj przecinków lub kropek.`,
     }],
     })
   } catch (err) {
@@ -76,5 +77,5 @@ Zwróć TYLKO treść listu, bez nagłówka, bez pozdrowień "Z poważaniem" itp
   }
 
   const text = message.content[0].type === 'text' ? message.content[0].text.trim() : ''
-  return NextResponse.json({ letter: text })
+  return NextResponse.json({ letter: noDashes(text) })
 }

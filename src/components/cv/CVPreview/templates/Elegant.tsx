@@ -81,7 +81,7 @@ export default function ElegantTemplate({ data }: { data: CVData }) {
                 <div style={{ borderTop: `1px solid ${accent}`, paddingTop: 12 }}>
                   {data.education.map((e, i) => (
                     <div key={i} style={{ marginBottom: 12 }}>
-                      <div contentEditable suppressContentEditableWarning style={{ fontWeight: 700, fontSize: 12 }}>{e.degree}{e.field ? ` — ${e.field}` : ''}</div>
+                      <div contentEditable suppressContentEditableWarning style={{ fontWeight: 700, fontSize: 12 }}>{e.degree}{e.field ? `, ${e.field}` : ''}</div>
                       <div contentEditable suppressContentEditableWarning style={{ fontSize: 11, color: accent, fontStyle: 'italic' }}>{e.school}</div>
                       <div style={{ fontSize: 11, color: '#888' }}>{dateRange(e.startDate, e.endDate)}</div>
                     </div>

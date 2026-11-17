@@ -23,7 +23,7 @@ export default function ResumePurchaseBanner({ plan }: { plan: string }) {
       if (plan !== 'free') { localStorage.removeItem(INTENT_KEY); return }
       const stored = localStorage.getItem(INTENT_KEY)
       if (stored && PLAN_NAME[stored]) setIntent(stored)
-    } catch { /* localStorage unavailable (private mode) — banner just stays hidden */ }
+    } catch { /* localStorage unavailable (private mode), banner just stays hidden */ }
   }, [plan])
 
   if (!intent) return null
@@ -66,7 +66,7 @@ export default function ResumePurchaseBanner({ plan }: { plan: string }) {
           Dokończ zakup planu {PLAN_NAME[intent]}
         </div>
         <div style={{ fontSize: 12.5, color: '#9ab4d8', marginTop: 2 }}>
-          Jednorazowo {PLAN_PRICE[intent]} zł — bez subskrypcji, dostęp bezterminowy.
+          Jednorazowo {PLAN_PRICE[intent]} zł, bez subskrypcji, dostęp bezterminowy.
         </div>
       </div>
       <button

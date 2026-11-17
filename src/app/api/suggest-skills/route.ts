@@ -1,3 +1,4 @@
+import { noDashes } from '@/lib/no-dashes'
 import { NextRequest, NextResponse } from 'next/server'
 import Anthropic from '@anthropic-ai/sdk'
 import { zodOutputFormat } from '@anthropic-ai/sdk/helpers/zod'
@@ -61,5 +62,5 @@ Umiejętności powinny być po polsku, konkretne i wartościowe dla rekrutera.`,
   if (!message.parsed_output) {
     return NextResponse.json({ error: 'Nie udało się wygenerować sugestii. Spróbuj ponownie.' }, { status: 502 })
   }
-  return NextResponse.json({ skills: message.parsed_output.skills.slice(0, 12) })
+  return NextResponse.json({ skills: message.parsed_output.skills.slice(0, 12).map(noDashes) })
 }

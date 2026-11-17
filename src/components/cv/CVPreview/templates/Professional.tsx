@@ -59,7 +59,7 @@ export default function ProfessionalTemplate({ data }: { data: CVData }) {
                 {data.education.map((e, i) => (
                   <div key={i} style={{ marginBottom: 10 }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                      <div contentEditable suppressContentEditableWarning style={{ fontWeight: 700 }}>{e.degree}{e.field ? ` — ${e.field}` : ''}</div>
+                      <div contentEditable suppressContentEditableWarning style={{ fontWeight: 700 }}>{e.degree}{e.field ? `, ${e.field}` : ''}</div>
                       <div style={{ fontSize: 11, color: '#555' }}>{dateRange(e.startDate, e.endDate)}</div>
                     </div>
                     <div contentEditable suppressContentEditableWarning style={{ fontStyle: 'italic', fontSize: 12, color: '#555' }}>{e.school}</div>
@@ -80,7 +80,7 @@ export default function ProfessionalTemplate({ data }: { data: CVData }) {
             {data.languages.length > 0 && (
               <div>
                 <div style={{ fontWeight: 700, fontSize: 11, textTransform: 'uppercase', letterSpacing: 2, borderBottom: `2px solid ${accent}`, paddingBottom: 4, marginBottom: 10 }}>{L.langs}</div>
-                {data.languages.map((l, i) => <div key={i} style={{ fontSize: 12, marginBottom: 5 }}><strong>{l.name}</strong> — {l.level}</div>)}
+                {data.languages.map((l, i) => <div key={i} style={{ fontSize: 12, marginBottom: 5 }}><strong>{l.name}</strong>, {l.level}</div>)}
               </div>
             )}
           </div>

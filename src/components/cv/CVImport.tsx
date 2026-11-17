@@ -105,7 +105,7 @@ export default function CVImport({ data, onChange }: Props) {
       )}
       {busy && (
         <div style={{ marginTop: 10, fontSize: 12.5, color: '#9ab4d8', lineHeight: 1.5 }}>
-          To potrwa kilka sekund — analizujemy plik i uzupełniamy formularz.
+          To potrwa kilka sekund, analizujemy plik i uzupełniamy formularz.
         </div>
       )}
       <div aria-live="polite">

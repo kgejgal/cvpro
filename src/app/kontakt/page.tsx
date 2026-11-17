@@ -10,11 +10,11 @@ export const metadata: Metadata = {
 }
 
 const FAQS = [
-  { q: 'Jak długo mam dostęp do CV po zakupie?', a: 'Dostęp jest bezterminowy. Nie ma żadnych opłat cyklicznych — płacisz raz i masz dostęp na zawsze.' },
-  { q: 'Czy mogę edytować CV po pobraniu?', a: 'Tak — edytor jest dostępny przez cały czas. Możesz wracać i aktualizować CV w dowolnym momencie.' },
+  { q: 'Jak długo mam dostęp do CV po zakupie?', a: 'Dostęp jest bezterminowy. Nie ma żadnych opłat cyklicznych, płacisz raz i masz dostęp na zawsze.' },
+  { q: 'Czy mogę edytować CV po pobraniu?', a: 'Tak, edytor jest dostępny przez cały czas. Możesz wracać i aktualizować CV w dowolnym momencie.' },
   { q: 'Czy mogę uzyskać fakturę VAT?', a: 'Tak. Napisz do nas na kontakt@cvpro.pl podając dane do faktury, a wystawimy ją w ciągu 24 godzin.' },
   { q: 'Co zrobić jeśli mam problem z płatnością?', a: 'Napisz do nas na kontakt@cvpro.pl z opisem problemu. Sprawdzimy transakcję i pomożemy w ciągu kilku godzin.' },
-  { q: 'Czy oferujecie zwroty?', a: 'Tak — jeśli z jakiegoś powodu jesteś niezadowolony, napisz do nas w ciągu 7 dni od zakupu. Rozpatrujemy każdą sprawę indywidualnie.' },
+  { q: 'Czy oferujecie zwroty?', a: 'Tak, jeśli z jakiegoś powodu jesteś niezadowolony, napisz do nas w ciągu 7 dni od zakupu. Rozpatrujemy każdą sprawę indywidualnie.' },
 ]
 
 export default function KontaktPage() {

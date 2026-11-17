@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   // article, so a purpose-written `metaDesc` tends to earn more clicks for the same ranking.
   const metaDescription = wzor.metaDesc ?? wzor.intro
   return {
-    title: `${wzor.titleGen} — wzór i przykład do wypełnienia`,
+    title: `${wzor.titleGen}, wzór i przykład do wypełnienia`,
     description: metaDescription,
     alternates: { canonical: url },
     openGraph: {

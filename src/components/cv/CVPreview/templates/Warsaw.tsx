@@ -85,7 +85,7 @@ export default function WarsawTemplate({ data }: { data: CVData }) {
               {data.education.map((e, i) => (
                 <div key={i} style={{ marginBottom: 14 }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
-                    <div contentEditable suppressContentEditableWarning style={{ fontWeight: 700, fontSize: 13, color: '#0f1a2a' }}>{e.degree}{e.field ? ` — ${e.field}` : ''}</div>
+                    <div contentEditable suppressContentEditableWarning style={{ fontWeight: 700, fontSize: 13, color: '#0f1a2a' }}>{e.degree}{e.field ? `, ${e.field}` : ''}</div>
                     <div style={{ fontSize: 11, color: '#7a8a9a', flexShrink: 0 }}>{dateRange(e.startDate, e.endDate)}</div>
                   </div>
                   <div contentEditable suppressContentEditableWarning style={{ fontSize: 12, color: accent, fontWeight: 600 }}>{e.school}</div>

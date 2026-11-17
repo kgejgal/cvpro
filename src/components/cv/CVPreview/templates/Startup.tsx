@@ -97,7 +97,7 @@ export default function StartupTemplate({ data }: { data: CVData }) {
                 <div key={i} style={{ marginBottom: 12, background: '#fff', borderRadius: 10, padding: '12px 16px', border: `1px solid ${a(0.1)}` }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
                     <div>
-                      <div contentEditable suppressContentEditableWarning style={{ fontWeight: 700, fontSize: 13, color: '#0f1827' }}>{e.degree}{e.field ? ` — ${e.field}` : ''}</div>
+                      <div contentEditable suppressContentEditableWarning style={{ fontWeight: 700, fontSize: 13, color: '#0f1827' }}>{e.degree}{e.field ? `, ${e.field}` : ''}</div>
                       <div contentEditable suppressContentEditableWarning style={{ fontSize: 12, color: accent, fontWeight: 600 }}>{e.school}</div>
                     </div>
                     <span style={{ fontSize: 10, color: '#8a9ab0', flexShrink: 0 }}>{dateRange(e.startDate, e.endDate)}</span>

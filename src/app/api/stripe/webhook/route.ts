@@ -73,7 +73,7 @@ export async function POST(request: NextRequest) {
           await resend.emails.send({
             from: process.env.RESEND_FROM ?? 'CVPro.pl <onboarding@resend.dev>',
             to: authUser.email,
-            subject: `CVPro.pl — Plan ${planLabel} aktywowany ✓`,
+            subject: `CVPro.pl, Plan ${planLabel} aktywowany ✓`,
             html: `
               <div style="font-family: sans-serif; max-width: 480px; margin: 0 auto; padding: 32px 24px; background: #ffffff;">
                 <div style="font-size: 22px; font-weight: 800; color: #4477ff; margin-bottom: 24px;">CVPro.pl</div>

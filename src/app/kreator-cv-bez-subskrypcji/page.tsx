@@ -4,8 +4,8 @@ import type { Metadata } from 'next'
 const BASE = process.env.NEXT_PUBLIC_SITE_URL || 'https://cvpro.pl'
 const URL = `${BASE}/kreator-cv-bez-subskrypcji`
 
-const TITLE = 'Kreator CV bez subskrypcji — płacisz raz'
-const DESC = 'Kreator CV z jednorazową płatnością, bez ukrytej subskrypcji i bez automatycznych opłat. Stwórz profesjonalne CV po polsku, zoptymalizowane pod ATS. Płacisz raz — od 15 zł.'
+const TITLE = 'Kreator CV bez subskrypcji, płacisz raz'
+const DESC = 'Kreator CV z jednorazową płatnością, bez ukrytej subskrypcji i bez automatycznych opłat. Stwórz profesjonalne CV po polsku, zoptymalizowane pod ATS. Płacisz raz, od 15 zł.'
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -25,14 +25,14 @@ export const metadata: Metadata = {
 
 const SUB_CONS = [
   'Niska cena startowa (np. 5,95 zł) ukrywa automatyczne odnowienie',
-  'Po kilku dniach z konta znika ~60–100 zł — co miesiąc',
+  'Po kilku dniach z konta znika ~60–100 zł, co miesiąc',
   'O subskrypcji dowiadujesz się dopiero przy pobieraniu CV',
   'Trzeba pamiętać o anulowaniu, żeby nie płacić dalej',
   'Trudny i czasochłonny proces rezygnacji',
 ]
 
 const CVPRO_PROS = [
-  'Jedna, jawna opłata — od 15 zł',
+  'Jedna, jawna opłata, od 15 zł',
   'Zero automatycznych odnowień i ukrytych opłat',
   'Cena widoczna od początku, zanim zaczniesz',
   'Nie musisz niczego anulować',
@@ -46,11 +46,11 @@ const FAQS = [
   },
   {
     q: 'Ile kosztuje stworzenie CV?',
-    a: 'Plany zaczynają się od 15 zł (jednorazowo). Pełny pakiet z analizą ATS i listem motywacyjnym to 39 zł — również jednorazowo. Cenę widzisz od razu, bez niespodzianek.',
+    a: 'Plany zaczynają się od 15 zł (jednorazowo). Pełny pakiet z analizą ATS i listem motywacyjnym to 39 zł, również jednorazowo. Cenę widzisz od razu, bez niespodzianek.',
   },
   {
     q: 'Czym różni się jednorazowa płatność od subskrypcji?',
-    a: 'W subskrypcji płacisz cyklicznie, dopóki sam jej nie anulujesz — a wiele serwisów ukrywa tę informację. Przy jednorazowej płatności płacisz tylko raz i temat jest zamknięty.',
+    a: 'W subskrypcji płacisz cyklicznie, dopóki sam jej nie anulujesz, a wiele serwisów ukrywa tę informację. Przy jednorazowej płatności płacisz tylko raz i temat jest zamknięty.',
   },
   {
     q: 'Jak mogę zapłacić?',
@@ -94,7 +94,7 @@ export default function KreatorBezSubskrypcjiPage() {
             Kreator CV bez subskrypcji
           </h1>
           <p style={{ color: '#9ab4d8', fontSize: 17, lineHeight: 1.7, maxWidth: 640, margin: 0 }}>
-            Stwórz profesjonalne CV po polsku i zapłać tylko raz. Bez automatycznych odnowień, bez ukrytych opłat miesięcznych, bez pułapki subskrypcji. Cenę widzisz od początku — od 15 zł.
+            Stwórz profesjonalne CV po polsku i zapłać tylko raz. Bez automatycznych odnowień, bez ukrytych opłat miesięcznych, bez pułapki subskrypcji. Cenę widzisz od początku, od 15 zł.
           </p>
           <div style={{ marginTop: 28 }}>
             <Link href="/auth/signup" style={{ background: 'linear-gradient(135deg,#4477FF,#7055FF)', color: '#fff', textDecoration: 'none', fontWeight: 700, fontSize: 16, padding: '14px 32px', borderRadius: 12, display: 'inline-block', boxShadow: '0 4px 22px rgba(68,119,255,0.4)' }}>
@@ -114,7 +114,7 @@ export default function KreatorBezSubskrypcjiPage() {
             <a href="https://uokik.gov.pl/kreator-cv-z-subskrypcja-w-tle-zarzuty-prezesa-uokik" target="_blank" rel="noopener noreferrer" style={{ color: '#7aafff' }}>
               UOKiK nałożył na operatora jednego z największych kreatorów CV karę ponad 760 000 zł (decyzja nie jest jeszcze prawomocna, spółka się odwołała)
             </a>{' '}
-            za ukrywanie informacji o subskrypcji. CVPro.pl powstało jako uczciwa alternatywa — płacisz raz i temat jest zamknięty.
+            za ukrywanie informacji o subskrypcji. CVPro.pl powstało jako uczciwa alternatywa, płacisz raz i temat jest zamknięty.
           </p>
         </section>
 
@@ -136,7 +136,7 @@ export default function KreatorBezSubskrypcjiPage() {
             </div>
             {/* CVPro */}
             <div style={{ background: 'rgba(16,185,129,0.05)', border: '1px solid rgba(16,185,129,0.3)', borderRadius: 14, padding: '24px 26px', boxShadow: '0 8px 32px rgba(16,185,129,0.08)' }}>
-              <div style={{ fontSize: 13, fontWeight: 800, color: '#34D399', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: 16 }}>CVPro.pl — płacisz raz</div>
+              <div style={{ fontSize: 13, fontWeight: 800, color: '#34D399', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: 16 }}>CVPro.pl, płacisz raz</div>
               <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 12 }}>
                 {CVPRO_PROS.map((p, i) => (
                   <li key={i} style={{ display: 'flex', gap: 10, alignItems: 'flex-start' }}>

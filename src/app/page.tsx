@@ -28,12 +28,12 @@ const PLANS = [
 ]
 
 const FAQS = [
-  { q: 'Czy CV jest naprawdę po polsku?', a: 'Tak — całe CV powstaje w naturalnym, profesjonalnym języku polskim, zgodnym ze standardami polskiego rynku pracy.' },
-  { q: 'Czy płacę raz, czy to abonament?', a: 'Płatność jednorazowa — bez abonamentu, bez ukrytych opłat. Kupujesz raz i korzystasz bez ograniczeń czasowych.' },
+  { q: 'Czy CV jest naprawdę po polsku?', a: 'Tak, całe CV powstaje w naturalnym, profesjonalnym języku polskim, zgodnym ze standardami polskiego rynku pracy.' },
+  { q: 'Czy płacę raz, czy to abonament?', a: 'Płatność jednorazowa, bez abonamentu, bez ukrytych opłat. Kupujesz raz i korzystasz bez ograniczeń czasowych.' },
   { q: 'Czy CV jest przyjazne dla systemów ATS?', a: 'Szablony mają prostą, czytelną strukturę, którą systemy ATS dobrze odczytują. Żaden kreator nie może jednak zagwarantować, że CV przejdzie rekrutację. Analiza ATS (1 darmowa na koncie, w Pro i Premium bez limitu) to nasza ocena czytelności i słów kluczowych z podpowiedziami, co poprawić. To nie wynik prawdziwego systemu rekrutacyjnego.' },
   { q: 'W jakich formatach pobiorę CV?', a: 'Możesz pobrać CV w formacie PDF, a po zakupie dowolnego planu także w Word (DOCX).' },
   { q: 'Co z moimi danymi?', a: 'Twoje dane są bezpieczne. Stosujemy szyfrowanie i spełniamy wszystkie wymogi RODO.' },
-  { q: 'Czy mogę edytować CV po wygenerowaniu?', a: 'Tak — edytor działa w czasie rzeczywistym, zmiany zapisują się automatycznie.' },
+  { q: 'Czy mogę edytować CV po wygenerowaniu?', a: 'Tak, edytor działa w czasie rzeczywistym, zmiany zapisują się automatycznie.' },
 ]
 
 const CHIPS = [
@@ -93,7 +93,7 @@ export default async function HomePage() {
           </h1>
 
           <p style={{ fontSize: 17, color: D.muted, lineHeight: 1.75, maxWidth: 520, margin: '0 auto 36px' }}>
-            Opisz siebie własnymi słowami. Otrzymasz profesjonalne CV zoptymalizowane pod polskie standardy i systemy ATS. Płacisz raz — bez ukrytej subskrypcji.
+            Opisz siebie własnymi słowami. Otrzymasz profesjonalne CV zoptymalizowane pod polskie standardy i systemy ATS. Płacisz raz, bez ukrytej subskrypcji.
           </p>
 
           <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap', marginBottom: 24 }}>
@@ -399,7 +399,7 @@ export default async function HomePage() {
             ))}
           </div>
           <div style={{ textAlign: 'center', marginTop: 32, display: 'flex', justifyContent: 'center', gap: 24, flexWrap: 'wrap', fontSize: 13, color: D.dim }}>
-            <span>✅ Płatność jednorazowa — bez abonamentu</span>
+            <span>✅ Płatność jednorazowa, bez abonamentu</span>
             <span>🔒 Bezpieczne płatności (Stripe)</span>
             <span>🇵🇱 Dane zgodne z RODO</span>
           </div>

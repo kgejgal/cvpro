@@ -1,3 +1,4 @@
+import { noDashes } from '@/lib/no-dashes'
 import { NextRequest, NextResponse } from 'next/server'
 import Anthropic from '@anthropic-ai/sdk'
 import { zodOutputFormat } from '@anthropic-ai/sdk/helpers/zod'
@@ -62,5 +63,5 @@ Wymagania:
   if (!message.parsed_output) {
     return NextResponse.json({ error: 'Nie udało się wygenerować sugestii. Spróbuj ponownie.' }, { status: 502 })
   }
-  return NextResponse.json({ bullets: message.parsed_output.bullets.slice(0, 3) })
+  return NextResponse.json({ bullets: message.parsed_output.bullets.slice(0, 3).map(noDashes) })
 }

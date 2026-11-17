@@ -89,7 +89,7 @@ export async function POST(req: NextRequest) {
         spacing: { before: 120, after: 40 },
         children: [
           new TextRun({ text: exp.position || '', bold: true, size: 22, color: '111111', font: 'Calibri' }),
-          new TextRun({ text: exp.company ? `  —  ${exp.company}` : '', size: 22, color: '444444', font: 'Calibri' }),
+          new TextRun({ text: exp.company ? ` ,  ${exp.company}` : '', size: 22, color: '444444', font: 'Calibri' }),
           new TextRun({ text: `   ${dateRange(exp.startDate, exp.endDate, t.present)}`, size: 18, color: '888888', font: 'Calibri' }),
         ],
       }))
@@ -111,7 +111,7 @@ export async function POST(req: NextRequest) {
         spacing: { before: 80, after: 40 },
         children: [
           new TextRun({ text: [edu.degree, edu.field].filter(Boolean).join(', '), bold: true, size: 21, color: '111111', font: 'Calibri' }),
-          new TextRun({ text: edu.school ? `  —  ${edu.school}` : '', size: 21, color: '444444', font: 'Calibri' }),
+          new TextRun({ text: edu.school ? ` ,  ${edu.school}` : '', size: 21, color: '444444', font: 'Calibri' }),
           new TextRun({ text: `   ${dateRange(edu.startDate, edu.endDate)}`, size: 18, color: '888888', font: 'Calibri' }),
         ],
       }))
@@ -123,14 +123,14 @@ export async function POST(req: NextRequest) {
   }
 
   if (data.languages.length) {
-    children.push(sectionHeading(t.languages), body(data.languages.filter(l => l.name).map(l => `${l.name}${l.level ? ` — ${l.level}` : ''}`).join('  ·  ')))
+    children.push(sectionHeading(t.languages), body(data.languages.filter(l => l.name).map(l => `${l.name}${l.level ? `, ${l.level}` : ''}`).join('  ·  ')))
   }
 
   if (data.certifications?.length) {
     children.push(sectionHeading(t.certifications))
     for (const c of data.certifications) {
       if (!c.name) continue
-      children.push(body(`${c.name}${c.issuer ? ` — ${c.issuer}` : ''}${c.date ? ` (${c.date})` : ''}`))
+      children.push(body(`${c.name}${c.issuer ? `, ${c.issuer}` : ''}${c.date ? ` (${c.date})` : ''}`))
     }
   }
 

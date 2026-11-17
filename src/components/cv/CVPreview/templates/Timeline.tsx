@@ -97,7 +97,7 @@ export default function TimelineTemplate({ data }: { data: CVData }) {
               <SectionTitle title={L.edu} />
               {data.education.map((e, i) => (
                 <TimelineItem key={i}
-                  title={`${e.degree}${e.field ? ` — ${e.field}` : ''}`}
+                  title={`${e.degree}${e.field ? `, ${e.field}` : ''}`}
                   sub={e.school}
                   date={dateRange(e.startDate, e.endDate)}
                 />

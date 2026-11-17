@@ -622,7 +622,7 @@ export default function CVForm({ data, onChange, plan = 'free', allowImport = tr
           <Textarea value={data.jobAd || ''} onChange={v => onChange({ jobAd: v })} rows={6} placeholder="Wklej tu treść oferty pracy..." />
           {!['pro', 'premium'].includes(plan) && (
             <div style={{ marginTop: 10, fontSize: 12, color: '#6B84AA', background: '#0d1c35', border: '1px solid rgba(56,100,200,0.18)', borderRadius: 8, padding: '8px 12px' }}>
-              🔒 <a href="/cennik" style={{ color: '#4477ff', textDecoration: 'none' }}>Plan Pro</a> — Analiza ATS &nbsp;·&nbsp; <a href="/cennik" style={{ color: '#4477ff', textDecoration: 'none' }}>Plan Premium</a> — List motywacyjny
+              🔒 <a href="/cennik" style={{ color: '#4477ff', textDecoration: 'none' }}>Plan Pro</a>, Analiza ATS &nbsp;·&nbsp; <a href="/cennik" style={{ color: '#4477ff', textDecoration: 'none' }}>Plan Premium</a>, List motywacyjny
             </div>
           )}
         </div>

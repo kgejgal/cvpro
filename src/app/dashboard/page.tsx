@@ -219,7 +219,7 @@ export default async function DashboardPage({ searchParams }: { searchParams: Pr
               Stwórz swoje pierwsze CV
             </h2>
             <p className="dash-rise dash-rise-2" style={{ color: '#9ab4d8', fontSize: 15, lineHeight: 1.6, margin: '0 auto 28px', maxWidth: 360 }}>
-              Masz już CV? Wczytaj je i masz gotowe w kilka sekund. Wolisz zacząć od zera — też dobrze.
+              Masz już CV? Wczytaj je i masz gotowe w kilka sekund. Wolisz zacząć od zera, też dobrze.
             </p>
 
             {/* Primary path: upload an existing CV (the activation lever) */}
@@ -257,7 +257,7 @@ export default async function DashboardPage({ searchParams }: { searchParams: Pr
                 href="/cennik"
                 style={{ display: 'inline-block', background: '#1e3f75', color: '#7a94bb', textDecoration: 'none', fontSize: 14, fontWeight: 600, padding: '10px 24px', borderRadius: 8 }}
               >
-                🔒 Upgrade — więcej CV
+                🔒 Upgrade, więcej CV
               </Link>
             )}
           </div>

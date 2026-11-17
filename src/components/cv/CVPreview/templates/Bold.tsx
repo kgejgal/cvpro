@@ -76,7 +76,7 @@ export default function BoldTemplate({ data }: { data: CVData }) {
               <div style={{ fontSize: 11, fontWeight: 800, letterSpacing: 3, textTransform: 'uppercase', color: accent, marginBottom: 12 }}>{labels.edu}</div>
               {data.education.map((e, i) => (
                 <div key={i} style={{ marginBottom: 12, paddingLeft: 14, borderLeft: `3px solid #e5e7eb` }}>
-                  <div contentEditable suppressContentEditableWarning style={{ fontWeight: 700 }}>{e.degree}{e.field ? ` — ${e.field}` : ''}</div>
+                  <div contentEditable suppressContentEditableWarning style={{ fontWeight: 700 }}>{e.degree}{e.field ? `, ${e.field}` : ''}</div>
                   <div style={{ fontSize: 12 }}>
                     <span contentEditable suppressContentEditableWarning style={{ color: accent }}>{e.school}</span>
                     <span style={{ color: '#999' }}>{dateRange(e.startDate, e.endDate) && ` · ${dateRange(e.startDate, e.endDate)}`}</span>

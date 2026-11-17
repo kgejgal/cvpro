@@ -153,7 +153,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
         <div style={{ background: '#4477ff12', border: '1px solid #4477ff30', borderRadius: 14, padding: '32px', textAlign: 'center' }}>
           <h2 style={{ fontSize: 20, fontWeight: 800, margin: '0 0 8px' }}>Stwórz profesjonalne CV w kilka minut</h2>
           <p style={{ color: '#9ab4d8', fontSize: 14, margin: '0 0 24px' }}>
-            16 szablonów, analiza ATS, <Link href="/cennik" style={{ color: '#7aafff' }}>jednorazowa płatność od 15 zł</Link> — bez subskrypcji.
+            16 szablonów, analiza ATS, <Link href="/cennik" style={{ color: '#7aafff' }}>jednorazowa płatność od 15 zł</Link>, bez subskrypcji.
           </p>
           <Link href="/auth/signup" style={{ background: '#4477ff', color: '#fff', textDecoration: 'none', fontWeight: 700, fontSize: 15, padding: '13px 32px', borderRadius: 10, display: 'inline-block' }}>
             Stwórz CV →

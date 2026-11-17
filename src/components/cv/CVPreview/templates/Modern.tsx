@@ -88,7 +88,7 @@ export default function ModernTemplate({ data }: { data: CVData }) {
                 {data.education.map((e, i) => (
                   <div key={i} style={{ marginBottom: 12 }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                      <div contentEditable suppressContentEditableWarning style={{ fontWeight: 600 }}>{e.degree}{e.field ? ` — ${e.field}` : ''}</div>
+                      <div contentEditable suppressContentEditableWarning style={{ fontWeight: 600 }}>{e.degree}{e.field ? `, ${e.field}` : ''}</div>
                       <div style={{ fontSize: 11, color: '#7a8594' }}>{dateRange(e.startDate, e.endDate)}</div>
                     </div>
                     <div contentEditable suppressContentEditableWarning style={{ fontSize: 12, color: accent }}>{e.school}</div>

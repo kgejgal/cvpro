@@ -137,7 +137,7 @@ export default function OnboardingWizard({ onComplete, plan }: Props) {
           <>
             <div style={{ textAlign: 'center', marginBottom: 24 }}>
               <div style={{ fontSize: 22, fontWeight: 800, color: '#e2eeff', marginBottom: 8 }}>Twoja sytuacja</div>
-              <div style={{ fontSize: 14, color: '#8ba3c4' }}>Wybierz co najlepiej opisuje Ciebie — dostosujemy CV pod Twoje potrzeby</div>
+              <div style={{ fontSize: 14, color: '#8ba3c4' }}>Wybierz co najlepiej opisuje Ciebie, dostosujemy CV pod Twoje potrzeby</div>
             </div>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, justifyContent: 'center', marginBottom: 28 }}>
               {SITUATION_CHIPS.map(c => (

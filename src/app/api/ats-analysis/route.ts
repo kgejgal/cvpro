@@ -44,7 +44,7 @@ export async function POST(req: NextRequest) {
     cv.title,
     cv.summary,
     ...cv.experience.map(e => `${e.position} @ ${e.company}: ${e.bullets.join('. ')}`),
-    ...cv.education.map(e => `${e.degree} ${e.field} — ${e.school}`),
+    ...cv.education.map(e => `${e.degree} ${e.field}, ${e.school}`),
     `Umiejętności: ${cv.skills.join(', ')}`,
     `Języki: ${cv.languages.map(l => `${l.name} ${l.level}`).join(', ')}`,
   ].filter(Boolean).join('\n')

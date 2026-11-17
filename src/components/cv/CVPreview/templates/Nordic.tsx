@@ -84,7 +84,7 @@ export default function NordicTemplate({ data }: { data: CVData }) {
               {data.education.map((e, i) => (
                 <div key={i} style={{ marginBottom: 16 }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
-                    <div contentEditable suppressContentEditableWarning style={{ fontWeight: 700, fontSize: 13, color: '#0d1520' }}>{e.degree}{e.field ? ` — ${e.field}` : ''}</div>
+                    <div contentEditable suppressContentEditableWarning style={{ fontWeight: 700, fontSize: 13, color: '#0d1520' }}>{e.degree}{e.field ? `, ${e.field}` : ''}</div>
                     <span style={{ fontSize: 11, color: '#9aabb8', flexShrink: 0 }}>{dateRange(e.startDate, e.endDate)}</span>
                   </div>
                   <div contentEditable suppressContentEditableWarning style={{ fontSize: 12, color: accent, fontWeight: 600, marginTop: 2 }}>{e.school}</div>

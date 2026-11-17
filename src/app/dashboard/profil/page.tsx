@@ -120,7 +120,7 @@ export default async function ProfilPage() {
           {/* Upgrade prompt */}
           {plan === 'free' && (
             <div style={{ marginTop: 20, padding: '14px 18px', background: 'rgba(68,119,255,0.08)', border: '1px solid rgba(68,119,255,0.2)', borderRadius: 10, fontSize: 13, color: '#7a94bb', lineHeight: 1.5 }}>
-              Kup plan Basic za <strong style={{ color: '#e2eeff' }}>15 PLN jednorazowo</strong> — bez abonamentu, bez pułapek. PDF bez znaku wodnego od razu.{' '}
+              Kup plan Basic za <strong style={{ color: '#e2eeff' }}>15 PLN jednorazowo</strong>, bez abonamentu, bez pułapek. PDF bez znaku wodnego od razu.{' '}
               <Link href="/cennik" style={{ color: '#4477ff', textDecoration: 'none', fontWeight: 700 }}>Zobacz cennik →</Link>
             </div>
           )}
